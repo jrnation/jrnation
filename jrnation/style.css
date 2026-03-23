@@ -107,3 +107,36 @@ a { text-decoration: none; color: inherit; }
 .legal-links { margin-top: 10px; }
 .legal-links a { margin: 0 10px; font-size: 0.9rem; transition: color 0.2s; }
 .legal-links a:hover { color: #94a3b8; }
+
+
+/* 📱 MOBILE RESPONSIVENESS FIX */
+@media (max-width: 768px) {
+    /* 1. Un-fuck the Navbar */
+    .navbar {
+        flex-direction: column; /* Stack the logo and links vertically */
+        padding: 20px;
+        gap: 20px;
+    }
+    
+    .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px; /* Adds neat spacing between links */
+    }
+    
+    .nav-links a {
+        margin-left: 0; /* Kills the massive 30px margin pushing things off screen */
+    }
+
+    /* 2. Shrink the massive Hero text so it doesn't dominate the screen */
+    .hero { 
+        padding: 50px 15px 40px; 
+    }
+    .hero h1 { 
+        font-size: 2.2rem; /* Scales down from 3.5rem */
+    }
+    .hero p { 
+        font-size: 1.05rem; 
+    }
+}
