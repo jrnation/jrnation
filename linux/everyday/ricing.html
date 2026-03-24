@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ricing Linux: Ultimate Customization | The Linux Hub</title>
+    <meta name="description" content="Learn how to 'rice' your Linux desktop. Customize themes, icons, terminal prompts, and fetch tools to build your dream UI.">
+    <link rel="stylesheet" href="../style.css">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5103156070877653"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+
+<header class="navbar">
+    <div class="logo">
+        <a href="../index.html">
+            <img src="../logo.png" alt="Linux Hub Logo" class="logo-img">
+            The Linux Hub
+        </a>
+    </div>
+    <nav>
+        <a href="../index.html">Home</a>
+        <a href="../about.html" target="_blank" rel="noopener noreferrer">About Us</a>
+        <a href="../privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+        <a href="../join.html" target="_blank" rel="noopener noreferrer">Join Us</a>
+    </nav>
+    <button id="menu-btn" class="hamburger">☰ Categories</button>
+</header>
+
+<div class="container">
+    <aside class="sidebar">
+        <h3>Everyday Use</h3>
+        <ul>
+            <li><a href="de.html">Desktop Environments</a></li>
+            <li><a href="essentials.html">System Essentials</a></li>
+            <li><a href="gaming.html">Gaming on Linux</a></li>
+            <li><a href="ricing.html" style="color: var(--accent-green);">Ricing & Customization</a></li>
+        </ul>
+    </aside>
+
+    <main class="content guide-page">
+        <div class="breadcrumbs">
+            <a href="../index.html">Home</a> &gt; <a href="everyday.html">Everyday Use</a> &gt; <span>Ricing</span>
+        </div>
+
+        <article>
+            <h1>Ricing: Painting the Matrix</h1>
+            <div class="meta-info">
+                <span>Windows dictates your interface. Linux hands you the paintbrush.</span> | <span>👤 By JR Nation</span>
+            </div>
+
+            <p>In the tech community, the term <strong>"Ricing"</strong> comes from the car tuning world (making a standard street car look like a custom street racer). In Linux, ricing means taking a default, boring desktop and customizing every single pixel until it looks like a cyberpunk hacker terminal, a minimalist art piece, or a perfect macOS clone.</p>
+            
+            <p>Because the Linux graphical interface is entirely modular, you have the absolute freedom to change window borders, icons, taskbars, and even the way your terminal displays text. You are only limited by your imagination.</p>
+
+            <div class="toc-box">
+                <h3>The Customization Roadmap</h3>
+                <ul>
+                    <li><a href="#the-basics">1. The Easy Path: Global Themes & Icons</a></li>
+                    <li><a href="#gnome-extensions">2. The GNOME Workflow: Extensions</a></li>
+                    <li><a href="#terminal-ricing">3. Terminal Ricing: Fastfetch & Starship</a></li>
+                    <li><a href="#dotfiles">4. The Rabbit Hole: Dotfiles & r/unixporn</a></li>
+                    <li><a href="#faq">5. Frequently Asked Questions</a></li>
+                </ul>
+            </div>
+
+            <h2 id="the-basics">1. The Easy Path: Global Themes & Icons</h2>
+            <p>If you are using a modern Desktop Environment like <strong>KDE Plasma</strong>, ricing is built directly into the system settings. You don't even need to open the terminal to completely change how your PC looks.</p>
+            <ul>
+                <li><strong>Global Themes:</strong> Open your Settings app &gt; Global Theme &gt; click "Get New Global Themes". You can download hundreds of community-made setups with a single click. (Pro tip: Check out the <em>Catppuccin</em> or <em>Nord</em> themes for a sleek, modern, pastel look).</li>
+                <li><strong>Icons & Cursors:</strong> Even if you keep the standard window layout, changing your icons makes a massive difference. Search the store for <em>Papirus</em> or <em>Tela</em> icon packs, and grab the <em>Bibata</em> cursor set to instantly modernize your system.</li>
+            </ul>
+
+            <h2 id="gnome-extensions">2. The GNOME Workflow: Extensions</h2>
+            <p>If you are using Ubuntu, Fedora, or standard GNOME, the desktop is locked down a bit tighter out of the box. To rice GNOME effectively, you need two things:</p>
+            
+            <p>First, install the <strong>GNOME Tweaks</strong> tool from your distro's software center. Second, open your web browser and navigate to <a href="https://extensions.gnome.org" target="_blank" rel="noopener noreferrer">extensions.gnome.org</a>.</p>
+            
+            <p>From there, you can install community plugins that fundamentally change how the Desktop Environment acts. You can add a floating macOS-style dock (Dash to Dock), make your top bar transparent (Blur my Shell), or add anime/sci-fi visual audio equalizers straight to your desktop.</p>
+
+            <h2 id="terminal-ricing">3. Terminal Ricing: Fastfetch & Starship</h2>
+            <p>A true Linux user spends a decent amount of time in the command line. It shouldn't look like a boring black box. Let's make it yours.</p>
+
+            <div class="code-block-container">
+                <p class="code-label">Flex Your Specs with Fastfetch</p>
+                <p style="font-size: 0.9rem; margin-bottom: 10px; color: var(--text-main);">You've probably seen screenshots of Linux terminals displaying the distro's logo in beautiful ASCII art alongside the system hardware specs. The old tool for this (Neofetch) is dead and abandoned. The modern, lightning-fast replacement is <strong>Fastfetch</strong>.</p>
+                <code>sudo apt install fastfetch</code>
+                <p style="font-size: 0.85rem; color: #8b949e; margin-top: 10px; margin-bottom: 0;"># Once installed, just type 'fastfetch' into your terminal and press Enter to see your rig!</p>
+            </div>
+
+            <p>Next, upgrade your command prompt. The default <code>user@hostname:~$</code> is ugly and unhelpful. By installing a tool called <strong>Starship</strong>, you can add custom colors, Git branch statuses, and command execution times directly to your typing prompt. It is the ultimate terminal upgrade for developers.</p>
+
+            <h2 id="dotfiles">4. The Rabbit Hole: Dotfiles & r/unixporn</h2>
+            <p>Once you fall in love with ricing, you will eventually end up on Reddit's <strong>r/unixporn</strong> (don't worry, it's completely safe for work—it's just a showcase of beautiful desktop configurations).</p>
+            
+            <p>You will see power users running systems with no taskbar, using purely keyboard shortcuts to tile their windows perfectly across anime or cyberpunk wallpapers. These setups aren't using normal settings menus; they are controlled entirely by text files hidden in the <code>~/.config</code> folder, known as <strong>Dotfiles</strong>.</p>
+
+            <div class="callout-warning">
+                <strong>⚠️ The Golden Rule of Dotfiles:</strong> Many users post their dotfiles on GitHub for others to copy. <strong>Never blindly copy/paste someone else's configuration files into your system!</strong> Always read the code first to understand what it is changing. If you paste a script meant for Arch Linux into Ubuntu, you will likely break your graphical interface.
+            </div>
+
+            <div class="faq-section" id="faq">
+                <h2>5. Frequently Asked Questions</h2>
+                <div class="faq-item">
+                    <h3>Will heavy customizing slow down my PC?</h3>
+                    <p>It depends entirely on your Desktop Environment. Adding heavy blur effects, wobbly windows, and animations to KDE Plasma might drop a few frames on a 10-year-old laptop. However, if you are ricing a lightweight Window Manager like Hyprland or i3, your system will actually run significantly faster than a stock installation.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>How do I reset everything if it looks terrible?</h3>
+                    <p>If you used KDE's Global Themes or GNOME Tweaks, you can simply select the "Default" or "Breeze" theme in the settings menu to revert it instantly. If you went deep into editing config files and broke something fundamental, this is exactly why we set up <strong>Timeshift</strong> in the previous guide. Just open Timeshift and roll back to yesterday's snapshot.</p>
+                </div>
+            </div>
+
+        </article>
+        <hr class="section-divider">
+
+        <div class="guide-nav">
+            <a href="gaming.html" class="btn-secondary">← Back: Gaming on Linux</a>
+            <a href="../terminal/terminal.html" class="btn-primary">Next Phase: The Terminal →</a>
+        </div>
+    </main>
+</div>
+
+<script>
+    const menuBtn = document.getElementById('menu-btn');
+    const sidebar = document.querySelector('.sidebar');
+    menuBtn.addEventListener('click', () => {
+        sidebar.classList.toggle('show');
+    });
+</script>
+</body>
+</html>

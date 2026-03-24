@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fixing Broken Packages | The Linux Hub</title>
+    <meta name="description" content="Fix locked databases and broken packages in Linux. Learn how to recover APT, Pacman, and DNF when updates fail.">
+    <link rel="stylesheet" href="../style.css">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5103156070877653"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+
+<header class="navbar">
+    <div class="logo">
+        <a href="../index.html">
+            <img src="../logo.png" alt="Linux Hub Logo" class="logo-img">
+            The Linux Hub
+        </a>
+    </div>
+    <nav>
+        <a href="../index.html">Home</a>
+        <a href="../about.html" target="_blank" rel="noopener noreferrer">About Us</a>
+        <a href="../privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+        <a href="../join.html" target="_blank" rel="noopener noreferrer">Join Us</a>
+    </nav>
+    <button id="menu-btn" class="hamburger">☰ Categories</button>
+</header>
+
+<div class="container">
+    <aside class="sidebar">
+        <h3>Troubleshooting</h3>
+        <ul>
+            <li><a href="logs.html">Reading System Logs</a></li>
+            <li><a href="broken-packages.html" style="color: var(--accent-green);">Fixing Broken Packages</a></li>
+            <li><a href="bootrescue.html">Rescuing a Broken Boot</a></li>
+        </ul>
+    </aside>
+
+    <main class="content guide-page">
+        <div class="breadcrumbs">
+            <a href="../index.html">Home</a> &gt; <a href="troubleshoot.html">Troubleshooting</a> &gt; <span>Broken Packages</span>
+        </div>
+
+ <article>
+            <h1>Boot Rescue: Digital Necromancy</h1>
+            <div class="meta-info">
+                <span>When your system dies, you don't bury it. You revive it from the inside out.</span> | <span>👤 By JR Nation</span>
+            </div>
+
+            <p>Every Linux user eventually pushes their system too far. You tweak a graphics driver, uninstall a core package, or your power goes out mid-update, and suddenly... your computer refuses to turn on. You are greeted by a terrifying black screen, a "Kernel Panic," or a blinking cursor.</p>
+            
+            <p>A beginner panics and wipes their hard drive to reinstall the OS from scratch. A Power User knows that <strong>your data is perfectly safe.</strong> The files are still there; the operating system simply forgot how to find the front door. Here is how you kick it down.</p>
+
+            <div class="toc-box">
+                <h3>Table of Contents</h3>
+                <ul>
+                    <li><a href="#initramfs">1. Triage: The (initramfs) Prompt</a></li>
+                    <li><a href="#live-usb">2. The Universal Cure: The Live USB</a></li>
+                    <li><a href="#mounting">3. Mounting the Dead (and LUKS Encryption)</a></li>
+                    <li><a href="#chroot">4. The Infiltration (Manual Chroot)</a></li>
+                    <li><a href="#fixes">5. Executing the Fixes</a></li>
+                </ul>
+            </div>
+
+            <h2 id="initramfs">1. Triage: The (initramfs) BusyBox Prompt</h2>
+            <p>Sometimes the system isn't completely dead. It boots past the motherboard logo, but instead of your login screen, you get dropped into a primitive, black-and-white terminal that says <code>(initramfs)</code> or <code>BusyBox built-in shell</code>.</p>
+
+            <p><strong>What happened:</strong> Your computer suffered a hard shutdown (power outage or holding the power button). The file system got slightly corrupted, and Linux is refusing to boot to protect your data from further damage.</p>
+
+            <p><strong>The Fix:</strong> You just need to run a manual File System Check (<code>fsck</code>). In that primitive prompt, type:</p>
+
+            <div class="code-block-container">
+                <p class="terminal-cmd">(initramfs) blkid</p>
+                <p class="terminal-comment"># This lists your drives. Look for the one formatted as 'ext4' or 'btrfs' (e.g., /dev/sda2)</p>
+                <br>
+                <p class="terminal-cmd">(initramfs) fsck /dev/sda2 -y</p>
+                <p class="terminal-comment"># The -y flag automatically answers 'yes' to fixing any corrupted data blocks it finds.</p>
+            </div>
+            
+            <p>Once it finishes, type <code>reboot</code>. 90% of the time, your system will boot up perfectly normal.</p>
+
+            <h2 id="live-usb">2. The Universal Cure: The Live USB</h2>
+            <p>If you have a <strong>Kernel Panic</strong> or a <strong>GRUB Rescue</strong> error, the `initramfs` trick won't work. We have to perform open-heart surgery using a technique called <strong>Chroot (Change Root)</strong>.</p>
+
+            <p>Grab a USB stick with a Linux ISO on it (Ubuntu, Mint, Arch) and boot your PC from the USB. You are now running an operating system entirely out of your RAM, safely separated from your broken hard drive. Open a terminal.</p>
+
+            <h2 id="mounting">3. Mounting the Dead (and LUKS Encryption)</h2>
+            <p>We need to figure out exactly what your dead hard drive partitions are called and mount them to our Live USB environment.</p>
+
+            <div class="code-block-container">
+                <p class="terminal-cmd">$ lsblk</p>
+                <p class="terminal-comment"># Identify your Root (/) partition (the big one) and your EFI/Boot partition (~500MB).</p>
+            </div>
+
+            <div class="callout-info">
+                <strong>🔒 Pro-Tip: Dealing with Encrypted Drives (LUKS)</strong><br>
+                If you encrypted your hard drive when you installed Linux, you cannot mount it until you unlock it. Run this command to decrypt it first:<br><br>
+                <code>sudo cryptsetup luksOpen /dev/nvme0n1p2 my_broken_drive</code><br>
+                <em>(It will ask for your decryption password. You then mount <code>/dev/mapper/my_broken_drive</code> instead of the raw partition).</em>
+            </div>
+
+            <p>Mount the Root partition first, then create a boot folder, and mount the EFI partition inside of it:</p>
+
+            <div class="code-block-container">
+                <p class="terminal-cmd">$ sudo mount /dev/nvme0n1p2 /mnt</p>
+                <p class="terminal-cmd">$ sudo mount /dev/nvme0n1p1 /mnt/boot/efi</p>
+            </div>
+
+            <h2 id="chroot">4. The Infiltration (Manual Chroot)</h2>
+            <p>Your broken system is now attached to the <code>/mnt</code> folder. It's time to teleport your terminal inside of it. If you are using an Arch Live USB, you just type <code>sudo arch-chroot /mnt</code>. But if you are using Ubuntu, Mint, or Debian, you have to do the heavy lifting manually.</p>
+
+            <p>You must bind the Live USB's temporary hardware interfaces to the dead drive so it has internet and hardware access:</p>
+
+            <div class="code-block-container">
+                <p class="terminal-cmd">$ sudo mount --bind /dev /mnt/dev</p>
+                <p class="terminal-cmd">$ sudo mount --bind /proc /mnt/proc</p>
+                <p class="terminal-cmd">$ sudo mount --bind /sys /mnt/sys</p>
+                <p class="terminal-cmd">$ sudo mount --bind /run /mnt/run</p>
+                <p class="terminal-cmd">$ sudo chroot /mnt</p>
+            </div>
+
+            <p><strong>Your terminal prompt will instantly change.</strong> You are no longer controlling the USB stick. Your terminal natively believes it is inside your broken installation. You have absolute Root authority.</p>
+
+            <h2 id="fixes">5. Executing the Fixes</h2>
+            <p>Now that you are inside the matrix, you can repair the damage.</p>
+
+            <ul>
+                <li><strong>Did a bad update break the system?</strong> Just re-run your package manager to finish the broken update (e.g., <code>apt update && apt upgrade</code>).</li>
+                <li><strong>Did you mess up a config file?</strong> Use <code>nano /etc/fstab</code> to fix the typo that is causing the boot loop.</li>
+                <li><strong>Is GRUB completely destroyed?</strong> Reinstall it to the EFI partition and rebuild the config file:</li>
+            </ul>
+
+            <div class="code-block-container">
+                <p class="terminal-cmd">$ grub-install /dev/nvme0n1</p>
+                <p class="terminal-cmd">$ update-grub</p>
+            </div>
+
+            <div class="callout-warning" style="border-left-color: var(--accent-green); background-color: rgba(166, 227, 161, 0.1);">
+                <strong>✅ The Escape:</strong> Once you have fixed the problem, you must exit gracefully to ensure the data saves correctly.
+                <ol style="margin-top: 10px; margin-bottom: 0; padding-left: 20px; color: var(--text-main);">
+                    <li>Type <code>exit</code> to leave the chroot environment.</li>
+                    <li>Unmount the drives safely: <code>sudo umount -R /mnt</code></li>
+                    <li>Type <code>reboot</code> and remove your USB stick.</li>
+                </ol>
+            </div>
+
+            <p>If you performed the surgery correctly, your computer will boot up exactly as it was before the crash. You just saved yourself hours of reinstalling. You are officially a Linux God.</p>
+
+        </article>
+
+        <hr class="section-divider">
+
+        <div class="guide-nav">
+            <a href="logs.html" class="btn-secondary">← Back: System Logs</a>
+            <a href="bootrescue.html" class="btn-primary">Next: Rescuing a Broken Boot →</a>
+        </div>
+    </main>
+</div>
+
+<script>
+    const menuBtn = document.getElementById('menu-btn');
+    const sidebar = document.querySelector('.sidebar');
+    menuBtn.addEventListener('click', () => {
+        sidebar.classList.toggle('show');
+    });
+</script>
+</body>
+</html>

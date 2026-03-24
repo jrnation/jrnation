@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminal Text Editors | The Linux Hub</title>
+    <meta name="description" content="Learn how to edit configuration files directly in the Linux terminal. A beginner's guide to Nano, Vim, and Neovim.">
+    <link rel="stylesheet" href="../style.css">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5103156070877653"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+
+<header class="navbar">
+    <div class="logo">
+        <a href="../index.html">
+            <img src="../logo.png" alt="Linux Hub Logo" class="logo-img">
+            The Linux Hub
+        </a>
+    </div>
+    <nav>
+        <a href="../index.html">Home</a>
+        <a href="../about.html" target="_blank" rel="noopener noreferrer">About Us</a>
+        <a href="../privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+        <a href="../join.html" target="_blank" rel="noopener noreferrer">Join Us</a>
+    </nav>
+    <button id="menu-btn" class="hamburger">☰ Categories</button>
+</header>
+
+<div class="container">
+    <aside class="sidebar">
+        <h3>The Terminal</h3>
+        <ul>
+            <li><a href="fs.html">File Systems (CLI)</a></li>
+            <li><a href="pacmans.html">Package Managers</a></li>
+            <li><a href="sudo.html">The "Sudo" Command</a></li>
+            <li><a href="texted.html" style="color: var(--accent-green);">Text Editors</a></li>
+            <li><a href="bash.html">Bash Scripting</a></li>
+        </ul>
+    </aside>
+
+    <main class="content guide-page">
+        <div class="breadcrumbs">
+            <a href="../index.html">Home</a> &gt; <a href="terminal.html">The Terminal</a> &gt; <span>Text Editors</span>
+        </div>
+
+<article>
+            <h1>Text Editors: The Holy War</h1>
+            <div class="meta-info">
+                <span>The mouse is dead. Your keyboard is the only weapon you need.</span> | <span>👤 By JR Nation</span>
+            </div>
+
+            <p>Imagine your graphical interface (GUI) crashes, or you are connecting to a remote server 3,000 miles away using SSH. You need to fix a broken configuration file, but you don't have VS Code or Notepad to click on. What do you do?</p>
+            
+            <p>You use a Command Line Text Editor. These programs run entirely inside the terminal window. Mastering one is an absolute necessity for any serious Linux user. The community has been fighting over which editor is the best for decades. Let's look at the three main contenders.</p>
+
+            <div class="toc-box">
+                <h3>Table of Contents</h3>
+                <ul>
+                    <li><a href="#nano">1. Nano: The Training Sword</a></li>
+                    <li><a href="#vim">2. Vim: The Ancient Blade</a></li>
+                    <li><a href="#neovim">3. Neovim: The Modern Masterpiece</a></li>
+                    <li><a href="#exiting-vim">4. The Rite of Passage: How to Exit Vim</a></li>
+                </ul>
+            </div>
+
+            <h2 id="nano">1. Nano: The Training Sword</h2>
+            <p><strong>Nano</strong> is the default text editor on almost every beginner-friendly Linux distribution. If you type <code>nano config.txt</code> in your terminal, it instantly opens the file, and you can just start typing. It works exactly how you expect it to.</p>
+
+            <div class="code-block-container">
+                <p class="code-label">Nano Shortcuts:</p>
+                <ul style="color: #cdd6f4; font-family: monospace; margin-bottom: 0; padding-left: 20px;">
+                    <li><kbd>Ctrl</kbd> + <kbd>O</kbd> &mdash; Save the file (Write <u>O</u>ut)</li>
+                    <li><kbd>Enter</kbd> &mdash; Confirm the file name</li>
+                    <li><kbd>Ctrl</kbd> + <kbd>X</kbd> &mdash; E<u>x</u>it the editor</li>
+                </ul>
+            </div>
+
+            <p><strong>Verdict:</strong> Nano is perfect for quick, simple edits. It even lists all its shortcuts at the bottom of the screen so you never get lost. But for writing thousands of lines of code, it lacks the advanced features power users need.</p>
+
+            <h2 id="vim">2. Vim: The Ancient Blade</h2>
+            <p><strong>Vim</strong> (Vi IMproved) is legendary. It is pre-installed on practically every Unix-based machine on Earth. It is brutally fast, highly efficient, and famously difficult for beginners because it uses <strong>Modal Editing</strong>.</p>
+            
+            <p>When you open a file in Vim, you <em>cannot</em> just start typing. Vim opens in "Normal Mode," where every key on your keyboard acts as a command shortcut (for example, pressing <code>d</code> twice deletes a whole line). To actually type text, you must press <kbd>i</kbd> to enter "Insert Mode."</p>
+
+            <p><strong>Verdict:</strong> Learning Vim takes weeks of muscle-memory training. But once you master it, your fingers never have to leave the home row. You will edit code at the speed of thought.</p>
+
+            <h2 id="neovim">3. Neovim: The Modern Masterpiece</h2>
+            <p>If you look at the screens of top-tier Linux developers or the heavy customizers on <em>r/unixporn</em>, they aren't using regular Vim. They are using <strong>Neovim (nvim)</strong>.</p>
+            
+            <p>Neovim is a heavily modernized, refactored version of Vim. It allows users to write custom configuration files in a programming language called Lua. This lets you turn a raw terminal text editor into a full-blown Integrated Development Environment (IDE), complete with auto-complete, file trees, and Git integration that rivals VS Code—all while using barely any system RAM.</p>
+
+            <h2 id="exiting-vim">4. The Rite of Passage: How to Exit Vim</h2>
+            <p>The most famous joke in the programming world is getting trapped inside Vim because the escape command isn't listed anywhere on the screen. Millions of people have Googled "How to exit Vim" in a cold sweat. Here is the secret code so you don't become a statistic:</p>
+
+            <div class="callout-warning">
+                <strong>⚠️ Escape the Trap:</strong>
+                <ol style="margin-bottom: 0; padding-left: 20px;">
+                    <li>Press the <kbd>Esc</kbd> key a few times to make absolutely sure you are in Normal Mode.</li>
+                    <li>Type a colon <code>:</code> to open the command prompt at the bottom left of your screen.</li>
+                    <li>Type <code>q!</code> and hit <kbd>Enter</kbd> to quit <em>without</em> saving.</li>
+                    <li><em>Or</em>, type <code>wq</code> and hit <kbd>Enter</kbd> to save (Write) and Quit.</li>
+                </ol>
+            </div>
+
+            <p>For your first few months on Linux, stick to Nano. When you are ready to ascend to the next level of typing speed, start learning the Vim motions.</p>
+
+        </article>
+
+        <hr class="section-divider">
+
+        <div class="guide-nav">
+            <a href="sudo.html" class="btn-secondary">← Back: The Sudo Command</a>
+            <a href="bash.html" class="btn-primary">Next: Bash Scripting →</a>
+        </div>
+    </main>
+</div>
+
+<script>
+    const menuBtn = document.getElementById('menu-btn');
+    const sidebar = document.querySelector('.sidebar');
+    menuBtn.addEventListener('click', () => {
+        sidebar.classList.toggle('show');
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLI Navigation & File Systems | The Linux Hub</title>
+    <meta name="description" content="Learn the essential Linux terminal commands for navigating the file system: cd, ls, pwd, mkdir, and rm.">
+    <link rel="stylesheet" href="../style.css">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5103156070877653"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+
+<header class="navbar">
+    <div class="logo">
+        <a href="../index.html">
+            <img src="../logo.png" alt="Linux Hub Logo" class="logo-img">
+            The Linux Hub
+        </a>
+    </div>
+    <nav>
+        <a href="../index.html">Home</a>
+        <a href="../about.html" target="_blank" rel="noopener noreferrer">About Us</a>
+        <a href="../privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+        <a href="../join.html" target="_blank" rel="noopener noreferrer">Join Us</a>
+    </nav>
+    <button id="menu-btn" class="hamburger">☰ Categories</button>
+</header>
+
+<div class="container">
+    <aside class="sidebar">
+        <h3>The Terminal</h3>
+        <ul>
+            <li><a href="fs.html" style="color: var(--accent-green);">File Systems (CLI)</a></li>
+            <li><a href="pacmans.html">Package Managers</a></li>
+            <li><a href="sudo.html">The "Sudo" Command</a></li>
+            <li><a href="texted.html">Text Editors</a></li>
+            <li><a href="bash.html">Bash Scripting</a></li>
+        </ul>
+    </aside>
+
+    <main class="content guide-page">
+        <div class="breadcrumbs">
+            <a href="../index.html">Home</a> &gt; <a href="terminal.html">The Terminal</a> &gt; <span>File Systems</span>
+        </div>
+
+<article>
+            <h1>Navigating the Matrix: CLI Basics</h1>
+            <div class="meta-info">
+                <span>Where we're going, we don't need a mouse.</span> | <span>👤 By JR Nation</span>
+            </div>
+
+            <p>When you open a terminal window, you aren't just staring at a black box. You are standing inside a specific physical folder on your computer's hard drive. Without a graphical file manager to show you cute folder icons, you need to use text commands to "look around" and "walk" between rooms.</p>
+            
+            <p>Mastering these five fundamental commands will give you the power to manipulate your entire system without ever taking your hands off the keyboard.</p>
+
+            <div class="toc-box">
+                <h3>Table of Contents</h3>
+                <ul>
+                    <li><a href="#pwd">1. Where am I? (pwd)</a></li>
+                    <li><a href="#ls">2. What is in here? (ls)</a></li>
+                    <li><a href="#cd">3. How do I move? (cd)</a></li>
+                    <li><a href="#create">4. Creating Files & Folders (touch, mkdir)</a></li>
+                    <li><a href="#delete">5. Deleting (rm) & The Danger Zone</a></li>
+                </ul>
+            </div>
+
+            <h2 id="pwd">1. Where am I? (pwd)</h2>
+            <p>If you ever get lost in the terminal, you need to ask it where you are currently standing. <code>pwd</code> stands for <strong>Print Working Directory</strong>. It will output your exact location on the hard drive.</p>
+            
+            <div class="code-block-container">
+                <p class="terminal-cmd">$ pwd</p>
+                <p class="terminal-comment">/home/jrnation/Downloads</p>
+            </div>
+
+            <h2 id="ls">2. What is in here? (ls)</h2>
+            <p>Now that you know where you are, you want to look at the files around you. <code>ls</code> stands for <strong>List</strong>. It is the equivalent of opening a folder and looking at the icons.</p>
+            <ul>
+                <li><code>ls</code> &mdash; Lists the standard, visible files and folders.</li>
+                <li><code>ls -a</code> &mdash; Lists <em>all</em> files, including the hidden Dotfiles we talked about in the Essentials guide.</li>
+                <li><code>ls -la</code> &mdash; The pro move. Lists all files in a vertical format, showing exactly who owns them, when they were modified, and how large they are.</li>
+            </ul>
+
+            <h2 id="cd">3. How do I move? (cd)</h2>
+            <p>You know where you are, and you see a folder you want to enter. You use <code>cd</code>, which stands for <strong>Change Directory</strong>.</p>
+            
+            <div class="code-block-container">
+                <p class="terminal-cmd">$ cd Documents</p>
+                <p class="terminal-comment"># Moves you forward into the Documents folder.</p>
+                <br>
+                <p class="terminal-cmd">$ cd ..</p>
+                <p class="terminal-comment"># Moves you backwards exactly one room (up one level).</p>
+                <br>
+                <p class="terminal-cmd">$ cd ~</p>
+                <p class="terminal-comment"># The panic button. Teleports you instantly back to your /home folder.</p>
+            </div>
+
+            <h2 id="create">4. Creating Files & Folders (touch, mkdir)</h2>
+            <p>No more right-clicking and selecting "New Folder". In the terminal, creation is instantaneous.</p>
+            <ul>
+                <li><code>mkdir secret_folder</code> &mdash; (Make Directory) Instantly creates a new folder in your current location.</li>
+                <li><code>touch notes.txt</code> &mdash; Instantly creates an empty text file.</li>
+            </ul>
+
+            <h2 id="delete">5. Deleting (rm) & The Danger Zone</h2>
+            <p>The Linux terminal does not have a "Recycle Bin". When you delete something via the command line, it is gone forever. Treat these commands with extreme respect.</p>
+            <ul>
+                <li><code>rm notes.txt</code> &mdash; (Remove) Deletes a file permanently.</li>
+                <li><code>rm -r secret_folder</code> &mdash; (Remove Recursive) Deletes a folder and everything inside of it.</li>
+            </ul>
+
+            <div class="callout-warning" style="border-left-color: #f38ba8; background-color: rgba(243, 139, 168, 0.1);">
+                <strong>⚠️ The Suicide Command: rm -rf /</strong>
+                <br>If you ever see a troll on Reddit or a forum telling you to run <code>sudo rm -rf /</code> to "fix your internet," DO NOT DO IT. This command tells the terminal to recursively force-delete the entire Root directory. It will literally delete your entire operating system while it is running.
+            </div>
+
+            <p>Once you memorize these five commands, you will realize that moving files via the terminal is vastly faster than dragging and dropping them with a mouse.</p>
+
+        </article>
+
+        <hr class="section-divider">
+        
+        <div style="display: flex; justify-content: center; margin: 30px 0;">
+            <a href="filesystem.html" class="btn-primary">Learn About the Filesystem, Navigation, & Permissions</a>
+        </div>
+
+        <div class="guide-nav">
+            <a href="terminal.html" class="btn-secondary">← Back: The Terminal Gateway</a>
+            <a href="pacmans.html" class="btn-primary">Next: Package Managers →</a>
+        </div>
+    </main>
+</div>
+
+<script>
+    const menuBtn = document.getElementById('menu-btn');
+    const sidebar = document.querySelector('.sidebar');
+    menuBtn.addEventListener('click', () => {
+        sidebar.classList.toggle('show');
+    });
+</script>
+</body>
+</html>

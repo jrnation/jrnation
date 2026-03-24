@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User & Group Management | The Linux Hub</title>
+    <meta name="description" content="Learn how to manage users and groups in Linux. Master useradd, usermod, and the Principle of Least Privilege to secure your system.">
+    <link rel="stylesheet" href="../style.css">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5103156070877653"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+
+<header class="navbar">
+    <div class="logo">
+        <a href="../index.html">
+            <img src="../logo.png" alt="Linux Hub Logo" class="logo-img">
+            The Linux Hub
+        </a>
+    </div>
+    <nav>
+        <a href="../index.html">Home</a>
+        <a href="../about.html" target="_blank" rel="noopener noreferrer">About Us</a>
+        <a href="../privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+        <a href="../join.html" target="_blank" rel="noopener noreferrer">Join Us</a>
+    </nav>
+    <button id="menu-btn" class="hamburger">☰ Categories</button>
+</header>
+
+<div class="container">
+    <aside class="sidebar">
+        <h3>Security & Networks</h3>
+        <ul>
+            <li><a href="bfs.html">Basic Firewall Setup</a></li>
+            <li><a href="ugm.html" style="color: var(--accent-green);">User Group Management</a></li>
+            <li><a href="sshra.html">SSH Remote Access</a></li>
+            <li><a href="practices.html">Best Practices</a></li>
+        </ul>
+    </aside>
+
+    <main class="content guide-page">
+        <div class="breadcrumbs">
+            <a href="../index.html">Home</a> &gt; <a href="san.html">Security & Networks</a> &gt; <span>User Group Management</span>
+        </div>
+
+<article>
+            <h1>User Management: The VIP List</h1>
+            <div class="meta-info">
+                <span>You built the walls. Now you need to decide who gets the keys.</span> | <span>👤 By JR Nation</span>
+            </div>
+
+            <p>A firewall keeps the attackers out of the fortress. But what about the people (or programs) already inside? If you let a friend use your computer, or if you host a Minecraft server for strangers, you don't want them having the power to delete your operating system.</p>
+            
+            <p>Linux is inherently a multi-user operating system. It was built from the ground up to allow hundreds of people to connect to the same machine simultaneously without ever seeing each other's files. Mastering the <strong>Principle of Least Privilege</strong>—giving a user exactly enough power to do their job and absolutely nothing more—is the hallmark of a true System Administrator.</p>
+
+            <div class="toc-box">
+                <h3>Table of Contents</h3>
+                <ul>
+                    <li><a href="#creation">1. Spawning New Users (useradd)</a></li>
+                    <li><a href="#modify">2. Changing Passwords & Usernames</a></li>
+                    <li><a href="#groups">3. The Group System</a></li>
+                    <li><a href="#usermod-trap">4. The usermod Trap (-aG)</a></li>
+                    <li><a href="#deletion">5. Evicting Users (userdel)</a></li>
+                    <li><a href="#service-accounts">6. Pro-Tier: Service Accounts</a></li>
+                </ul>
+            </div>
+
+            <h2 id="creation">1. Spawning New Users (useradd)</h2>
+            <p>Creating a new user account via the terminal requires you to tell the system exactly how to set them up. The universal command for this is <code>useradd</code>.</p>
+
+            <div class="code-block-container">
+                <p class="terminal-cmd">$ sudo useradd -m -s /bin/bash guest_user</p>
+                <p class="terminal-comment"># -m tells Linux to physically create a /home/guest_user directory for them.</p>
+                <p class="terminal-comment"># -s sets their default terminal shell to Bash.</p>
+            </div>
+
+            <p>This user can now log in, download files to their own <code>/home</code> folder, and run basic apps. However, if they type <code>sudo</code>, the system will reject them and log the incident. They are completely contained.</p>
+
+            <h2 id="modify">2. Changing Passwords & Usernames</h2>
+            <p>When you first create a user, their account is locked until they have a password. Or, maybe an existing user forgot theirs and needs you to reset it.</p>
+
+            <div class="code-block-container">
+                <p class="terminal-cmd">$ passwd</p>
+                <p class="terminal-comment"># Changes YOUR current password. It will ask for your old one first.</p>
+                <br>
+                <p class="terminal-cmd">$ sudo passwd guest_user</p>
+                <p class="terminal-comment"># As the admin, you can forcefully overwrite anyone else's password.</p>
+            </div>
+
+            <p>What if they want to change their actual username? You use the <code>usermod</code> command, but you also have to rename their <code>/home</code> folder to match the new name, otherwise things get messy.</p>
+
+            <div class="code-block-container">
+                <p class="terminal-cmd">$ sudo usermod -l new_name -d /home/new_name -m old_name</p>
+                <p class="terminal-comment"># -l renames the account. -d and -m move all their old files to the new home folder.</p>
+            </div>
+
+            <h2 id="groups">3. The Group System</h2>
+            <p>Managing permissions for 50 individual users is exhausting. Instead, Linux uses <strong>Groups</strong>. You apply permissions to a Group (like "developers" or "audio"), and then simply drop users into those groups.</p>
+            
+            <p>Some important default groups include:</p>
+            <ul>
+                <li><strong><code>wheel</code></strong> or <strong><code>sudo</code></strong>: The gods. Anyone in this group can execute root commands.</li>
+                <li><strong><code>docker</code></strong>: Allows the user to run containerized applications without needing sudo.</li>
+                <li><strong><code>www-data</code></strong>: The standard group used by web servers like Nginx or Apache.</li>
+            </ul>
+
+            <h2 id="usermod-trap">4. The usermod Trap (-aG)</h2>
+            <p>When you want to grant a user new powers by adding them to a group, you use the <code>usermod</code> (User Modify) command. But there is a massive trap here that catches almost every beginner.</p>
+
+            <div class="callout-warning">
+                <strong>⚠️ The Missing "a" Disaster:</strong>
+                <br>If you type <code>sudo usermod -G sudo jaya</code>, Linux will add you to the sudo group, <strong>and immediately delete you from every other group you were in.</strong> This will break your audio, your video drivers, and your network access.
+                <br><br>
+                You MUST include the <code>-a</code> (Append) flag.
+            </div>
+
+            <p>The correct way to add a user to a group without destroying their other permissions is:</p>
+
+            <div class="code-block-container">
+                <p class="terminal-cmd">$ sudo usermod -aG sudo guest_user</p>
+                <p class="terminal-comment"># -a (Append) -G (Groups). Safely adds them to the VIP list.</p>
+            </div>
+
+            <h2 id="deletion">5. Evicting Users (userdel)</h2>
+            <p>When someone's time in your fortress is up, you need to revoke their access. You can delete their account using the <code>userdel</code> command. However, if you just run <code>sudo userdel guest_user</code>, the system deletes their login ability, but <strong>leaves all their files sitting on your hard drive.</strong></p>
+
+            <p>To completely wipe their existence from the server, you need to use the recursive flag:</p>
+
+            <div class="code-block-container">
+                <p class="terminal-cmd">$ sudo userdel -r guest_user</p>
+                <p class="terminal-comment"># The -r flag deletes the user AND wipes their entire /home directory off the disk.</p>
+            </div>
+
+            <h2 id="service-accounts">6. Pro-Tier: Service Accounts</h2>
+            <p>Users aren't always humans. If you install a database like MySQL or a web server, Linux actually creates a new "user account" specifically for that software.</p>
+            
+            <p>Why? <strong>Security isolation.</strong> If a hacker finds a vulnerability in your web server and breaks in, they don't break in as *you*. They break in as the <code>www-data</code> user account. Because the <code>www-data</code> user is isolated and has zero sudo privileges, the hacker is trapped inside the web server folder and cannot touch your personal files or the core system.</p>
+
+        </article>
+
+        <hr class="section-divider">
+                <div class="opt" style="text-align: center; margin: 30px 0;">
+                    <a href="usercus.html" class="btn-primary">User Customization</a>
+                </div>
+        <div class="guide-nav">
+            <a href="bfs.html" class="btn-secondary">← Back: Basic Firewall</a>
+            <a href="sshra.html" class="btn-primary">Next: SSH Remote Access →</a>
+        </div>
+    </main>
+</div>
+
+<script>
+    const menuBtn = document.getElementById('menu-btn');
+    const sidebar = document.querySelector('.sidebar');
+    menuBtn.addEventListener('click', () => {
+        sidebar.classList.toggle('show');
+    });
+</script>
+</body>
+</html>

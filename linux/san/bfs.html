@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Firewall Setup | The Linux Hub</title>
+    <meta name="description" content="Learn how to configure a Linux firewall using UFW. Lock down your ports, drop malicious traffic, and secure your network.">
+    <link rel="stylesheet" href="../style.css">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5103156070877653"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+
+<header class="navbar">
+    <div class="logo">
+        <a href="../index.html">
+            <img src="../logo.png" alt="Linux Hub Logo" class="logo-img">
+            The Linux Hub
+        </a>
+    </div>
+    <nav>
+        <a href="../index.html">Home</a>
+        <a href="../about.html" target="_blank" rel="noopener noreferrer">About Us</a>
+        <a href="../privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+        <a href="../join.html" target="_blank" rel="noopener noreferrer">Join Us</a>
+    </nav>
+    <button id="menu-btn" class="hamburger">☰ Categories</button>
+</header>
+
+<div class="container">
+    <aside class="sidebar">
+        <h3>Security & Networks</h3>
+        <ul>
+            <li><a href="bfs.html" style="color: var(--accent-green);">Basic Firewall Setup</a></li>
+            <li><a href="ugm.html">User Group Management</a></li>
+            <li><a href="sshra.html">SSH Remote Access</a></li>
+            <li><a href="practices.html">Best Practices</a></li>
+        </ul>
+    </aside>
+
+    <main class="content guide-page">
+        <div class="breadcrumbs">
+            <a href="../index.html">Home</a> &gt; <a href="san.html">Security & Networks</a> &gt; <span>Basic Firewall Setup</span>
+        </div>
+
+        <article>
+            <h1>Basic Firewall: Closing the Gates</h1>
+            <div class="meta-info">
+                <span>Your system has 65,535 doors. Stop leaving them wide open.</span> | <span>👤 By JR Nation</span>
+            </div>
+
+            <p>Imagine your computer is a massive fortress with exactly 65,535 doors (called "Ports"). When you connect to the internet, applications use these doors to send and receive data. Your web browser uses Port 80, your email uses Port 25, and multiplayer games use their own custom doors.</p>
+            
+            <p>A <strong>Firewall</strong> is the digital bouncer standing outside your fortress. Its job is to look at every single packet of data trying to enter or leave, check the rulebook, and decide whether to let it through or violently drop it. By default on a fresh Linux install, the bouncer is usually asleep. Let's wake him up.</p>
+
+            <div class="toc-box">
+                <h3>Table of Contents</h3>
+                <ul>
+                    <li><a href="#ufw">1. Meet UFW (Uncomplicated Firewall)</a></li>
+                    <li><a href="#defaults">2. The Golden Rule: Deny All, Allow Out</a></li>
+                    <li><a href="#rules">3. Opening Specific Doors</a></li>
+                    <li><a href="#enable">4. Throwing the Switch</a></li>
+                </ul>
+            </div>
+
+            <h2 id="ufw">1. Meet UFW (Uncomplicated Firewall)</h2>
+            <p>In the past, configuring a Linux firewall meant writing incredibly complex rules using a low-level tool called <code>iptables</code>. It was a nightmare for beginners. Today, we use a frontend tool called <strong>UFW</strong> (Uncomplicated Firewall), which turns those complex rules into plain English.</p>
+            
+            <p>If you are on Ubuntu, Mint, or Pop!_OS, it is likely already installed. If not, you can grab it using your package manager:</p>
+
+            <div class="code-block-container">
+                <p class="terminal-cmd">$ sudo apt install ufw</p>
+                <p class="terminal-comment"># Arch users: sudo pacman -S ufw</p>
+            </div>
+
+            <h2 id="defaults">2. The Golden Rule: Deny All, Allow Out</h2>
+            <p>Before we turn the firewall on, we need to establish the baseline rules. The standard security practice for any PC is simple: <strong>Nobody is allowed in unless I explicitly invited them, but I am allowed to leave whenever I want.</strong></p>
+            
+            <p>Run these two commands to set your default policies:</p>
+
+            <div class="code-block-container">
+                <p class="terminal-cmd">$ sudo ufw default deny incoming</p>
+                <p class="terminal-cmd">$ sudo ufw default allow outgoing</p>
+            </div>
+            
+            <p>This means if a random hacker runs an automated port scan against your IP address, your computer will simply ignore them. It won't even reply to say "I'm closed." It will act like it doesn't exist.</p>
+
+            <h2 id="rules">3. Opening Specific Doors</h2>
+            <p>If you set your incoming policy to "deny," you will break things if you actually <em>want</em> to host a service. For example, if you want to control your PC remotely from your laptop using SSH, you need to open Port 22.</p>
+            
+            <p>To open a door, you simply tell UFW to "allow" it:</p>
+
+            <div class="code-block-container">
+                <p class="terminal-cmd">$ sudo ufw allow ssh</p>
+                <p class="terminal-comment"># UFW is smart enough to know 'ssh' means Port 22.</p>
+                <br>
+                <p class="terminal-cmd">$ sudo ufw allow 80/tcp</p>
+                <p class="terminal-comment"># Opens Port 80 (HTTP) specifically for standard web traffic.</p>
+            </div>
+
+            <div class="callout-warning" style="border-left-color: #f38ba8; background-color: rgba(243, 139, 168, 0.1);">
+                <strong>⚠️ The Remote Server Death Trap:</strong>
+                <br>If you are doing this on a remote VPS (like an AWS or DigitalOcean server) instead of the computer sitting on your desk, <strong>you MUST run <code>sudo ufw allow ssh</code> BEFORE you turn the firewall on.</strong> If you turn on a "deny all" firewall without opening the SSH port first, you will instantly sever your own connection and permanently lock yourself out of the server. 
+            </div>
+
+            <h2 id="enable">4. Throwing the Switch</h2>
+            <p>Now that your baseline rules are set and your necessary doors are opened, it's time to bring the firewall online.</p>
+
+            <div class="code-block-container">
+                <p class="terminal-cmd">$ sudo ufw enable</p>
+                <p class="terminal-comment" style="color: #a6e3a1;">Firewall is active and enabled on system startup</p>
+            </div>
+
+            <p>To check the status of your firewall and see exactly which doors are currently open and actively listening, use the status command:</p>
+
+            <div class="code-block-container">
+                <p class="terminal-cmd">$ sudo ufw status verbose</p>
+            </div>
+
+            <p>Your bouncer is now on duty. Unwanted traffic will be silently dropped before it ever touches your applications.</p>
+
+        </article>
+
+        <hr class="section-divider">
+
+        <div class="guide-nav">
+            <a href="san.html" class="btn-secondary">← Back: Security Gateway</a>
+            <a href="ugm.html" class="btn-primary">Next: User Group Management →</a>
+        </div>
+    </main>
+</div>
+
+<script>
+    const menuBtn = document.getElementById('menu-btn');
+    const sidebar = document.querySelector('.sidebar');
+    menuBtn.addEventListener('click', () => {
+        sidebar.classList.toggle('show');
+    });
+</script>
+</body>
+</html>

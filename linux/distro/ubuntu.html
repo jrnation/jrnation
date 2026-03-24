@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ubuntu Linux | The Linux Hub</title>
+    <meta name="description" content="Learn about Ubuntu Linux, the most popular and user-friendly distribution for beginners and professionals alike.">
+    <link rel="stylesheet" href="../style.css">
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5103156070877653"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+
+<header class="navbar">
+    <div class="logo">
+        <a href="../index.html">
+            <img src="../logo.png" alt="Linux Hub Logo" class="logo-img">
+            The Linux Hub
+        </a>
+    </div>
+    <nav>
+        <a href="../index.html">Home</a>
+        <a href="../about.html">About Us</a>
+        <a href="../privacy.html">Privacy Policy</a>
+        <a href="../join.html">Join Us</a>
+    </nav>
+    <button id="menu-btn" class="hamburger">☰ Categories</button>
+</header>
+
+<div class="container">
+    <aside class="sidebar">
+        <h3>Distributions</h3>
+        <ul>
+            <li><a href="ubuntu.html" style="color: var(--accent-green);">Ubuntu</a></li>
+            <li><a href="debian.html">Debian</a></li>
+            <li><a href="fedora.html">Fedora</a></li>
+            <li><a href="arch.html">Arch Linux</a></li>
+            <li><a href="opensuse.html">openSUSE</a></li>
+            <li><a href="kali.html">Kali Linux</a></li>
+            <li><a href="lfs.html">Linux From Scratch</a></li>
+        </ul>
+    </aside>
+
+    <main class="content guide-page">
+        <div class="breadcrumbs">
+            <a href="../index.html">Home</a> &gt; <span>Distributions</span> &gt; <span>Ubuntu</span>
+        </div>
+
+<article>
+            <h1>Ubuntu: The People's Linux</h1>
+            <div class="meta-info">
+                <span>The gateway drug to the open-source world.</span> | <span>👤 By JR Nation</span>
+            </div>
+
+            <p>If you have ever googled "How to install Linux," you were almost certainly pointed toward Ubuntu. Built by Canonical and based on Debian, Ubuntu is the undisputed king of desktop market share. It is designed with one goal in mind: to make Linux accessible to human beings.</p>
+
+            <div style="margin: 20px 0;">
+                <a href="https://ubuntu.com/download/desktop" class="btn-primary" target="_blank" rel="noopener noreferrer">Download Ubuntu</a>
+            </div>
+
+            <div class="toc-box">
+                <h3>Table of Contents</h3>
+                <ul>
+                    <li><a href="#release-cycle">1. The Release Cycle (LTS vs. Interim)</a></li>
+                    <li><a href="#package-manager">2. APT, PPAs, and Snaps</a></li>
+                    <li><a href="#desktop">3. The Desktop & Flavors</a></li>
+                    <li><a href="#server">4. The Cloud Heavyweight</a></li>
+                </ul>
+            </div>
+
+            <h2 id="release-cycle">1. The Release Cycle (LTS vs. Interim)</h2>
+            <p>One of the most confusing things for beginners is choosing which version of Ubuntu to download. Canonical releases a new version every six months, but they follow a strict cycle:</p>
+            <ul>
+                <li><strong>LTS (Long Term Support):</strong> Released every two years (e.g., 22.04, 24.04). These versions are rock-solid and receive guaranteed security updates for 5 to 10 years. <em>Always choose the LTS version for your daily driver.</em></li>
+                <li><strong>Interim Releases:</strong> Released every six months in between LTS versions (e.g., 23.10). These are stepping stones with newer software, but they are only supported for 9 months. They are meant for developers who want to test new features.</li>
+            </ul>
+
+            <h2 id="package-manager">2. APT, PPAs, and Snaps</h2>
+            <p>Ubuntu inherits its core package management from Debian, using the <strong>APT</strong> system. It is incredibly stable and highly documented.</p>
+
+            <div class="code-block-container">
+                <p class="terminal-cmd">$ sudo apt update && sudo apt upgrade</p>
+                <p class="terminal-comment"># The universal command to update an Ubuntu system.</p>
+            </div>
+
+            <h3>Personal Package Archives (PPAs)</h3>
+            <p>If a piece of software isn't in the official Ubuntu repositories, developers often host it in a PPA. You can easily add these third-party repos to your system to install niche apps or beta software.</p>
+
+            <div class="code-block-container">
+                <p class="terminal-cmd">$ sudo add-apt-repository ppa:obsproject/obs-studio</p>
+                <p class="terminal-comment"># Adds the official OBS Studio PPA to your system, unlocking new apt installations.</p>
+            </div>
+
+            <div class="callout-warning">
+                <strong>⚠️ The Snap Controversy:</strong> Ubuntu has aggressively pushed a universal packaging format called <strong>Snaps</strong>. Snaps contain all their dependencies in one secure, sandboxed container. While great for compatibility and background auto-updates, power users often criticize them for having slower startup times and taking up more disk space than traditional APT packages.
+            </div>
+
+            <h2 id="desktop">3. The Desktop & Flavors</h2>
+            <p>Out of the box, Ubuntu uses a heavily customized version of the <strong>GNOME</strong> desktop environment. It features a distinct dock on the left side of the screen, a top bar for your clock, and a very modern, macOS-inspired workflow.</p>
+            
+            <p>If you don't like GNOME, you don't have to use it. Canonical officially supports "Flavors" of Ubuntu with completely different desktop interfaces right out of the box:</p>
+            <ul>
+                <li><strong>Kubuntu:</strong> Uses the KDE Plasma desktop (looks and acts very similar to Windows).</li>
+                <li><strong>Xubuntu / Lubuntu:</strong> Uses ultra-lightweight desktops designed to resurrect 15-year-old laptops.</li>
+                <li><strong>Ubuntu MATE:</strong> A classic, retro-style Linux desktop.</li>
+            </ul>
+
+            <h2 id="server">4. The Cloud Heavyweight</h2>
+            <p>While Ubuntu is famous for being a beginner-friendly desktop, it is actually an absolute titan in the enterprise world. The vast majority of virtual machines running on Amazon Web Services (AWS), Google Cloud, and Microsoft Azure are running Ubuntu Server. Learning Ubuntu on your laptop translates directly to highly paid cloud engineering skills.</p>
+
+        </article>
+
+        <hr class="section-divider">
+
+        <div class="guide-nav" style="display: flex; justify-content: flex-end;">
+            <a href="debian.html" class="btn-primary">Next: Debian →</a>
+        </div>
+    </main>
+</div>
+
+<script>
+    const menuBtn = document.getElementById('menu-btn');
+    const sidebar = document.querySelector('.sidebar');
+    if(menuBtn && sidebar) {
+        menuBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('show');
+        });
+    }
+</script>
+</body>
+</html>

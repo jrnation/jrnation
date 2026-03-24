@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GRUB Customization | The Linux Hub</title>
+    <meta name="description" content="Customize your GRUB bootloader. Learn how to change the background image, boot timeout, and default operating system.">
+    <link rel="stylesheet" href="../style.css">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5103156070877653"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+
+<header class="navbar">
+    <div class="logo">
+        <a href="../index.html">
+            <img src="../logo.png" alt="Linux Hub Logo" class="logo-img">
+            The Linux Hub
+        </a>
+    </div>
+    <nav>
+        <a href="../index.html">Home</a>
+        <a href="../about.html" target="_blank" rel="noopener noreferrer">About Us</a>
+        <a href="../privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+        <a href="../join.html" target="_blank" rel="noopener noreferrer">Join Us</a>
+    </nav>
+    <button id="menu-btn" class="hamburger">☰ Categories</button>
+</header>
+
+<div class="container">
+    <aside class="sidebar">
+        <h3>The Power User</h3>
+        <ul>
+            <li><a href="wm.html">Window Managers</a></li>
+            <li><a href="kernel.html">The Linux Kernel</a></li>
+            <li><a href="systemd.html">Systemd & Services</a></li>
+            <li><a href="boot.html" style="color: var(--accent-green);">The Boot Process</a></li>
+            <li><a href="vbox.html">Virtualization</a></li>
+        </ul>
+    </aside>
+
+    <main class="content guide-page">
+        <div class="breadcrumbs">
+            <a href="../index.html">Home</a> &gt; <a href="pro.html">The Power User</a> &gt; <a href="boot.html">The Boot Process</a> &gt; <span>GRUB Customization</span>
+        </div>
+
+<article>
+            <h1>GRUB: Pimp My Bootloader</h1>
+            <div class="meta-info">
+                <span>Because staring at a black and white text menu every morning is depressing.</span> | <span>👤 By JR Nation</span>
+            </div>
+
+            <p>The Grand Unified Bootloader (GRUB) is the first piece of software you see when you turn on a dual-boot PC. Out of the box, it is incredibly ugly. It’s just generic white text on a pitch-black background.</p>
+            
+            <p>But GRUB is highly customizable. You can change the countdown timer, set a default OS so you don't have to babysit the boot sequence, and even add a custom background image so your system looks beautiful before the operating system even loads.</p>
+
+            <div class="toc-box">
+                <h3>Table of Contents</h3>
+                <ul>
+                    <li><a href="#the-config">1. The Master File (/etc/default/grub)</a></li>
+                    <li><a href="#timeout">2. Changing the Timeout & Default OS</a></li>
+                    <li><a href="#background">3. Adding a Custom Background Image</a></li>
+                    <li><a href="#update">4. The Crucial Step: Updating GRUB</a></li>
+                </ul>
+            </div>
+
+            <h2 id="the-config">1. The Master File (/etc/default/grub)</h2>
+            <p>You do not edit the actual GRUB menu directly. Instead, you edit a configuration file, and then tell Linux to generate a new menu based on your rules. The file you need to edit is located here:</p>
+
+            <div class="code-block-container">
+                <p class="terminal-cmd">$ sudo nano /etc/default/grub</p>
+            </div>
+
+            <h2 id="timeout">2. Changing the Timeout & Default OS</h2>
+            <p>Once you are inside the file with <code>nano</code>, look for these specific lines:</p>
+
+            <ul>
+                <li><strong><code>GRUB_TIMEOUT=10</code></strong>: This dictates how many seconds the menu stays on the screen before auto-selecting an OS. Change it to <code>3</code> or <code>5</code> to speed up your boot time. Change it to <code>-1</code> if you want it to wait forever until you explicitly press a key.</li>
+                <li><strong><code>GRUB_DEFAULT=0</code></strong>: This tells GRUB which list item to boot automatically. <code>0</code> is the first item on the list (usually Linux). <code>1</code> is the second item. If you want it to automatically remember the <em>last</em> OS you booted, change this to <code>GRUB_DEFAULT=saved</code> and add a new line below it that says <code>GRUB_SAVEDEFAULT=true</code>.</li>
+            </ul>
+
+            <h2 id="background">3. Adding a Custom Background Image</h2>
+            <p>To put a cool image behind the text, you just need to point GRUB to a picture on your hard drive. <em>(Note: the image should be a .png or .jpg, and it helps if it matches your monitor's native resolution).</em></p>
+            
+            <p>Add this line to the very bottom of the <code>/etc/default/grub</code> file:</p>
+
+            <div class="code-block-container">
+                <p class="terminal-cmd">GRUB_BACKGROUND="/usr/share/backgrounds/my_cool_wallpaper.png"</p>
+                <p class="terminal-comment"># Make sure you provide the exact, absolute path to where your image is saved.</p>
+            </div>
+
+            <p>Press <kbd>Ctrl</kbd> + <kbd>O</kbd> to save, hit <kbd>Enter</kbd> to confirm, and <kbd>Ctrl</kbd> + <kbd>X</kbd> to exit Nano.</p>
+
+            <h2 id="update">4. The Crucial Step: Updating GRUB</h2>
+            <p>You saved the text file, but if you reboot right now, absolutely nothing will change. You have to tell the system to compile that text file into the actual bootloader script.</p>
+
+            <div class="callout-warning">
+                <strong>⚠️ Run the Update Command:</strong>
+                <p style="margin-top: 10px; margin-bottom: 5px; font-weight: bold; color: var(--text-main);">If you are on Ubuntu, Debian, or Mint:</p>
+                <code>sudo update-grub</code>
+                
+                <p style="margin-top: 15px; margin-bottom: 5px; font-weight: bold; color: var(--text-main);">If you are on Arch, Endeavour, or Fedora:</p>
+                <code>sudo grub-mkconfig -o /boot/grub/grub.cfg</code>
+            </div>
+
+            <p>You will see the terminal output text confirming it found your background image and your operating systems. Reboot your PC, and enjoy your customized boot sequence.</p>
+
+        </article>
+
+        <hr class="section-divider">
+
+        <div class="guide-nav">
+            <a href="boot.html" class="btn-secondary">← Back: The Boot Process</a>
+            <a href="rescue.html" class="btn-primary">Next: The Rescue Mission →</a>
+        </div>
+    </main>
+</div>
+
+<script>
+    const menuBtn = document.getElementById('menu-btn');
+    const sidebar = document.querySelector('.sidebar');
+    menuBtn.addEventListener('click', () => {
+        sidebar.classList.toggle('show');
+    });
+</script>
+</body>
+</html>

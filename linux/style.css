@@ -1,0 +1,570 @@
+/* --- Global Reset --- */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+/* --- Base Theme & Terminal Colors --- */
+:root {
+    --bg-main: #0d1117;       /* Deep dark background */
+    --bg-sidebar: #161b22;    /* Slightly lighter for contrast */
+    --text-main: #c9d1d9;     /* Soft white for reading */
+    --accent-green: #238636;  /* Terminal green */
+    --accent-hover: #2ea043;
+    --border-color: #30363d;
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+a {
+    color: var(--accent-green);
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+    color: var(--accent-hover);
+    text-decoration: underline;
+}
+
+/* --- Top Navigation Bar --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: var(--bg-sidebar);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.navbar .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--text-main);
+    font-family: monospace;
+}
+
+.logo-img {
+    height: 1.5rem;          
+    width: auto;             
+    vertical-align: middle;  
+    margin-right: 8px;       
+}
+
+.logo a {
+    text-decoration: none;   
+    display: flex;           
+    align-items: center;     
+}
+
+.navbar nav a {
+    margin-left: 1.5rem;
+    color: var(--text-main);
+    font-weight: 500;
+}
+
+.navbar nav a:hover {
+    color: var(--accent-green);
+}
+
+/* --- Main Layout Structure --- */
+.container {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height: calc(100vh - 70px);
+}
+
+/* --- Sidebar --- */
+.sidebar {
+    width: 250px;
+    background-color: var(--bg-sidebar);
+    padding: 2rem 1.5rem;
+    border-right: 1px solid var(--border-color);
+}
+
+.sidebar h3 {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    color: #8b949e;
+    letter-spacing: 0.05em;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar li {
+    margin-bottom: 0.5rem;
+}
+
+.sidebar a {
+    color: var(--text-main);
+    font-size: 0.95rem;
+}
+
+.sidebar a:hover {
+    color: var(--accent-green);
+}
+
+/* --- Main Content Area --- */
+.content {
+    flex: 1;
+    padding: 2rem 3rem;
+}
+
+.content h1 {
+    font-size: 2.5rem;
+    margin-top: 0;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.5rem;
+}
+
+/* --- Guide Preview Cards --- */
+.guide-preview {
+    background-color: var(--bg-sidebar);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    margin-top: 2rem;
+}
+
+.guide-preview h2 {
+    margin-top: 0;
+    font-size: 1.4rem;
+}
+
+.read-more {
+    display: inline-block;
+    margin-top: 1rem;
+    font-weight: bold;
+    font-family: monospace;
+    font-size: 1.1rem;
+}
+
+/* --- Hero Section & Buttons (Consolidated) --- */
+.hero-subtitle {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--accent-green);
+}
+
+.hero-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 2rem;
+}
+
+.btn-primary, .btn-secondary {
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: 4px;
+    font-weight: bold;
+    text-align: center;
+    white-space: nowrap; 
+    text-decoration: none; /* Stops the hover underline */
+}
+
+.btn-primary {
+    background-color: var(--accent-green);
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-hover);
+    color: #fff;
+    text-decoration: none;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+}
+
+.btn-secondary:hover {
+    border-color: var(--text-main);
+    text-decoration: none;
+}
+
+/* --- Next/Prev Guide Navigation --- */
+.guide-nav {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: 2rem;
+    font-weight: bold;
+}
+
+.guide-nav a {
+    flex: 1;
+    text-align: center;
+}
+
+.section-divider {
+    border: 0;
+    height: 1px;
+    background: var(--border-color);
+    margin: 3rem 0;
+}
+
+/* --- Documentation Grid --- */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.doc-card {
+    background-color: var(--bg-sidebar);
+    padding: 1.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    transition: transform 0.2s;
+}
+
+.doc-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-green);
+}
+
+.doc-card h3 {
+    margin-top: 0;
+    font-size: 1.2rem;
+}
+
+.doc-card .icon {
+    margin-right: 0.5rem;
+}
+
+/* --- SEO & FAQ Sections --- */
+.seo-about-linux, .faq-section {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px dashed var(--border-color);
+}
+
+.faq-item {
+    margin-bottom: 1.5rem;
+}
+
+.faq-item h3 {
+    color: var(--accent-green);
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.faq-item p {
+    margin-top: 0;
+}
+
+/* --- Keyboard Key Styling --- */
+kbd {
+    background-color: #1e1e2e;
+    color: #cdd6f4;
+    font-family: monospace;
+    font-size: 0.85rem;
+    font-weight: bold;
+    padding: 3px 6px;
+    border-radius: 4px;
+    border: 1px solid #45475a;
+    border-bottom: 3px solid #313244; /* Gives it a 3D pushed-up look */
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
+    display: inline-block;
+}
+
+
+/* --- Custom Callout Boxes --- */
+.callout-warning {
+    border-left: 4px solid #f9e2af;
+    background-color: rgba(249, 226, 175, 0.1);
+    padding: 1.2rem 1.5rem;
+    border-radius: 4px;
+    margin: 1.5rem 0;
+    color: var(--text-main);
+}
+
+.callout-info {
+    border-left: 4px solid #89b4fa;
+    background-color: rgba(137, 180, 250, 0.1);
+    padding: 1.2rem 1.5rem;
+    border-radius: 4px;
+    margin: 1.5rem 0;
+    color: var(--text-main);
+}
+
+/* --- Cheat Sheet Box --- */
+.cheat-sheet-box {
+    background-color: var(--bg-sidebar);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    margin: 1.5rem 0 2rem 0;
+}
+.cheat-sheet-box p {
+    margin: 0.8rem 0;
+}
+
+
+/* --- Code Block Containers --- */
+.code-block-container {
+    background-color: #1e1e2e; 
+    padding: 15px; 
+    border-radius: 8px; 
+    margin-bottom: 20px;
+}
+
+.code-label {
+    margin-top: 0; 
+    color: #a6adc8; 
+    font-weight: bold; 
+    border-bottom: 1px solid #45475a; 
+    padding-bottom: 5px;
+}
+
+/* --- Terminal Specific Text Formatting --- */
+.terminal-cmd {
+    font-family: monospace;
+    color: #cdd6f4;
+    margin: 0;
+    font-size: 1rem;
+}
+
+.terminal-comment {
+    font-family: monospace;
+    color: #8b949e;
+    margin: 0;
+    font-size: 0.85rem;
+}
+
+
+
+
+
+
+
+/* --- Mobile Menu Button --- */
+.hamburger {
+    display: none;
+    background-color: var(--accent-green);
+    color: #ffffff;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    font-size: 1.2rem;
+    font-family: monospace;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+    text-decoration: none; /* Keeps the menu text clean */
+}
+
+.hamburger:hover {
+    background-color: var(--accent-hover);
+}
+
+/* --- Split Layout for Customization Section --- */
+.split-layout {
+    display: flex;
+    gap: 2rem;
+    margin-top: 1.5rem;
+    align-items: center;
+}
+
+.split-layout .text-content {
+    flex: 2;
+}
+
+.split-layout .feature-box {
+    flex: 1;
+    background-color: var(--bg-sidebar);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.feature-box h4 {
+    margin-top: 0;
+    color: var(--accent-green);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.5rem;
+}
+
+.feature-box ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.feature-box li {
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+/* --- Hardware & Rescue --- */
+.hardware-rescue {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px dashed var(--border-color);
+}
+
+/* --- Cheat Sheets Tag Cloud --- */
+.cheat-sheets {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px dashed var(--border-color);
+}
+
+.tag-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 1.5rem;
+}
+
+.tag {
+    background-color: var(--bg-sidebar);
+    color: var(--text-main);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    font-size: 0.9rem;
+    font-family: monospace;
+    transition: all 0.2s;
+}
+
+.tag:hover {
+    background-color: var(--accent-green);
+    color: #fff;
+    border-color: var(--accent-green);
+    text-decoration: none;
+    transform: translateY(-2px);
+}
+
+
+
+
+/* --- Code and Command Styling --- */
+article code {
+    background-color: #1e1e2e;
+    color: #a6e3a1; /* Terminal Green */
+    font-family: monospace;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.95rem;
+}
+
+
+
+/* ========================================================= */
+/* --- MOBILE RESPONSIVENESS (Where the magic happens) ---   */
+/* ========================================================= */
+
+@media screen and (max-width: 768px) {
+    .split-layout {
+        flex-direction: column;
+    }
+
+    .hamburger {
+        display: block; 
+        width: 100%;
+        margin-top: 1rem;
+    }
+
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        display: none; 
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+        padding: 1.5rem;
+        box-sizing: border-box;
+        background-color: #0d1117;
+    }
+
+    .sidebar.show {
+        display: block;
+        animation: slideDown 0.3s ease-out forwards;
+    }
+
+    .content {
+        padding: 1.5rem;
+    }
+
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .navbar nav a {
+        margin-left: 0;
+        margin-right: 1.5rem;
+        display: inline-block;
+        padding-top: 0.5rem;
+    }
+
+    .content h1 {
+        font-size: 2rem;
+    }
+
+    /* --- MOBILE BUTTON FIXES --- */
+    .hero-actions, .guide-nav {
+        flex-direction: column; /* Stacks the buttons vertically */
+        gap: 10px;
+    }
+
+    .btn-primary, .btn-secondary {
+        white-space: normal; /* Allows text to wrap if needed */
+        width: 100%;         /* Makes buttons full width on phones */
+        box-sizing: border-box; 
+    }
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+
+/* --- Table Styling for Config Page --- */
+table {
+    width: 100%;
+    margin: 20px 0;
+    border-collapse: collapse;
+    background-color: #1e1e2e;
+    border-radius: 8px;
+    overflow: hidden; /* Keeps the rounded corners */
+}
+
+th {
+    background-color: #313244;
+    color: var(--accent-green);
+    text-align: left;
+    padding: 12px;
+}
+
+td {
+    padding: 12px;
+    border-bottom: 1px solid #45475a;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+
+

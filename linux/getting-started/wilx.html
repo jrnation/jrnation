@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What is Linux? | The Linux Hub</title>
+    <meta name="description" content="An introduction to the Linux kernel and open-source software.">
+    <link rel="stylesheet" href="../style.css">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5103156070877653"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+
+<header class="navbar">
+    <div class="logo">
+        <a href="../index.html">
+            <img src="../logo.png" alt="Linux Hub Logo" class="logo-img">
+            The Linux Hub
+        </a>
+    </div>
+    <nav>
+        <a href="../index.html">Home</a>
+        <a href="../about.html" target="_blank" rel="noopener noreferrer">About Us</a>
+        <a href="../privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+        <a href="../join.html" target="_blank" rel="noopener noreferrer">Join Us</a>
+    </nav>
+    <button id="menu-btn" class="hamburger">☰ Categories</button>
+</header>
+
+<div class="container">
+    <aside class="sidebar">
+        <h3>Getting Started</h3>
+        <ul>
+            <li><a href="#" style="color: var(--accent-green);">What is Linux?</a></li>
+            <li><a href="choosing_distro.html">Choosing Your First Distro</a></li>
+            <li><a href="liveboot.html">Creating a Live USB</a></li>
+            <li><a href="installation.html">Installation & Dual Booting</a></li>
+            <li><a href="config.html">Post-Installation Setup</a></li>
+        </ul>
+        </aside>
+
+    <main class="content guide-page">
+        <div class="breadcrumbs">
+            <a href="../index.html">Home</a> &gt; <a href="getting-started.html">Getting Started</a> &gt; <span>What is Linux?</span>
+        </div>
+
+        <article>
+            <h1>What is Linux? (And How I Stopped Renting My PC)</h1>
+            <div class="meta-info">
+                <span>You are not just a consumer; you are the owner of your system.</span> | <span>👤 By JR Nation</span>
+            </div>
+
+            <p>Let’s get one thing straight right out of the gate: You aren't reading this because everything on your Windows machine is working perfectly. You are probably here because you are tired. </p>
+            
+            <p>You are tired of forced updates restarting your PC while you are working. You are tired of your computer slowing to a crawl because of background telemetry scanning your files. Or maybe you just looked at your pristine, expensive hardware and realized you don't actually own it—Microsoft or Apple does, and they just let you borrow it.</p>
+            
+            <p>I know the feeling, because that is exactly where I started. I made the jump to Linux years ago, and I am never going back. But before you start wiping your hard drive, we need to have a real talk about what Linux actually is, because it is probably not what you think.</p>
+
+            <div class="toc-box">
+                <h3>The Roadmap for This Lesson</h3>
+                <ul>
+                    <li><a href="#kernel-explanation">1. The Engine: It is a Kernel, Not an OS</a></li>
+                    <li><a href="#lego-blocks">2. Windows is Glued. Linux is Lego.</a></li>
+                    <li><a href="#open-source">3. The Catch: Why is it Free?</a></li>
+                    <li><a href="#why-switch">4. My Top 3 Reasons to Make the Jump</a></li>
+                    <li><a href="#terminal-taste">5. Don't Panic: Your First Terminal Commands</a></li>
+                </ul>
+            </div>
+
+            <h2 id="kernel-explanation">1. The Engine: It is a Kernel, Not an OS</h2>
+            <p>When I first started, I thought Linux was just a weird, free version of Windows. I was completely wrong. Strictly speaking, the word "Linux" doesn't refer to the desktop, the icons, or the web browser. It refers only to the <strong>Kernel</strong>.</p>
+            
+            <p>Think of your computer like a car. The monitor, the keyboard, and the graphical menus are the steering wheel, the dashboard, and the paint job. The kernel is the engine.</p>
+            
+            <p>The Linux kernel sits right on top of your physical hardware (your CPU, RAM, and SSD). When you click a button to open Firefox, the kernel is the traffic cop that says, <em>"Okay, give Firefox 2GB of RAM and access to the network card."</em> It is the invisible giant running the show. In fact, it is so good at its job that it currently powers 100% of the world’s top 500 supercomputers, the server hosting this website, and every Android phone on earth.</p>
+            
+            <p>When you download a "Linux OS" to install on your laptop, you are actually downloading a <strong><a href="distro.html">Linux Distribution</a></strong> (or "Distro"). A distro is a complete package put together by a community. They take the Linux engine, bolt on a beautiful graphical dashboard, pre-install some software, and hand you the keys.</p>
+
+            <h2 id="lego-blocks">2. Windows is Glued. Linux is Lego.</h2>
+            <p>Here is the biggest "a-ha" moment I had when I was learning this: Windows is a glued-together monolith. If you hate how the Windows 11 taskbar looks, too bad. You are stuck with it.</p>
+            
+            <p>Linux is built like Lego bricks. Every single layer of the operating system can be ripped out and replaced if you don't like it. To truly master this system, you need to understand these four layers:</p>
+            <ul>
+                <li><strong>1. The Hardware:</strong> The physical silicon you paid for.</li>
+                <li><strong>2. The Kernel:</strong> The engine talking to the silicon.</li>
+                <li><strong>3. The Shell (The Terminal):</strong> The text-based interface where you can type commands directly into the engine. The most common one is called Bash.</li>
+                <li><strong>4. The Desktop Environment (GUI):</strong> This is the paint job. If you want a setup that looks exactly like a polished Mac, you install <strong>GNOME</strong>. If you want a traditional Windows layout, you install <strong>KDE Plasma</strong>. If you are a power user who never wants to touch a mouse again, you install a <a href="../pro/wm.html">Tiling Window Manager</a> like Hyprland. You are in absolute control.</li>
+            </ul>
+
+            <h2 id="open-source">3. The Catch: Why is it Free?</h2>
+            <p>Whenever I teach someone about Linux, they always ask the same question: <em>"If it is so powerful, why are they giving it away? What is the catch?"</em></p>
+            
+            <p>There is no catch. Linux is <strong>Open Source</strong>. This means the actual source code—the DNA of the operating system—is completely public. Anyone can read it, modify it, and share it.</p>
+            
+            <p>In our community, we say: <em>"Think of free as in free speech, not as in free beer."</em> Yes, it doesn't cost you a dime, but the real value is the freedom. Instead of a secretive corporation in Redmond deciding what your computer does, a global army of millions of developers, cybersecurity experts, and hobbyists maintain Linux. If a security flaw is found, the community usually patches it worldwide within hours.</p>
+
+            <div class="callout-warning">
+                <strong>💡 The "No Ads" Guarantee:</strong> Because there are no shareholders to please, Linux does not need to monetize you. You will never see a Candy Crush ad magically appear in your start menu.
+            </div>
+
+            <h2 id="why-switch">4. My Top 3 Reasons to Make the Jump</h2>
+            <p>I know switching operating systems is intimidating. You have to learn new habits. But the payoff is massive. Here is why I personally pulled the trigger, and why you should too:</p>
+
+            <h3>1. Bringing Dead Hardware Back to Life</h3>
+            <p>Windows is incredibly heavy. It consumes gigs of RAM just sitting idle. I took a dusty, six-year-old ThinkPad that was practically a brick on Windows 10, wiped the drive, and installed a lightweight Linux distro. It now boots in seconds and runs faster than the day I bought it. Stop throwing away good hardware just because Microsoft's software is bloated.</p>
+
+            <h3>2. Gaming is Finally Here</h3>
+            <p>Five years ago, I wouldn't have recommended Linux to a PC gamer. Today? The landscape has entirely changed. Thanks to Valve (the creators of Steam) and their Steam Deck, the <strong>Proton</strong> compatibility layer allows thousands of Windows-only games to run flawlessly on Linux. Check out my <a href="../everyday/gaming.html">Linux Gaming Guide</a> to see how easy it is to set up.</p>
+
+            <h3>3. The Ultimate Customization</h3>
+            <p>We call it <a href="../everyday/ricing.html">"Ricing"</a> in the community. On Linux, you can tweak every single pixel. You can make your desktop look like a cyberpunk hacker terminal, a minimalist art piece, or a nostalgic Windows 95 machine. Your computer finally reflects your personality, not corporate branding.</p>
+
+            <h2 id="terminal-taste">5. Don't Panic: Your First Terminal Commands</h2>
+            <p>I am going to be honest with you: the first time I opened the Linux terminal (that black box with the blinking text), I was terrified I was going to break my computer. </p>
+            
+            <p>Don't panic. The terminal is just a faster way to talk to your computer without clicking through five different graphical menus. You don't have to memorize everything today, but I want you to open your terminal application right now, type these commands, and press Enter just to see how it feels:</p>
+
+            <div class="command-block">
+                <p><code>uname -a</code> &mdash; This tells the kernel to report your system architecture. It's like asking your car what engine is under the hood.</p>
+                <p><code>whoami</code> &mdash; The computer will print your username. Simple, but proves you are talking to the system.</p>
+                <p><code>uptime</code> &mdash; See exactly how many hours or days your rig has been running since the last reboot.</p>
+                <p><code>free -h</code> &mdash; A lightning-fast way to check how much RAM you are currently using.</p>
+                <p><code>pwd</code> &mdash; Stands for "Print Working Directory." It tells you exactly where you are located in the filesystem.</p>
+            </div>
+
+            <h2>The Bottom Line</h2>
+            <p>Switching to Linux isn't just about changing the logo on your boot screen. It is about taking responsibility for your digital life. It takes a little bit of learning, but once you cross that bridge, you stop being a consumer and start being an owner.</p> 
+            
+            <p>If you are ready to take the next step, let's figure out which "flavor" of Linux is right for you.</p>
+
+        </article>
+
+        <hr class="section-divider">
+
+        <div class="guide-nav" style="display: flex; gap: 20px; justify-content: space-between;">
+            <a href="../index.html" class="btn-secondary">← Back Home</a>
+            <a href="distro.html" class="btn-primary">Next: Distro →</a>
+        </div>
+    </main>
+</div>
+
+<script>
+    const menuBtn = document.getElementById('menu-btn');
+    const sidebar = document.querySelector('.sidebar');
+    menuBtn.addEventListener('click', () => {
+        sidebar.classList.toggle('show');
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaming on Linux | The Linux Hub</title>
+    <meta name="description" content="The ultimate guide to Linux gaming. Learn how to use Steam Proton, Heroic Games Launcher, and Waydroid to play PC and mobile games seamlessly.">
+    <link rel="stylesheet" href="../style.css">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5103156070877653"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+
+<header class="navbar">
+    <div class="logo">
+        <a href="../index.html">
+            <img src="../logo.png" alt="Linux Hub Logo" class="logo-img">
+            The Linux Hub
+        </a>
+    </div>
+    <nav>
+        <a href="../index.html">Home</a>
+        <a href="../about.html" target="_blank" rel="noopener noreferrer">About Us</a>
+        <a href="../privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+        <a href="../join.html" target="_blank" rel="noopener noreferrer">Join Us</a>
+    </nav>
+    <button id="menu-btn" class="hamburger">☰ Categories</button>
+</header>
+
+<div class="container">
+    <aside class="sidebar">
+        <h3>Everyday Use</h3>
+        <ul>
+            <li><a href="de.html">Desktop Environments</a></li>
+            <li><a href="essentials.html">System Essentials</a></li>
+            <li><a href="gaming.html" style="color: var(--accent-green);">Gaming on Linux</a></li>
+            <li><a href="ricing.html">Ricing & Customization</a></li>
+        </ul>
+    </aside>
+
+    <main class="content guide-page">
+        <div class="breadcrumbs">
+            <a href="../index.html">Home</a> &gt; <a href="everyday.html">Everyday Use</a> &gt; <span>Gaming</span>
+        </div>
+
+        <article>
+            <h1>Gaming on Linux: The Windows Monopoly is Over</h1>
+            <div class="meta-info">
+                <span>Yes, it runs your games. Sometimes it even runs them faster.</span> | <span>👤 By JR Nation</span>
+            </div>
+
+            <p>Five years ago, gaming on Linux was a nightmare of broken dependencies, missing drivers, and manual WINE configurations. Today, thanks to heavy financial investment from Valve (the creators of Steam) and the massive success of the Steam Deck, Linux has become a premier gaming platform.</p>
+            
+            <p>You do not have to abandon your library to use open-source software. Here is exactly how to unlock your system's hardware and start playing.</p>
+
+            <div class="toc-box">
+                <h3>The Gaming Roadmap</h3>
+                <ul>
+                    <li><a href="#proton">1. The Magic Bullet: Steam & Proton</a></li>
+                    <li><a href="#heroic">2. Epic Games & GOG: Heroic Launcher</a></li>
+                    <li><a href="#waydroid">3. Native Mobile Gaming: Waydroid</a></li>
+                    <li><a href="#anticheat">4. The Final Boss: Anti-Cheat Compatibility</a></li>
+                    <li><a href="#faq">5. Frequently Asked Questions</a></li>
+                </ul>
+            </div>
+
+            <h2 id="proton">1. The Magic Bullet: Steam & Proton</h2>
+            <p>You don't need to dual-boot Windows to play standard PC games. Valve created a brilliant compatibility layer called <strong>Proton</strong>. It translates Windows DirectX calls into Vulkan commands that the Linux kernel can understand natively, in real-time.</p>
+            
+            <p>For many games, the performance is identical to Windows. For some CPU-heavy games, Linux actually performs <em>better</em> because there is no background bloatware (like Cortana or Edge) eating your RAM.</p>
+            
+            <p>To unlock your entire Steam library, you simply need to flip one switch inside the Steam client:</p>
+
+            <div class="code-block-container">
+                <p class="code-label">How to Enable Steam Play (Proton)</p>
+                <ol style="color: #cdd6f4; font-size: 0.95rem; margin-bottom: 0; padding-left: 20px;">
+                    <li>Open Steam and click "Steam" in the top-left corner &gt; <strong>Settings</strong>.</li>
+                    <li>Navigate down to the <strong>"Compatibility"</strong> tab.</li>
+                    <li>Check the box for <strong>"Enable Steam Play for all other titles"</strong>.</li>
+                    <li>Select the latest stable version of Proton (or Proton Experimental) from the drop-down and restart Steam.</li>
+                </ol>
+            </div>
+
+            <div class="callout-info">
+                <strong>💡 Pro-Tip: Check ProtonDB First.</strong> Before you buy a game on Steam, always search for it on <a href="https://www.protondb.com/" target="_blank" rel="noopener noreferrer">ProtonDB.com</a>. It is a massive, community-driven database that tells you exactly how well a game runs on Linux, grading them from "Borked" (unplayable) to "Platinum" (flawless).
+            </div>
+
+            <h2 id="heroic">2. Epic Games & GOG: Heroic Launcher</h2>
+            <p>The official Epic Games Launcher does not exist for Linux, and frankly, the open-source community built something far superior anyway: <strong>The Heroic Games Launcher</strong>.</p>
+            
+            <p>Heroic is a beautiful, lightweight GUI that connects directly to your Epic Games, GOG, and Amazon Prime Gaming accounts. It automatically manages different versions of Proton and WINE for you on a per-game basis. You can install it directly from your distro's software center or via Flatpak.</p>
+
+            <h2 id="waydroid">3. Native Mobile Gaming: Waydroid</h2>
+            <p>If you want to play competitive Android games on your PC, Windows forces you to use heavy, ad-ridden, laggy emulators like BlueStacks. Linux has a massive architectural advantage here: Android is actually built on the Linux kernel.</p>
+            
+            <p>By using an open-source tool called <strong>Waydroid</strong>, you can run a full Android operating system using exactly the same kernel your desktop is using. There is almost zero emulation overhead. This means you can play high-framerate mobile shooters natively on your monitor. <em>(Note: Waydroid only works if your Desktop Environment is using the modern Wayland display server!)</em></p>
+
+            <div class="callout-warning">
+                <strong>⚠️ The ARM Translation Missing Link:</strong> Mobile games like BGMI or Call of Duty Mobile are built for ARM mobile processors. If you try to run them on an Intel or AMD desktop CPU, they will instantly crash. After installing Waydroid, you must install an ARM translation layer (like <strong>libhoudini</strong> or <strong>libndk</strong>) using a community Waydroid script. This translates the mobile code to x86 desktop code in real-time.
+            </div>
+
+            <h2 id="anticheat">4. The Final Boss: Anti-Cheat Compatibility</h2>
+            <p>We have to be honest here: not every game works. Single-player games are practically flawless on Linux, but competitive multiplayer games are a battleground because of <strong>Anti-Cheat software</strong>.</p>
+            
+            <ul>
+                <li><strong>The Good:</strong> Easy Anti-Cheat (EAC) and BattlEye both fully support Linux and the Steam Deck. Developers just have to click one button to enable it. Games like <em>Apex Legends</em> and <em>Overwatch 2</em> work perfectly out of the box.</li>
+                <li><strong>The Bad:</strong> "Kernel-level" intrusive anti-cheats (like Vanguard) physically cannot function on Linux. The Linux kernel's security model simply refuses to give proprietary, closed-source software root access to your hardware. Because of this, games like <em>Valorant</em>, <em>League of Legends</em>, and <em>Rainbow Six Siege</em> are currently impossible to play on Linux without risking a ban. </li>
+            </ul>
+
+            <div class="faq-section" id="faq">
+                <h2>5. Frequently Asked Questions</h2>
+                <div class="faq-item">
+                    <h3>Will my frame rates drop on Linux?</h3>
+                    <p>Usually, no. Thanks to the Vulkan graphics API, most games hit identical frame rates to Windows. If you are experiencing terrible frame rates or severe stuttering, you likely forgot to install the <strong>Proprietary NVIDIA Drivers</strong> during your Post-Install configuration.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Do my gaming peripherals (mice, keyboards, headsets) work?</h3>
+                    <p>The physical hardware will work instantly, but proprietary control software like Razer Synapse or Corsair iCUE does not exist on Linux. Instead, you will use powerful open-source alternatives like <strong>OpenRGB</strong> (for unifying all your RGB lighting) and <strong>Piper</strong> (for DPI and macro button mapping).</p>
+                </div>
+            </div>
+
+        </article>
+
+        <hr class="section-divider">
+
+        <div class="guide-nav">
+            <a href="essentials.html" class="btn-secondary">← Back: System Essentials</a>
+            <a href="ricing.html" class="btn-primary">Next: Ricing & Customization →</a>
+        </div>
+    </main>
+</div>
+
+<script>
+    const menuBtn = document.getElementById('menu-btn');
+    const sidebar = document.querySelector('.sidebar');
+    menuBtn.addEventListener('click', () => {
+        sidebar.classList.toggle('show');
+    });
+</script>
+</body>
+</html>

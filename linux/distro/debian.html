@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debian Linux | The Linux Hub</title>
+    <meta name="description" content="Learn about Debian, the unbreakable rock of the Linux world and the grandfather of Ubuntu.">
+    <link rel="stylesheet" href="../style.css">
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5103156070877653"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+
+<header class="navbar">
+    <div class="logo">
+        <a href="../index.html">
+            <img src="../logo.png" alt="Linux Hub Logo" class="logo-img">
+            The Linux Hub
+        </a>
+    </div>
+    <nav>
+        <a href="../index.html">Home</a>
+        <a href="../about.html">About Us</a>
+        <a href="../privacy.html">Privacy Policy</a>
+        <a href="../join.html">Join Us</a>
+    </nav>
+    <button id="menu-btn" class="hamburger">☰ Categories</button>
+</header>
+
+<div class="container">
+    <aside class="sidebar">
+        <h3>Distributions</h3>
+        <ul>
+            <li><a href="ubuntu.html">Ubuntu</a></li>
+            <li><a href="debian.html" style="color: var(--accent-green);">Debian</a></li>
+            <li><a href="fedora.html">Fedora</a></li>
+            <li><a href="arch.html">Arch Linux</a></li>
+            <li><a href="opensuse.html">openSUSE</a></li>
+            <li><a href="kali.html">Kali Linux</a></li>
+            <li><a href="lfs.html">Linux From Scratch</a></li>
+        </ul>
+    </aside>
+
+    <main class="content guide-page">
+        <div class="breadcrumbs">
+            <a href="../index.html">Home</a> &gt; <span>Distributions</span> &gt; <span>Debian</span>
+        </div>
+
+<article>
+            <h1>Debian: The Unbreakable Rock</h1>
+            <div class="meta-info">
+                <span>Ancient software. Absolute stability. The grandfather of them all.</span> | <span>👤 By JR Nation</span>
+            </div>
+
+            <p>If Ubuntu is the user-friendly offspring, Debian is the hardcore, uncompromising grandfather. Created in 1993, it is one of the oldest operating systems in existence. It powers the International Space Station, massive server farms, and power users who absolutely despise when their computer crashes.</p>
+
+            <div style="margin: 20px 0;">
+                <a href="https://www.debian.org/download" class="btn-primary" target="_blank" rel="noopener noreferrer">Download Debian</a>
+            </div>
+
+            <div class="toc-box">
+                <h3>Table of Contents</h3>
+                <ul>
+                    <li><a href="#branches">1. The Three Tiers of Debian</a></li>
+                    <li><a href="#philosophy">2. The Free Software Philosophy</a></li>
+                    <li><a href="#package-manager">3. The Godfather of APT</a></li>
+                    <li><a href="#verdict">4. The Final Verdict</a></li>
+                </ul>
+            </div>
+
+            <h2 id="branches">1. The Three Tiers of Debian</h2>
+            <p>Debian doesn't just offer one version of its operating system. It operates on a massive, highly structured pipeline divided into three distinct "branches" depending on your risk tolerance:</p>
+            <ul>
+                <li><strong>Stable:</strong> The flagship version. Software in this branch is heavily tested for months or even years before release. It literally does not break. But that stability comes with a brutal trade-off: your software is old. If you install Discord two years into a release cycle, you get code that is two years old.</li>
+                <li><strong>Testing:</strong> Software that is being prepared for the next "Stable" release. It is newer, reasonably reliable, and highly popular for desktop users who want updated apps without the extreme outdatedness of Stable.</li>
+                <li><strong>Unstable (Sid):</strong> The bleeding edge. Named after the kid who breaks toys in <em>Toy Story</em>, this is where all new packages are uploaded first. It can break, but it gives developers immediate access to the latest code.</li>
+            </ul>
+
+            <h2 id="philosophy">2. The Free Software Philosophy</h2>
+            <p>Debian has a strict moral code known as the Debian Free Software Guidelines (DFSG). Historically, Debian's default installer refused to include proprietary, closed-source drivers (like NVIDIA graphics or certain Wi-Fi cards). If you installed it, you were left without Wi-Fi until you manually fixed it via a USB stick.</p>
+            
+            <div class="callout-info">
+                <strong>💡 The Debian 12 Shift:</strong> Realizing this was alienating normal users, the community held a historic vote. Starting with Debian 12 (Bookworm), official ISOs now include <strong>non-free firmware</strong> by default. You can finally install Debian on a modern laptop and have your Wi-Fi and graphics card work immediately out of the box.
+            </div>
+
+            <h2 id="package-manager">3. The Godfather of APT</h2>
+            <p>Ubuntu, Linux Mint, Pop!_OS, and Kali Linux didn't build their package managers from scratch—they inherited them from Debian. Debian is the creator of the <code>.deb</code> package format and the legendary <strong>APT (Advanced Package Tool)</strong> system.</p>
+
+            <p>If you know how to use the terminal in Ubuntu, you already know how to use Debian. There is zero learning curve for package management.</p>
+
+            <div class="code-block-container">
+                <p class="terminal-cmd">$ sudo apt update && sudo apt upgrade</p>
+                <p class="terminal-comment"># The exact same syntax you use in Ubuntu works natively here.</p>
+            </div>
+
+            <h2 id="verdict">4. The Final Verdict</h2>
+            <p>Do not install Debian Stable on a brand-new, high-end gaming PC that was released last week; the older kernel won't know what to do with your cutting-edge hardware. </p>
+            
+            <p>Instead, install Debian on a home server, a Raspberry Pi, a developer workstation, or a laptop where your only requirement is that the machine turns on and works exactly the same way every single day for the next 5 years. It is the undisputed king of reliability.</p>
+
+        </article>
+
+        <hr class="section-divider">
+
+        <div class="guide-nav" style="display: flex; justify-content: space-between;">
+            <a href="ubuntu.html" class="btn-secondary">← Back: Ubuntu</a>
+            <a href="fedora.html" class="btn-primary">Next: Fedora →</a>
+        </div>
+    </main>
+</div>
+
+<script>
+    const menuBtn = document.getElementById('menu-btn');
+    const sidebar = document.querySelector('.sidebar');
+    if(menuBtn && sidebar) {
+        menuBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('show');
+        });
+    }
+</script>
+</body>
+</html>

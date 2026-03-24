@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rescuing a Broken Boot | The Linux Hub</title>
+    <meta name="description" content="Fix a Linux system that refuses to turn on. Learn how to navigate initramfs errors, fsck disk checks, and GRUB rescue mode.">
+    <link rel="stylesheet" href="../style.css">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5103156070877653"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+
+<header class="navbar">
+    <div class="logo">
+        <a href="../index.html">
+            <img src="../logo.png" alt="Linux Hub Logo" class="logo-img">
+            The Linux Hub
+        </a>
+    </div>
+    <nav>
+        <a href="../index.html">Home</a>
+        <a href="../about.html" target="_blank" rel="noopener noreferrer">About Us</a>
+        <a href="../privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+        <a href="../join.html" target="_blank" rel="noopener noreferrer">Join Us</a>
+    </nav>
+    <button id="menu-btn" class="hamburger">☰ Categories</button>
+</header>
+
+<div class="container">
+    <aside class="sidebar">
+        <h3>Troubleshooting</h3>
+        <ul>
+            <li><a href="logs.html">Reading System Logs</a></li>
+            <li><a href="broken-packages.html">Fixing Broken Packages</a></li>
+            <li><a href="bootrescue.html" style="color: var(--accent-green);">Rescuing a Broken Boot</a></li>
+        </ul>
+    </aside>
+
+    <main class="content guide-page">
+        <div class="breadcrumbs">
+            <a href="../index.html">Home</a> &gt; <a href="troubleshoot.html">Troubleshooting</a> &gt; <span>Boot Rescue</span>
+        </div>
+
+<article>
+            <h1>Boot Rescue: Triage Center</h1>
+            <div class="meta-info">
+                <span>When your system dies, you don't bury it. You Revive It From Where It Actually Died.</span> | <span>👤 By JR Nation</span>
+            </div>
+
+            <p>You turn on your computer, but instead of your beautiful login screen, you get black text and a blinking cursor. The system refuses to boot.</p>
+            
+            <p>Do not immediately reinstall the OS. Depending on what screen you are stuck on, the fix might take less than 60 seconds. Let's diagnose the injury.</p>
+
+            <div class="toc-box">
+                <h3>Identify Your Screen:</h3>
+                <ul>
+                    <li><a href="#initramfs">1. Stuck on: (initramfs) prompt</a></li>
+                    <li><a href="#grub-rescue">2. Stuck on: grub rescue> prompt</a></li>
+                    <li><a href="#kernel-panic">3. Stuck on: "Kernel Panic - Not syncing"</a></li>
+                </ul>
+            </div>
+
+            <h2 id="initramfs">1. Stuck on: (initramfs) prompt</h2>
+            <p>If you see a busy screen that ends with a tiny prompt that says <code>(initramfs)</code> or <code>BusyBox built-in shell</code>, you are actually in luck. This is the most common boot error in Linux. It means your hard drive wasn't shut down properly (usually due to a forced power-off or a dying battery), and Linux is refusing to mount the drive because the filesystem might be corrupted.</p>
+            
+            <p><strong>The Fix:</strong> You need to run a manual filesystem check (<code>fsck</code>). Look at the text slightly above the prompt. It will usually complain about a specific drive, like <code>/dev/sda2</code> or <code>/dev/nvme0n1p2</code>.</p>
+
+            <div class="code-block-container">
+                <p class="terminal-cmd">(initramfs) exit</p>
+                <p class="terminal-comment"># PRO-TIP: If you don't know which drive is broken, type 'exit' and hit Enter. The system will throw a fresh error spitting out the exact path (e.g., /dev/mapper/data) that needs fixing.</p>
+                <br>
+                <p class="terminal-cmd">(initramfs) fsck /dev/sda2 -y</p>
+                <p class="terminal-comment"># Replace /dev/sda2 with your specific drive. The -y flag automatically answers "yes" to fixing any corrupted data blocks it finds.</p>
+            </div>
+            
+            <p>Once the check finishes and repairs the orphaned nodes, type <code>reboot</code>. Your system should start normally with no data loss.</p>
+
+            <h2 id="grub-rescue">2. Stuck on: grub rescue> prompt</h2>
+            <p>This means your BIOS found the bootloader, but the bootloader cannot find the rest of the operating system. You usually see this if you deleted a Linux partition from inside Windows, if a Windows update aggressively overwrote the EFI partition, or if a hard drive's UUID (Universal Unique Identifier) changed after being cloned.</p>
+            
+            <p><strong>The Fix:</strong> The GRUB boot sector has been severed from its configuration files. While it is technically possible to manually chainload the kernel from this primitive prompt, it is incredibly tedious. The best way is to use a Live USB and reinstall the bootloader from the outside.</p>
+
+            <div class="callout-info">
+                <strong>💡 Escaping the Void:</strong>
+                To fix this, you need to perform a Chroot. Head over to our <a href="../pro/rescue.html" style="color: var(--accent-green); font-weight: bold; text-decoration: none;">Chroot Rescue Mission Guide</a> in the Power User section to learn how to mount your dead drive and permanently regenerate GRUB.
+            </div>
+
+            <h2 id="kernel-panic">3. Stuck on: "Kernel Panic - Not syncing"</h2>
+            <p>A Kernel Panic is the Linux equivalent of the Windows Blue Screen of Death. The core brain of the OS ran into an impossible hardware or software instruction and completely froze the system to protect your components from damage.</p>
+            
+            <p>This usually happens immediately after an update if a new kernel version fundamentally conflicts with your graphics drivers (especially proprietary NVIDIA drivers), or if your RAM sticks are physically failing.</p>
+
+            <div class="callout-warning">
+                <strong>⚠️ Unhide the Panic:</strong> If your PC just freezes on your motherboard logo and you suspect a Kernel Panic, reboot, press <kbd>E</kbd> on the GRUB menu, and delete the words <code>quiet splash</code> from the linux line. Press <kbd>F10</kbd> to boot. This disables the loading screen and shows you the raw text, letting you actually see the panic error.
+            </div>
+
+            <p><strong>The Quick Fix:</strong> Hard power off the PC. Turn it back on, and when the GRUB menu appears, select <strong>"Advanced Options for Linux."</strong> Select an older, previous kernel version from the list.</p>
+            
+            <p>If the system boots perfectly on the older kernel, you know the new update broke it. You can safely stay on the old kernel, uninstall the broken one using your package manager, and wait for the distro maintainers to release a patched version.</p>
+
+        </article>
+
+        <hr class="section-divider">
+
+        <div class="guide-nav" style="justify-content: center;">
+            <a href="broken-packages.html" class="btn-secondary">← Back: Broken Packages</a>
+        </div>
+    </main>
+</div>
+
+<script>
+    const menuBtn = document.getElementById('menu-btn');
+    const sidebar = document.querySelector('.sidebar');
+    menuBtn.addEventListener('click', () => {
+        sidebar.classList.toggle('show');
+    });
+</script>
+</body>
+</html>

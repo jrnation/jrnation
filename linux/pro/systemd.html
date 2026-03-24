@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Systemd & Services | The Linux Hub</title>
+    <meta name="description" content="Master Linux background services. Learn how to use systemctl, manage daemons, and write your own systemd service files.">
+    <link rel="stylesheet" href="../style.css">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5103156070877653"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+
+<header class="navbar">
+    <div class="logo">
+        <a href="../index.html">
+            <img src="../logo.png" alt="Linux Hub Logo" class="logo-img">
+            The Linux Hub
+        </a>
+    </div>
+    <nav>
+        <a href="../index.html">Home</a>
+        <a href="../about.html" target="_blank" rel="noopener noreferrer">About Us</a>
+        <a href="../privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+        <a href="../join.html" target="_blank" rel="noopener noreferrer">Join Us</a>
+    </nav>
+    <button id="menu-btn" class="hamburger">☰ Categories</button>
+</header>
+
+<div class="container">
+    <aside class="sidebar">
+        <h3>The Power User</h3>
+        <ul>
+            <li><a href="wm.html">Window Managers</a></li>
+            <li><a href="kernel.html">The Linux Kernel</a></li>
+            <li><a href="systemd.html" style="color: var(--accent-green);">Systemd & Services</a></li>
+            <li><a href="boot.html">The Boot Process</a></li>
+            <li><a href="vbox.html">Virtualization</a></li>
+        </ul>
+    </aside>
+
+    <main class="content guide-page">
+        <div class="breadcrumbs">
+            <a href="../index.html">Home</a> &gt; <a href="pro.html">The Power User</a> &gt; <span>Systemd</span>
+        </div>
+
+<article>
+            <h1>Systemd: Master the Daemons</h1>
+            <div class="meta-info">
+                <span>Control the invisible puppet master running your operating system.</span> | <span>👤 By JR Nation</span>
+            </div>
+
+            <p>When you turn on your computer, a massive chain reaction happens. The kernel wakes up the hardware, but then it hands control over to the <strong>Init System</strong>. On almost all modern Linux distributions, this Init System is called <strong>Systemd</strong>.</p>
+            
+            <p>Systemd is the puppet master. It is Process ID 1 (PID 1). It is responsible for starting your network connection, launching your login screen, managing your Bluetooth, and keeping your web servers running in the background. If you want to automate your machine, you must learn how to speak to it.</p>
+
+            <div class="toc-box">
+                <h3>Table of Contents</h3>
+                <ul>
+                    <li><a href="#daemons">1. What is a Daemon?</a></li>
+                    <li><a href="#systemctl">2. The Master Command: systemctl</a></li>
+                    <li><a href="#start-vs-enable">3. The Trap: Start vs. Enable</a></li>
+                    <li><a href="#custom-service">4. Forging Your Own Daemon</a></li>
+                </ul>
+            </div>
+
+            <h2 id="daemons">1. What is a Daemon?</h2>
+            <p>In Linux, a background program that runs without a graphical interface and waits silently for something to happen is called a <strong>Daemon</strong>. (Usually pronounced "Demon").</p>
+            
+            <p>You can usually spot them because their names end with the letter 'd'. For example:</p>
+            <ul>
+                <li><strong>sshd:</strong> The Secure Shell Daemon (waiting for remote logins).</li>
+                <li><strong>httpd:</strong> The HTTP Daemon (waiting to serve web pages).</li>
+                <li><strong>bluetoothd:</strong> The Bluetooth Daemon (waiting to connect to your headphones).</li>
+            </ul>
+
+            <h2 id="systemctl">2. The Master Command: systemctl</h2>
+            <p>To control these Daemons, you use the <code>systemctl</code> command. This is how you check if a service is running, crashed, or completely dead.</p>
+
+            <div class="code-block-container">
+                <p class="terminal-cmd">$ systemctl status bluetooth</p>
+                <p class="terminal-comment"># Shows you exactly what the Bluetooth daemon is doing right now, complete with error logs if it crashed.</p>
+                <br>
+                <p class="terminal-cmd">$ sudo systemctl restart nginx</p>
+                <p class="terminal-comment"># Kills the Nginx web server and immediately boots it back up. Crucial for applying new config files.</p>
+            </div>
+
+            <h2 id="start-vs-enable">3. The Trap: Start vs. Enable</h2>
+            <p>This is the number one mistake beginners make when trying to set up a server or a background task. There is a massive difference between "starting" a service and "enabling" it.</p>
+
+            <ul>
+                <li><strong><code>sudo systemctl start [service]</code>:</strong> Turns the daemon on <em>right now</em>. But as soon as you reboot your computer, it will be dead again.</li>
+                <li><strong><code>sudo systemctl enable [service]</code>:</strong> Tells Systemd to automatically turn this daemon on every single time the computer boots up. (Note: this does <em>not</em> start it right now).</li>
+            </ul>
+
+            <div class="callout-info">
+                <strong>💡 The Pro Move:</strong> You can do both at the exact same time by adding the <code>--now</code> flag:<br><br>
+                <code>sudo systemctl enable --now bluetooth</code>
+            </div>
+
+            <h2 id="custom-service">4. Forging Your Own Daemon</h2>
+            <p>Remember that Auto-Updater bash script we wrote in the Terminal section? What if you want it to run automatically in the background, without you ever having to manually type the execution command?</p>
+            
+            <p>You can write your own custom Systemd service file. Let's create a daemon that runs your script. <em>(Note: If you are using Arch Linux, remember our previous warning about auto-updates breaking the rolling release cycle!)</em></p>
+
+            <ol>
+                <li>Create a new file in the systemd directory: <code>sudo nano /etc/systemd/system/autoupdate.service</code></li>
+                <li>Paste in this blueprint:</li>
+            </ol>
+
+            <div class="code-block-container">
+                <p class="terminal-cmd" style="color: #f9e2af;">[Unit]</p>
+                <p class="terminal-cmd">Description=My Custom Auto-Updater Daemon</p>
+                <p class="terminal-cmd">After=network.target</p>
+                <p class="terminal-comment"># 'After' tells Systemd to wait until the internet connects before trying to run this.</p>
+                <br>
+                <p class="terminal-cmd" style="color: #f9e2af;">[Service]</p>
+                <p class="terminal-cmd">ExecStart=/home/jrnation/update_my_pc.sh</p>
+                <p class="terminal-cmd">Restart=on-failure</p>
+                <p class="terminal-comment"># 'ExecStart' is the absolute path to the script you want to run.</p>
+                <br>
+                <p class="terminal-cmd" style="color: #f9e2af;">[Install]</p>
+                <p class="terminal-cmd">WantedBy=multi-user.target</p>
+            </div>
+
+            <p>Save the file. Then, tell Systemd to reload its brain so it notices your new file, and enable your custom daemon:</p>
+
+            <div class="code-block-container">
+                <p class="terminal-cmd">$ sudo systemctl daemon-reload</p>
+                <p class="terminal-cmd">$ sudo systemctl enable --now autoupdate</p>
+            </div>
+
+            <p>Congratulations. You have moved beyond just using the OS. You are now architecting it.</p>
+
+        </article>
+
+        <hr class="section-divider">
+
+        <div class="guide-nav">
+            <a href="kernel.html" class="btn-secondary">← Back: The Kernel</a>
+            <a href="boot.html" class="btn-primary">Next: The Boot Process →</a>
+        </div>
+    </main>
+</div>
+
+<script>
+    const menuBtn = document.getElementById('menu-btn');
+    const sidebar = document.querySelector('.sidebar');
+    menuBtn.addEventListener('click', () => {
+        sidebar.classList.toggle('show');
+    });
+</script>
+</body>
+</html>

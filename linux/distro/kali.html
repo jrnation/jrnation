@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kali Linux | The Linux Hub</title>
+    <meta name="description" content="The brutal truth about Kali Linux. It is a penetration testing tool, not a daily driver.">
+    <link rel="stylesheet" href="../style.css">
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5103156070877653"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+
+<header class="navbar">
+    <div class="logo">
+        <a href="../index.html">
+            <img src="../logo.png" alt="Linux Hub Logo" class="logo-img">
+            The Linux Hub
+        </a>
+    </div>
+    <nav>
+        <a href="../index.html">Home</a>
+        <a href="../about.html">About Us</a>
+        <a href="../privacy.html">Privacy Policy</a>
+        <a href="../join.html">Join Us</a>
+    </nav>
+    <button id="menu-btn" class="hamburger">☰ Categories</button>
+</header>
+
+<div class="container">
+    <aside class="sidebar">
+        <h3>Distributions</h3>
+        <ul>
+            <li><a href="ubuntu.html">Ubuntu</a></li>
+            <li><a href="debian.html">Debian</a></li>
+            <li><a href="fedora.html">Fedora</a></li>
+            <li><a href="arch.html">Arch Linux</a></li>
+            <li><a href="opensuse.html">openSUSE</a></li>
+            <li><a href="kali.html" style="color: var(--accent-green);">Kali Linux</a></li>
+            <li><a href="lfs.html">Linux From Scratch</a></li>
+        </ul>
+    </aside>
+
+    <main class="content guide-page">
+        <div class="breadcrumbs">
+            <a href="../index.html">Home</a> &gt; <span>Distributions</span> &gt; <span>Kali Linux</span>
+        </div>
+
+<article>
+            <h1>Kali Linux: The Hacker Trap</h1>
+            <div class="meta-info">
+                <span>Stop trying to play Minecraft on this. It is a weapon, not a toy.</span> | <span>👤 By JR Nation</span>
+            </div>
+
+            <p>Let's get this out of the way immediately: <strong>Do not install Kali Linux as your main operating system.</strong></p>
+            
+            <p>Kali Linux (based on Debian) is a highly specialized toolbox built exclusively for cybersecurity professionals and penetration testers. It comes pre-loaded with hundreds of network scanners, password crackers, and forensic analysis tools.</p>
+
+            <div style="margin: 20px 0;">
+                <a href="https://www.kali.org/" class="btn-primary" target="_blank" rel="noopener noreferrer">Visit Kali Linux</a>
+            </div>
+
+            <div class="toc-box">
+                <h3>Table of Contents</h3>
+                <ul>
+                    <li><a href="#daily-driver">1. Why It Fails as a Daily Driver</a></li>
+                    <li><a href="#how-to-use">2. How You Should Actually Use It</a></li>
+                    <li><a href="#verdict">3. The Final Verdict</a></li>
+                </ul>
+            </div>
+
+            <h2 id="daily-driver">1. Why It Fails as a Daily Driver</h2>
+            <p>Kali is designed to be disposable. It assumes you are booting it up, hacking a target, saving your report, and shutting it down.</p>
+            
+            <p>Because of this, it breaks every rule of standard Linux security. Historically, it ran everything as the root user by default (meaning any malware you accidentally click has instant, god-level access to your PC). Furthermore, if you try to add normal software repositories to install things like Discord, Spotify, or Steam, you will likely cause a catastrophic dependency conflict that completely shatters the OS.</p>
+
+            <h2 id="how-to-use">2. How You Should Actually Use It</h2>
+            <p>If you are genuinely studying cybersecurity, you do not install Kali on your bare metal hard drive.</p>
+
+            <div class="callout-info">
+                <strong>🛠️ The Proper Deployment:</strong> You run Kali Linux strictly inside a Virtual Machine (like VirtualBox or KVM), or you flash it to a USB drive and boot it as a "Live OS." When you are done hacking, you pull the USB out, and your main PC is completely untouched.
+            </div>
+
+            <h2 id="verdict">3. The Final Verdict</h2>
+            <p>If you install Kali just so you can post a screenshot of a green terminal on Reddit, the veteran community will laugh at you. Use Fedora or Arch for your daily work. Only boot Kali when you have a specific target to break into.</p>
+
+        </article>
+
+        <hr class="section-divider">
+
+        <div class="guide-nav" style="display: flex; justify-content: space-between;">
+            <a href="opensuse.html" class="btn-secondary">← Back: openSUSE</a>
+            <a href="lfs.html" class="btn-primary">Next: Linux From Scratch →</a>
+        </div>
+    </main>
+</div>
+
+<script>
+    const menuBtn = document.getElementById('menu-btn');
+    const sidebar = document.querySelector('.sidebar');
+    if(menuBtn && sidebar) {
+        menuBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('show');
+        });
+    }
+</script>
+</body>
+</html>

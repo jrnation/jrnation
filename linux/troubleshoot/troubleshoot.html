@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Troubleshooting | The Linux Hub</title>
+    <meta name="description" content="Fix your broken Linux system. Learn how to read logs, fix package managers, and rescue dead bootloaders.">
+    <link rel="stylesheet" href="../style.css">
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5103156070877653"
+     crossorigin="anonymous"></script>
+
+<style>
+        /* --- Page-Specific Styles for the Hub --- */
+        .roadmap-header {
+            text-align: center;
+            padding: 3rem 1rem;
+        }
+        .roadmap-header h1 {
+            font-size: 2.5rem;
+            color: var(--accent-green);
+            border-bottom: none;
+            margin-bottom: 0.5rem;
+        }
+        .roadmap-header p {
+            font-size: 1.2rem;
+            color: #8b949e;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .roadmap-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        /* The Magic Alignment Section */
+        .stage-card {
+            background-color: var(--bg-sidebar);
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%; 
+        }
+        
+        .stage-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-green);
+        }
+        
+        .stage-badge {
+            color: var(--accent-green);
+            font-weight: bold;
+            font-family: monospace;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+        }
+        
+        .stage-card h3 {
+            margin: 0.5rem 0 1rem 0;
+            font-size: 1.5rem;
+        }
+        
+        .stage-card p {
+            margin-bottom: 1.5rem;
+            flex-grow: 1; 
+        }
+        
+        /* Pushes the button to the bottom */
+        .stage-card .btn-primary, 
+        .stage-card .btn-secondary {
+            margin-top: auto; 
+        }
+    </style>
+</head>
+<body>
+
+<header class="navbar">
+    <div class="logo">
+        <a href="../index.html">
+            <img src="../logo.png" alt="Linux Hub Logo" class="logo-img">
+            The Linux Hub
+        </a>
+    </div>
+    <nav>
+        <a href="../index.html">Home</a>
+        <a href="../about.html">About Us</a>
+        <a href="../privacy.html">Privacy Policy</a>
+        <a href="../join.html">Join Us</a>
+    </nav>
+    <button id="menu-btn" class="hamburger">☰ Categories</button>
+</header>
+
+<div class="container">
+    <main class="content">
+        <div class="breadcrumbs">
+            <a href="../index.html">Home</a> &gt; <span>Troubleshooting</span>
+        </div>
+
+        <header class="roadmap-header">
+            <h1>The Emergency Room</h1>
+            <p>Things break. That is a fact of computing. But in Linux, you don't call a genius bar, and you don't blindly format your hard drive. You open the terminal, read the logs, and fix it yourself.</p>
+        </header>
+
+        <section class="roadmap-grid">
+            
+            <article class="stage-card">
+                <div class="stage-badge">MODULE 01</div>
+                <h3>Reading System Logs</h3>
+                <p>The computer isn't haunted; it is literally trying to tell you what hurts. Master journalctl and dmesg to find the exact cause of any crash.</p>
+                <a href="logs.html" class="btn-primary">Diagnose the Issue</a>
+            </article>
+
+            <article class="stage-card">
+                <div class="stage-badge">MODULE 02</div>
+                <h3>Broken Packages</h3>
+                <p>Did your package manager lock up after a bad update? Learn how to obliterate lock files and force APT, Pacman, or DNF to rebuild their databases.</p>
+                <a href="broken-packages.html" class="btn-secondary">Fix the Installer</a>
+            </article>
+
+            <article class="stage-card">
+                <div class="stage-badge">MODULE 03</div>
+                <h3>Boot Rescue Triage</h3>
+                <p>Stuck on a black screen? From the common (initramfs) error to a full-blown Kernel Panic, learn how to triage and resurrect your system.</p>
+                <a href="bootrescue.html" class="btn-secondary">Resurrect the OS</a>
+            </article>
+
+        </section>
+
+        <div class="callout-info" style="text-align: center; margin-top: 3rem;">
+            <strong>💡 The Number One Rule of Troubleshooting:</strong> Read the screen. The error message usually contains the exact solution. Don't just paste it into a search engine—look at it first.
+        </div>
+
+        <hr class="section-divider">
+
+        <div class="guide-nav" style="display: flex; justify-content: flex-start;">
+            <a href="../index.html" class="btn-secondary">← Back to Main Hub</a>
+        </div>
+
+    </main>
+</div>
+
+<script>
+    const menuBtn = document.getElementById('menu-btn');
+    const sidebar = document.querySelector('.sidebar');
+    if(menuBtn && sidebar) {
+        menuBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('show');
+        });
+    }
+</script>
+</body>
+</html>

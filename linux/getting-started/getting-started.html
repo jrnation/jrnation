@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Getting Started with Linux | The Linux Hub</title>
+    <meta name="description" content="The complete roadmap for Linux beginners. Learn how to choose a distro, create a bootable USB, and install Linux safely.">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        /* --- Page-Specific Styles for the Roadmap --- */
+        .roadmap-header {
+            text-align: center;
+            padding: 3rem 1rem;
+        }
+        .roadmap-header h1 {
+            font-size: 2.5rem;
+            color: var(--accent-green);
+            border-bottom: none;
+            margin-bottom: 0.5rem;
+        }
+        .roadmap-header p {
+            font-size: 1.2rem;
+            color: #8b949e;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .roadmap-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        /* --- THE MAGIC ALIGNMENT SECTION --- */
+        .stage-card {
+            background-color: var(--bg-sidebar);
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+            
+            /* Forces it into a column layout */
+            display: flex;
+            flex-direction: column;
+            height: 100%; 
+        }
+        
+        .stage-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-green);
+        }
+        
+        .stage-badge {
+            color: var(--accent-green);
+            font-weight: bold;
+            font-family: monospace;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+        }
+        
+        .stage-card h3 {
+            margin: 0.5rem 0 1rem 0;
+            font-size: 1.5rem;
+        }
+        
+        .stage-card p {
+            margin-bottom: 1.5rem;
+        }
+        
+        /* This pushes the button to the absolute bottom of the card */
+        .stage-card .btn-primary, 
+        .stage-card .btn-secondary {
+            margin-top: auto; 
+        }
+
+        .callout-warning {
+            margin-top: 4rem;
+            padding: 1.5rem;
+            background-color: rgba(35, 134, 54, 0.1);
+            border-left: 4px solid var(--accent-green);
+            border-radius: 4px;
+            text-align: center;
+        }
+    </style>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5103156070877653"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+
+<header class="navbar">
+    <div class="logo">
+        <a href="../index.html">
+            <img src="../logo.png" alt="Linux Hub Logo" class="logo-img">
+            The Linux Hub
+        </a>
+    </div>
+    <nav>
+        <a href="../index.html">Home</a>
+        <a href="../about.html">About Us</a>
+        <a href="../privacy.html">Privacy Policy</a>
+        <a href="../join.html">Join Us</a>
+    </nav>
+    <button id="menu-btn" class="hamburger">☰ Categories</button>
+</header>
+
+<div class="container">
+    <main class="content">
+        
+        <header class="roadmap-header">
+            <h1>The Linux Roadmap</h1>
+            <p>Transitioning from Windows or macOS can feel like moving to a different planet. This roadmap breaks the journey down into five simple, bite-sized stages.</p>
+        </header>
+
+        <section class="roadmap-grid">
+            
+            <article class="stage-card">
+                <div class="stage-badge">STAGE 01</div>
+                <h3>What is Linux?</h3>
+                <p>Understand the kernel, the philosophy of Open Source, and why millions are switching away from Windows.</p>
+                <a href="wilx.html" class="btn-primary">Start Here</a>
+            </article>
+
+            <article class="stage-card">
+                <div class="stage-badge">STAGE 02</div>
+                <h3>Choosing a Distro</h3>
+                <p>Mint? Ubuntu? Pop!_OS? We help you pick the right "flavor" based on your hardware and your workflow goals.</p>
+                <a href="distro.html" class="btn-secondary">Find Your Match</a>
+            </article>
+
+            <article class="stage-card">
+                <div class="stage-badge">STAGE 03</div>
+                <h3>The Live USB</h3>
+                <p>The "Try Before You Buy" phase. Learn how to flash an ISO and boot Linux without touching your hard drive.</p>
+                <a href="liveboot.html" class="btn-secondary">Create Media</a>
+            </article>
+
+            <article class="stage-card">
+                <div class="stage-badge">STAGE 04</div>
+                <h3>Installation</h3>
+                <p>Ready to commit? A step-by-step guide to dual-booting alongside Windows or wiping the slate clean safely.</p>
+                <a href="installation.html" class="btn-secondary">Claim Your Drive</a>
+            </article>
+
+            <article class="stage-card">
+                <div class="stage-badge">STAGE 05</div>
+                <h3>Post-Install Config</h3>
+                <p>Updating, installing proprietary drivers, and setting up the "Undo" button (Timeshift) to keep your system safe.</p>
+                <a href="config.html" class="btn-secondary">Optimize System</a>
+            </article>
+
+        </section>
+
+        <div class="callout-warning">
+            <strong>New to the Terminal?</strong> Don't panic. Our Getting Started guides focus entirely on the Graphical User Interface (GUI) first. We will show you the command-line magic only when you are ready.
+        </div>
+
+    </main>
+</div>
+
+<script>
+    const menuBtn = document.getElementById('menu-btn');
+    const sidebar = document.querySelector('.sidebar');
+    if(menuBtn && sidebar) {
+        menuBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('show');
+        });
+    }
+</script>
+</body>
+</html>

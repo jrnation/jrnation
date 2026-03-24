@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Customization | The Linux Hub</title>
+    <meta name="description" content="Customize your Linux user account. Learn how to change your lockscreen profile picture, display name, and default terminal shell.">
+    <link rel="stylesheet" href="../style.css">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5103156070877653"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+
+<header class="navbar">
+    <div class="logo">
+        <a href="../index.html">
+            <img src="../logo.png" alt="Linux Hub Logo" class="logo-img">
+            The Linux Hub
+        </a>
+    </div>
+    <nav>
+        <a href="../index.html">Home</a>
+        <a href="../about.html" target="_blank" rel="noopener noreferrer">About Us</a>
+        <a href="../privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+        <a href="../join.html" target="_blank" rel="noopener noreferrer">Join Us</a>
+    </nav>
+    <button id="menu-btn" class="hamburger">☰ Categories</button>
+</header>
+
+<div class="container">
+    <aside class="sidebar">
+        <h3>Security & Networks</h3>
+        <ul>
+            <li><a href="bfs.html">Basic Firewall Setup</a></li>
+            <li><a href="ugm.html" style="color: var(--accent-green);">User Group Management</a></li>
+            <li><a href="sshra.html">SSH Remote Access</a></li>
+            <li><a href="practices.html">Best Practices</a></li>
+        </ul>
+    </aside>
+
+    <main class="content guide-page">
+        <div class="breadcrumbs">
+            <a href="../index.html">Home</a> &gt; <a href="san.html">Security & Networks</a> &gt; <a href="ugm.html">User Group Management</a> &gt; <span>Customization</span>
+        </div>
+
+<article>
+            <h1>User Customization: Dressing the Avatar</h1>
+            <div class="meta-info">
+                <span>You gave them an account. Now give them an identity.</span> | <span>👤 By JR Nation</span>
+            </div>
+
+            <p>Creating a user account with the right permissions is the hard part. But logging into a blank grey silhouette on the lock screen is boring. Once an account exists, you can customize how that user is presented to the system, from their profile picture to the very shell they use to type commands.</p>
+
+            <div class="toc-box">
+                <h3>Table of Contents</h3>
+                <ul>
+                    <li><a href="#avatar">1. The Lock Screen Avatar (Profile Pic)</a></li>
+                    <li><a href="#displayname">2. Changing the Display Name</a></li>
+                    <li><a href="#shell">3. Upgrading the Default Shell (chsh)</a></li>
+                </ul>
+            </div>
+
+            <h2 id="avatar">1. The Lock Screen Avatar (Profile Pic)</h2>
+            <p>When you boot up your PC, the Display Manager (the graphical login screen) looks for an image to associate with your account. There are two ways to change this.</p>
+
+            <h3>The Easy Way (GUI)</h3>
+            <p>If you are using a standard Desktop Environment like GNOME or KDE Plasma, this is built right into the settings.</p>
+            <ul>
+                <li>Open your system <strong>Settings</strong> app.</li>
+                <li>Navigate to the <strong>Users</strong> or <strong>Accounts</strong> tab.</li>
+                <li>Click on the blank avatar next to your name and select an image file from your computer.</li>
+            </ul>
+
+            <h3>The Hacker Way (The .face trick)</h3>
+            <p>If you are on a minimal setup, using a Window Manager, or just want to do it via the terminal, you can use a classic Linux trick. Most login managers automatically look for a hidden image file named <code>.face</code> right inside your home directory.</p>
+            
+            <div class="code-block-container">
+                <p class="terminal-cmd">$ cp /path/to/my_cool_picture.png ~/.face</p>
+                <p class="terminal-comment"># Copies your picture into your home folder and hides it under the name '.face'</p>
+                <p class="terminal-comment"># Make sure the image is a square (e.g., 256x256 pixels) for best results.</p>
+                <br>
+                <p class="terminal-cmd">$ cp /home/jaya/Pictures/my_cool_picture.png ~/.face</p>
+                <p class="terminal-comment"># Example: If your picture is in your Pictures folder, this copies it correctly.</p>
+            </div>
+
+            <p>Restart your computer, and the login manager will automatically grab that hidden image and use it as your avatar.</p>
+
+            <h2 id="displayname">2. Changing the Display Name</h2>
+            <p>Your <em>username</em> (what you type into the terminal to log in) cannot have spaces or capital letters. But your <em>display name</em> (what shows up on the lock screen and in the start menu) can be whatever you want.</p>
+            
+            <p>To change a user's display name without altering their actual system username, use the <code>usermod</code> command with the <code>-c</code> (Comment/GECOS) flag.</p>
+
+            <div class="code-block-container">
+                <p class="terminal-cmd">$ sudo usermod -c "Jaya The Admin" jaya</p>
+                <p class="terminal-comment"># The login screen will now say "Jaya The Admin", but the terminal user remains 'jaya'.</p>
+            </div>
+
+            <h2 id="shell">3. Upgrading the Default Shell (chsh)</h2>
+            <p>By default, when a user opens the terminal, they are talking to the <strong>Bash</strong> shell. However, many power users prefer to use a modernized shell like <strong>Zsh</strong> or <strong>Fish</strong>, which offer incredible features like auto-suggestions, syntax highlighting, and deeper visual customization.</p>
+
+            <p>If you install a new shell (e.g., <code>sudo apt install zsh</code>), you need to tell Linux to make it your default account shell. You do this with the <code>chsh</code> (Change Shell) command.</p>
+
+            <div class="code-block-container">
+                <p class="terminal-cmd">$ chsh -s $(which zsh)</p>
+                <p class="terminal-comment"># -s sets the shell. $(which zsh) automatically finds where the Zsh program is located.</p>
+                <br>
+                <p class="terminal-cmd">$ chsh -s $(which fish)</p>
+                <p class="terminal-comment"># Example: If you prefer Fish, this command will set it as your default shell.</p>
+            </div>
+
+            <div class="callout-info">
+                <strong>💡 Final Step:</strong> For the shell changes to take effect, you must completely log out of your user account and log back in (or simply reboot your computer). The next time you open the terminal, you will be greeted by your new environment!
+            </div>
+
+        </article>
+
+        <hr class="section-divider">
+
+        <div class="guide-nav">
+            <a href="ugm.html" class="btn-secondary">← Back: User Management</a>
+            <a href="sshra.html" class="btn-primary">Next: SSH Remote Access →</a>
+        </div>
+    </main>
+</div>
+
+<script>
+    const menuBtn = document.getElementById('menu-btn');
+    const sidebar = document.querySelector('.sidebar');
+    menuBtn.addEventListener('click', () => {
+        sidebar.classList.toggle('show');
+    });
+</script>
+</body>
+</html>

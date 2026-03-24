@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linux Package Managers | The Linux Hub</title>
+    <meta name="description" content="Master Linux package managers. Learn how to use APT, Pacman, and DNF to install, update, and remove software from the command line.">
+    <link rel="stylesheet" href="../style.css">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5103156070877653"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+
+<header class="navbar">
+    <div class="logo">
+        <a href="../index.html">
+            <img src="../logo.png" alt="Linux Hub Logo" class="logo-img">
+            The Linux Hub
+        </a>
+    </div>
+    <nav>
+        <a href="../index.html">Home</a>
+        <a href="../about.html" target="_blank" rel="noopener noreferrer">About Us</a>
+        <a href="../privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+        <a href="../join.html" target="_blank" rel="noopener noreferrer">Join Us</a>
+    </nav>
+    <button id="menu-btn" class="hamburger">☰ Categories</button>
+</header>
+
+<div class="container">
+    <aside class="sidebar">
+        <h3>The Terminal</h3>
+        <ul>
+            <li><a href="fs.html">File Systems (CLI)</a></li>
+            <li><a href="pacmans.html" style="color: var(--accent-green);">Package Managers</a></li>
+            <li><a href="sudo.html">The "Sudo" Command</a></li>
+            <li><a href="texted.html">Text Editors</a></li>
+            <li><a href="bash.html">Bash Scripting</a></li>
+        </ul>
+    </aside>
+
+    <main class="content guide-page">
+        <div class="breadcrumbs">
+            <a href="../index.html">Home</a> &gt; <a href="terminal.html">The Terminal</a> &gt; <span>Package Managers</span>
+        </div>
+
+        <article>
+            <h1>Package Managers: The Software Vault</h1>
+            <div class="meta-info">
+                <span>No more sketchy installers. Welcome to the central repository.</span> | <span>👤 By JR Nation</span>
+            </div>
+
+            <p>On Windows, when you want a new app, you open a web browser, search for the program, dodge three fake download buttons, and run an <code>.exe</code> file that asks you to install a random search toolbar. It is insecure, messy, and outdated.</p>
+            
+            <p>Decades before the Apple App Store existed, Linux invented the <strong>Package Manager</strong>. It is a command-line tool that connects directly to cryptographically secure, community-maintained servers (repositories). If you want an app, you just ask the package manager to fetch it. It downloads the app, installs all necessary dependencies, and configures it in seconds.</p>
+
+            <div class="toc-box">
+                <h3>Table of Contents</h3>
+                <ul>
+                    <li><a href="#the-big-three">1. The Big Three: APT, Pacman, DNF</a></li>
+                    <li><a href="#rosetta-stone">2. The Command Rosetta Stone</a></li>
+                    <li><a href="#aur">3. Pro-Tier: The Arch User Repository (AUR)</a></li>
+                    <li><a href="#flatpak">4. Universal Packages: Flatpaks & Snaps</a></li>
+                </ul>
+            </div>
+
+            <h2 id="the-big-three">1. The Big Three: APT, Pacman, DNF</h2>
+            <p><em>(You may think "The Big Three" means One Piece, Bleach, & Naruto. Honestly, not here buddy.)</em></p>
+            
+            <p>Different families of Linux use different package managers. They all do the exact same job, but they speak slightly different languages.</p>
+
+            <ul>
+                <li><strong>APT (Advanced Package Tool):</strong> The king of stability. Used by Debian, Ubuntu, Linux Mint, and Pop!_OS. It is the most widely documented manager on the internet.</li>
+                <li><strong>Pacman:</strong> The speed demon. Used by Arch Linux, EndeavourOS, and Manjaro. It is designed to be incredibly fast and uses very short, concise flags (like <code>-S</code> instead of typing the word <code>install</code>).</li>
+                <li><strong>DNF:</strong> The modern workhorse. Used by Fedora and Red Hat. It is highly intelligent and excellent at resolving complex dependency conflicts.</li>
+            </ul>
+
+            <h2 id="rosetta-stone">2. The Command Rosetta Stone</h2>
+            <p>Here is how you perform the four essential actions across the different distributions. Notice that almost all of these require <code>sudo</code>, because installing software alters the root filesystem.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Action</th>
+                        <th>Ubuntu / Mint (APT)</th>
+                        <th>Arch / Endeavour (Pacman)</th>
+                        <th>Fedora (DNF)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Update System</strong></td>
+                        <td><code>sudo apt update && sudo apt upgrade</code></td>
+                        <td><code>sudo pacman -Syu</code></td>
+                        <td><code>sudo dnf upgrade</code></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Install App</strong></td>
+                        <td><code>sudo apt install vlc</code></td>
+                        <td><code>sudo pacman -S vlc</code></td>
+                        <td><code>sudo dnf install vlc</code></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Remove App</strong></td>
+                        <td><code>sudo apt remove vlc</code></td>
+                        <td><code>sudo pacman -Rns vlc</code></td>
+                        <td><code>sudo dnf remove vlc</code></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Search for App</strong></td>
+                        <td><code>apt search vlc</code></td>
+                        <td><code>pacman -Ss vlc</code></td>
+                        <td><code>dnf search vlc</code></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2 id="aur">3. Pro-Tier: The Arch User Repository (AUR)</h2>
+            <p>If you choose to run an Arch-based system, you get access to the legendary <strong>AUR</strong>. While official repositories only hold heavily vetted software, the AUR is a massive community library. If software exists for Linux—whether it's an obscure GitHub script, a custom cursor theme, or a proprietary Spotify client—it is in the AUR.</p>
+            
+            <p>You cannot use the standard <code>pacman</code> command to download from the AUR. You need an "AUR Helper" like <code>yay</code> or <code>paru</code>.</p>
+            
+            <div class="code-block-container">
+                <p class="terminal-cmd">$ yay -S visual-studio-code-bin</p>
+                <p class="terminal-comment"># Installs VS Code directly from the community repository without needing sudo.</p>
+            </div>
+
+            <h2 id="flatpak">4. Universal Packages: Flatpaks & Snaps</h2>
+            <p>Historically, developers had to package their app three different times (once for apt, once for pacman, once for dnf). Today, we have "Universal" package managers like <strong>Flatpak</strong>.</p>
+            
+            <p>A Flatpak bundles the app and all its dependencies into an isolated sandbox. This means a Flatpak of Discord will run exactly the same on Ubuntu, Arch, or Fedora, without messing with your core system files. If your distro supports it, heading to <a href="https://flathub.org" target="_blank" rel="noopener noreferrer">Flathub.org</a> and using the <code>flatpak install</code> command is often the safest and easiest way to get the latest GUI applications.</p>
+
+        </article>
+
+        <hr class="section-divider">
+
+        <div class="guide-nav">
+            <a href="fs.html" class="btn-secondary">← Back: File Systems</a>
+            <a href="sudo.html" class="btn-primary">Next: The "Sudo" Command →</a>
+        </div>
+    </main>
+</div>
+
+<script>
+    const menuBtn = document.getElementById('menu-btn');
+    const sidebar = document.querySelector('.sidebar');
+    menuBtn.addEventListener('click', () => {
+        sidebar.classList.toggle('show');
+    });
+</script>
+</body>
+</html>

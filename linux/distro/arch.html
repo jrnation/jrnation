@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arch Linux | The Linux Hub</title>
+    <meta name="description" content="Discover Arch Linux. Learn about the AUR, rolling releases, and how to build a custom DIY operating system from the ground up.">
+    <link rel="stylesheet" href="../style.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5103156070877653" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<header class="navbar">
+    <div class="logo">
+        <a href="../index.html">
+            <img src="../logo.png" alt="Linux Hub Logo" class="logo-img">
+            The Linux Hub
+        </a>
+    </div>
+    <nav>
+        <a href="../index.html">Home</a>
+        <a href="../about.html">About Us</a>
+        <a href="../privacy.html">Privacy Policy</a>
+        <a href="../join.html">Join Us</a>
+    </nav>
+    <button id="menu-btn" class="hamburger">☰ Categories</button>
+</header>
+
+<div class="container">
+    <aside class="sidebar">
+        <h3>Distributions</h3>
+        <ul>
+            <li><a href="ubuntu.html">Ubuntu</a></li>
+            <li><a href="debian.html">Debian</a></li>
+            <li><a href="fedora.html">Fedora</a></li>
+            <li><a href="arch.html" style="color: var(--accent-green);">Arch Linux</a></li>
+            <li><a href="opensuse.html">openSUSE</a></li>
+            <li><a href="kali.html">Kali Linux</a></li>
+            <li><a href="lfs.html">Linux From Scratch</a></li>
+        </ul>
+    </aside>
+
+    <main class="content guide-page">
+        <div class="breadcrumbs">
+            <a href="../index.html">Home</a> &gt; <span>Distributions</span> &gt; <span>Arch Linux</span>
+        </div>
+
+        <article>
+            <h1>Arch Linux: The Architect's Playground</h1>
+            <div class="meta-info">
+                <span>"I use Arch, btw."</span> | <span>👤 By JR Nation & All Arch Users</span>
+            </div>
+
+            <p>If Ubuntu is a pre-built luxury car, Arch Linux is a pile of high-performance engine parts dropped onto your driveway with a manual. It is the ultimate Do-It-Yourself distribution, designed strictly for users who want absolute control over every single byte of their operating system.</p>
+
+            <div style="margin: 20px 0;">
+                <a href="https://archlinux.org/" class="btn-primary" target="_blank" rel="noopener noreferrer">Visit Arch Linux</a>
+            </div>
+
+            <div class="toc-box">
+                <h3>Table of Contents</h3>
+                <ul>
+                    <li><a href="#diy">1. The DIY Philosophy (KISS)</a></li>
+                    <li><a href="#rolling">2. The Rolling Release Model</a></li>
+                    <li><a href="#aur">3. Pacman & The Legendary AUR</a></li>
+                    <li><a href="#wiki">4. The Sacred Texts: The Arch Wiki</a></li>
+                </ul>
+            </div>
+
+            <h2 id="diy">1. The DIY Philosophy (KISS)</h2>
+            <p>Arch follows the <strong>KISS Principle</strong>: Keep It Simple, Stupid. But in this context, "simple" doesn't mean "easy to use." It means the system is structurally minimal. There is no bloat, no pre-installed web browsers, and no default graphical interface.</p>
+            
+            <p>When you boot the official Arch installer, you are greeted by a terrifying black terminal screen. You must manually partition your drives, install the kernel, configure the bootloader, and choose your own desktop environment. You only get exactly what you build.</p>
+
+            <div class="callout-info">
+                <strong>💡 Modern Update:</strong> Arch recently included a python script called <code>archinstall</code> on their live USB. Typing this command launches a guided text menu that makes installing Arch incredibly fast and significantly less daunting for newcomers.
+            </div>
+
+            <h2 id="rolling">2. The Rolling Release Model</h2>
+            <p>Most operating systems (like Ubuntu or Windows) have major release versions (e.g., Ubuntu 22.04, Windows 11). Every few years, you have to run a massive, system-altering upgrade.</p>
+
+            <p>Arch is a <strong>Rolling Release</strong>. There is no "Arch 2.0." You install it once, and then you just receive constant, daily updates for individual packages forever. You always have the absolute newest software, kernels, and drivers available in the Linux ecosystem.</p>
+
+            <div class="callout-warning">
+                <strong>⚠️ The Bleeding Edge:</strong> Because updates are pushed so fast, things can break. Arch expects its users to read the official homepage news before running major system updates to see if manual intervention is required.
+            </div>
+
+            <h2 id="aur">3. Pacman & The Legendary AUR</h2>
+            <p>Arch uses the <code>pacman</code> package manager. It is blindingly fast. But the real reason power users flock to Arch is the <strong>AUR (Arch User Repository)</strong>.</p>
+
+            <p>In Ubuntu, if a piece of software isn't in the official app store, you have to hunt down a <code>.deb</code> file or add a sketchy PPA repository. The AUR solves this. It is a massive, community-driven database containing a script to install virtually <em>every single piece of software ever written for Linux</em>.</p>
+
+            <div class="code-block-container">
+                <p class="terminal-cmd">$ sudo pacman -Syu</p>
+                <p class="terminal-comment"># Synchronizes and updates the entire core system.</p>
+                <br>
+                <p class="terminal-cmd">$ yay -S visual-studio-code-bin</p>
+                <p class="terminal-comment"># 'yay' is an AUR Helper. It pulls community software (like VS Code) seamlessly from the AUR and installs it as if it were an official package.</p>
+            </div>
+
+            <h2 id="wiki">4. The Sacred Texts: The Arch Wiki</h2>
+            <p>Even if you never use Arch Linux, you will eventually use the <strong>Arch Wiki</strong>. It is widely considered the single greatest piece of technical documentation on the internet. Whether you are trying to configure a niche Bluetooth headset, set up a complex RAID array, or fix a weird audio bug, the Arch Wiki has a perfectly formatted, highly detailed guide for it.</p>
+
+            <p>Arch isn't just an OS; it is a masterclass in how Linux actually works under the hood.</p>
+
+        </article>
+
+        <hr class="section-divider">
+
+        <div class="guide-nav" style="display: flex; justify-content: space-between;">
+            <a href="fedora.html" class="btn-secondary">← Back: Fedora</a>
+            <a href="opensuse.html" class="btn-primary">Next: openSUSE →</a>
+        </div>
+    </main>
+</div>
+
+<script>
+    const menuBtn = document.getElementById('menu-btn');
+    const sidebar = document.querySelector('.sidebar');
+    if(menuBtn && sidebar) {
+        menuBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('show');
+        });
+    }
+</script>
+</body>
+</html>

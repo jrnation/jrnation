@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Linux Terminal | The Linux Hub</title>
+    <meta name="description" content="Master the Linux command line. Learn file systems, package managers, text editors, and basic bash scripting.">
+    <link rel="stylesheet" href="../style.css">
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5103156070877653"
+     crossorigin="anonymous"></script>
+
+<style>
+        /* --- Page-Specific Styles for the Hub --- */
+        .roadmap-header {
+            text-align: center;
+            padding: 3rem 1rem;
+        }
+        .roadmap-header h1 {
+            font-size: 2.5rem;
+            color: var(--accent-green);
+            border-bottom: none;
+            margin-bottom: 0.5rem;
+        }
+        .roadmap-header p {
+            font-size: 1.2rem;
+            color: #8b949e;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .roadmap-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        /* The Magic Alignment Section */
+        .stage-card {
+            background-color: var(--bg-sidebar);
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%; 
+        }
+        
+        .stage-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-green);
+        }
+        
+        .stage-badge {
+            color: var(--accent-green);
+            font-weight: bold;
+            font-family: monospace;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+        }
+        
+        .stage-card h3 {
+            margin: 0.5rem 0 1rem 0;
+            font-size: 1.5rem;
+        }
+        
+        .stage-card p {
+            margin-bottom: 1.5rem;
+            flex-grow: 1; 
+        }
+        
+        /* Pushes the button to the bottom */
+        .stage-card .btn-primary, 
+        .stage-card .btn-secondary {
+            margin-top: auto; 
+        }
+    </style>
+</head>
+<body>
+
+<header class="navbar">
+    <div class="logo">
+        <a href="../index.html">
+            <img src="../logo.png" alt="Linux Hub Logo" class="logo-img">
+            The Linux Hub
+        </a>
+    </div>
+    <nav>
+        <a href="../index.html">Home</a>
+        <a href="../about.html">About Us</a>
+        <a href="../privacy.html">Privacy Policy</a>
+        <a href="../join.html">Join Us</a>
+    </nav>
+    <button id="menu-btn" class="hamburger">☰ Categories</button>
+</header>
+
+<div class="container">
+    <main class="content">
+        <div class="breadcrumbs">
+            <a href="../index.html">Home</a> &gt; <span>The Terminal</span>
+        </div>
+
+        <header class="roadmap-header">
+            <h1>The Command Line</h1>
+            <p>The GUI was just the lobby. This is the engine room. Learn how to speak directly to the kernel, manage packages at lightning speed, and automate your entire workflow.</p>
+        </header>
+
+        <section class="roadmap-grid">
+            
+            <article class="stage-card">
+                <div class="stage-badge">MODULE 01</div>
+                <h3>File Systems (CLI)</h3>
+                <p>Ditch the file manager. Learn how to navigate directories, move files, and read data using only text commands.</p>
+                <a href="fs.html" class="btn-primary">Navigate the Tree</a>
+            </article>
+
+            <article class="stage-card">
+                <div class="stage-badge">MODULE 02</div>
+                <h3>Package Managers</h3>
+                <p>APT, Pacman, and DNF. Learn how to install, update, and completely purge software from the repositories.</p>
+                <a href="pacmans.html" class="btn-secondary">Master Software</a>
+            </article>
+
+            <article class="stage-card">
+                <div class="stage-badge">MODULE 03</div>
+                <h3>The "Sudo" Command</h3>
+                <p>Understand root privileges, user permissions, and how to safely execute commands as the system administrator.</p>
+                <a href="sudo.html" class="btn-secondary">Take Control</a>
+            </article>
+
+            <article class="stage-card">
+                <div class="stage-badge">MODULE 04</div>
+                <h3>Text Editors</h3>
+                <p>Nano vs. Vim vs. Neovim. Learn how to edit configuration files directly in the terminal without opening a graphical app.</p>
+                <a href="texted.html" class="btn-secondary">Write Code</a>
+            </article>
+
+            <article class="stage-card">
+                <div class="stage-badge">MODULE 05</div>
+                <h3>Bash Scripting</h3>
+                <p>Why type the same five commands every day? Learn how to string them together into a script and automate your life.</p>
+                <a href="bash.html" class="btn-secondary">Automate Everything</a>
+            </article>
+
+        </section>
+
+        <div class="callout-info" style="text-align: center;">
+            <strong>💡 A Word on the Terminal:</strong> Hollywood makes the command line look like hacking. In reality, it's just a text-based conversation with your computer. Don't be intimidated. We'll give you the exact vocabulary you need.
+        </div>
+
+        <hr class="section-divider">
+
+        <div class="guide-nav" style="display: flex; justify-content: flex-start;">
+            <a href="../everyday/ricing.html" class="btn-secondary">← Back to Everyday Use</a>
+        </div>
+
+    </main>
+</div>
+
+<script>
+    const menuBtn = document.getElementById('menu-btn');
+    const sidebar = document.querySelector('.sidebar');
+    if(menuBtn && sidebar) {
+        menuBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('show');
+        });
+    }
+</script>
+</body>
+</html>

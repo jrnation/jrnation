@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | The Linux Hub</title>
+    <meta name="description" content="Learn more about the team of Computer Science students behind The Linux Hub.">
+    <link rel="stylesheet" href="style.css">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5103156070877653"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+
+<header class="navbar">
+    <div class="logo">
+        <a href="index.html">
+            <img src="logo.png" alt="Linux Hub Logo" class="logo-img">
+            The Linux Hub
+        </a>
+    </div>
+    
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="join.html">Join Us</a>
+    </nav>
+    <button id="menu-btn" class="hamburger">☰ Categories</button>
+</header>
+
+
+    <div class="container">
+        
+        <aside class="sidebar">
+            <h3>Legal & Contact</h3>
+            <ul>
+                <li><a href="about.html" style="color: var(--accent-green);">About Us</a></li>
+                <li><a href="privacy.html">Privacy Policy</a></li>
+                <li><a href="join.html">Join JR Nation</a></li>
+            </ul>
+            
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="index.html">← Back to Hub</a></li>
+            </ul>
+        </aside>
+
+        <main class="content guide-page">
+            
+            <article>
+                <h1>About The Linux Hub</h1>
+                <div class="meta-info">
+                    <span>Built by developers, for everyone.</span>
+                </div>
+
+                <h2>The Fragmentation Problem</h2>
+                <p>If you have ever tried to learn Linux, you know the frustration. The answers you need are out there, but they are buried in ancient forum threads from 2012, scattered across fragmented wikis, or hidden deep within GitHub repositories. There was no single, unified map for navigating the open-source ecosystem.</p>
+                <p>We decided to fix that.</p>
+
+                <h2>Who We Are</h2>
+                <p><strong>The Linux Hub</strong> was founded and is actively maintained by Jayachandra Reddy alongside a dedicated team of Computer Science students. As developers who rely on Linux environments daily for coding, server management, and system architecture, we grew tired of repeating the same searches for basic terminal commands and distro setups.</p>
+                <p>We built this hub to be the documentation we wished we had when we first wiped our Windows drives and booted into a live USB.</p>
+
+                <h2>Our Mission</h2>
+                <p>Our goal is simple: <strong>Make Linux accessible to everyone without dumbing it down.</strong></p>
+                <p>Whether you are a complete beginner trying to figure out which distribution to install, or a seasoned power user looking for the exact `systemctl` syntax to restart a daemon, this hub is designed to be your permanent bookmark. We strip away the elitism often found in tech forums and provide clean, heavily researched, and strictly formatted guides.</p>
+
+                <h2>Support the Project</h2>
+                <p>This centralized hub is a passion project. We keep the servers running and the domain active through the display of unobtrusive advertisements. By simply using this hub as your daily reference, you are helping support computer science students in their ongoing education and development.</p>
+
+            </article>
+
+        </main>
+    </div>
+
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const sidebar = document.querySelector('.sidebar');
+
+        menuBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('show');
+        });
+    </script>
+</body>
+</html>

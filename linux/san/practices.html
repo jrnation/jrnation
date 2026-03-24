@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linux Security Best Practices | The Linux Hub</title>
+    <meta name="description" content="Harden your Linux system. Learn cybersecurity best practices including Fail2ban, disabling root logins, and using reverse proxies.">
+    <link rel="stylesheet" href="../style.css">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5103156070877653"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+
+<header class="navbar">
+    <div class="logo">
+        <a href="../index.html">
+            <img src="../logo.png" alt="Linux Hub Logo" class="logo-img">
+            The Linux Hub
+        </a>
+    </div>
+    <nav>
+        <a href="../index.html">Home</a>
+        <a href="../about.html" target="_blank" rel="noopener noreferrer">About Us</a>
+        <a href="../privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+        <a href="../join.html" target="_blank" rel="noopener noreferrer">Join Us</a>
+    </nav>
+    <button id="menu-btn" class="hamburger">☰ Categories</button>
+</header>
+
+<div class="container">
+    <aside class="sidebar">
+        <h3>Security & Networks</h3>
+        <ul>
+            <li><a href="bfs.html">Basic Firewall Setup</a></li>
+            <li><a href="ugm.html">User Group Management</a></li>
+            <li><a href="sshra.html">SSH Remote Access</a></li>
+            <li><a href="practices.html" style="color: var(--accent-green);">Best Practices</a></li>
+        </ul>
+    </aside>
+
+    <main class="content guide-page">
+        <div class="breadcrumbs">
+            <a href="../index.html">Home</a> &gt; <a href="san.html">Security & Networks</a> &gt; <span>Best Practices</span>
+        </div>
+
+        <article>
+            <h1>System Hardening: Defense in Depth</h1>
+            <div class="meta-info">
+                <span>Security is not a switch you flip. It is a posture you maintain.</span> | <span>👤 By JR Nation</span>
+            </div>
+
+            <p>You have configured your firewall, isolated your users, and locked down SSH. Your system is now more secure than 99% of personal computers on the internet. But in cybersecurity, we don't rely on just one wall. We use <strong>Defense in Depth</strong>—layering multiple security measures so that if one fails, the attacker still hits another.</p>
+
+            <p>Here are the ultimate system hardening practices to turn your Linux machine into a true fortress.</p>
+
+            <div class="toc-box">
+                <h3>Table of Contents</h3>
+                <ul>
+                    <li><a href="#root-login">1. Kill the King: Disable Root Login</a></li>
+                    <li><a href="#fail2ban">2. The Automated Bouncer: Fail2ban</a></li>
+                    <li><a href="#updates">3. Unattended Upgrades</a></li>
+                    <li><a href="#proxy">4. Hide Your True IP (Reverse Proxies)</a></li>
+                </ul>
+            </div>
+
+            <h2 id="root-login">1. Kill the King: Disable Root Login</h2>
+            <p>Every hacker in the world knows that the ultimate administrator account on your server is named <code>root</code>. If you leave root login enabled over SSH, half of the attacker's job is already done—they know the username, they just have to guess the password or steal the key.</p>
+            
+            <p>Force them to guess both the username <em>and</em> the password by entirely disabling the ability to log in as root from the outside.</p>
+
+            <div class="code-block-container">
+                <p class="terminal-cmd">$ sudo nano /etc/ssh/sshd_config</p>
+                <p class="terminal-comment"># Find 'PermitRootLogin' and change it to 'no'. Save and restart the sshd service.</p>
+            </div>
+            
+            <p>Now, you must log in securely as your standard user, and explicitly use <code>sudo</code> to execute administrative tasks.</p>
+
+            <h2 id="fail2ban">2. The Automated Bouncer: Fail2ban</h2>
+            <p>Even with SSH keys required, bots will still hammer your server trying to get in. This wastes your server's CPU and bandwidth. Enter <strong>Fail2ban</strong>.</p>
+            
+            <p>Fail2ban is a background service that constantly reads your system logs. If it sees an IP address fail to log in 5 times in a row, it dynamically updates your UFW firewall to instantly ban that IP address for a set amount of time (or permanently).</p>
+
+            <div class="code-block-container">
+                <p class="terminal-cmd">$ sudo apt install fail2ban</p>
+                <p class="terminal-cmd">$ sudo systemctl enable fail2ban --now</p>
+                <p class="terminal-comment"># Out of the box, it will immediately start protecting your SSH port.</p>
+            </div>
+
+            <h2 id="updates">3. Unattended Upgrades (Distro Specific)</h2>
+            <p>A locked door doesn't matter if the lock itself has a known manufacturer defect. Software vulnerabilities (CVEs) are discovered every day. If you don't update your packages, hackers can use those known exploits to bypass your security entirely.</p>
+            
+            <p>You can set up your system to automatically pull and install security patches in the background without you having to lift a finger, depending on your distro.</p>
+
+            <h3>For Ubuntu / Debian / Mint (APT)</h3>
+            <div class="code-block-container">
+                <p class="terminal-cmd">$ sudo apt install unattended-upgrades</p>
+                <p class="terminal-cmd">$ sudo dpkg-reconfigure --priority=low unattended-upgrades</p>
+                <p class="terminal-comment"># Select 'Yes' to enable automatic security updates.</p>
+            </div>
+
+            <h3>For Fedora / Red Hat (DNF)</h3>
+            <p>Fedora uses an official automated tool to handle this securely in the background.</p>
+            <div class="code-block-container">
+                <p class="terminal-cmd">$ sudo dnf install dnf-automatic</p>
+                <p class="terminal-cmd">$ sudo systemctl enable --now dnf-automatic.timer</p>
+                <p class="terminal-comment"># Activates the background timer to pull daily security patches.</p>
+            </div>
+
+            <div class="callout-warning">
+                <strong>⚠️ The Arch Linux Warning:</strong>
+                <br>If you are using Arch Linux, EndeavourOS, or Manjaro, <strong>DO NOT</strong> set up automatic background updates. Arch is a "rolling release" distribution. Updates frequently require manual intervention. Automatically running <code>pacman -Syu --noconfirm</code> via a script is a guaranteed way to wake up to a broken, unbootable computer. Arch users must pull updates manually!
+            </div>
+
+            <h2 id="proxy">4. Hide Your True IP (Reverse Proxies & CDNs)</h2>
+            <p>If you are building your own tools, hosting a website, or managing a custom domain, <strong>never expose your server's raw IP address directly to the internet.</strong></p>
+            
+            <p>Route your DNS traffic through a Content Delivery Network (CDN) or Reverse Proxy like Cloudflare. By doing this, the IP address the public sees belongs to the proxy network, not your actual machine. This masks your origin server, absorbs massive DDoS attacks before they ever reach your router, and provides a Web Application Firewall (WAF) to filter out malicious traffic before your local UFW even has to deal with it.</p>
+
+        </article>
+
+        <hr class="section-divider">
+
+        <div class="guide-nav">
+            <a href="sshra.html" class="btn-secondary">← Back: SSH Remote Access</a>
+            <a href="../pro/pro.html" class="btn-primary">Next Phase: The Power User →</a>
+        </div>
+    </main>
+</div>
+
+<script>
+    const menuBtn = document.getElementById('menu-btn');
+    const sidebar = document.querySelector('.sidebar');
+    menuBtn.addEventListener('click', () => {
+        sidebar.classList.toggle('show');
+    });
+</script>
+</body>
+</html>
