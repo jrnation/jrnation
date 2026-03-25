@@ -5,24 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Terminal Text Editors | The Linux Hub</title>
     <meta name="description" content="Learn how to edit configuration files directly in the Linux terminal. A beginner's guide to Nano, Vim, and Neovim.">
+    <link rel="icon" type="image/png" href="../../favicon.png">
     <link rel="stylesheet" href="../style.css">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5103156070877653"
-     crossorigin="anonymous"></script>
 </head>
 <body>
 
 <header class="navbar">
     <div class="logo">
-        <a href="../index.html">
-            <img src="../logo.png" alt="Linux Hub Logo" class="logo-img">
+        <a href="../../index.html">
+            <img src="../../logo.png" alt="Linux Hub Logo" class="logo-img" onerror="this.style.display='none'">
             The Linux Hub
         </a>
     </div>
     <nav>
-        <a href="../index.html">Home</a>
-        <a href="../about.html" target="_blank" rel="noopener noreferrer">About Us</a>
-        <a href="../privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
-        <a href="../join.html" target="_blank" rel="noopener noreferrer">Join Us</a>
+        <a href="../index.html">Hub Home</a>
+        <a href="../../lore.html" target="_blank" rel="noopener noreferrer">About Us</a>
+        <a href="../../privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+        <a href="https://discord.gg/qMCyTNcDsV" target="_blank" rel="noopener noreferrer">Join Us</a>
     </nav>
     <button id="menu-btn" class="hamburger">☰ Categories</button>
 </header>
@@ -41,10 +40,10 @@
 
     <main class="content guide-page">
         <div class="breadcrumbs">
-            <a href="../index.html">Home</a> &gt; <a href="terminal.html">The Terminal</a> &gt; <span>Text Editors</span>
+            <a href="../index.html">Hub Home</a> &gt; <a href="terminal.html">The Terminal</a> &gt; <span>Text Editors</span>
         </div>
 
-<article>
+        <article>
             <h1>Text Editors: The Holy War</h1>
             <div class="meta-info">
                 <span>The mouse is dead. Your keyboard is the only weapon you need.</span> | <span>👤 By JR Nation</span>
@@ -52,7 +51,11 @@
 
             <p>Imagine your graphical interface (GUI) crashes, or you are connecting to a remote server 3,000 miles away using SSH. You need to fix a broken configuration file, but you don't have VS Code or Notepad to click on. What do you do?</p>
             
-            <p>You use a Command Line Text Editor. These programs run entirely inside the terminal window. Mastering one is an absolute necessity for any serious Linux user. The community has been fighting over which editor is the best for decades. Let's look at the three main contenders.</p>
+            <p>You drop into a Command Line Text Editor. These programs run entirely inside the terminal window. Mastering one is an absolute necessity for any serious Linux user. The community has been fighting over which editor is the best for decades. Let's look at the three main contenders.</p>
+
+            <div class="callout-info">
+                <strong>💡 Practice the Holy War:</strong> You can't learn terminal text editors just by reading about them. Open the <a href="../../terminal/index.html" target="_blank" style="color: var(--accent-green); text-decoration: underline;">JR Nation Terminal Playground</a> and practice opening files, editing text, and escaping the matrix.
+            </div>
 
             <div class="toc-box">
                 <h3>Table of Contents</h3>
@@ -76,7 +79,7 @@
                 </ul>
             </div>
 
-            <p><strong>Verdict:</strong> Nano is perfect for quick, simple edits. It even lists all its shortcuts at the bottom of the screen so you never get lost. But for writing thousands of lines of code, it lacks the advanced features power users need.</p>
+            <p><strong>Verdict:</strong> Nano is perfect for quick, drive-by config edits. It even lists all its shortcuts at the bottom of the screen so you never get lost. But for writing thousands of lines of code, it lacks the advanced features power users need.</p>
 
             <h2 id="vim">2. Vim: The Ancient Blade</h2>
             <p><strong>Vim</strong> (Vi IMproved) is legendary. It is pre-installed on practically every Unix-based machine on Earth. It is brutally fast, highly efficient, and famously difficult for beginners because it uses <strong>Modal Editing</strong>.</p>
@@ -88,7 +91,7 @@
             <h2 id="neovim">3. Neovim: The Modern Masterpiece</h2>
             <p>If you look at the screens of top-tier Linux developers or the heavy customizers on <em>r/unixporn</em>, they aren't using regular Vim. They are using <strong>Neovim (nvim)</strong>.</p>
             
-            <p>Neovim is a heavily modernized, refactored version of Vim. It allows users to write custom configuration files in a programming language called Lua. This lets you turn a raw terminal text editor into a full-blown Integrated Development Environment (IDE), complete with auto-complete, file trees, and Git integration that rivals VS Code—all while using barely any system RAM.</p>
+            <p>Neovim is a heavily modernized, hyper-optimized version of Vim. It allows users to write custom configuration files in a programming language called Lua. This lets you turn a raw terminal text editor into a full-blown Integrated Development Environment (IDE), complete with auto-complete, file trees, and Git integration that rivals VS Code—all while using barely any system RAM.</p>
 
             <h2 id="exiting-vim">4. The Rite of Passage: How to Exit Vim</h2>
             <p>The most famous joke in the programming world is getting trapped inside Vim because the escape command isn't listed anywhere on the screen. Millions of people have Googled "How to exit Vim" in a cold sweat. Here is the secret code so you don't become a statistic:</p>
@@ -109,7 +112,7 @@
 
         <hr class="section-divider">
 
-        <div class="guide-nav">
+        <div class="guide-nav" style="display: flex; gap: 20px; justify-content: space-between;">
             <a href="sudo.html" class="btn-secondary">← Back: The Sudo Command</a>
             <a href="bash.html" class="btn-primary">Next: Bash Scripting →</a>
         </div>

@@ -5,24 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Linux Package Managers | The Linux Hub</title>
     <meta name="description" content="Master Linux package managers. Learn how to use APT, Pacman, and DNF to install, update, and remove software from the command line.">
+    <link rel="icon" type="image/png" href="../../favicon.png">
     <link rel="stylesheet" href="../style.css">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5103156070877653"
-     crossorigin="anonymous"></script>
 </head>
 <body>
 
 <header class="navbar">
     <div class="logo">
-        <a href="../index.html">
-            <img src="../logo.png" alt="Linux Hub Logo" class="logo-img">
+        <a href="../../index.html">
+            <img src="../../logo.png" alt="Linux Hub Logo" class="logo-img" onerror="this.style.display='none'">
             The Linux Hub
         </a>
     </div>
     <nav>
-        <a href="../index.html">Home</a>
-        <a href="../about.html" target="_blank" rel="noopener noreferrer">About Us</a>
-        <a href="../privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
-        <a href="../join.html" target="_blank" rel="noopener noreferrer">Join Us</a>
+        <a href="../index.html">Hub Home</a>
+        <a href="../../lore.html" target="_blank" rel="noopener noreferrer">About Us</a>
+        <a href="../../privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+        <a href="https://discord.gg/qMCyTNcDsV" target="_blank" rel="noopener noreferrer">Join Us</a>
     </nav>
     <button id="menu-btn" class="hamburger">☰ Categories</button>
 </header>
@@ -41,7 +40,7 @@
 
     <main class="content guide-page">
         <div class="breadcrumbs">
-            <a href="../index.html">Home</a> &gt; <a href="terminal.html">The Terminal</a> &gt; <span>Package Managers</span>
+            <a href="../index.html">Hub Home</a> &gt; <a href="terminal.html">The Terminal</a> &gt; <span>Package Managers</span>
         </div>
 
         <article>
@@ -50,9 +49,13 @@
                 <span>No more sketchy installers. Welcome to the central repository.</span> | <span>👤 By JR Nation</span>
             </div>
 
-            <p>On Windows, when you want a new app, you open a web browser, search for the program, dodge three fake download buttons, and run an <code>.exe</code> file that asks you to install a random search toolbar. It is insecure, messy, and outdated.</p>
+            <p>On Windows, getting new software means opening a browser, dodging three fake "Download Now" buttons, and praying the <code>.exe</code> file doesn't install a malicious search toolbar. It is a chaotic, insecure nightmare.</p>
             
-            <p>Decades before the Apple App Store existed, Linux invented the <strong>Package Manager</strong>. It is a command-line tool that connects directly to cryptographically secure, community-maintained servers (repositories). If you want an app, you just ask the package manager to fetch it. It downloads the app, installs all necessary dependencies, and configures it in seconds.</p>
+            <p>Decades before Apple convinced the world they invented the "App Store," Linux perfected the <strong>Package Manager</strong>. It is a command-line tool that connects directly to cryptographically secure, community-maintained servers (repositories). If you want an app, you just ask the terminal to fetch it. It downloads the app, resolves all necessary dependencies, and installs it in seconds.</p>
+
+            <div class="callout-info">
+                <strong>💡 Practice Installing Software:</strong> Want to see what it feels like to install packages via the command line? Open the <a href="../../terminal/index.html" target="_blank" style="color: var(--accent-green); text-decoration: underline;">JR Nation Terminal Playground</a> and practice running the <code>apt</code> and <code>pacman</code> commands listed below.
+            </div>
 
             <div class="toc-box">
                 <h3>Table of Contents</h3>
@@ -71,7 +74,7 @@
 
             <ul>
                 <li><strong>APT (Advanced Package Tool):</strong> The king of stability. Used by Debian, Ubuntu, Linux Mint, and Pop!_OS. It is the most widely documented manager on the internet.</li>
-                <li><strong>Pacman:</strong> The speed demon. Used by Arch Linux, EndeavourOS, and Manjaro. It is designed to be incredibly fast and uses very short, concise flags (like <code>-S</code> instead of typing the word <code>install</code>).</li>
+                <li><strong>Pacman:</strong> The speed demon. Used by Arch Linux, EndeavourOS, and Manjaro. It is designed to be incredibly fast and uses concise, ruthless flags (like <code>-S</code> instead of typing the word <code>install</code>).</li>
                 <li><strong>DNF:</strong> The modern workhorse. Used by Fedora and Red Hat. It is highly intelligent and excellent at resolving complex dependency conflicts.</li>
             </ul>
 
@@ -116,7 +119,7 @@
             </table>
 
             <h2 id="aur">3. Pro-Tier: The Arch User Repository (AUR)</h2>
-            <p>If you choose to run an Arch-based system, you get access to the legendary <strong>AUR</strong>. While official repositories only hold heavily vetted software, the AUR is a massive community library. If software exists for Linux—whether it's an obscure GitHub script, a custom cursor theme, or a proprietary Spotify client—it is in the AUR.</p>
+            <p>If you chose the Arch path, welcome to the legendary <strong>AUR</strong>. While official repositories only hold heavily vetted software, the AUR is a massive, untamed community library. If a piece of software exists anywhere on planet Earth—whether it's an obscure GitHub script, a custom cursor theme, or a proprietary Spotify client—someone has written an AUR script for it.</p>
             
             <p>You cannot use the standard <code>pacman</code> command to download from the AUR. You need an "AUR Helper" like <code>yay</code> or <code>paru</code>.</p>
             
@@ -128,13 +131,13 @@
             <h2 id="flatpak">4. Universal Packages: Flatpaks & Snaps</h2>
             <p>Historically, developers had to package their app three different times (once for apt, once for pacman, once for dnf). Today, we have "Universal" package managers like <strong>Flatpak</strong>.</p>
             
-            <p>A Flatpak bundles the app and all its dependencies into an isolated sandbox. This means a Flatpak of Discord will run exactly the same on Ubuntu, Arch, or Fedora, without messing with your core system files. If your distro supports it, heading to <a href="https://flathub.org" target="_blank" rel="noopener noreferrer">Flathub.org</a> and using the <code>flatpak install</code> command is often the safest and easiest way to get the latest GUI applications.</p>
+            <p>A Flatpak bundles the app and all its dependencies into an isolated sandbox. This means a Flatpak of Discord will run exactly the same on Ubuntu, Arch, or Fedora, without ever messing with your core system files. If your distro supports it, heading to <a href="https://flathub.org" target="_blank" rel="noopener noreferrer">Flathub.org</a> and using the <code>flatpak install</code> command is often the safest and easiest way to get the latest GUI applications.</p>
 
         </article>
 
         <hr class="section-divider">
 
-        <div class="guide-nav">
+        <div class="guide-nav" style="display: flex; gap: 20px; justify-content: space-between;">
             <a href="fs.html" class="btn-secondary">← Back: File Systems</a>
             <a href="sudo.html" class="btn-primary">Next: The "Sudo" Command →</a>
         </div>

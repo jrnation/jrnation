@@ -1,48 +1,47 @@
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Bash Scripting & Automation | The Linux Hub</title>
-        <meta name="description" content="Learn the basics of Linux Bash scripting. Automate your system updates and daily tasks by writing your first shell script.">
-        <link rel="stylesheet" href="../style.css">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5103156070877653"
-        crossorigin="anonymous"></script>
-    </head>
-    <body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bash Scripting & Automation | The Linux Hub</title>
+    <meta name="description" content="Learn the basics of Linux Bash scripting. Automate your system updates and daily tasks by writing your first shell script.">
+    <link rel="icon" type="image/png" href="../../favicon.png">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
 
-    <header class="navbar">
-        <div class="logo">
-            <a href="../index.html">
-                <img src="../logo.png" alt="Linux Hub Logo" class="logo-img">
-                The Linux Hub
-            </a>
+<header class="navbar">
+    <div class="logo">
+        <a href="../../index.html">
+            <img src="../../logo.png" alt="Linux Hub Logo" class="logo-img" onerror="this.style.display='none'">
+            The Linux Hub
+        </a>
+    </div>
+    <nav>
+        <a href="../index.html">Hub Home</a>
+        <a href="../../lore.html" target="_blank" rel="noopener noreferrer">About Us</a>
+        <a href="../../privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+        <a href="https://discord.gg/qMCyTNcDsV" target="_blank" rel="noopener noreferrer">Join Us</a>
+    </nav>
+    <button id="menu-btn" class="hamburger">☰ Categories</button>
+</header>
+
+<div class="container">
+    <aside class="sidebar">
+        <h3>The Terminal</h3>
+        <ul>
+            <li><a href="fs.html">File Systems (CLI)</a></li>
+            <li><a href="pacmans.html">Package Managers</a></li>
+            <li><a href="sudo.html">The "Sudo" Command</a></li>
+            <li><a href="texted.html">Text Editors</a></li>
+            <li><a href="bash.html" style="color: var(--accent-green);">Bash Scripting</a></li>
+        </ul>
+    </aside>
+
+    <main class="content guide-page">
+        <div class="breadcrumbs">
+            <a href="../index.html">Hub Home</a> &gt; <a href="terminal.html">The Terminal</a> &gt; <span>Bash Scripting</span>
         </div>
-        <nav>
-            <a href="../index.html">Home</a>
-            <a href="../about.html" target="_blank" rel="noopener noreferrer">About Us</a>
-            <a href="../privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
-            <a href="../join.html" target="_blank" rel="noopener noreferrer">Join Us</a>
-        </nav>
-        <button id="menu-btn" class="hamburger">☰ Categories</button>
-    </header>
-
-    <div class="container">
-        <aside class="sidebar">
-            <h3>The Terminal</h3>
-            <ul>
-                <li><a href="fs.html">File Systems (CLI)</a></li>
-                <li><a href="pacmans.html">Package Managers</a></li>
-                <li><a href="sudo.html">The "Sudo" Command</a></li>
-                <li><a href="texted.html">Text Editors</a></li>
-                <li><a href="bash.html" style="color: var(--accent-green);">Bash Scripting</a></li>
-            </ul>
-        </aside>
-
-        <main class="content guide-page">
-            <div class="breadcrumbs">
-                <a href="../index.html">Home</a> &gt; <a href="terminal.html">The Terminal</a> &gt; <span>Bash Scripting</span>
-            </div>
 
         <article>
             <h1>Bash Scripting: The Art of Automation</h1>
@@ -52,7 +51,11 @@
 
             <p>You now know how to navigate the filesystem, install software, and use text editors. But typing out long strings of commands every single day gets tedious. What if you could stack all your favorite commands into a single text file and execute them all at once with a single word?</p>
             
-            <p>That is what <strong>Bash Scripting</strong> is. You are writing a recipe for the terminal to follow. It is the ultimate superpower of the Linux ecosystem.</p>
+            <p>That is what <strong>Bash Scripting</strong> is. You are writing a recipe for the terminal to follow. It is the ultimate superpower of the Linux ecosystem, allowing you to automate literally any task on your machine.</p>
+
+            <div class="callout-info">
+                <strong>💡 Practice Automation:</strong> Writing scripts can feel abstract until you actually run one. Open the <a href="../../terminal/index.html" target="_blank" style="color: var(--accent-green); text-decoration: underline;">JR Nation Terminal Playground</a>, create a file, and practice writing your first script safely.
+            </div>
 
             <div class="toc-box">
                 <h3>Table of Contents</h3>
@@ -70,7 +73,7 @@
             <p>A Bash script is literally just a plain text file containing a list of terminal commands from top to bottom. The computer reads line 1, executes it, then moves to line 2, just like reading a book.</p>
 
             <h2 id="the-shebang">2. The Magic Words: The Shebang</h2>
-            <p>How does the computer know a text file is actually a script and not just a grocery list? You have to put a special code on the very first line of the file. In the Linux world, this is called the <strong>Shebang</strong>.</p>
+            <p>How does the computer know a text file is actually an executable script and not just a grocery list? You have to put a special code on the very first line of the file. In the Linux world, this is called the <strong>Shebang</strong>.</p>
             
             <div class="code-block-container">
                 <p class="terminal-cmd" style="color: #f9e2af;">#!/bin/bash</p>
@@ -102,7 +105,7 @@
             <p>Press <kbd>Ctrl</kbd> + <kbd>O</kbd> to save, <kbd>Enter</kbd> to confirm, and <kbd>Ctrl</kbd> + <kbd>X</kbd> to exit Nano.</p>
 
             <h2 id="execute">4. Giving it Life (chmod +x)</h2>
-            <p>You have written the script, but if you try to run it right now, Linux will block you. As we learned in the Filesystem & Permissions guide, Linux protects you from executing text files by default.</p>
+            <p>You have written the script, but if you try to run it right now, Linux will aggressively block you. As we learned in the Filesystem & Permissions guide, Linux protects you from executing text files by default.</p>
             
             <p>You need to hand over the key. Run this command to make the file <strong>executable</strong>:</p>
 
@@ -124,21 +127,21 @@
 
         </article> 
 
-            <hr class="section-divider">
+        <hr class="section-divider">
 
-            <div class="guide-nav">
-                <a href="texted.html" class="btn-secondary">← Back: Text Editors</a>
-                <a href="../san/san.html" class="btn-primary">Next Phase: Security & Networks →</a>
-            </div>
-        </main>
-    </div>
+        <div class="guide-nav" style="display: flex; gap: 20px; justify-content: space-between;">
+            <a href="texted.html" class="btn-secondary">← Back: Text Editors</a>
+            <a href="../san/san.html" class="btn-primary">Next Phase: Security & Networks →</a>
+        </div>
+    </main>
+</div>
 
-    <script>
-        const menuBtn = document.getElementById('menu-btn');
-        const sidebar = document.querySelector('.sidebar');
-        menuBtn.addEventListener('click', () => {
-            sidebar.classList.toggle('show');
-        });
-    </script>
-    </body>
-    </html>
+<script>
+    const menuBtn = document.getElementById('menu-btn');
+    const sidebar = document.querySelector('.sidebar');
+    menuBtn.addEventListener('click', () => {
+        sidebar.classList.toggle('show');
+    });
+</script>
+</body>
+</html>

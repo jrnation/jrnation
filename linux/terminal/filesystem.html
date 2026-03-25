@@ -5,24 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Linux Filesystem & Permissions | The Linux Hub</title>
     <meta name="description" content="Deep dive into the Linux Filesystem Hierarchy Standard (FHS) and understand file permissions (chmod, chown).">
+    <link rel="icon" type="image/png" href="../../favicon.png">
     <link rel="stylesheet" href="../style.css">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5103156070877653"
-     crossorigin="anonymous"></script>
 </head>
 <body>
 
 <header class="navbar">
     <div class="logo">
-        <a href="../index.html">
-            <img src="../logo.png" alt="Linux Hub Logo" class="logo-img">
+        <a href="../../index.html">
+            <img src="../../logo.png" alt="Linux Hub Logo" class="logo-img" onerror="this.style.display='none'">
             The Linux Hub
         </a>
     </div>
     <nav>
-        <a href="../index.html">Home</a>
-        <a href="../about.html" target="_blank" rel="noopener noreferrer">About Us</a>
-        <a href="../privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
-        <a href="../join.html" target="_blank" rel="noopener noreferrer">Join Us</a>
+        <a href="../index.html">Hub Home</a>
+        <a href="../../lore.html" target="_blank" rel="noopener noreferrer">About Us</a>
+        <a href="../../privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+        <a href="https://discord.gg/qMCyTNcDsV" target="_blank" rel="noopener noreferrer">Join Us</a>
     </nav>
     <button id="menu-btn" class="hamburger">☰ Categories</button>
 </header>
@@ -41,7 +40,7 @@
 
     <main class="content guide-page">
         <div class="breadcrumbs">
-            <a href="../index.html">Home</a> &gt; <a href="terminal.html">The Terminal</a> &gt; <a href="fs.html">File Systems</a> &gt; <span>Architecture & Permissions</span>
+            <a href="../index.html">Hub Home</a> &gt; <a href="terminal.html">The Terminal</a> &gt; <a href="fs.html">File Systems</a> &gt; <span>Architecture & Permissions</span>
         </div>
 
         <article>
@@ -50,7 +49,7 @@
                 <span>Understand the tree. Control who has the keys.</span> | <span>👤 By JR Nation</span>
             </div>
 
-            <p>Windows hides its core files behind warnings and arbitrary drive letters. Linux lays everything bare in a logical, open structure called the <strong>Filesystem Hierarchy Standard (FHS)</strong>. To truly master the terminal, you need to know what these folders do and, more importantly, how Linux determines who is allowed to touch them.</p>
+            <p>Windows treats its core files like dark magic, hiding them behind scary warnings and arbitrary drive letters. Linux lays the entire engine bare in a logical, open structure called the <strong>Filesystem Hierarchy Standard (FHS)</strong>. To truly master the terminal, you need to know what these folders do and, more importantly, how Linux decides who is allowed to touch them.</p>
 
             <div class="toc-box">
                 <h3>Table of Contents</h3>
@@ -152,8 +151,12 @@
             
             <p>These permissions are handed out to three different groups in this exact order: the <strong>User</strong> (the owner), the <strong>Group</strong> (other associated accounts), and <strong>Others</strong> (everyone else/guests).</p>
 
+            <div class="callout-info">
+                <strong>💡 Practice Changing Locks:</strong> Want to see how file permissions actually work? Open the <a href="../../terminal/index.html" target="_blank" style="color: var(--accent-green); text-decoration: underline;">JR Nation Terminal Playground</a> and practice creating files with <code>touch</code>, and then modifying their permissions with <code>chmod</code>.
+            </div>
+
             <h2 id="chmod">3. Changing the Locks (chmod)</h2>
-            <p>If you download a script from GitHub, Linux will block it from running by default to protect you. You have to explicitly give it permission to execute. You do this using the <code>chmod</code> (Change Mode) command.</p>
+            <p>If you pull a random script off GitHub, Linux will aggressively block it from running by default to protect you from yourself. You have to explicitly hand over the keys and give it permission to execute. You do this using the <code>chmod</code> (Change Mode) command.</p>
 
             <div class="code-block-container">
                 <p class="terminal-cmd">$ chmod +x install_script.sh</p>
@@ -165,7 +168,7 @@
             </div>
 
             <h2 id="chown">4. Claiming Ownership (chown)</h2>
-            <p>Sometimes you might move a file using <code>sudo</code>, and suddenly your normal user account is locked out of it because the file is now owned by the "root" administrator. To take it back, use <code>chown</code> (Change Owner).</p>
+            <p>Sometimes you might move a file using <code>sudo</code>, and suddenly your normal user account is locked out of it because the file is now owned by the all-powerful "root" administrator. To steal ownership back, use <code>chown</code> (Change Owner).</p>
 
             <div class="code-block-container">
                 <p class="terminal-cmd">$ sudo chown jaya:jaya my_locked_file.txt</p>
@@ -176,7 +179,7 @@
 
         <hr class="section-divider">
 
-        <div class="guide-nav">
+        <div class="guide-nav" style="display: flex; gap: 20px; justify-content: space-between;">
             <a href="fs.html" class="btn-secondary">← Back: CLI Basics</a>
             <a href="pacmans.html" class="btn-primary">Next: Package Managers →</a>
         </div>
