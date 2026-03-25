@@ -5,24 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Choosing Your Linux Distro | The Linux Hub</title>
     <meta name="description" content="Debian vs. Fedora vs. Arch. A comprehensive guide to choosing the perfect Linux distribution for your hardware, workflow, and gaming setup.">
+    <link rel="icon" type="image/png" href="../favicon.png">
     <link rel="stylesheet" href="style.css">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5103156070877653"
-     crossorigin="anonymous"></script>
 </head>
 <body>
 
 <header class="navbar">
     <div class="logo">
-        <a href="index.html">
-            <img src="logo.png" alt="Linux Hub Logo" class="logo-img">
+        <a href="../index.html">
+            <img src="../logo.png" alt="Linux Hub Logo" class="logo-img" onerror="this.style.display='none'">
             The Linux Hub
         </a>
     </div>
     <nav>
-        <a href="index.html">Home</a>
-        <a href="about.html" target="_blank" rel="noopener noreferrer">About Us</a>
-        <a href="privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
-        <a href="join.html" target="_blank" rel="noopener noreferrer">Join Us</a>
+        <a href="index.html">Hub Home</a>
+        <a href="../lore.html">About Us</a>
+        <a href="../privacy.html">Privacy Policy</a>
+        <a href="https://discord.gg/qMCyTNcDsV" target="_blank" rel="noopener noreferrer">Join Us</a>
     </nav>
     <button id="menu-btn" class="hamburger">☰ Menu</button>
 </header>
@@ -36,18 +35,16 @@
         <article>
             <h1 style="font-size: 2.8rem; margin-bottom: 10px;">The Illusion of Choice: Picking Your Distro</h1>
             <div class="meta-info" style="margin-bottom: 30px;">
-                <span>Distro-hopping is a disease. Let's cure it before you catch it.</span> | <span>👤 By JR Nation</span>
+                <span style="color: #8b949e;">Distro-hopping is a disease. Let's cure it before you catch it.</span> | <span style="color: var(--accent-green);">👤 By JR Nation</span>
             </div>
 
             <p>If you go to a site like DistroWatch, you will see hundreds of different Linux operating systems. It looks overwhelming. But here is the secret the veterans know: <strong>almost all of them are basically the exact same thing.</strong></p>
             
             <p>A "Distribution" (Distro) is just the Linux Kernel packaged together with a specific Desktop Environment (the UI) and a specific Package Manager. If you strip away the custom wallpapers and default apps, 95% of the Linux world traces its DNA back to just three major family trees.</p>
 
-            
-
-            <div class="toc-box">
-                <h3>Table of Contents</h3>
-                <ul>
+            <div class="cheat-sheet-box">
+                <h3 style="margin-top: 0; color: var(--accent-green);">Table of Contents</h3>
+                <ul style="list-style: none; padding: 0;">
                     <li><a href="#debian">1. The Debian Family (Ubuntu, Mint, Pop!_OS)</a></li>
                     <li><a href="#fedora">2. The Red Hat Family (Fedora, Nobara)</a></li>
                     <li><a href="#arch">3. The Arch Family (EndeavourOS, Manjaro)</a></li>
@@ -60,7 +57,7 @@
             <p>If you have ever looked up a Linux tutorial on YouTube, it was probably made for a Debian-based system. This is the largest, most heavily supported family in the Linux ecosystem.</p>
 
             <ul>
-                <li><strong>The Package Manager:</strong> <code>APT</code> (.deb files)</li>
+                <li><strong>The Package Manager:</strong> <kbd>APT</kbd> (.deb files)</li>
                 <li><strong>The Vibe:</strong> "It just works."</li>
                 <li><strong>Top Distros:</strong> Ubuntu, Linux Mint, Pop!_OS.</li>
             </ul>
@@ -71,7 +68,7 @@
             <p>Fedora is the upstream testing ground for Red Hat Enterprise Linux (which runs the servers of Fortune 500 companies). It strikes the absolute perfect balance between bleeding-edge software and rock-solid stability.</p>
 
             <ul>
-                <li><strong>The Package Manager:</strong> <code>DNF</code> (.rpm files)</li>
+                <li><strong>The Package Manager:</strong> <kbd>DNF</kbd> (.rpm files)</li>
                 <li><strong>The Vibe:</strong> "Fresh, modern, and professional."</li>
                 <li><strong>Top Distros:</strong> Fedora Workstation, Nobara, Bazzite.</li>
             </ul>
@@ -82,7 +79,7 @@
             <p>This is where the power users live. Arch is a "Rolling Release" distribution. There is no "Arch 24.04"—you just install it once, and it updates continuously forever. When a software developer publishes an update to an app, Arch users get it almost immediately.</p>
 
             <ul>
-                <li><strong>The Package Manager:</strong> <code>Pacman</code> (and the legendary AUR)</li>
+                <li><strong>The Package Manager:</strong> <kbd>Pacman</kbd> (and the legendary AUR)</li>
                 <li><strong>The Vibe:</strong> "I built this system with my own two hands."</li>
                 <li><strong>Top Distros:</strong> Arch Linux, EndeavourOS, Garuda Linux.</li>
             </ul>
@@ -94,7 +91,7 @@
             
             <p>If you just bought a brand-new, recently released GPU, an older Debian-based system might not have the kernel drivers for it yet. You will want a distro that ships with a much newer kernel.</p>
 
-            <div class="callout info" style="border-left: 4px solid #89b4fa; background-color: rgba(137, 180, 250, 0.1); padding: 15px; border-radius: 4px; margin: 20px 0;">
+            <div class="callout-info">
                 <strong>🎮 The Best Distros for Pure Gaming:</strong>
                 <br><br>
                 <strong>1. Bazzite or Nobara (Fedora-based):</strong> Custom-built by Linux gaming veterans. They come with Steam, Proton, specialized gaming kernels, and controller support pre-installed out of the box.
