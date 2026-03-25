@@ -5,24 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Linux System Essentials | The Linux Hub</title>
     <meta name="description" content="Learn the Linux file system hierarchy, understand the root directory, master hidden dotfiles, and grasp basic file permissions.">
+    <link rel="icon" type="image/png" href="../../favicon.png">
     <link rel="stylesheet" href="../style.css">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5103156070877653"
-     crossorigin="anonymous"></script>
 </head>
 <body>
 
 <header class="navbar">
     <div class="logo">
-        <a href="../index.html">
-            <img src="../logo.png" alt="Linux Hub Logo" class="logo-img">
+        <a href="../../index.html">
+            <img src="../../logo.png" alt="Linux Hub Logo" class="logo-img" onerror="this.style.display='none'">
             The Linux Hub
         </a>
     </div>
     <nav>
-        <a href="../index.html">Home</a>
-        <a href="../about.html" target="_blank" rel="noopener noreferrer">About Us</a>
-        <a href="../privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
-        <a href="../join.html" target="_blank" rel="noopener noreferrer">Join Us</a>
+        <a href="../index.html">Hub Home</a>
+        <a href="../../lore.html" target="_blank" rel="noopener noreferrer">About Us</a>
+        <a href="../../privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+        <a href="https://discord.gg/qMCyTNcDsV" target="_blank" rel="noopener noreferrer">Join Us</a>
     </nav>
     <button id="menu-btn" class="hamburger">☰ Categories</button>
 </header>
@@ -40,18 +39,18 @@
 
     <main class="content guide-page">
         <div class="breadcrumbs">
-            <a href="../index.html">Home</a> &gt; <a href="everyday.html">Everyday Use</a> &gt; <span>System Essentials</span>
+            <a href="../index.html">Hub Home</a> &gt; <a href="everyday.html">Everyday Use</a> &gt; <span>System Essentials</span>
         </div>
 
-<article>
+        <article>
             <h1>System Essentials: Navigating Your New Home</h1>
             <div class="meta-info">
                 <span>The C:\ Drive is dead. Welcome to the Root.</span> | <span>👤 By JR Nation</span>
             </div>
 
-            <p>One of the biggest hurdles when switching to Linux is realizing that the filesystem is completely different. There is no <code>C:\</code> drive for your OS and <code>D:\</code> drive for your games. In Linux, <strong>everything is a file</strong>, and everything starts from a single, unified point.</p>
+            <p>One of the biggest mental hurdles when migrating to Linux is realizing the <code>C:\</code> drive is a lie. There is no <code>C:\</code> drive for your OS and <code>D:\</code> drive for your Steam library. In Linux, <strong>absolutely everything is a file</strong>, and the entire system grows from a single, unified point.</p>
             
-            <p>To truly own your system, you need to understand how this architecture is laid out. It might feel alien at first, but once it clicks, you will realize how incredibly organized and secure the open-source world actually is compared to the chaotic registry of Windows.</p>
+            <p>To truly own your machine, you need to understand how this architecture is laid out. It might feel alien at first, but once it clicks, you will realize how incredibly organized and secure the open-source world actually is compared to the chaotic registry of Windows.</p>
 
             <div class="toc-box">
                 <h3>Table of Contents</h3>
@@ -66,21 +65,21 @@
             </div>
 
             <h2 id="the-root">1. The Root of Everything ( / )</h2>
-            <p>In Windows, your physical drives dictate the file structure (Drive C, Drive D). In Linux, the entire file system is a single, massive tree, and the very top of that tree is called the <strong>Root Directory</strong>, represented by a simple forward slash: <code>/</code>.</p>
+            <p>In Windows, your physical drives dictate the file structure. In Linux, the entire file system is a single, massive tree, and the absolute top of that tree is called the <strong>Root Directory</strong>, represented by a simple forward slash: <code>/</code>.</p>
             
-            <p>If you open your file manager and navigate to <code>/</code>, you will see folders like <code>/bin</code>, <code>/etc</code>, and <code>/usr</code>. These contain the core operating system binaries and global configuration files. <strong>Do not touch these files unless you know exactly what you are doing.</strong> You do not have permission to modify them by default, and forcing changes here can instantly break your operating system.</p>
+            <p>If you open your file manager and navigate to <code>/</code>, you will see folders like <code>/bin</code>, <code>/etc</code>, and <code>/usr</code>. These contain the core operating system binaries and global configuration files. <strong>Do not touch these files unless you know exactly what you are doing.</strong> You do not have permission to modify them by default, and forcing changes here can instantly brick your operating system.</p>
 
             <h2 id="the-home">2. Your Sanctuary: The /home Directory</h2>
-            <p>Inside the Root tree, there is a very special folder called <code>/home</code>. This is where your personal user account lives (for example, <code>/home/jrnation</code>). </p>
+            <p>Inside the Root tree, there is a very special folder called <code>/home</code>. This is where your personal user account lives (for example, <code>/home/jrnation</code>).</p>
             
             <p>This is your absolute fortress. Inside your home folder, you have complete power. This is where your Downloads, Documents, Pictures, and Steam game libraries are stored. If you ever break your system and need to reinstall Linux, you can actually tell the installer to keep your <code>/home</code> partition completely intact, meaning you won't lose a single personal file or game save even while replacing the core OS.</p>
 
             <div class="callout-info">
-                <strong>💡 Terminal Pro-Tip (The Tilde):</strong> In the terminal, typing out `/home/yourusername/Downloads` gets annoying fast. Linux uses the tilde symbol (<code>~</code>) as a universal shortcut for your home folder. Typing <code>cd ~/Downloads</code> will always take you right to your downloads, no matter where you currently are in the system.
+                <strong>💡 Terminal Pro-Tip (The Tilde):</strong> In the terminal, typing out <code>/home/yourusername/Downloads</code> gets annoying fast. Linux uses the tilde symbol (<code>~</code>) as a universal shortcut for your home folder. Typing <code>cd ~/Downloads</code> will always take you right to your downloads, no matter where you currently are in the matrix.
             </div>
 
             <h2 id="dotfiles">3. The Secret World: Hidden Dotfiles</h2>
-            <p>In Windows, application settings are buried in an invisible, easily corruptible nightmare called the "Registry." In Linux, your application settings, custom themes, and tweaks are simply saved as plain text files right inside your <code>/home</code> directory.</p>
+            <p>In Windows, application settings are buried in an invisible, easily corruptible nightmare called the "Registry." In Linux, your application settings, custom themes, and UI tweaks are simply saved as plain text files right inside your <code>/home</code> directory.</p>
             
             <p>However, to keep your folders looking clean, Linux hides these configuration files by putting a period (dot) at the beginning of their name. These are known in the community as <strong>Dotfiles</strong> (e.g., <code>.config</code> or <code>.bashrc</code>).</p>
 
@@ -95,19 +94,19 @@
             <h2 id="permissions">4. Permissions & The "sudo" Concept</h2>
             <p>Linux is built like a bank vault. By default, your user account only has permission to modify files inside your <code>/home</code> folder. If a virus somehow gets downloaded onto your computer, it cannot infect the core system because it physically does not have the keys to modify the <code>/</code> Root directory.</p>
             
-            <p>When you *do* need to install a system-wide app or update the kernel, you use the <strong>sudo</strong> command ("Superuser Do"). This temporarily elevates your privileges to "God Mode." The terminal will ask for your password to verify your identity, execute the single command, and immediately lock the vault back up. This strict permission structure is exactly why Linux doesn't need traditional, resource-heavy antivirus software.</p>
+            <p>When you *do* need to install a system-wide app or update the kernel, you use the <strong>sudo</strong> command ("Superuser Do"). This temporarily elevates your privileges to "God Mode." The terminal will ask for your password to verify your identity, execute the single command, and immediately lock the vault back up. This strict, paranoid permission structure is exactly why Linux doesn't need traditional, resource-heavy antivirus software.</p>
 
             <h2 id="software">5. Where are my .exe files?</h2>
             <p>Stop downloading installers from random websites! On Windows, you hunt the web for <code>.exe</code> files, hoping they don't contain malware. On Linux, 99% of your software is installed through a centralized, highly secure <strong>Package Manager</strong> or a graphical App Store (like GNOME Software, Discover, or the Mint Software Manager).</p>
             
-            <p>These managers pull software directly from verified, cryptographically signed repositories maintained by your distribution's developers. It is exactly like the Google Play Store or Apple App Store, but for your desktop PC.</p>
+            <p>These managers pull software directly from verified, cryptographically signed repositories maintained by your distribution's developers. It is exactly like the Google Play Store or Apple App Store, but built for your desktop PC.</p>
 
             <div class="faq-section" id="faq">
                 <h2>6. Frequently Asked Questions</h2>
 
                 <div class="faq-item">
                     <h3>Can I still access my Windows files from Linux?</h3>
-                    <p>Yes! Linux has native, built-in support for reading and writing to Windows NTFS drives. If you dual-booted, simply open your file manager, and you will usually see your old Windows drive listed in the sidebar under "Other Locations" or "Devices." Click it to mount it and grab your files.</p>
+                    <p>Yes. Linux has native, built-in support for reading and writing to Windows NTFS drives. If you dual-booted, simply open your file manager, and you will usually see your old Windows drive listed in the sidebar under "Other Locations" or "Devices." Click it to mount it and grab your files.</p>
                 </div>
                 <div class="faq-item">
                     <h3>Why doesn't my terminal show any characters when I type my sudo password?</h3>
@@ -119,7 +118,7 @@
 
         <hr class="section-divider">
 
-        <div class="guide-nav">
+        <div class="guide-nav" style="display: flex; gap: 20px; justify-content: space-between;">
             <a href="de.html" class="btn-secondary">← Back: Desktop Environments</a>
             <a href="gaming.html" class="btn-primary">Next: Gaming on Linux →</a>
         </div>
