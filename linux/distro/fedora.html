@@ -4,26 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fedora Linux | The Linux Hub</title>
-    <meta name="description" content="Fedora Linux: The bleeding-edge workstation preferred by developers and Linus Torvalds himself.">
+    <meta name="description" content="Fedora Linux: The bleeding-edge workstation preferred by developers and Linus Torvalds. Learn about DNF, Btrfs, SELinux, and the Red Hat pipeline.">
+    <link rel="icon" type="image/png" href="../../favicon.png">
     <link rel="stylesheet" href="../style.css">
-
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5103156070877653"
-     crossorigin="anonymous"></script>
+    
 </head>
 <body>
 
 <header class="navbar">
     <div class="logo">
         <a href="../index.html">
-            <img src="../logo.png" alt="Linux Hub Logo" class="logo-img">
+            <img src="../../logo.png" alt="Linux Hub Logo" class="logo-img" onerror="this.style.display='none'">
             The Linux Hub
         </a>
     </div>
     <nav>
-        <a href="../index.html">Home</a>
-        <a href="../about.html">About Us</a>
-        <a href="../privacy.html">Privacy Policy</a>
-        <a href="../join.html">Join Us</a>
+        <a href="../index.html">Hub Home</a>
+        <a href="../../lore.html" target="_blank" rel="noopener noreferrer">About Us</a>
+        <a href="../../privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+        <a href="https://discord.gg/qMCyTNcDsV" target="_blank" rel="noopener noreferrer">Join Us</a>
     </nav>
     <button id="menu-btn" class="hamburger">☰ Categories</button>
 </header>
@@ -44,22 +43,22 @@
 
     <main class="content guide-page">
         <div class="breadcrumbs">
-            <a href="../index.html">Home</a> &gt; <span>Distributions</span> &gt; <span>Fedora</span>
+            <a href="../index.html">Hub Home</a> &gt; <span>Distributions</span> &gt; <span>Fedora</span>
         </div>
 
- <article>
+        <article>
             <h1>Fedora: The Developer's Engine</h1>
             <div class="meta-info">
                 <span>The sweet spot between bleeding-edge software and enterprise stability.</span> | <span>👤 By JR Nation</span>
             </div>
 
-            <p>Fedora is the upstream proving ground for Red Hat Enterprise Linux (a multi-billion dollar corporation). It is the operating system that Linus Torvalds, the creator of Linux, famously uses on his personal machines. If you want a modern system without the anxiety of Arch, this is it.</p>
+            <p>Fedora is the upstream proving ground for Red Hat Enterprise Linux (a multi-billion dollar corporation). It is widely regarded as one of the most polished, forward-thinking operating systems on the planet. It is famously the operating system that Linus Torvalds, the creator of Linux, uses on his own personal workstations.</p>
             
             <div style="margin: 20px 0;">
                 <a href="https://fedoraproject.org/" class="btn-primary" target="_blank" rel="noopener noreferrer">Download Fedora</a>
             </div>
 
-            <p>While Ubuntu focuses on making Linux friendly for absolute beginners, Fedora focuses on giving software developers, sysadmins, and power users a pristine, uncompromised Linux experience. It doesn't heavily modify the desktop environment; it gives you the software exactly as the original developers intended.</p>
+            <p>While Ubuntu focuses on making Linux friendly for absolute beginners by heavily modifying the desktop, Fedora focuses on giving software developers, sysadmins, and power users a pristine, uncompromised Linux experience. It ships "Vanilla GNOME"—delivering the software exactly as the original developers intended it to be used.</p>
 
             <div class="toc-box">
                 <h3>Table of Contents</h3>
@@ -72,50 +71,50 @@
             </div>
 
             <h2 id="pipeline">1. The Red Hat Pipeline</h2>
-            <p>To understand Fedora, you have to understand its relationship with Red Hat. When massive shifts happen in the Linux world—like switching from the ancient X11 display server to Wayland, or upgrading the entire audio stack to PipeWire—Fedora is almost always the first major distribution to force the change.</p>
+            <p>To understand Fedora, you have to understand its relationship with Red Hat. When massive architectural shifts happen in the Linux world—like switching from the ancient X11 display server to Wayland, or upgrading the entire audio stack from PulseAudio to PipeWire—Fedora is almost always the first major distribution to adopt and force the change.</p>
             
-            <p>The pipeline works like this:</p>
+            <p>The enterprise pipeline works like this:</p>
             <ul>
-                <li><strong>Fedora:</strong> Gets the brand new technology first. The community tests it, breaks it, and fixes it. Releases every 6 months.</li>
-                <li><strong>CentOS Stream:</strong> Once the tech is stable in Fedora, it moves here to be prepared for the enterprise environment.</li>
+                <li><strong>Fedora:</strong> Gets the brand new technology first. The community tests it, breaks it, and fixes it. It operates on a fast 6-month release cycle.</li>
+                <li><strong>CentOS Stream:</strong> Once the tech is stable in Fedora, it moves here to be prepared for the strict enterprise server environment.</li>
                 <li><strong>Red Hat Enterprise Linux (RHEL):</strong> The rock-solid, unbreakable final product that runs banks, supercomputers, and governments.</li>
             </ul>
-            <p>By using Fedora, you are safely living about 6 to 12 months in the future compared to standard Ubuntu users.</p>
+            <p>By using Fedora, you are safely living about 6 to 12 months in the future compared to standard Ubuntu or Debian users, but with the backing of a massive enterprise engineering team.</p>
 
             <h2 id="package-manager">2. DNF, RPMs, and Flatpaks</h2>
-            <p>Fedora abandons Debian's <code>.deb</code> packages and the APT manager. Instead, it uses <strong>RPM</strong> (Red Hat Package Manager) and a frontend tool called <strong>DNF</strong> (Dandified YUM).</p>
+            <p>Fedora abandons Debian's <code>.deb</code> packages and the APT package manager entirely. Instead, it uses the <strong>RPM</strong> (Red Hat Package Manager) format and a modern frontend terminal tool called <strong>DNF</strong> (Dandified YUM).</p>
 
-            <p>DNF is slightly slower to download than APT, but its dependency resolution is vastly smarter. It rarely breaks, and it automatically cleans up orphaned packages much better than APT does.</p>
+            <p>DNF is slightly slower to download packages than APT, but its dependency resolution algorithm is vastly smarter. It rarely breaks, it handles conflicts gracefully, and it automatically cleans up orphaned packages much more efficiently than APT does.</p>
 
             <div class="code-block-container">
                 <p class="terminal-cmd">$ sudo dnf upgrade --refresh</p>
-                <p class="terminal-comment"># Updates your repository lists and upgrades all packages in one single command.</p>
+                <p class="terminal-comment"># Updates your repository metadata and upgrades all packages in one single command.</p>
                 <br>
-                <p class="terminal-cmd">$ sudo dnf search python3</p>
-                <p class="terminal-comment"># DNF's search output is beautifully formatted and easy to read.</p>
+                <p class="terminal-cmd">$ dnf search python3</p>
+                <p class="terminal-comment"># DNF's search output is beautifully formatted, color-coded, and easy to read.</p>
             </div>
 
             <div class="callout-info">
-                <strong>💡 Flatpak First:</strong> Fedora heavily champions the <strong>Flatpak</strong> universal package format. Out of the box, the Fedora software center integrates flawlessly with Flathub, giving you access to sandbox-isolated apps (like Spotify, Discord, and Steam) without messing with your core system files.
+                <strong>💡 Flatpak First:</strong> While Ubuntu pushes "Snaps", Fedora heavily champions the <strong>Flatpak</strong> universal package format. Out of the box, the Fedora software center integrates flawlessly with Flathub, giving you instant access to sandbox-isolated graphical apps (like Spotify, Discord, and Steam) without them ever messing with your core system dependencies.
             </div>
 
             <h2 id="under-the-hood">3. Under the Hood: Btrfs & SELinux</h2>
             <p>Fedora makes aggressive, forward-thinking technical choices by default.</p>
 
             <h3>The Btrfs Filesystem</h3>
-            <p>Most Linux distros use the <code>ext4</code> filesystem. Fedora defaults to <strong>Btrfs</strong>. This modern filesystem supports instant "Snapshots." If an update breaks your system, Btrfs allows you to roll back your entire hard drive to the exact state it was in 5 minutes ago, almost instantaneously.</p>
+            <p>While most Linux distros still use the older <code>ext4</code> filesystem, Fedora defaults to the modern <strong>Btrfs</strong> (B-Tree Filesystem). This advanced filesystem supports instant "Snapshots." If an update breaks your system, Btrfs allows you to roll back your entire hard drive to the exact state it was in 5 minutes ago, almost instantaneously.</p>
 
             <h3>SELinux (Security-Enhanced Linux)</h3>
-            <p>Developed originally by the NSA, SELinux is an incredibly strict security module baked into the kernel. It dictates exactly which applications are allowed to talk to which files. In Ubuntu, security modules (AppArmor) are relatively quiet. In Fedora, SELinux is set to "Enforcing" mode by default.</p>
+            <p>Developed originally by the United States National Security Agency (NSA), SELinux is an incredibly strict security module baked directly into the kernel. It dictates exactly which applications are allowed to talk to which files. While Ubuntu uses a quieter module called AppArmor, Fedora ships with SELinux set to "Enforcing" mode by default, making it exceptionally secure against zero-day exploits.</p>
 
             <div class="callout-warning">
-                <strong>⚠️ The SELinux Trap:</strong> If you try to run a custom web server or move system files around, SELinux might aggressively block you. Many lazy tutorials will tell you to "just disable SELinux." <strong>Do not do this.</strong> A true power user learns to read the audit logs and configure SELinux policies correctly.
+                <strong>⚠️ The SELinux Trap:</strong> If you try to run a custom web server, install Docker, or move system files around, SELinux might aggressively block you. Many lazy tutorials will tell you to "just disable SELinux." <strong>Do not do this.</strong> A true power user learns to read the audit logs and configure SELinux policies correctly.
             </div>
 
             <h2 id="silverblue">4. The Immutable Future (Silverblue)</h2>
-            <p>Fedora is also pioneering the next generation of Linux desktop architecture with a variant called <strong>Fedora Silverblue</strong>.</p>
+            <p>Fedora is also pioneering the next generation of Linux desktop architecture with an official variant called <strong>Fedora Silverblue</strong>.</p>
             
-            <p>Silverblue is an "immutable" operating system. Every core system file is locked as read-only. You cannot accidentally delete a vital file, and updates are applied as a completely new, atomic system image (like an Android or iOS update). If an update fails, you simply reboot into the previous working image. It is virtually indestructible.</p>
+            <p>Silverblue is an "immutable" operating system. Every core system file is locked as read-only. You cannot accidentally delete a vital file, and updates are not applied package-by-package. Instead, updates are downloaded in the background as a completely new, atomic system image (similar to how an Android or iOS update works). You reboot, and the system swaps to the new image. If an update fails, you simply reboot into the previous working image. It is virtually indestructible.</p>
 
         </article>
 

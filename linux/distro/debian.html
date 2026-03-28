@@ -4,26 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Debian Linux | The Linux Hub</title>
-    <meta name="description" content="Learn about Debian, the unbreakable rock of the Linux world and the grandfather of Ubuntu.">
+    <meta name="description" content="Deep dive into Debian Linux. Learn about the Universal Operating System, the Stable vs. Sid release branches, the DFSG, and the history of APT.">
+    <link rel="icon" type="image/png" href="../../favicon.png">
     <link rel="stylesheet" href="../style.css">
-
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5103156070877653"
-     crossorigin="anonymous"></script>
 </head>
 <body>
 
 <header class="navbar">
     <div class="logo">
         <a href="../index.html">
-            <img src="../logo.png" alt="Linux Hub Logo" class="logo-img">
+            <img src="../../logo.png" alt="Linux Hub Logo" class="logo-img" onerror="this.style.display='none'">
             The Linux Hub
         </a>
     </div>
     <nav>
-        <a href="../index.html">Home</a>
-        <a href="../about.html">About Us</a>
-        <a href="../privacy.html">Privacy Policy</a>
-        <a href="../join.html">Join Us</a>
+        <a href="../index.html">Hub Home</a>
+        <a href="../../lore.html" target="_blank" rel="noopener noreferrer">About Us</a>
+        <a href="../../privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+        <a href="https://discord.gg/qMCyTNcDsV" target="_blank" rel="noopener noreferrer">Join Us</a>
     </nav>
     <button id="menu-btn" class="hamburger">☰ Categories</button>
 </header>
@@ -44,16 +42,18 @@
 
     <main class="content guide-page">
         <div class="breadcrumbs">
-            <a href="../index.html">Home</a> &gt; <span>Distributions</span> &gt; <span>Debian</span>
+            <a href="../index.html">Hub Home</a> &gt; <span>Distributions</span> &gt; <span>Debian</span>
         </div>
 
-<article>
+        <article>
             <h1>Debian: The Unbreakable Rock</h1>
             <div class="meta-info">
                 <span>Ancient software. Absolute stability. The grandfather of them all.</span> | <span>👤 By JR Nation</span>
             </div>
 
-            <p>If Ubuntu is the user-friendly offspring, Debian is the hardcore, uncompromising grandfather. Created in 1993, it is one of the oldest operating systems in existence. It powers the International Space Station, massive server farms, and power users who absolutely despise when their computer crashes.</p>
+            <p>If Ubuntu is the user-friendly offspring, Debian is the hardcore, uncompromising grandfather. Founded in 1993 by Ian Murdock (who famously named the OS by combining his girlfriend's name, Debra, with his own: Deb-Ian), it is one of the oldest operating systems in existence.</p>
+            
+            <p>Known as the "Universal Operating System," Debian is designed to run on almost any hardware architecture imaginable. It powers the International Space Station, massive server farms, and power users who absolutely despise when their computer crashes.</p>
 
             <div style="margin: 20px 0;">
                 <a href="https://www.debian.org/download" class="btn-primary" target="_blank" rel="noopener noreferrer">Download Debian</a>
@@ -62,40 +62,49 @@
             <div class="toc-box">
                 <h3>Table of Contents</h3>
                 <ul>
-                    <li><a href="#branches">1. The Three Tiers of Debian</a></li>
-                    <li><a href="#philosophy">2. The Free Software Philosophy</a></li>
+                    <li><a href="#branches">1. The Three Tiers (And The Toy Story Lore)</a></li>
+                    <li><a href="#philosophy">2. The Free Software Philosophy (DFSG)</a></li>
                     <li><a href="#package-manager">3. The Godfather of APT</a></li>
                     <li><a href="#verdict">4. The Final Verdict</a></li>
                 </ul>
             </div>
 
-            <h2 id="branches">1. The Three Tiers of Debian</h2>
-            <p>Debian doesn't just offer one version of its operating system. It operates on a massive, highly structured pipeline divided into three distinct "branches" depending on your risk tolerance:</p>
+            <h2 id="branches">1. The Three Tiers (And The Toy Story Lore)</h2>
+            <p>Debian doesn't just offer one version of its operating system. It operates on a massive, highly structured pipeline divided into three distinct "branches." Fun fact: every Debian release is officially named after a character from the movie <em>Toy Story</em> (e.g., Bullseye, Bookworm, Trixie).</p>
+            
             <ul>
                 <li><strong>Stable:</strong> The flagship version. Software in this branch is heavily tested for months or even years before release. It literally does not break. But that stability comes with a brutal trade-off: your software is old. If you install Discord two years into a release cycle, you get code that is two years old.</li>
-                <li><strong>Testing:</strong> Software that is being prepared for the next "Stable" release. It is newer, reasonably reliable, and highly popular for desktop users who want updated apps without the extreme outdatedness of Stable.</li>
-                <li><strong>Unstable (Sid):</strong> The bleeding edge. Named after the kid who breaks toys in <em>Toy Story</em>, this is where all new packages are uploaded first. It can break, but it gives developers immediate access to the latest code.</li>
+                <li><strong>Testing:</strong> Software that is currently being prepared for the next "Stable" release. It is newer, reasonably reliable, and highly popular for desktop users who want updated apps without the extreme outdatedness of the Stable branch.</li>
+                <li><strong>Unstable (Sid):</strong> The bleeding edge. Named after the kid who breaks toys in <em>Toy Story</em>, "Sid" is where all new packages are uploaded first. It can break your system, but it gives developers immediate access to the latest code.</li>
             </ul>
 
-            <h2 id="philosophy">2. The Free Software Philosophy</h2>
-            <p>Debian has a strict moral code known as the Debian Free Software Guidelines (DFSG). Historically, Debian's default installer refused to include proprietary, closed-source drivers (like NVIDIA graphics or certain Wi-Fi cards). If you installed it, you were left without Wi-Fi until you manually fixed it via a USB stick.</p>
+            <h2 id="philosophy">2. The Free Software Philosophy (DFSG)</h2>
+            <p>Debian operates on a strict moral code known as the <strong>Debian Free Software Guidelines (DFSG)</strong>. By default, Debian's repositories are split into three categories:</p>
+            
+            <ul style="color: var(--text-main);">
+                <li><code>main</code>: 100% free and open-source software.</li>
+                <li><code>contrib</code>: Free software that depends on non-free software to run.</li>
+                <li><code>non-free</code>: Proprietary, closed-source software (like NVIDIA graphics drivers).</li>
+            </ul>
+
+            <p>Historically, Debian's default installer outright refused to include the <code>non-free</code> drivers. If you installed it on a laptop, you were usually left without Wi-Fi until you manually fixed it via an offline USB stick.</p>
             
             <div class="callout-info">
                 <strong>💡 The Debian 12 Shift:</strong> Realizing this was alienating normal users, the community held a historic vote. Starting with Debian 12 (Bookworm), official ISOs now include <strong>non-free firmware</strong> by default. You can finally install Debian on a modern laptop and have your Wi-Fi and graphics card work immediately out of the box.
             </div>
 
             <h2 id="package-manager">3. The Godfather of APT</h2>
-            <p>Ubuntu, Linux Mint, Pop!_OS, and Kali Linux didn't build their package managers from scratch—they inherited them from Debian. Debian is the creator of the <code>.deb</code> package format and the legendary <strong>APT (Advanced Package Tool)</strong> system.</p>
+            <p>Ubuntu, Linux Mint, Pop!_OS, and Kali Linux didn't build their package managers from scratch—they inherited them directly from Debian. Debian is the creator of the <code>.deb</code> package format and the legendary <strong>APT (Advanced Package Tool)</strong> system.</p>
 
-            <p>If you know how to use the terminal in Ubuntu, you already know how to use Debian. There is zero learning curve for package management.</p>
+            <p>Before APT was invented in 1998, installing software on Linux meant manually hunting down every single background dependency. Debian revolutionized the computing world by automating dependency resolution. If you know how to use the terminal in Ubuntu, you already know how to use Debian. There is zero learning curve.</p>
 
             <div class="code-block-container">
-                <p class="terminal-cmd">$ sudo apt update && sudo apt upgrade</p>
+                <p class="terminal-cmd">$ sudo apt update && sudo apt upgrade -y</p>
                 <p class="terminal-comment"># The exact same syntax you use in Ubuntu works natively here.</p>
             </div>
 
             <h2 id="verdict">4. The Final Verdict</h2>
-            <p>Do not install Debian Stable on a brand-new, high-end gaming PC that was released last week; the older kernel won't know what to do with your cutting-edge hardware. </p>
+            <p>Do not install Debian Stable on a brand-new, high-end gaming PC that was released last week; the older kernel won't know what to do with your cutting-edge hardware components.</p>
             
             <p>Instead, install Debian on a home server, a Raspberry Pi, a developer workstation, or a laptop where your only requirement is that the machine turns on and works exactly the same way every single day for the next 5 years. It is the undisputed king of reliability.</p>
 
