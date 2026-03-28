@@ -4,25 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Window Managers | The Linux Hub</title>
-    <meta name="description" content="Ditch your Desktop Environment. Learn about Tiling Window Managers like i3, Sway, and Hyprland to build a keyboard-driven OS.">
+    <meta name="description" content="Ditch your Desktop Environment. Learn about Tiling Window Managers like i3, Sway, and Hyprland, and build a keyboard-driven, modular Linux OS.">
+    <link rel="icon" type="image/png" href="../../favicon.png">
     <link rel="stylesheet" href="../style.css">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5103156070877653"
-     crossorigin="anonymous"></script>
 </head>
 <body>
 
 <header class="navbar">
     <div class="logo">
-        <a href="../index.html">
-            <img src="../logo.png" alt="Linux Hub Logo" class="logo-img">
+        <a href="../../index.html">
+            <img src="../../logo.png" alt="Linux Hub Logo" class="logo-img" onerror="this.style.display='none'">
             The Linux Hub
         </a>
     </div>
     <nav>
-        <a href="../index.html">Home</a>
-        <a href="../about.html" target="_blank" rel="noopener noreferrer">About Us</a>
-        <a href="../privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
-        <a href="../join.html" target="_blank" rel="noopener noreferrer">Join Us</a>
+        <a href="../index.html">Hub Home</a>
+        <a href="../../lore.html" target="_blank" rel="noopener noreferrer">About Us</a>
+        <a href="../../privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+        <a href="https://discord.gg/qMCyTNcDsV" target="_blank" rel="noopener noreferrer">Join Us</a>
     </nav>
     <button id="menu-btn" class="hamburger">☰ Categories</button>
 </header>
@@ -41,78 +40,92 @@
 
     <main class="content guide-page">
         <div class="breadcrumbs">
-            <a href="../index.html">Home</a> &gt; <a href="pro.html">The Power User</a> &gt; <span>Window Managers</span>
+            <a href="../index.html">Hub Home</a> &gt; <a href="pro.html">The Power User</a> &gt; <span>Window Managers</span>
         </div>
-        <h3>THIS IS A GUIDE TO WINDOW MANAGERS, I AM NOT FORCING YOU TO USE ONE</h3>
 
-<article>
+        <article>
             <h1>Window Managers: Ditch the Mouse</h1>
             <div class="meta-info">
                 <span>Switching to a WM is like Rock Lee dropping his training weights.</span> | <span>👤 By JR Nation</span>
             </div>
 
-            <p>Right now, you are probably using a <strong>Desktop Environment (DE)</strong> like GNOME, KDE Plasma, or Cinnamon. A DE is a complete package. It comes with a start menu, a taskbar, a Bluetooth manager, a settings app, and a file browser. It is comfortable, heavy, and assumes you want to use your computer like a normal person.</p>
+            <p>Right now, you are probably using a <strong>Desktop Environment (DE)</strong> like GNOME, KDE Plasma, or Cinnamon. A DE is a complete, monolithic package. Out of the box, it provides a start menu, a taskbar, a Bluetooth manager, a settings app, a file browser, and a lock screen. It is comfortable, incredibly heavy, and assumes you want to use your computer like a normal person.</p>
             
-            <p>But you are not a normal person anymore. You are a Power User. You know the terminal. You know your scripts. It's time to strip away the bloat and install a <strong>Window Manager (WM)</strong>.</p>
+            <p>But you are not a normal person anymore. You are a Power User. You know the terminal. You know your scripts. You know that lifting your hand off the keyboard to grab a mouse slows you down. It is time to strip away the corporate bloat, take absolute control of your pixels, and install a <strong>Window Manager (WM)</strong>.</p>
 
             <div class="toc-box">
                 <h3>Table of Contents</h3>
                 <ul>
-                    <li><a href="#de-vs-wm">1. DE vs. WM: The Great Schism</a></li>
-                    <li><a href="#tiling">2. Stacking vs. Tiling</a></li>
-                    <li><a href="#the-big-three">3. The Big Three: i3, Sway, Hyprland</a></li>
-                    <li><a href="#keyboard-driven">4. The "Mod" Key (Keyboard Driven)</a></li>
+                    <li><a href="#de-vs-wm">1. The Great Schism (Compositors vs. WMs)</a></li>
+                    <li><a href="#tiling">2. Tiling Philosophies (Manual vs. Dynamic)</a></li>
+                    <li><a href="#ecosystem">3. The Modular Ecosystem (Waybar, Rofi, Dunst)</a></li>
+                    <li><a href="#the-big-three">4. The Modern Titans: i3, Sway, Hyprland</a></li>
+                    <li><a href="#keyboard-driven">5. The "Mod" Key Workflow</a></li>
                 </ul>
             </div>
 
-            <h2 id="de-vs-wm">1. DE vs. WM: The Great Schism</h2>
-            <p>A Window Manager does exactly one thing: it draws windows on your screen. That is it.</p>
+            <h2 id="de-vs-wm">1. The Great Schism (Compositors vs. WMs)</h2>
+            <p>A pure Window Manager does exactly one thing: it calculates the math required to draw window borders on your screen. That is it.</p>
             
-            <p>If you install a pure WM and log in, there is no start menu. There is no WiFi icon. There is no wallpaper. You just get a black screen. If you want a wallpaper, you have to write a script to draw one. If you want a taskbar, you have to install a separate program (like Waybar or Polybar) and configure it in plain text. </p>
+            <p>If you install a pure WM, strip out your DE, and log in, there is no start menu. There is no WiFi icon. There is no wallpaper. You just get a pitch-black screen. If you want a wallpaper, you have to run a background daemon to draw one. If you want a taskbar, you have to install a separate application entirely and configure it in plain text.</p>
 
-            <p><strong>Why would anyone do this? Performance and Speed.</strong></p>
+            <p><strong>Why would anyone willingly subject themselves to this? Unrivaled Performance.</strong></p>
             <ul>
-                <li>GNOME uses about <strong>1.5 GB</strong> of RAM just sitting idle on your desktop.</li>
-                <li>A custom Window Manager can use as little as <strong>150 MB</strong> of RAM.</li>
+                <li>GNOME uses about <strong>1.5 GB</strong> of RAM just sitting idle on your desktop to power all its heavy background services.</li>
+                <li>A custom Window Manager can use as little as <strong>150 MB</strong> of RAM, freeing up massive resources for compiling code, running virtual machines, or rendering video.</li>
             </ul>
 
-            <h2 id="tiling">2. Stacking vs. Tiling</h2>
-            <p>Windows and macOS use <strong>Stacking</strong> window management. You drag a window with your mouse, it floats on the screen, and you stack other windows on top of it. This creates a messy desk where you spend half your time resizing boxes trying to find what is underneath.</p>
+            <h2 id="tiling">2. Tiling Philosophies (Manual vs. Dynamic)</h2>
+            <p>Windows and macOS use <strong>Stacking</strong> (or Floating) window management. You drag a window with your mouse, it floats on the screen, and you stack other windows on top of it. This creates a chaotic desk where you spend half your time resizing boxes trying to find the terminal hidden underneath your browser.</p>
             
-            <p>Power users use <strong>Tiling</strong>. In a Tiling Window Manager (TWM), windows never overlap. When you open a terminal, it takes up 100% of the screen. When you open a web browser, the screen splits perfectly 50/50. Open a third app, and it mathematically splits the remaining space. Zero wasted pixels. Zero dragging and dropping.</p>
-
-            <h2 id="the-big-three">3. The Big Three: i3, Sway, Hyprland</h2>
-            <p>If you want to ascend to the TWM lifestyle, these are the modern titans:</p>
+            <p>Power users use <strong>Tiling</strong>. In a Tiling Window Manager (TWM), windows never overlap. When you open a terminal, it mathematically claims 100% of the screen. When you open a web browser, the screen splits perfectly 50/50. But how they split depends on the philosophy of the WM:</p>
 
             <ul>
-                <li><strong>i3wm:</strong> The absolute classic. It runs on the older X11 display server. It is rock-solid, uses almost zero resources, and is the best place for a beginner to start learning how to tile.</li>
-                <li><strong>Sway:</strong> A drop-in replacement for i3, but built for the modern, highly secure <strong>Wayland</strong> display server. If you have an AMD or Intel GPU, this is the gold standard for stability.</li>
-                <li><strong>Hyprland:</strong> The current king of the <code>r/unixporn</code> subreddit. It brings fluid, buttery-smooth animations, blurred transparent windows, and gorgeous eye-candy to the tiling world. It requires a bit more hardware power but looks absolutely incredible.</li>
+                <li><strong>Manual Tiling:</strong> (Used by i3 and Sway). You explicitly tell the WM where the next window should go before you open it. You press a shortcut to split the screen horizontally, then open your app. You have absolute control over the layout.</li>
+                <li><strong>Dynamic Tiling:</strong> (Used by AwesomeWM, dwm, and Hyprland). The WM uses complex algorithms (like Binary Space Partitioning or Fibonacci spirals) to automatically place windows for you based on a master/stack layout. The largest window is the "Master", and new windows automatically stack in a smaller column next to it.</li>
             </ul>
 
-            <h2 id="keyboard-driven">4. The "Mod" Key (Keyboard Driven)</h2>
-            <p>In a TWM, you almost never use your mouse. Everything is controlled by a designated "Modifier" key (usually the <kbd>Windows/Super</kbd> key or the <kbd>Alt</kbd> key).</p>
+            <h2 id="ecosystem">3. The Modular Ecosystem (Waybar, Rofi, Dunst)</h2>
+            <p>Because a Window Manager doesn't come with a taskbar or a start menu, you get to build your own Desktop Environment using highly specialized, independent modular programs. This is where "Ricing" reaches its peak form.</p>
+            
+            <ul>
+                <li><strong>The Bar:</strong> Instead of the heavy Windows taskbar, users install tools like <strong>Polybar</strong> (for X11) or <strong>Waybar</strong> (for Wayland). You write a script to tell the bar exactly what to display—from your CPU temperature, to the current song playing on Spotify, to your custom workspaces.</li>
+                <li><strong>The Launcher:</strong> Because there is no start menu, you install an application launcher like <strong>Rofi</strong> or <strong>Wofi</strong>. Pressing a shortcut spawns a lightning-fast, searchable text menu in the center of your screen. Type the first three letters of an app, hit enter, and it launches instantly.</li>
+                <li><strong>The Notifications:</strong> Window managers don't know how to pop up a notification when you get a Discord message. You must run a lightweight notification daemon like <strong>Dunst</strong> or <strong>Mako</strong> to draw the pop-ups.</li>
+            </ul>
+
+            <h2 id="the-big-three">4. The Modern Titans: i3, Sway, Hyprland</h2>
+            <p>If you want to ascend to the TWM lifestyle, these are the modern heavyweights you must choose between:</p>
+
+            <ul>
+                <li><strong>i3wm:</strong> The absolute classic. It runs on the legacy X11 display server. It is rock-solid, incredibly well documented, uses almost zero system resources, and is the absolute best place for a beginner to start learning how manual tiling works.</li>
+                <li><strong>Sway:</strong> A literal drop-in replacement for i3, but built for the modern, highly secure <strong>Wayland</strong> display server protocol. It even reads your old i3 configuration file perfectly. If you have an AMD or Intel GPU, this is the gold standard for tearing-free stability.</li>
+                <li><strong>Hyprland:</strong> The current undisputed king of the <code>r/unixporn</code> subreddit. Built in C++ around the wlroots Wayland compositor, it brings fluid, buttery-smooth animations, blurred transparent windows, and gorgeous eye-candy to the tiling world. It requires a bit more GPU horsepower but looks absolutely incredible.</li>
+            </ul>
+
+            <h2 id="keyboard-driven">5. The "Mod" Key Workflow</h2>
+            <p>In a TWM, you almost never touch your mouse. Everything is controlled by a designated "Modifier" key (usually the <kbd>Windows/Super</kbd> key or the <kbd>Alt</kbd> key) paired with a letter.</p>
 
             <div class="code-block-container">
-                <p class="code-label">Example TWM Shortcuts:</p>
+                <p class="code-label">Example TWM Shortcuts (Usually customizable in ~/.config):</p>
                 <p class="terminal-cmd"><kbd>Mod</kbd> + <kbd>Enter</kbd> &mdash; Spawns a new Terminal instantly.</p>
                 <p class="terminal-cmd"><kbd>Mod</kbd> + <kbd>Shift</kbd> + <kbd>Q</kbd> &mdash; Kills the currently focused window.</p>
-                <p class="terminal-cmd"><kbd>Mod</kbd> + <kbd>Arrow Keys</kbd> &mdash; Shifts your focus between the split tiles.</p>
-                <p class="terminal-cmd"><kbd>Mod</kbd> + <kbd>2</kbd> &mdash; Instantly throws you to Workspace #2.</p>
-                <p class="terminal-cmd"><kbd>Mod</kbd> + <kbd>M</kbd> &mdash; Quits from Hyprland and logs you out.</p>
+                <p class="terminal-cmd"><kbd>Mod</kbd> + <kbd>Arrow Keys</kbd> &mdash; Shifts your focus physically between the split tiles.</p>
+                <p class="terminal-cmd"><kbd>Mod</kbd> + <kbd>2</kbd> &mdash; Instantly throws you to virtual Workspace #2.</p>
+                <p class="terminal-cmd"><kbd>Mod</kbd> + <kbd>Shift</kbd> + <kbd>E</kbd> &mdash; Quits from the Window Manager and logs you out to the Display Manager.</p>
             </div>
 
             <div class="callout-warning" style="border-left-color: #f38ba8; background-color: rgba(243, 139, 168, 0.1);">
-                <strong>⚠️ THE TRAP:</strong> Before you log into a new Window Manager, you MUST know the default keyboard shortcut to open a terminal (usually <code>Mod+Enter</code>). Because there are no menus, if you log in and don't know the shortcut to open a terminal to edit your config file, you will be permanently trapped staring at a black screen until you force reboot your PC.
+                <strong>⚠️ THE TRAP:</strong> Before you log into a new Window Manager, you MUST know the default keyboard shortcut to open a terminal (usually <code>Mod+Enter</code>). Because there are no graphical menus, if you log in and don't know the shortcut to open a terminal to edit your config file, you will be permanently trapped staring at a black screen until you force reboot your PC with the physical power button.
             </div>
 
-            <p>Mastering a tiling window manager turns your keyboard into an extension of your brain. You will never want to use a floating, clicking desktop environment ever again.</p>
+            <p>Mastering a tiling window manager turns your keyboard into an extension of your brain. Once you experience the speed of tiling, you will never want to use a floating, clicking, bloated desktop environment ever again.</p>
 
         </article>
 
         <hr class="section-divider">
 
-        <div class="guide-nav">
+        <div class="guide-nav" style="display: flex; gap: 20px; justify-content: space-between;">
             <a href="pro.html" class="btn-secondary">← Back: Power User Gateway</a>
             <a href="kernel.html" class="btn-primary">Next: The Linux Kernel →</a>
         </div>
