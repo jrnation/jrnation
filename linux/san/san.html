@@ -5,12 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Security & Networks | The Linux Hub</title>
     <meta name="description" content="Master Linux security and networking. Learn firewall configuration, user group management, SSH remote access, and system hardening practices.">
+    <link rel="icon" type="image/png" href="../../favicon.png">
     <link rel="stylesheet" href="../style.css">
 
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5103156070877653"
-     crossorigin="anonymous"></script>
-
-<style>
+    <style>
         /* --- Page-Specific Styles for the Hub --- */
         .roadmap-header {
             text-align: center;
@@ -81,16 +79,16 @@
 
 <header class="navbar">
     <div class="logo">
-        <a href="../index.html">
-            <img src="../logo.png" alt="Linux Hub Logo" class="logo-img">
+        <a href="../../index.html">
+            <img src="../../logo.png" alt="Linux Hub Logo" class="logo-img" onerror="this.style.display='none'">
             The Linux Hub
         </a>
     </div>
     <nav>
-        <a href="../index.html">Home</a>
-        <a href="../about.html">About Us</a>
-        <a href="../privacy.html">Privacy Policy</a>
-        <a href="../join.html">Join Us</a>
+        <a href="../index.html">Hub Home</a>
+        <a href="../../lore.html" target="_blank" rel="noopener noreferrer">About Us</a>
+        <a href="../../privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+        <a href="https://discord.gg/qMCyTNcDsV" target="_blank" rel="noopener noreferrer">Join Us</a>
     </nav>
     <button id="menu-btn" class="hamburger">☰ Categories</button>
 </header>
@@ -98,7 +96,7 @@
 <div class="container">
     <main class="content">
         <div class="breadcrumbs">
-            <a href="../index.html">Home</a> &gt; <span>Security & Networks</span>
+            <a href="../index.html">Hub Home</a> &gt; <span>Security & Networks</span>
         </div>
 
         <header class="roadmap-header">
@@ -138,7 +136,13 @@
 
         </section>
 
-        <div class="callout-warning" style="text-align: center; margin-top: 3rem;">
+        <div class="callout-info" style="text-align: center; margin-top: 3rem; padding: 2rem;">
+            <h3 style="margin-top: 0; color: var(--accent-green);">The Training Ground</h3>
+            <p style="font-size: 1.1rem;">Security commands are dangerous. One bad firewall rule can lock you out of your own computer. Practice these commands in our safe, isolated virtual sandbox before running them on your real machine.</p>
+            <a href="../../terminal/index.html" class="btn-primary" style="margin-top: 15px;" target="_blank">Launch Sandbox Terminal</a>
+        </div>
+
+        <div class="callout-warning" style="text-align: center;">
             <strong>⚠️ A Word of Warning:</strong> The tools in this section are incredibly powerful. If you configure a firewall or SSH incorrectly on a remote server, you can permanently lock yourself out of your own machine. Read the commands carefully before hitting <kbd>Enter</kbd>.
         </div>
 

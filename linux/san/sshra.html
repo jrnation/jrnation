@@ -3,26 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SSH Remote Access | The Linux Hub</title>
-    <meta name="description" content="Master SSH remote access. Learn how to connect to Linux servers securely, disable password authentication, and use cryptographic SSH keys.">
+    <title>SSH Remote Access & Cryptography | The Linux Hub</title>
+    <meta name="description" content="Master SSH remote access. Learn how to connect to Linux servers, understand asymmetric cryptography (Ed25519 keys), and secure the SSH Daemon.">
+    <link rel="icon" type="image/png" href="../../favicon.png">
     <link rel="stylesheet" href="../style.css">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5103156070877653"
-     crossorigin="anonymous"></script>
 </head>
 <body>
 
 <header class="navbar">
     <div class="logo">
-        <a href="../index.html">
-            <img src="../logo.png" alt="Linux Hub Logo" class="logo-img">
+        <a href="../../index.html">
+            <img src="../../logo.png" alt="Linux Hub Logo" class="logo-img" onerror="this.style.display='none'">
             The Linux Hub
         </a>
     </div>
     <nav>
-        <a href="../index.html">Home</a>
-        <a href="../about.html" target="_blank" rel="noopener noreferrer">About Us</a>
-        <a href="../privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
-        <a href="../join.html" target="_blank" rel="noopener noreferrer">Join Us</a>
+        <a href="../index.html">Hub Home</a>
+        <a href="../../lore.html" target="_blank" rel="noopener noreferrer">About Us</a>
+        <a href="../../privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+        <a href="https://discord.gg/qMCyTNcDsV" target="_blank" rel="noopener noreferrer">Join Us</a>
     </nav>
     <button id="menu-btn" class="hamburger">☰ Categories</button>
 </header>
@@ -40,92 +39,100 @@
 
     <main class="content guide-page">
         <div class="breadcrumbs">
-            <a href="../index.html">Home</a> &gt; <a href="san.html">Security & Networks</a> &gt; <span>SSH Access</span>
+            <a href="../index.html">Hub Home</a> &gt; <a href="san.html">Security & Networks</a> &gt; <span>SSH Remote Access</span>
         </div>
 
- <article>
-            <h1>SSH: The Invisible Wire</h1>
+        <article>
+            <h1>SSH: The Encrypted Tunnel</h1>
             <div class="meta-info">
-                <span>Control your fortress from anywhere in the world. Securely.</span> | <span>👤 By JR Nation</span>
+                <span>Control your server from anywhere on Earth. Leave no trace.</span> | <span>👤 By JR Nation</span>
             </div>
 
-            <p>You don't need to be sitting in front of a keyboard and monitor to control a Linux machine. Whether it is a Raspberry Pi sitting in your closet, or a massive web server sitting in an Amazon data center in Tokyo, you can control it remotely using your terminal.</p>
+            <p>One of the greatest flexes in Linux is the ability to operate a computer sitting in a data center thousands of miles away as if you were sitting right in front of it. You do not need a graphical interface, a mouse, or a monitor. You just need a terminal and a protocol called <strong>SSH (Secure Shell)</strong>.</p>
             
-            <p>The tool that makes this possible is called <strong>SSH (Secure Shell)</strong>. It creates a heavily encrypted, invisible wire between your laptop and the remote computer. Once connected, any command you type on your laptop is executed directly on the remote machine.</p>
+            <p>Mastering SSH is an absolute requirement for managing web servers, Raspberry Pi clusters, or even just accessing your desktop from your laptop while traveling. But because it grants total command-line access to your machine over the internet, it is also the number one target for global cyberattacks. Let's learn how to build an impenetrable tunnel.</p>
 
             <div class="toc-box">
                 <h3>Table of Contents</h3>
                 <ul>
-                    <li><a href="#connecting">1. The Basic Connection</a></li>
-                    <li><a href="#the-danger">2. The Danger of Passwords</a></li>
-                    <li><a href="#ssh-keys">3. Forging the Keys (ssh-keygen)</a></li>
-                    <li><a href="#lockdown">4. Locking the Door (Disable Passwords)</a></li>
+                    <li><a href="#history">1. The Lore: The Death of Telnet</a></li>
+                    <li><a href="#crypto">2. Asymmetric Cryptography (Public & Private Keys)</a></li>
+                    <li><a href="#connecting">3. Establishing the Connection</a></li>
+                    <li><a href="#keygen">4. Generating and Distributing Keys</a></li>
+                    <li><a href="#hardening">5. Hardening the Daemon (Disabling Passwords)</a></li>
                 </ul>
             </div>
 
-            <h2 id="connecting">1. The Basic Connection</h2>
-            <p>To connect to a remote computer, you need three things: the SSH client installed on your current machine, the SSH server (<code>sshd</code>) running on the remote machine, and the remote machine's IP address.</p>
+            <h2 id="history">1. The Lore: The Death of Telnet</h2>
+            <p>In the early days of the internet, system administrators controlled remote servers using a protocol called <strong>Telnet</strong>. There was a massive, fatal flaw with Telnet: it transmitted all data in "plaintext." If a hacker intercepted the traffic between your laptop and the server, they could literally read your administrator password as it floated across the network wires.</p>
             
-            <p>The command structure is simply <code>ssh [username]@[IP_address]</code>.</p>
+            <p>In 1995, a researcher named Tatu Ylönen got tired of password-sniffing attacks at his university. He invented SSH. SSH replaces plaintext with military-grade encryption. If a hacker intercepts an SSH connection today, all they see is a chaotic, mathematically impossible-to-decode stream of garbage data.</p>
+
+            <h2 id="crypto">2. Asymmetric Cryptography (Public & Private Keys)</h2>
+            <p>By default, SSH allows you to log into a remote machine using your standard user password. <strong>This is incredibly dangerous.</strong> If you expose SSH to the internet, botnets will try to brute-force guess your password thousands of times a minute.</p>
+            
+            <p>The solution is to disable passwords entirely and use <strong>SSH Keys</strong> instead. This relies on Asymmetric Cryptography, which generates two mathematically linked files:</p>
+            <ul>
+                <li><strong>The Public Key:</strong> This is a padlock. You can give copies of this padlock to anyone. You put it on the remote server you want to control.</li>
+                <li><strong>The Private Key:</strong> This is the key. It stays securely on your laptop and <em>never</em> travels across the internet. It is the only thing in the universe that can open your Public Key padlock.</li>
+            </ul>
+
+            <h2 id="connecting">3. Establishing the Connection</h2>
+            <p>To connect to a remote machine, the remote machine must be running the SSH server program (the "daemon"), usually installed via <code>sudo apt install openssh-server</code>. Once it is running, you can connect from any other computer by opening a terminal and using this syntax:</p>
 
             <div class="code-block-container">
-                <p class="terminal-cmd">$ ssh jaya@192.168.1.50</p>
-                <p class="terminal-comment"># Connects to the user 'jaya' on the computer located at that local IP address.</p>
+                <p class="terminal-cmd">$ ssh username@ip_address</p>
+                <p class="terminal-comment"># Example: ssh jaya@192.168.1.50</p>
             </div>
 
-            <p>The first time you connect, your terminal will ask if you trust the "fingerprint" of the remote server. Type <code>yes</code>, enter the password for that user, and suddenly your terminal prompt will change. You are now inside the other computer.</p>
+            <h2 id="keygen">4. Generating and Distributing Keys</h2>
+            <p>To ditch passwords, you first need to generate your cryptographic keypair on your local machine (your laptop). While old tutorials will tell you to generate "RSA" keys, the modern, ultra-secure, and lightning-fast standard is <strong>Ed25519</strong>.</p>
 
-            <h2 id="the-danger">2. The Danger of Passwords</h2>
-            <p>By default, SSH uses standard typed passwords to verify who you are. This is a massive security risk. If you open Port 22 on your router to the open internet, automated hacker bots will find your IP address within minutes and start trying thousands of passwords a second (a "Brute Force" attack) to break in.</p>
-            
-            <p>To fix this, true System Administrators do not use passwords for SSH. They use <strong>Cryptographic Keys</strong>.</p>
-
-            <h2 id="ssh-keys">3. Forging the Keys (ssh-keygen)</h2>
-            <p>An SSH Key is actually a pair of files: a <strong>Public Key</strong> (the padlock) and a <strong>Private Key</strong> (the physical key). You put the padlock on the remote server, and you keep the physical key securely on your laptop. The padlock can *only* be opened by your specific file.</p>
-            
-            <p><strong>Step 1: Generate the Keys (On your current laptop)</strong></p>
-            
             <div class="code-block-container">
-                <p class="terminal-cmd">$ ssh-keygen -t ed25519</p>
-                <p class="terminal-comment"># Generates a highly secure, modern key pair. Just press Enter to accept the default file locations.</p>
-                <br>
-                <p style="color: var(--text-main); margin: 0 0 5px 0;">Or use RSA, the older but widely compatible algorithm:</p>
-                <p class="terminal-cmd">$ ssh-keygen -t rsa -b 4096</p>
-                <p class="terminal-comment"># Generates an RSA key pair with a length of 4096 bits.</p>
+                <p class="terminal-cmd">$ ssh-keygen -t ed25519 -C "my_laptop"</p>
+                <p class="terminal-comment"># Press Enter to save it in the default hidden ~/.ssh folder.</p>
+                <p class="terminal-comment"># You can optionally add a passphrase to encrypt the file itself on your hard drive.</p>
             </div>
 
-            <p><strong>Step 2: Send the Padlock to the Server</strong></p>
-            
+            <p>Now, you need to send your Public Key (the padlock) over to the remote server so it knows to trust you. Linux has a brilliant built-in command to do this automatically:</p>
+
             <div class="code-block-container">
                 <p class="terminal-cmd">$ ssh-copy-id jaya@192.168.1.50</p>
-                <p class="terminal-comment"># This automatically copies your Public Key over to the remote server.</p>
-                <p class="terminal-comment"># You will need to enter the remote user's password one last time for this step.</p>
+                <p class="terminal-comment"># It will ask for your password one last time to authenticate the copy.</p>
             </div>
 
-            <p>Now, type <code>ssh jaya@192.168.1.50</code> again. You will instantly log in without it ever asking for a password. The computers recognized the cryptographic handshake behind the scenes.</p>
+            <h2 id="hardening">5. Hardening the Daemon (Disabling Passwords)</h2>
+            <p>Your keys are now in place. If you type <code>ssh jaya@192.168.1.50</code>, it will log you in instantly without asking for a password, because it cryptographically verified your Private Key in the background. But hackers can still try to guess your password! You must tell the remote server to reject all passwords universally.</p>
 
-            <h2 id="lockdown">4. Locking the Door (Disable Passwords)</h2>
-            <p>Now that your key is working, you need to tell the remote server to stop accepting typed passwords entirely. This makes you completely immune to brute-force dictionary attacks.</p>
+            <p>To do this, you must edit the master SSH configuration file on the <strong>remote server</strong>:</p>
 
-            <ol>
-                <li>SSH into the remote server.</li>
-                <li>Edit the SSH configuration file using nano: <code>sudo nano /etc/ssh/sshd_config</code></li>
-                <li>Scroll down until you find the line that says <code>PasswordAuthentication yes</code>. (You may need to remove the <code>#</code> at the start of the line).</li>
-                <li>Change the <code>yes</code> to a <strong><code>no</code></strong>.</li>
-                <li>Save and exit nano.</li>
-                <li>Restart the SSH service: <code>sudo systemctl restart sshd</code></li>
+            <div class="code-block-container">
+                <p class="terminal-cmd">$ sudo nano /etc/ssh/sshd_config</p>
+            </div>
+
+            <p>Scroll through the file and change these two critical settings:</p>
+            <ol style="color: #cdd6f4; margin-bottom: 20px;">
+                <li>Change <code>PasswordAuthentication yes</code> to <strong><code>PasswordAuthentication no</code></strong></li>
+                <li><em>(Optional but recommended)</em> Change the default <code>Port 22</code> to a random high number like <code>Port 49152</code>. This won't stop a dedicated hacker, but it will hide your server from 99% of automated botnet scanners.</li>
             </ol>
 
+            <p>Save the file (<kbd>Ctrl</kbd> + <kbd>O</kbd>, <kbd>Enter</kbd>) and exit (<kbd>Ctrl</kbd> + <kbd>X</kbd>). Finally, restart the SSH engine to apply the new rules:</p>
+
+            <div class="code-block-container">
+                <p class="terminal-cmd">$ sudo systemctl restart sshd</p>
+            </div>
+
             <div class="callout-warning" style="border-left-color: #f38ba8; background-color: rgba(243, 139, 168, 0.1);">
-                <strong>⚠️ DO NOT LOSE YOUR PRIVATE KEY.</strong> If you disabled password authentication and then your laptop breaks (losing your Private Key file), you are permanently locked out of the remote server. Always keep a backup of your <code>~/.ssh</code> folder on a secure, offline USB drive.
+                <strong>⚠️ DO NOT LOSE YOUR PRIVATE KEY.</strong>
+                <br>If you disabled password authentication and your laptop's hard drive dies (destroying your Private Key file), you are permanently locked out of the remote server. There is no "forgot password" button. Always keep a secure, encrypted backup of your <code>~/.ssh</code> folder on an offline USB drive.
             </div>
 
         </article>
         
         <hr class="section-divider">
 
-        <div class="guide-nav">
-            <a href="usercus.html" class="btn-secondary">← Back: User Customization</a>
+        <div class="guide-nav" style="display: flex; gap: 20px; justify-content: space-between;">
+            <a href="ugm.html" class="btn-secondary">← Back: User Management</a>
             <a href="practices.html" class="btn-primary">Next: Security Best Practices →</a>
         </div>
     </main>
@@ -139,4 +146,4 @@
     });
 </script>
 </body>
-</html> 
+</html>
