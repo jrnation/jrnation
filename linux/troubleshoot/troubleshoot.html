@@ -3,12 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Troubleshooting | The Linux Hub</title>
-    <meta name="description" content="Fix your broken Linux system. Learn how to read logs, fix package managers, and rescue dead bootloaders.">
+    <title>Troubleshooting & Rescue | The Linux Hub</title>
+    <meta name="description" content="Fix your broken Linux system. Learn how to read system logs, fix broken package managers, and rescue dead bootloaders using the terminal.">
+    <link rel="icon" type="image/png" href="../../favicon.png">
     <link rel="stylesheet" href="../style.css">
-
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5103156070877653"
-     crossorigin="anonymous"></script>
 
 <style>
         /* --- Page-Specific Styles for the Hub --- */
@@ -82,15 +80,15 @@
 <header class="navbar">
     <div class="logo">
         <a href="../index.html">
-            <img src="../logo.png" alt="Linux Hub Logo" class="logo-img">
+            <img src="../../logo.png" alt="Linux Hub Logo" class="logo-img" onerror="this.style.display='none'">
             The Linux Hub
         </a>
     </div>
     <nav>
-        <a href="../index.html">Home</a>
-        <a href="../about.html">About Us</a>
-        <a href="../privacy.html">Privacy Policy</a>
-        <a href="../join.html">Join Us</a>
+        <a href="../index.html">Hub Home</a>
+        <a href="../../lore.html" target="_blank" rel="noopener noreferrer">About Us</a>
+        <a href="../../privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+        <a href="https://discord.gg/qMCyTNcDsV" target="_blank" rel="noopener noreferrer">Join Us</a>
     </nav>
     <button id="menu-btn" class="hamburger">☰ Categories</button>
 </header>
@@ -98,12 +96,12 @@
 <div class="container">
     <main class="content">
         <div class="breadcrumbs">
-            <a href="../index.html">Home</a> &gt; <span>Troubleshooting</span>
+            <a href="../index.html">Hub Home</a> &gt; <span>Troubleshooting</span>
         </div>
 
         <header class="roadmap-header">
             <h1>The Emergency Room</h1>
-            <p>Things break. That is a fact of computing. But in Linux, you don't call a genius bar, and you don't blindly format your hard drive. You open the terminal, read the logs, and fix it yourself.</p>
+            <p>Unlike closed-source operating systems that hide failures behind vague "Something went wrong" screens, Linux is violently transparent. Every crash, kernel panic, and failed dependency is meticulously recorded in plain text. You don't call a genius bar, and you don't blindly format your hard drive. You open the terminal, read the logs, and fix the matrix from the inside.</p>
         </header>
 
         <section class="roadmap-grid">
@@ -111,7 +109,7 @@
             <article class="stage-card">
                 <div class="stage-badge">MODULE 01</div>
                 <h3>Reading System Logs</h3>
-                <p>The computer isn't haunted; it is literally trying to tell you what hurts. Master journalctl and dmesg to find the exact cause of any crash.</p>
+                <p>The computer isn't haunted; it is literally trying to tell you what hurts. Master journalctl and dmesg to find the exact hardware or software cause of any crash.</p>
                 <a href="logs.html" class="btn-primary">Diagnose the Issue</a>
             </article>
 
@@ -125,20 +123,25 @@
             <article class="stage-card">
                 <div class="stage-badge">MODULE 03</div>
                 <h3>Boot Rescue Triage</h3>
-                <p>Stuck on a black screen? From the common (initramfs) error to a full-blown Kernel Panic, learn how to triage and resurrect your system.</p>
+                <p>Stuck on a black screen? From the common (initramfs) error to a full-blown Kernel Panic, learn how to triage, mount, and resurrect your dead system.</p>
                 <a href="bootrescue.html" class="btn-secondary">Resurrect the OS</a>
             </article>
 
         </section>
 
-        <div class="callout-info" style="text-align: center; margin-top: 3rem;">
-            <strong>💡 The Number One Rule of Troubleshooting:</strong> Read the screen. The error message usually contains the exact solution. Don't just paste it into a search engine—look at it first.
+        <div class="callout-info" style="margin-top: 3rem; padding: 2rem;">
+            <h3 style="margin-top: 0; color: var(--accent-green);">The Golden Rules of Troubleshooting</h3>
+            <ol style="margin-bottom: 0; font-size: 1.1rem; line-height: 1.6;">
+                <li><strong>Read the Screen:</strong> When an error happens, the terminal usually spits out the exact file path and line number of the problem. Do not instantly click away or paste it into a search engine. Read it first.</li>
+                <li><strong>Don't Blindly Copy-Paste:</strong> StackOverflow is a goldmine, but pasting a <code>sudo rm -rf</code> command from a 2012 forum post without understanding what it does is how you permanently delete your operating system.</li>
+                <li><strong>One Change at a Time:</strong> If you are modifying config files to fix an issue, only change one variable at a time and restart the service. If you change ten things at once, you will never know which one actually solved the problem.</li>
+            </ol>
         </div>
 
         <hr class="section-divider">
 
         <div class="guide-nav" style="display: flex; justify-content: flex-start;">
-            <a href="../index.html" class="btn-secondary">← Back to Main Hub</a>
+            <a href="../index.html" class="btn-secondary">← Back to Hub Home</a>
         </div>
 
     </main>
