@@ -4,9 +4,7 @@ let fileSystem = {
         "user": {
             "projects": {
                 "website": {
-                    "index.html": "<!DOCTYPE html>\n<html>\n<head><title>Test</title><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5103156070877653"
-     crossorigin="anonymous"></script>
-</head>\n<body>Hello World</body>\n</html>",
+                    "index.html": "<!DOCTYPE html>\n<html>\n<head><title>Test</title></head>\n<body>Hello World</body>\n</html>",
                     "style.css": "body { background: #000; color: #fff; }"
                 },
                 "script.sh": "#!/bin/bash\necho 'Hello World!'"
