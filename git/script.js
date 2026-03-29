@@ -1,10 +1,14 @@
 // --- GIT STATE ENGINE ---
+// --- GIT STATE ENGINE ---
 let gitState = {
     isInitialized: false,
-    workspace: [], // Untracked or modified files
-    staging: [],   // Files ready to commit
-    commits: []    // Saved history
+    isDetached: false, // Tracks if we are time traveling!
+    workspace: [], 
+    staging: [],   
+    commits: []    
 };
+
+
 
 // DOM Elements
 const visContainer = document.getElementById('visualizer');
@@ -61,6 +65,8 @@ jQuery(function($, undefined) {
         let action = args[0];
 
         switch (action) {
+
+            // The missing Convenience Store!
             case 'init':
                 if (gitState.isInitialized) {
                     term.echo("Reinitialized existing Git repository.");
@@ -129,11 +135,14 @@ jQuery(function($, undefined) {
                 if (args[1] === '-m' && args[2]) {
                     let msg = args.slice(2).join(" ").replace(/['"]/g, '');
                     let newHash = generateHash();
+                    let currentDate = new Date().toUTCString(); // Grabs the exact timestamp!
                     
-                    // Create the commit object
+                    // Create the commit object with Author and Date
                     gitState.commits.push({
                         hash: newHash,
                         message: msg,
+                        author: "Subaru Natsuki <subaru@jrnation.cc>",
+                        date: currentDate,
                         files: [...gitState.staging]
                     });
                     
@@ -145,6 +154,86 @@ jQuery(function($, undefined) {
                     renderVisualizer();
                 } else {
                     term.error("Aborting commit due to empty commit message. (Use -m 'message')");
+                }
+                break;
+
+            case 'log':
+                if (!gitState.isInitialized) { term.error("fatal: not a git repository"); break; }
+                if (gitState.commits.length === 0) {
+                    term.error("fatal: your current branch 'master' does not have any commits yet");
+                } else {
+                    let logOut = [];
+                    // Reverse the array to show the newest commits at the top (like real Git)
+                    let revCommits = [...gitState.commits].reverse();
+                    
+                    revCommits.forEach(c => {
+                        logOut.push(`[[b;#d2a8ff;]commit ${c.hash}]`);
+                        logOut.push(`Author: ${c.author}`);
+                        logOut.push(`Date:   ${c.date}`);
+                        logOut.push(`\n    ${c.message}\n`);
+                    });
+                    term.echo(logOut.join('\n'));
+                }
+                break;
+
+
+                case 'checkout':
+                if (!gitState.isInitialized) { term.error("fatal: not a git repository"); break; }
+                let target = args[1];
+
+                if (!target) {
+                    term.error("fatal: missing branch or commit hash");
+                } else if (target === 'master' || target === 'main') {
+                    if (!gitState.isDetached) {
+                        term.echo(`Already on '${target}'`);
+                    } else {
+                        gitState.isDetached = false;
+                        term.echo(`Switched to branch '${target}'`);
+                        term.set_prompt('[[b;#7ee787;]user@jrnation]:[[b;#79c0ff;]~/projects]$ ');
+                        
+                        // Wake up the visualizer zones
+                        document.querySelector('.workspace').style.opacity = '1';
+                        document.querySelector('.staging').style.opacity = '1';
+                    }
+                } else {
+                    // Look for the commit hash
+                    let foundCommit = gitState.commits.find(c => c.hash.startsWith(target));
+                    
+                    if (foundCommit) {
+                        gitState.isDetached = true;
+                        term.echo(`Note: switching to '${target}'.\n`);
+                        term.echo("You are in 'detached HEAD' state. You can look around, make experimental");
+                        term.echo("changes and commit them, and you can discard any commits you make in this");
+                        term.echo("state without impacting any branches by switching back to a branch.\n");
+                        term.echo(`HEAD is now at ${foundCommit.hash} ${foundCommit.message}`);
+                        
+                        // Change prompt to show ghost state
+                        term.set_prompt(`[[b;#ffbd2e;]user@jrnation]:[[b;#d2a8ff;]~/projects (${foundCommit.hash.substring(0,7)})]$ `);
+                        
+                        // Dim the workspace/staging to simulate "Ghost Mode"
+                        document.querySelector('.workspace').style.opacity = '0.3';
+                        document.querySelector('.staging').style.opacity = '0.3';
+                    } else {
+                        term.error(`error: pathspec '${target}' did not match any file(s) known to git`);
+                    }
+                }
+                break;
+
+            case 'push':
+                if (!gitState.isInitialized) { term.error("fatal: not a git repository"); break; }
+                if (gitState.commits.length === 0) {
+                    term.error("error: src refspec master does not match any");
+                } else {
+                    let latestHash = gitState.commits[gitState.commits.length - 1].hash;
+                    // Simulating the exact terminal output of a successful GitHub push
+                    term.echo("Enumerating objects: 5, done.");
+                    term.echo("Counting objects: 100% (5/5), done.");
+                    term.echo("Delta compression using up to 4 threads");
+                    term.echo("Compressing objects: 100% (3/3), done.");
+                    term.echo("Writing objects: 100% (3/3), 324 bytes | 324.00 KiB/s, done.");
+                    term.echo("Total 3 (delta 1), reused 0 (delta 0)");
+                    term.echo(`To https://github.com/jrnation/rezero-timeline.git`);
+                    term.echo(`   a1b2c3d..${latestHash}  master -> master`);
                 }
                 break;
 

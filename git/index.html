@@ -15,36 +15,74 @@
 
     <div class="layout">
         
-        <main class="article">
+<main class="article">
             <h1>Git: Hell I Know</h1>
-            <p>Welcome to the nightmare. Every developer pretends to understand Git, but most are just copy-pasting commands from StackOverflow and praying they don't delete the company's entire codebase.</p>
-            <p>Git is a <strong>Version Control System</strong>. It acts as a time machine for your folders, taking permanent snapshots of your code so you can safely undo catastrophic mistakes.</p>
+            <p>Every developer pretends to understand Git, but most are just blindly copy-pasting commands from the internet and praying they don't delete the company's entire codebase. Git is notorious for making developers suffer, forcing them to repeat the same mistakes over and over until they finally get it right.</p>
+
+            <p>In other words, <strong>Git is exactly like being Subaru Natsuki.</strong></p>
+
+            <p>Git is the Witch of Envy. She watches over your code, and when you inevitably mess everything up, she grants you the ultimate power: <strong>Return by Death</strong> (Version Control).</p>
 
             <hr>
 
-            <h2>The Three Zones</h2>
-            <p>To survive Git, you must understand that your files exist in one of three physical states:</p>
+            <h2>1. The Isekai Transfer</h2>
+            <p>Before you can use Return by Death, you have to actually arrive in the magical world. You must invite the Witch into your directory.</p>
             <ul>
-                <li><strong>1. The Workspace (Working Directory):</strong> Your chaotic desk. These are the files you are currently typing code into. Git sees them, but it isn't saving them yet.</li>
-                <li><strong>2. The Staging Area (The Loading Dock):</strong> The waiting room. You explicitly place files here when you are done editing them and want to include them in the next save state.</li>
-                <li><strong>3. The Repository (The Vault):</strong> The permanent timeline. Once files move here, they are locked into an indestructible snapshot (a commit).</li>
+                <li><strong><code>git init</code> (The Convenience Store):</strong> You blink, and suddenly you aren't in front of a computer anymore. This command tells Git to start watching your current folder. Satella has officially placed her curse on your project.</li>
             </ul>
 
-            <hr>
+            <h2>2. The Savepoint Mechanics</h2>
+            <p>Subaru doesn't just randomly save his progress. There is a very specific sequence to establishing a checkpoint in this world.</p>
+            <ul>
+                <li><strong><code>git status</code> (Looking Around):</strong> You just woke up. Is Rem dead? Is the mansion on fire? This command tells you exactly what has changed in your world since your last savepoint.</li>
+                <li><strong><code>git add</code> (Packing your Pockets):</strong> You are getting ready to establish a savepoint, but you need to decide what you are taking with you. <code>git add</code> moves your files into the <strong>Staging Area</strong>.</li>
+                <li><strong><code>git commit -m "Message"</code> (The Savepoint):</strong> <em>The Witch of Envy grips your heart.</em> <strong>SAVEPOINT ESTABLISHED.</strong> You have permanently locked in the timeline. The message is your memory of what you just did.</li>
+            </ul>
+
+            <h2>3. The Book of Wisdom (Logs & Timestamps)</h2>
+            <p>You need to remember exactly when you died and what happened. Beatrice's library contains the unalterable records of the timeline.</p>
+            <ul>
+                <li><strong><code>git log</code> (Reading Memories):</strong> This opens the book. It prints out a chronological list of every Savepoint you have ever established. You will see the exact <strong>timestamp</strong> of when the timeline was locked, the Author who did it, and the unique ID (the commit hash).</li>
+            </ul>
+
+            <h2>4. Time Travel (Checking Out the Past)</h2>
+            <p>You opened the Book of Wisdom and found the exact Savepoint (commit hash) where the code was still working. How do you go there?</p>
+            <ul>
+                <li><strong><code>git checkout &lt;hash&gt;</code> (Astral Projection):</strong> This command transports your vision to that exact moment in the past. Git calls this a <strong>"Detached HEAD"</strong> state. You are basically a ghost. You can look at the old code, run it, and test it, but if you try to make a new Savepoint here, it will evaporate when you return to the present.</li>
+                <li><strong><code>git checkout master</code> (Waking Up):</strong> Done looking at the past? This command snaps your consciousness back to your main, present-day timeline.</li>
+            </ul>
+
+            <h2>5. Branching the Timeline (The IF Routes)</h2>
+            <p>What if you travel to the past and realize you want to stay there and try a completely different approach? You have to forge an alternate universe.</p>
+            <ul>
+                <li><strong><code>git checkout -b &lt;branch-name&gt; &lt;hash&gt;</code> (Creating an IF Route):</strong> You travel back to an old Savepoint and instantly branch off a new timeline (e.g., the <em>Sloth IF</em> route). Now you can write code and establish new Savepoints without ever affecting or erasing your original <code>master</code> timeline.</li>
+                <li><strong><code>git revert &lt;hash&gt;</code> (The Counter-Curse):</strong> If you don't want to mess with alternate timelines, use this. Instead of erasing the past, <code>git revert</code> casts a spell that does the exact mathematical opposite of the broken commit, adding a brand new Savepoint that perfectly cancels out your mistake.</li>
+            </ul>
+
+            <h2>6. The Dragon's Tablet (Remote Sync)</h2>
+            <p>You aren't the only one fighting. To share your timeline with the rest of the Emilia Camp, you must synchronize with the cloud (GitHub).</p>
+            <ul>
+                <li><strong><code>git push</code> (Carving the Tablet):</strong> Upload your established Savepoints up to the cloud. This leaves a permanent timestamp on the remote server proving exactly when you completed your objective.</li>
+            </ul>
+
+<hr>
 
             <h2>🔥 The Simulation</h2>
-            <p>We built a visual dashboard on the right. Watch the boxes as you type the commands below into the terminal.</p>
+            <p>It is time to test your authority. We built a visual dashboard on the right so you can physically see the timelines shift. Survive this loop:</p>
             
             <ol class="git-steps">
-                <li>Type <code>git init</code> to wake the engine up and spawn some files on your desk.</li>
-                <li>Type <code>git status</code> to see what the radar detects.</li>
-                <li>Type <code>git add index.html</code>. Watch the file physically jump to the Staging Area!</li>
-                <li>Type <code>git add .</code> to sweep the rest of the files into Staging.</li>
-                <li>Type <code>git commit -m "My first save"</code> to lock them into the Vault.</li>
+                <li>Type <code>git init</code> to wake up in the fantasy world and spawn some files.</li>
+                <li>Type <code>git add .</code> to sweep all modified items into your pockets.</li>
+                <li>Type <code>git commit -m "Saved the mansion"</code> to lock in your first Savepoint!</li>
+                <li><strong>Let's make a mistake:</strong> Type <code>git add .</code> again, then type <code>git commit -m "The White Whale attacks"</code> to make a second savepoint.</li>
+                <li>Type <code>git log</code> to open the Book of Wisdom. Copy the 7-character hash of your <em>first</em> savepoint ("Saved the mansion").</li>
+                <li>Type <code>git checkout &lt;hash&gt;</code> (paste the hash). Watch the dashboard dim as you Astral Project into the past!</li>
+                <li>Panic? Type <code>git checkout master</code> to snap your consciousness back to the present timeline.</li>
             </ol>
             
-            <div style="margin-top: 40px;">
-                <a href="../index.html" class="back-link">← Retreat to JR Nation Hub</a>
+            <div style="margin-top: 40px; display: flex; justify-content: space-between;">
+                <a href="../terminal/index.html" class="back-link" style="color: #8b949e;">← Back to Terminal Hub</a>
+                <a href="../index.html" class="back-link" style="color: #7ee787;">Return to JR Nation Hub →</a>
             </div>
         </main>
 
@@ -61,14 +99,14 @@
 
                 <div class="git-zone staging">
                     <h3>Staging Area</h3>
-                    <div class="zone-desc">Ready to Save</div>
+                    <div class="zone-desc">Packed Pockets</div>
                     <div id="box-staging" class="file-container">
                         </div>
                 </div>
 
                 <div class="git-zone repo">
                     <h3>The Vault</h3>
-                    <div class="zone-desc">Committed History</div>
+                    <div class="zone-desc">Established Savepoints</div>
                     <div id="box-repo" class="commit-container">
                         </div>
                 </div>
