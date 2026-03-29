@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git: Hell I Know | JR Nation</title>
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery.terminal/js/jquery.terminal.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/jquery.terminal/css/jquery.terminal.min.css" rel="stylesheet"/>
+</head>
+<body>
+
+    <div class="layout">
+        
+        <main class="article">
+            <h1>Git: Hell I Know</h1>
+            <p>Welcome to the nightmare. Every developer pretends to understand Git, but most are just copy-pasting commands from StackOverflow and praying they don't delete the company's entire codebase.</p>
+            <p>Git is a <strong>Version Control System</strong>. It acts as a time machine for your folders, taking permanent snapshots of your code so you can safely undo catastrophic mistakes.</p>
+
+            <hr>
+
+            <h2>The Three Zones</h2>
+            <p>To survive Git, you must understand that your files exist in one of three physical states:</p>
+            <ul>
+                <li><strong>1. The Workspace (Working Directory):</strong> Your chaotic desk. These are the files you are currently typing code into. Git sees them, but it isn't saving them yet.</li>
+                <li><strong>2. The Staging Area (The Loading Dock):</strong> The waiting room. You explicitly place files here when you are done editing them and want to include them in the next save state.</li>
+                <li><strong>3. The Repository (The Vault):</strong> The permanent timeline. Once files move here, they are locked into an indestructible snapshot (a commit).</li>
+            </ul>
+
+            <hr>
+
+            <h2>🔥 The Simulation</h2>
+            <p>We built a visual dashboard on the right. Watch the boxes as you type the commands below into the terminal.</p>
+            
+            <ol class="git-steps">
+                <li>Type <code>git init</code> to wake the engine up and spawn some files on your desk.</li>
+                <li>Type <code>git status</code> to see what the radar detects.</li>
+                <li>Type <code>git add index.html</code>. Watch the file physically jump to the Staging Area!</li>
+                <li>Type <code>git add .</code> to sweep the rest of the files into Staging.</li>
+                <li>Type <code>git commit -m "My first save"</code> to lock them into the Vault.</li>
+            </ol>
+            
+            <div style="margin-top: 40px;">
+                <a href="../index.html" class="back-link">← Retreat to JR Nation Hub</a>
+            </div>
+        </main>
+
+        <aside class="simulator-container">
+            
+            <div class="git-visualizer" id="visualizer" style="opacity: 0.3;">
+                
+                <div class="git-zone workspace">
+                    <h3>Workspace</h3>
+                    <div class="zone-desc">Currently Editing</div>
+                    <div id="box-workspace" class="file-container">
+                        </div>
+                </div>
+
+                <div class="git-zone staging">
+                    <h3>Staging Area</h3>
+                    <div class="zone-desc">Ready to Save</div>
+                    <div id="box-staging" class="file-container">
+                        </div>
+                </div>
+
+                <div class="git-zone repo">
+                    <h3>The Vault</h3>
+                    <div class="zone-desc">Committed History</div>
+                    <div id="box-repo" class="commit-container">
+                        </div>
+                </div>
+
+            </div>
+
+            <div class="term-window" id="terminal-window"></div>
+
+        </aside>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
