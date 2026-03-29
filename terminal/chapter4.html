@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 4: God Mode (Permissions) | JR Nation Terminal Hub</title>
+    <meta name="description" content="Understand Linux file permissions. Learn how to use the sudo command, read rwx permissions with ls -l, and change file access using chmod and chown.">
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery.terminal/js/jquery.terminal.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/jquery.terminal/css/jquery.terminal.min.css" rel="stylesheet"/>
+</head>
+<body>
+
+    <div class="layout">
+        
+        <main class="article">
+            <h1>Chapter 4: God Mode (Permissions)</h1>
+            <p>Linux is a multi-user operating system built for enterprise servers. Because dozens of people might be logged into the same machine simultaneously, Linux has a ruthlessly strict security system. If you do not own a file, you cannot read it, edit it, or execute it.</p>
+
+            <p>Eventually, you will try to edit a system configuration file and the terminal will hit you with a harsh <code>Permission denied</code> error. To bypass this, you need to understand the hierarchy of power.</p>
+
+            <hr>
+
+            <h2>1. The Master Key: `sudo`</h2>
+            <p>At the absolute top of the Linux hierarchy sits the <strong>Root User</strong>. Root has infinite power. It can delete the entire operating system, bypass all passwords, and read any file. For safety, you normally log in as a standard, restricted user.</p>
+            
+            <p>When you need temporary Root privileges (like installing new software or editing a core firewall rule), you prefix your command with <strong><code>sudo</code></strong> (Superuser Do). It acts as a master key, temporarily granting you God Mode for that single command.</p>
+            <div class="code-block">sudo apt update</div>
+
+            <h2>2. Reading the Matrix: `ls -l`</h2>
+            <p>How do you know who owns a file? You use the List command we learned in Chapter 1, but you append the <code>-l</code> (long format) flag.</p>
+            <div class="code-block">ls -l</div>
+            <p>This will output a complex string of characters next to every file that looks like this: <code>-rwxr-xr--</code>. This is the permission block. It is broken down into three categories of users:</p>
+            <ul>
+                <li><strong>User (u):</strong> The actual owner of the file.</li>
+                <li><strong>Group (g):</strong> Other users who belong to the same permission group.</li>
+                <li><strong>Others (o):</strong> Everyone else on the server.</li>
+            </ul>
+            <p>For each of those three categories, the system assigns a mix of <strong>Read (r)</strong>, <strong>Write (w)</strong>, or <strong>Execute (x)</strong> privileges.</p>
+
+            <h2>3. Changing the Locks: `chmod`</h2>
+            <p>If you write a Python or Bash script, Linux will treat it as a standard text document by default. It will refuse to run it. You must explicitly grant the file "Execute" permission using the <strong><code>chmod</code></strong> (Change Mode) command.</p>
+            <div class="code-block">chmod +x script.sh</div>
+            
+            <p><strong>The Danger of 777:</strong> You will often see bad tutorials online telling you to run <code>chmod 777 filename</code> to fix permission errors. The number 7 represents giving Read, Write, and Execute privileges. By giving it three times (777), you are granting absolute, unrestricted access to the Owner, the Group, and every single random stranger on the server. <strong>Never do this on a production machine.</strong></p>
+
+            <h2>4. Transferring Ownership: `chown`</h2>
+            <p>If you create a file using <code>sudo</code>, the Root user permanently owns it. Your normal user account will be locked out of editing it later. To fix this, you use <strong><code>chown</code></strong> (Change Owner) to transfer the deed of the file back to yourself.</p>
+            <div class="code-block">sudo chown user:user document.txt</div>
+
+            <hr>
+
+            <h2>🔥 Try It Yourself</h2>
+            <p>We built a strict security protocol into the terminal on your right. Let's see what happens when a standard user tries to claim absolute power.</p>
+            <ol style="margin-left: 20px; margin-top: 10px; font-size: 1.05rem; line-height: 1.8;">
+                <li>Type <strong><code>whoami</code></strong> to verify your current user identity.</li>
+                <li>Type <strong><code>ls -a</code></strong> to look at the files currently in your directory.</li>
+                <li>Type <strong><code>sudo rm -r projects</code></strong> to try and use God Mode to delete a directory.</li>
+                <li>Read the error message. The system knows you aren't authorized!</li>
+            </ol>
+            
+            <div style="margin-top: 40px; display: flex; justify-content: space-between;">
+                <a href="chapter3.html" style="color: #8b949e; text-decoration: none; font-weight: bold;">← Back: Chapter 3</a>
+                <a href="chapter5.html" style="color: #7ee787; text-decoration: none; font-weight: bold;">Next: Chapter 5 (Process Control) →</a>
+            </div>
+
+        </main>
+
+        <aside class="terminal-container">
+            <div class="term-header">
+                <div class="dot red"></div>
+                <div class="dot yellow"></div>
+                <div class="dot green"></div>
+                <div class="term-title">user@jrnation: ~</div>
+            </div>
+            
+            <div class="term-window" id="terminal-window"></div>
+        </aside>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminal Basics: Search & Filter | JR Nation Terminal Hub</title>
+    <meta name="description" content="Master Linux text search. Learn how to use the grep command to find specific text and the tail command to read massive server log files.">
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery.terminal/js/jquery.terminal.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/jquery.terminal/css/jquery.terminal.min.css" rel="stylesheet"/>
+    
+</head>
+<body>
+
+    <div class="layout">
+        
+        <main class="article">
+            <h1>Lesson 3: The Search Engine</h1>
+            <p>In the previous lessons, you learned how to navigate the file system and create new files. But what happens when you need to read data? In a graphical interface, you open a document in Notepad or Microsoft Word and press <kbd>Ctrl</kbd> + <kbd>F</kbd> to find what you are looking for.</p>
+
+            <p>In the Linux server environment, opening a file in a text editor is often dangerous. Production server logs (like web server traffic or firewall blocks) can grow to be tens of gigabytes in size. If you try to open a 10GB text file in a standard editor, your computer's RAM will instantly max out, and the server will crash. You need tools that can filter data without actually opening the file.</p>
+
+            <hr style="margin: 30px 0; border: none; border-top: 1px solid #30363d;">
+
+            <h2>1. Reading the Bottom: `tail`</h2>
+            <p>If a web server crashes, you don't care what happened three months ago; you only care about what happened five seconds ago. The <strong><code>tail</code></strong> command allows you to peek at the absolute bottom of a file without loading the rest of it into memory.</p>
+            <p>By default, typing <code>tail</code> followed by a file name will instantly print the last 10 lines of that file to your screen.</p>
+            <div class="code-block">tail syslog.txt</div>
+            
+            <h2>2. The Search Engine: `grep`</h2>
+            <p>What if the file is massive and you are looking for a specific, buried error? You use <strong><code>grep</code></strong> (Global Regular Expression Print). Invented in 1974, it acts as a lightning-fast search engine for your terminal. It scans a document and outputs <em>only</em> the lines that contain the exact phrase you are looking for.</p>
+            <p>The syntax is simple: type the command, the word you want to find, and the target file.</p>
+            <div class="code-block">grep "error" syslog.txt</div>
+
+            <h2>3. Case Insensitivity: The `-i` Flag</h2>
+            <p>Linux is strictly case-sensitive. It treats "Error", "ERROR", and "error" as three completely different words. If you run a standard search, you might miss a critical security alert simply because a developer capitalized a letter.</p>
+            <p>To force the system to ignore capitalization and find every variation of the word, you inject the <code>-i</code> (ignore-case) flag.</p>
+            <div class="code-block">grep -i "failed" syslog.txt</div>
+
+            <h2>4. Counting Matches: The `-c` Flag</h2>
+            <p>Sometimes you don't actually need to read the lines; you just need to measure the severity of an event. If a hacker is trying to brute-force guess your server password, printing 5,000 failed login attempts to your screen isn't helpful.</p>
+            <p>By using the <code>-c</code> (count) flag, <code>grep</code> will silently scan the document and return a single number representing exactly how many times the word appeared.</p>
+            <div class="code-block">grep -c "password" syslog.txt</div>
+
+            <hr style="margin: 30px 0; border: none; border-top: 1px solid #30363d;">
+
+            <h2>🔥 Try It Yourself</h2>
+            <p>We have loaded a simulated server log named <code>syslog.txt</code> into your home directory. Use the terminal on the right to diagnose the server:</p>
+            <ol style="margin-left: 20px; margin-top: 10px; font-size: 1.05rem; line-height: 1.8;">
+                <li>Type <strong><code>ls</code></strong> to verify the <code>syslog.txt</code> file is actually there.</li>
+                <li>Type <strong><code>tail syslog.txt</code></strong> to read the most recent entries.</li>
+                <li>Type <strong><code>grep "error" syslog.txt</code></strong> to isolate the crash events.</li>
+                <li>Type <strong><code>grep -c "root" syslog.txt</code></strong> to count how many times the root user was mentioned!</li>
+            </ol>
+            
+            <div style="margin-top: 40px; display: flex; justify-content: space-between;">
+                <a href="chapter2.html" style="color: #79c0ff; text-decoration: none; font-weight: bold;">← Back to Lesson 2</a>
+                <a href="chapter4.html" style="color: #7ee787; text-decoration: none; font-weight: bold;">Next: System Management →</a>
+            </div>
+
+        </main>
+
+        <aside class="terminal-container">
+            <div class="term-header">
+                <div class="dot red"></div>
+                <div class="dot yellow"></div>
+                <div class="dot green"></div>
+                <div class="term-title">user@jrnation: ~</div>
+            </div>
+            
+            <div class="term-window" id="terminal-window"></div>
+        </aside>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

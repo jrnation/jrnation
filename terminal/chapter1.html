@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 1: The Matrix Awakening | JR Nation Terminal Hub</title>
+    <meta name="description" content="Begin your Linux journey. Master terminal navigation, understand the Linux file tree, and learn the critical difference between absolute and relative paths.">
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery.terminal/js/jquery.terminal.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/jquery.terminal/css/jquery.terminal.min.css" rel="stylesheet"/>
+</head>
+<body>
+
+    <div class="layout">
+        
+        <main class="article">
+            <h1>Chapter 1: The Matrix Awakening</h1>
+            <p>The biggest hurdle for new Linux users is terminal anxiety. When you open a graphical file browser like Windows Explorer or macOS Finder, you instantly see your folders, your desktop, and your pictures. You have a physical mouse to click on things. When you open a Linux terminal, you just see a blinking cursor in a black void.</p>
+
+            <p>But the terminal is not a magic black box. It is a <strong>Command Line Interface (CLI)</strong>, which is literally just a file browser without the heavy, resource-draining graphics. Once you understand the architecture, it is infinitely faster and more powerful than a graphical interface. To survive in the void, you must first master the art of moving around.</p>
+
+            <hr>
+
+            <h2>1. The GPS: `pwd`</h2>
+            <p>In Unix-based systems (like Linux and macOS), we do not use the word "folder"; we use the historical term <strong>"directory."</strong> Because the terminal has no visual map, you can easily get lost deep inside the system's architecture, especially when managing remote servers.</p>
+            <p>If you ever forget where you are currently standing inside the computer's hard drive, you ask the system to print your exact coordinate using the <code>pwd</code> (Print Working Directory) command.</p>
+            <div class="code-block">pwd</div>
+            <p style="margin-top: 10px; font-size: 0.95rem; color: #8b949e;"><em>Output Example: <code>/home/user/projects</code></em></p>
+
+            <h2>2. The Eyes: `ls`</h2>
+            <p>Now that you know what room you are in, you need to turn the lights on. The <code>ls</code> (List) command scans your current location and prints out every single file and directory sitting right in front of you.</p>
+            <div class="code-block">ls</div>
+            
+            <p><strong>The Hidden World:</strong> By default, Linux hides critical system files and configuration scripts to prevent you from accidentally deleting them. These hidden files always start with a period (like <code>.bashrc</code> or <code>.config</code>). To force the terminal to show you absolutely everything, you attach a "flag" to your command.</p>
+            <div class="code-block">ls -a</div>
+
+            <h2>3. The Legs: `cd`</h2>
+            <p>If you run an <code>ls</code> command and see a directory named "projects", you can walk inside of it using the <code>cd</code> (Change Directory) command.</p>
+            <div class="code-block">cd projects</div>
+            
+            <p><strong>Walking Backward:</strong> You cannot just click a "Back" arrow in the terminal. To step backward up the tree into the room you were just in, you use two literal dots.</p>
+            <div class="code-block">cd ..</div>
+
+            <hr>
+
+            <h2>4. Absolute vs. Relative Paths</h2>
+            <p>This is the concept that separates beginners from power users. When you type <code>cd projects</code>, you are using a <strong>Relative Path</strong>. You are telling the computer: <em>"Look for a directory named projects relative to exactly where I am standing right now."</em></p>
+            
+            <p>But what if you want to jump across the entire computer instantly without stepping backward ten times? You use an <strong>Absolute Path</strong>. Absolute paths always start with a forward slash (<code>/</code>). No matter where you are in the computer, typing an absolute path will teleport you directly to that exact coordinate.</p>
+            <div class="code-block">cd /etc/systemd</div>
+
+            <h2>5. The Home & The Root</h2>
+            <p>In the Linux file system, there are two extremely important symbols you must memorize:</p>
+            <ul>
+                <li><strong>The Slash ( <code>/</code> ):</strong> This is the Root directory. It is the absolute base of the entire operating system. Everything on your hard drive branches out from here.</li>
+                <li><strong>The Tilde ( <code>~</code> ):</strong> This is your Home directory. It is your personal safe space where your downloads, documents, and projects live. If you ever get hopelessly lost in the matrix, simply typing <code>cd ~</code> will instantly teleport you back to your safe home base.</li>
+            </ul>
+
+            <hr>
+
+            <h2>🔥 Try It Yourself</h2>
+            <p>Reading theory is great, but executing it builds muscle memory. We have built a safe, virtual Linux filesystem in the terminal on the right. Try this exact sequence to prove you understand navigation:</p>
+            <ol style="margin-left: 20px; margin-top: 10px; font-size: 1.05rem; line-height: 1.8;">
+                <li>Type <strong><code>pwd</code></strong> and hit Enter to find your starting location.</li>
+                <li>Type <strong><code>ls -a</code></strong> to look around and reveal the hidden <code>.bashrc</code> file.</li>
+                <li>Type <strong><code>cd projects</code></strong> to walk forward.</li>
+                <li>Type <strong><code>cd ..</code></strong> to step backward.</li>
+                <li>Type <strong><code>cd /etc</code></strong> (an absolute path) to teleport across the system!</li>
+            </ol>
+            
+            <div style="margin-top: 40px; display: flex; justify-content: space-between;">
+                <a href="terminal.html" style="color: #8b949e; text-decoration: none; font-weight: bold;">← Return to Hub Home</a>
+                <a href="chapter2.html" style="color: #7ee787; text-decoration: none; font-weight: bold;">Next: Chapter 2 (Creation & Destruction) →</a>
+            </div>
+
+        </main>
+
+        <aside class="terminal-container">
+            <div class="term-header">
+                <div class="dot red"></div>
+                <div class="dot yellow"></div>
+                <div class="dot green"></div>
+                <div class="term-title">user@jrnation: ~</div>
+            </div>
+            
+            <div class="term-window" id="terminal-window"></div>
+        </aside>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

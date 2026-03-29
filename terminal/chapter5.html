@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 5: Process Control | JR Nation Terminal Hub</title>
+    <meta name="description" content="Master Linux process management. Learn how to monitor system resources with top, find PIDs with ps, and terminate frozen programs using the kill command.">
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery.terminal/js/jquery.terminal.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/jquery.terminal/css/jquery.terminal.min.css" rel="stylesheet"/>
+</head>
+<body>
+
+    <div class="layout">
+        
+        <main class="article">
+            <h1>Chapter 5: Process Control</h1>
+            <p>If a program freezes on Windows, you press <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>Delete</kbd>, open the Task Manager, and violently click "End Task" until the window disappears. On a headless Linux server, there are no windows to click. If a rogue script starts consuming 100% of your CPU, you have to hunt it down and terminate it from the command line.</p>
+
+            <p>Every single program running on a Linux machine is called a <strong>Process</strong>, and every process is assigned a unique tracking number called a <strong>PID (Process ID)</strong>. To control the server, you must learn how to manipulate these IDs.</p>
+
+            <hr>
+
+            <h2>1. The Heartbeat: `top`</h2>
+            <p>To see exactly what your computer is thinking about in real-time, you use the <strong><code>top</code></strong> command. This is the ultimate terminal task manager. It displays a live-updating list of every running process, sorted by how much CPU and RAM they are consuming.</p>
+            <div class="code-block">top</div>
+            <p style="margin-top: 10px; font-size: 0.95rem; color: #8b949e;"><em>Power User Tip: Most modern sysadmins install a heavily upgraded, colorful version of this tool called <strong><code>htop</code></strong>. It allows you to scroll vertically and horizontally through your processes using the arrow keys.</em></p>
+
+            <h2>2. The Snapshot: `ps`</h2>
+            <p>The <code>top</code> command is great for live monitoring, but because the list constantly jumps around, it can be hard to read. If you just want to take a static, frozen snapshot of what is currently running, you use the <strong><code>ps</code></strong> (Process Status) command.</p>
+            <p>By default, <code>ps</code> only shows processes running in your immediate terminal window. To see absolutely everything running across the entire system, you use the legendary <code>aux</code> flags.</p>
+            <div class="code-block">ps aux</div>
+
+            <h2>3. The Assassin: `kill`</h2>
+            <p>Once you use <code>top</code> or <code>ps</code> to identify the PID of a frozen or malicious program, it is time to shut it down. You do this using the <strong><code>kill</code></strong> command followed by the target PID.</p>
+            <div class="code-block">kill 4092</div>
+            <p>By default, this sends a <code>SIGTERM</code> (Signal Terminate) request to the program. It politely asks the program to save its data, close its files, and shut down gracefully.</p>
+
+            <h2>4. The Nuclear Option: `kill -9`</h2>
+            <p>Sometimes, a program is so badly frozen that it completely ignores your polite request to shut down. When this happens, you must bypass the program's logic and order the Linux Kernel itself to instantly execute the process. You do this by attaching the <strong><code>-9</code></strong> flag (which sends a <code>SIGKILL</code> signal).</p>
+            <div class="code-block">kill -9 4092</div>
+            <p style="margin-top: 10px; font-size: 0.95rem; color: #8b949e;"><em>Warning: Using -9 will instantly destroy the process without saving any data. Only use it as a last resort.</em></p>
+
+            <hr>
+
+            <h2>🔥 Try It Yourself</h2>
+            <p>A rogue cryptocurrency miner has infected our virtual server! Use your new process management skills in the terminal to hunt it down and destroy it.</p>
+            <ol style="margin-left: 20px; margin-top: 10px; font-size: 1.05rem; line-height: 1.8;">
+                <li>Type <strong><code>ps</code></strong> to take a snapshot of the running processes.</li>
+                <li>Look closely at the output and identify the <strong>PID</strong> of the program named <code>rogue_miner.sh</code>.</li>
+                <li>Type <strong><code>kill</code></strong> followed by the PID you found (e.g., <code>kill 1337</code>) to terminate it.</li>
+                <li>Type <strong><code>ps</code></strong> one more time to verify the threat has been eliminated!</li>
+            </ol>
+            
+            <div style="margin-top: 40px; display: flex; justify-content: space-between;">
+                <a href="chapter4.html" style="color: #8b949e; text-decoration: none; font-weight: bold;">← Back: Chapter 4</a>
+                <a href="chapter6.html" style="color: #7ee787; text-decoration: none; font-weight: bold;">Next: Chapter 6 (Shell Scripting) →</a>
+            </div>
+
+        </main>
+
+        <aside class="terminal-container">
+            <div class="term-header">
+                <div class="dot red"></div>
+                <div class="dot yellow"></div>
+                <div class="dot green"></div>
+                <div class="term-title">user@jrnation: ~</div>
+            </div>
+            
+            <div class="term-window" id="terminal-window"></div>
+        </aside>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

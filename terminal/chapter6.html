@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 6: Shell Scripting | JR Nation Terminal Hub</title>
+    <meta name="description" content="Learn the basics of Linux shell scripting. Understand the bash shebang, variables, and how to automate terminal commands using custom .sh scripts.">
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery.terminal/js/jquery.terminal.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/jquery.terminal/css/jquery.terminal.min.css" rel="stylesheet"/>
+</head>
+<body>
+
+    <div class="layout">
+        
+        <main class="article">
+            <h1>Chapter 6: Shell Scripting 101</h1>
+            <p>Up until now, you have been typing commands one by one. But what if you need to run a sequence of 50 commands every single morning to back up your server, clear the logs, and update your software? Typing them manually is a waste of time.</p>
+
+            <p>Welcome to <strong>Shell Scripting</strong>. A shell script is simply a standard text file containing a list of terminal commands. When you run the file, the Linux kernel reads it from top to bottom and executes every command automatically at lightning speed.</p>
+
+            <hr>
+
+            <h2>1. The Anatomy of a Script</h2>
+            <p>Every bash script must start with a very specific line of code at the absolute top of the file, known as the <strong>Shebang</strong>. It looks like this:</p>
+            <div class="code-block">#!/bin/bash</div>
+            <p>The <code>#!</code> tells the Linux operating system, <em>"Hey, do not read this like a normal text file. Send this code to the Bash interpreter located at /bin/bash to be executed."</em></p>
+
+            <h2>2. Writing the Logic</h2>
+            <p>Once you have your shebang, you can write any command you would normally type into the terminal. You can also create <strong>Variables</strong> to store data, just like in Python or JavaScript.</p>
+            <div class="code-block" style="white-space: pre-wrap;">#!/bin/bash
+
+# This is a comment. The computer ignores it.
+USER_NAME="Neo"
+
+echo "Wake up, $USER_NAME..."
+mkdir backup_folder
+echo "Backup folder created successfully."</div>
+
+            <h2>3. The Execution Problem</h2>
+            <p>If you save that code into a file called <code>matrix.sh</code> and try to run it, it will fail. Why? Because of the security permissions we learned about in Chapter 4! By default, Linux creates text files without "Execute" privileges to stop malicious code from running automatically.</p>
+            <p>Before you can run a script, you must grant it execution rights using the <code>chmod</code> command:</p>
+            <div class="code-block">chmod +x matrix.sh</div>
+
+            <h2>4. Pulling the Trigger</h2>
+            <p>Once the file has execute permissions (which you can verify by seeing the <code>x</code> in <code>ls -l</code>), you run it by typing a dot and a forward slash, followed by the file name.</p>
+            <div class="code-block">./matrix.sh</div>
+            <p style="margin-top: 10px; font-size: 0.95rem; color: #8b949e;"><em>Why the dot-slash? The dot represents your current directory. You are explicitly telling the terminal, "Execute the file named matrix.sh that is sitting exactly right here."</em></p>
+
+            <hr>
+
+            <h2>🔥 Try It Yourself</h2>
+            <p>We have planted a pre-written script inside your <code>projects</code> directory. Your final test is to read it, check its permissions, and execute it.</p>
+            <ol style="margin-left: 20px; margin-top: 10px; font-size: 1.05rem; line-height: 1.8;">
+                <li>Type <strong><code>cd projects</code></strong> to enter the directory.</li>
+                <li>Type <strong><code>cat script.sh</code></strong> to look at the source code inside the file.</li>
+                <li>Type <strong><code>ls -l</code></strong> to verify that the file has <code>x</code> (execute) permissions.</li>
+                <li>Type <strong><code>./script.sh</code></strong> to execute the script and complete your training!</li>
+            </ol>
+            
+            <div style="margin-top: 40px; display: flex; justify-content: space-between;">
+                <a href="chapter5.html" style="color: #8b949e; text-decoration: none; font-weight: bold;">← Back: Chapter 5</a>
+                <a href="../index.html" style="color: #7ee787; text-decoration: none; font-weight: bold;">Return Home →</a>
+            </div>
+
+        </main>
+
+        <aside class="terminal-container">
+            <div class="term-header">
+                <div class="dot red"></div>
+                <div class="dot yellow"></div>
+                <div class="dot green"></div>
+                <div class="term-title">user@jrnation: ~</div>
+            </div>
+            
+            <div class="term-window" id="terminal-window"></div>
+        </aside>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

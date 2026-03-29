@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 2: Creation & Destruction | JR Nation Terminal Hub</title>
+    <meta name="description" content="Master Linux file manipulation. Learn how to use mkdir, touch, cat, and the dangerous rm command to create and destroy files in the terminal.">
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery.terminal/js/jquery.terminal.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/jquery.terminal/css/jquery.terminal.min.css" rel="stylesheet"/>
+</head>
+<body>
+
+    <div class="layout">
+        
+        <main class="article">
+            <h1>Chapter 2: Creation & Destruction</h1>
+            <p>In the graphical world, creating a folder means right-clicking the mouse, moving down a context menu, clicking "New Folder", and typing a name. It is slow and tedious. In the Linux terminal, you can create ten directories, populate them with text files, and delete them all in a fraction of a second without ever touching a mouse.</p>
+
+            <p>Now that you know how to navigate the file system using <code>pwd</code> and <code>cd</code>, it is time to learn how to actively manipulate the matrix around you. Welcome to File Manipulation.</p>
+
+            <hr>
+
+            <h2>1. Building Architecture: `mkdir`</h2>
+            <p>To create a new directory (folder), you use the <strong><code>mkdir</code></strong> (Make Directory) command, followed by the name you want to give it. Unlike Windows, Linux does not like spaces in file names. If you want to use two words, separate them with a hyphen or an underscore.</p>
+            <div class="code-block">mkdir top_secret</div>
+            <p style="margin-top: 10px; font-size: 0.95rem; color: #8b949e;"><em>Power User Tip: You can create multiple directories at the exact same time just by putting spaces between the names: <code>mkdir music pictures videos</code></em></p>
+
+            <h2>2. Forging Files: `touch`</h2>
+            <p>Historically, the <strong><code>touch</code></strong> command was invented to update the "last modified" timestamp on existing files. However, modern Linux users use it for a much better trick: if you use the <code>touch</code> command on a file name that doesn't exist yet, the system will instantly generate a completely blank file with that exact name.</p>
+            <div class="code-block">touch passwords.txt</div>
+
+            <h2>3. Reading the Matrix: `cat`</h2>
+            <p>You have a text file, but how do you read it without opening a bulky graphical text editor like Notepad? You use <strong><code>cat</code></strong> (Concatenate).</p>
+            <p>This command instantly reads the entire contents of a file and violently spits the text directly onto your terminal screen. It is incredibly useful for quickly checking configuration files or reading short server logs.</p>
+            <div class="code-block">cat passwords.txt</div>
+            <p style="margin-top: 10px; font-size: 0.95rem; color: #8b949e;"><em>Note: If a file is 10,000 lines long, <code>cat</code> will flood your screen. In the next chapter, we will learn how to read massive files safely.</em></p>
+
+            <h2>4. The Danger Zone: `rm`</h2>
+            <p>Windows has a "Recycle Bin." macOS has a "Trash." If you delete something by accident, you can just click a button to restore it. <strong>Linux does not forgive.</strong></p>
+            
+            <p>When you use the <strong><code>rm</code></strong> (Remove) command, the file is instantly and permanently vaporized from your hard drive. There is no undo button. You must use this command with extreme caution.</p>
+            <div class="code-block">rm passwords.txt</div>
+
+            <p><strong>Deleting Directories:</strong> By default, the <code>rm</code> command refuses to delete directories as a safety mechanism. If you want to destroy a directory and all of the files trapped inside of it, you must append the <code>-r</code> (recursive) flag.</p>
+            <div class="code-block">rm -r top_secret</div>
+
+            <hr>
+
+            <h2>🔥 Try It Yourself</h2>
+            <p>It is time to test your power. We have initialized a safe sandbox in the terminal on your right. Follow this exact execution sequence to prove your mastery over the file system:</p>
+            <ol style="margin-left: 20px; margin-top: 10px; font-size: 1.05rem; line-height: 1.8;">
+                <li>Type <strong><code>mkdir hack_lab</code></strong> to build a new directory.</li>
+                <li>Type <strong><code>ls</code></strong> to verify it was created successfully.</li>
+                <li>Type <strong><code>cd hack_lab</code></strong> to walk inside your new creation.</li>
+                <li>Type <strong><code>touch target.txt</code></strong> to forge a new, empty text file.</li>
+                <li>Type <strong><code>cd ..</code></strong> to step back out of the directory.</li>
+                <li>Type <strong><code>rm -r hack_lab</code></strong> to completely vaporize everything you just built.</li>
+            </ol>
+            
+            <div style="margin-top: 40px; display: flex; justify-content: space-between;">
+                <a href="chapter1.html" style="color: #8b949e; text-decoration: none; font-weight: bold;">← Back: Chapter 1</a>
+                <a href="chapter3.html" style="color: #7ee787; text-decoration: none; font-weight: bold;">Next: Chapter 3 (The Search Engine) →</a>
+            </div>
+
+        </main>
+
+        <aside class="terminal-container">
+            <div class="term-header">
+                <div class="dot red"></div>
+                <div class="dot yellow"></div>
+                <div class="dot green"></div>
+                <div class="term-title">user@jrnation: ~</div>
+            </div>
+            
+            <div class="term-window" id="terminal-window"></div>
+        </aside>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
