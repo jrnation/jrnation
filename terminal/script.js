@@ -35,7 +35,7 @@ function getMeta(absPath, isDir) {
         owner: absPath.startsWith("/etc") ? "root" : "user",
         group: absPath.startsWith("/etc") ? "root" : "user",
         size: Math.floor(Math.random() * 4000) + 100,
-        date: "Oct 24 10:00"
+        date: "Oct 26 10:00"
     };
 }
 
@@ -290,7 +290,7 @@ jQuery(function($, undefined) {
                 term.error(`bash: ${command}: command not found`);
         }
     }, {
-        greetings: 'Welcome to JR Nation Terminal Hub v5.0\nType [[b;#ffbd2e;]help] to see available commands.\n',
+        greetings: 'Welcome to JR Nation Terminal Hub \nType [[b;#ffbd2e;]help] to see available commands.\n',
         name: 'jr_nation_terminal',
         prompt: getPrompt(),
         completion: true
