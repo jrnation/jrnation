@@ -3,37 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Linux Terminal | The Linux Hub</title>
-    <meta name="description" content="Master the Linux command line. Learn file systems, package managers, text editors, and basic bash scripting.">
+    
+    <title>The Command Line Interface | Terminal Basics | The Linux Hub</title>
+    <meta name="description" content="Master the Linux command line interface (CLI). Learn file system navigation, package management, terminal text editors, and basic bash scripting.">
+    <meta name="keywords" content="linux terminal commands, learn bash scripting, linux package managers, sudo permissions explained, linux command line interface, vim vs nano">
+    
     <link rel="icon" type="image/png" href="../../favicon.png">
     <link rel="stylesheet" href="../style.css">
 
     <style>
-        /* --- Page-Specific Styles for the Hub --- */
+        /* --- Page-Specific Styles for the Roadmap --- */
         .roadmap-header {
-            text-align: center;
-            padding: 3rem 1rem;
+            text-align: left;
+            padding: 1rem 0 2rem 0;
         }
         .roadmap-header h1 {
-            font-size: 2.5rem;
-            color: var(--accent-green);
+            font-size: 2.8rem;
+            color: #f0f6fc;
             border-bottom: none;
-            margin-bottom: 0.5rem;
-        }
-        .roadmap-header p {
-            font-size: 1.2rem;
-            color: #8b949e;
-            max-width: 700px;
-            margin: 0 auto;
+            margin-bottom: 1rem;
         }
         .roadmap-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 1.5rem;
             margin-top: 2rem;
         }
         
-        /* The Magic Alignment Section */
+        /* The Alignment Matrix */
         .stage-card {
             background-color: var(--bg-sidebar);
             padding: 2rem;
@@ -61,49 +58,91 @@
         .stage-card h3 {
             margin: 0.5rem 0 1rem 0;
             font-size: 1.5rem;
+            color: #f0f6fc;
         }
         
         .stage-card p {
             margin-bottom: 1.5rem;
+            color: #8b949e;
             flex-grow: 1; 
         }
         
-        /* Pushes the button to the bottom */
+        /* Forces the button to the absolute bottom of the card */
         .stage-card .btn-primary, 
         .stage-card .btn-secondary {
             margin-top: auto; 
+            width: 100%;
+        }
+
+        .callout-emulator {
+            margin-top: 3rem;
+            padding: 2.5rem 2rem;
+            background-color: rgba(137, 180, 250, 0.05);
+            border: 1px solid #30363d;
+            border-top: 4px solid #89b4fa;
+            border-radius: 8px;
+            text-align: center;
         }
     </style>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5103156070877653"
-     crossorigin="anonymous"></script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5103156070877653" crossorigin="anonymous"></script>
 </head>
 <body>
 
 <header class="navbar">
     <div class="logo">
         <a href="../../index.html">
-            <img src="../../logo.png" alt="Linux Hub Logo" class="logo-img" onerror="this.style.display='none'">
+            <img src="../../logo.png" alt="JR Nation Logo" class="logo-img" onerror="this.style.display='none'">
             The Linux Hub
         </a>
     </div>
     <nav>
         <a href="../index.html">Hub Home</a>
-        <a href="../../lore.html" target="_blank" rel="noopener noreferrer">About Us</a>
-        <a href="../../privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+        <a href="../../lore.html">Lore</a>
+        <a href="../../privacy.html">Privacy</a>
         <a href="https://discord.gg/qMCyTNcDsV" target="_blank" rel="noopener noreferrer">Join Us</a>
     </nav>
-    <button id="menu-btn" class="hamburger">☰ Categories</button>
+    <button id="menu-btn" class="hamburger">☰ Menu</button>
 </header>
 
 <div class="container">
-    <main class="content">
-        <div class="breadcrumbs">
-            <a href="../index.html">Hub Home</a> &gt; <span>The Terminal</span>
+    
+    <aside class="sidebar">
+        <h3><a href="../getting-started/getting-started.html">Getting Started</a></h3>
+        <ul>
+            <li><a href="../getting-started/wilx.html">What is Linux?</a></li>
+            <li><a href="../getting-started/distro.html">Choosing Your First Distro</a></li>
+            <li><a href="../getting-started/liveboot.html">Creating a Live USB</a></li>
+            <li><a href="../getting-started/installation.html">Installation & Dual Booting</a></li>
+            <li><a href="../getting-started/config.html">Post-Installation Setup</a></li>
+        </ul>
+
+        <h3><a href="../everyday/everyday.html">Everyday Use</a></h3>
+        <ul>
+            <li><a href="../everyday/de.html">Desktop Environments</a></li>
+            <li><a href="../everyday/essentials.html">System Essentials</a></li>
+            <li><a href="../everyday/gaming.html">Gaming on Linux</a></li>
+            <li><a href="../everyday/ricing.html">UI Customization (Ricing)</a></li>
+        </ul>
+
+        <h3><a href="terminal.html" style="color: var(--accent-green);">Terminal Basics</a></h3>
+            <ul>
+                <li><a href="fs.html">Navigating the Filesystem</a></li>
+                <li><a href="pacmans.html">Package Managers</a></li>
+                <li><a href="sudo.html">Permissions & Ownership</a></li>
+                <li><a href="texted.html">Terminal Text Editors</a></li>
+                <li><a href="bash.html">Writing Your First Bash Script</a></li>
+            </ul>
+    </aside>
+
+    <main class="content guide-page">
+        <div class="breadcrumbs" style="color: #8b949e; font-size: 0.9rem; margin-bottom: 20px;">
+            <a href="../index.html">Hub Home</a> &gt; <span style="color: #c9d1d9;">Terminal Basics</span>
         </div>
 
         <header class="roadmap-header">
-            <h1>The Command Line</h1>
-            <p>The graphical interface was just the lobby. This is the engine room. Learn how to speak directly to the kernel, manage packages at lightning speed, and automate your entire workflow.</p>
+            <h1>The Command Line Interface</h1>
+            <p style="margin-bottom: 15px;">The graphical user interface was merely an abstraction layer. This is the administrative core. Learn how to interface directly with the system kernel, execute package management operations at maximum efficiency, and automate repetitive administrative workflows.</p>
         </header>
 
         <section class="roadmap-grid">
@@ -111,44 +150,46 @@
             <article class="stage-card">
                 <div class="stage-badge">MODULE 01</div>
                 <h3>File Systems (CLI)</h3>
-                <p>Ditch the graphical file manager. Learn how to navigate directories, move files, and read data using only text commands.</p>
-                <a href="fs.html" class="btn-primary">Navigate the Tree</a>
+                <p>Bypass the graphical file manager. Learn how to navigate directories, manipulate files, and execute data transfers utilizing pure command-line syntax.</p>
+                <a href="fs.html" class="btn-primary">Navigate the Hierarchy</a>
             </article>
 
             <article class="stage-card">
                 <div class="stage-badge">MODULE 02</div>
-                <h3>Package Managers</h3>
-                <p>APT, Pacman, and DNF. Learn how to install, update, and completely purge software directly from the core repositories.</p>
-                <a href="pacmans.html" class="btn-secondary">Master Software</a>
+                <h3>Package Management</h3>
+                <p>APT, Pacman, and DNF. Learn how to deploy, update, and completely remove software binaries directly from official repository mirrors.</p>
+                <a href="pacmans.html" class="btn-secondary">Manage Dependencies</a>
             </article>
 
             <article class="stage-card">
                 <div class="stage-badge">MODULE 03</div>
-                <h3>The "Sudo" Command</h3>
-                <p>Understand root privileges, user permissions, and how to safely execute commands as the system administrator.</p>
-                <a href="sudo.html" class="btn-secondary">Take Control</a>
+                <h3>Root Privileges (Sudo)</h3>
+                <p>Understand the zero-trust security model, user permissions, and how to safely execute critical commands as the system administrator.</p>
+                <a href="sudo.html" class="btn-secondary">Elevate Privileges</a>
             </article>
 
             <article class="stage-card">
                 <div class="stage-badge">MODULE 04</div>
-                <h3>Text Editors</h3>
-                <p>Nano vs. Vim vs. Neovim. Learn how to edit configuration files directly in the terminal without opening a graphical app.</p>
-                <a href="texted.html" class="btn-secondary">Write Code</a>
+                <h3>Terminal Text Editors</h3>
+                <p>Nano vs. Vim vs. Neovim. Learn how to modify system configuration files and write code directly within the terminal emulator.</p>
+                <a href="texted.html" class="btn-secondary">Modify Configurations</a>
             </article>
 
             <article class="stage-card">
                 <div class="stage-badge">MODULE 05</div>
                 <h3>Bash Scripting</h3>
-                <p>Why type the same five commands every day? Learn how to string them together into a script and automate your life.</p>
-                <a href="bash.html" class="btn-secondary">Automate Everything</a>
+                <p>Eliminate redundant daily tasks. Learn how to compile standard commands into executable scripts to automate your administrative workflows.</p>
+                <a href="bash.html" class="btn-secondary">Automate Workflows</a>
             </article>
 
         </section>
 
-        <div class="callout-info" style="text-align: center; margin-top: 40px; padding: 2rem;">
-            <h3 style="margin-top: 0; color: var(--accent-green);">The Interactive Sandbox</h3>
-            <p style="font-size: 1.1rem;">Hollywood makes the command line look like hacking. In reality, it's just a text-based conversation with your computer. Want to practice these commands without risking your actual hard drive? Drop into our virtual terminal sandbox.</p>
-            <a href="../../terminal/index.html" class="btn-primary" style="margin-top: 15px;" target="_blank">Launch Terminal Playground</a>
+        <div class="callout-emulator">
+            <h3 style="margin-top: 0; color: #89b4fa; font-size: 1.8rem;">The Interactive Training Environment</h3>
+            <p style="font-size: 1.1rem; color: #c9d1d9; max-width: 600px; margin: 0 auto 25px auto;">
+                Media often portrays the command line as complex cyber operations. In reality, it is simply a direct, text-based dialogue with your machine. Do you wish to practice these administrative commands without risking your local file system? Initialize our sandboxed emulator.
+            </p>
+            <a href="../../terminal/index.html" class="btn-primary" style="background-color: #89b4fa; color: #000; border-color: #89b4fa;" target="_blank" rel="noopener noreferrer">Initialize Terminal Emulator</a>
         </div>
 
         <hr class="section-divider">
@@ -156,6 +197,19 @@
         <div class="guide-nav" style="display: flex; justify-content: flex-start;">
             <a href="../everyday/ricing.html" class="btn-secondary">← Back to Everyday Use</a>
         </div>
+
+        <footer class="site-footer" style="padding-top: 40px; border-top: 1px solid #30363d; margin-top: 60px; text-align: center;">
+            <div class="disclaimer" style="font-size: 0.85rem; color: #8b949e; margin-bottom: 20px; max-width: 800px; margin-left: auto; margin-right: auto; padding: 0 15px;">
+                <strong>Educational Disclaimer:</strong> All system architecture breakdowns, terminal commands, and scripts provided on the JR Nation platform are designed strictly for educational and system administration training purposes.
+            </div>
+            <p style="color: #8b949e;">&copy; 2026 JR Nation. All Rights Reserved.</p>
+            <div class="legal-links" style="margin-top: 15px;">
+                <a href="../../privacy.html" style="color: #79c0ff; margin: 0 10px; text-decoration: none;">Privacy Policy</a>
+                <a href="../../terms.html" style="color: #79c0ff; margin: 0 10px; text-decoration: none;">Terms of Service</a>
+                <a href="../../lore.html" style="color: #79c0ff; margin: 0 10px; text-decoration: none;">Lore</a>
+                <a href="../../contact.html" style="color: #79c0ff; margin: 0 10px; text-decoration: none;">Contact Us</a>
+            </div>
+        </footer>
 
     </main>
 </div>
@@ -169,5 +223,6 @@
         });
     }
 </script>
+
 </body>
 </html>
