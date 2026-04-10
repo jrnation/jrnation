@@ -3,177 +3,237 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User & Group Management | The Linux Hub</title>
-    <meta name="description" content="Master Linux user and group management. Learn the difference between useradd and adduser, understand UID/GID architecture, and secure your server using the Principle of Least Privilege.">
+    
+    <title>User & Group Management | Access Control | The Linux Hub</title>
+    <meta name="description" content="Master Linux user and group management. Learn the architectural differences between useradd and adduser, comprehend UID/GID mapping, and enforce the Principle of Least Privilege.">
+    <meta name="keywords" content="linux user management, useradd vs adduser, linux change user password, usermod append group, linux service accounts, delete user linux">
+    
     <link rel="icon" type="image/png" href="../../favicon.png">
     <link rel="stylesheet" href="../style.css">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5103156070877653"
-     crossorigin="anonymous"></script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5103156070877653" crossorigin="anonymous"></script>
 </head>
 <body>
 
 <header class="navbar">
     <div class="logo">
         <a href="../../index.html">
-            <img src="../../logo.png" alt="Linux Hub Logo" class="logo-img" onerror="this.style.display='none'">
+            <img src="../../logo.png" alt="JR Nation Logo" class="logo-img" onerror="this.style.display='none'">
             The Linux Hub
         </a>
     </div>
     <nav>
         <a href="../index.html">Hub Home</a>
-        <a href="../../lore.html" target="_blank" rel="noopener noreferrer">About Us</a>
-        <a href="../../privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+        <a href="../../lore.html">Lore</a>
+        <a href="../../privacy.html">Privacy</a>
         <a href="https://discord.gg/qMCyTNcDsV" target="_blank" rel="noopener noreferrer">Join Us</a>
     </nav>
-    <button id="menu-btn" class="hamburger">☰ Categories</button>
+    <button id="menu-btn" class="hamburger">☰ Menu</button>
 </header>
 
 <div class="container">
+    
     <aside class="sidebar">
-        <h3>Security & Networks</h3>
+        <h3><a href="../getting-started/getting-started.html">Getting Started</a></h3>
         <ul>
-            <li><a href="bfs.html">Basic Firewall Setup</a></li>
-            <li><a href="ugm.html" style="color: var(--accent-green);">User Group Management</a></li>
-            <li><a href="sshra.html">SSH Remote Access</a></li>
-            <li><a href="practices.html">Best Practices</a></li>
+            <li><a href="../getting-started/wilx.html">What is Linux?</a></li>
+            <li><a href="../getting-started/distro.html">Choosing Your First Distro</a></li>
+            <li><a href="../getting-started/liveboot.html">Creating a Live USB</a></li>
+            <li><a href="../getting-started/installation.html">Installation & Dual Booting</a></li>
+            <li><a href="../getting-started/config.html">Post-Installation Setup</a></li>
+        </ul>
+
+        <h3><a href="../everyday/everyday.html">Everyday Use</a></h3>
+        <ul>
+            <li><a href="../everyday/de.html">Desktop Environments</a></li>
+            <li><a href="../everyday/essentials.html">System Essentials</a></li>
+            <li><a href="../everyday/gaming.html">Workstation Gaming</a></li>
+            <li><a href="../everyday/ricing.html">UI Customization (Ricing)</a></li>
+        </ul>
+
+        <h3><a href="../terminal/terminal.html">Terminal Basics</a></h3>
+        <ul>
+            <li><a href="../terminal/fs.html">Navigating the Filesystem</a></li>
+            <li><a href="../terminal/pacmans.html">Package Managers</a></li>
+            <li><a href="../terminal/sudo.html">Permissions & Ownership</a></li>
+            <li><a href="../terminal/texted.html">Terminal Text Editors</a></li>
+            <li><a href="../terminal/bash.html">Bash Scripting</a></li>
+        </ul>
+
+        <h3><a href="san.html">Security & Networks</a></h3>
+        <ul>
+            <li><a href="bfs.html">Basic Firewall Setup (UFW)</a></li>
+            <li><a href="ugm.html" style="color: var(--accent-green);">User & Group Management</a></li>
+            <li><a href="sshra.html">SSH & Remote Access</a></li>
+            <li><a href="practices.html">Privacy & Best Practices</a></li>
         </ul>
     </aside>
 
     <main class="content guide-page">
-        <div class="breadcrumbs">
-            <a href="../index.html">Hub Home</a> &gt; <a href="san.html">Security & Networks</a> &gt; <span>User Group Management</span>
+        <div class="breadcrumbs" style="color: #8b949e; font-size: 0.9rem; margin-bottom: 20px;">
+            <a href="../index.html">Hub Home</a> &gt; <a href="san.html" style="color: #8b949e;">Security & Networks</a> &gt; <span style="color: #c9d1d9;">User Management</span>
         </div>
 
         <article>
-            <h1>User Management: The VIP List</h1>
-            <div class="meta-info">
-                <span>You built the walls. Now you need to decide who gets the keys.</span> | <span>👤 By JR Nation</span>
+            <h1 style="font-size: 2.8rem; margin-bottom: 10px;">User Management: Access Control</h1>
+            <div class="meta-info" style="margin-bottom: 30px; border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;">
+                <span style="color: #8b949e;">The perimeter is secured. Now you must govern internal authorization protocols.</span> | <span style="color: var(--accent-green);">By JR Nation Infrastructure</span>
             </div>
 
-            <p>Unlike Windows, which was originally built for a single person sitting at a single desk (MS-DOS/Windows 95), Linux is a direct descendant of UNIX. In the 1970s, computers were the size of rooms, and hundreds of university students had to connect to a single machine simultaneously using dumb terminals. Because of this, the entire operating system was built from day one around the concept of paranoid, multi-user isolation.</p>
+            <p>Unlike proprietary desktop operating systems (e.g., MS-DOS or early Windows), which were engineered for single-user hardware, Linux is a direct architectural descendant of UNIX. In enterprise computing history, mainframe hardware required hundreds of users to interface simultaneously via thin clients. Consequently, the operating system was engineered fundamentally around strict, multi-user isolation and compartmentalized authorization.</p>
             
-            <p>A firewall keeps the attackers out of your fortress. But what about the people (or programs) already inside? If you let a friend SSH into your computer, or if you host a Minecraft server for strangers, you absolutely do not want them having the power to delete your operating system files. Mastering the <strong>Principle of Least Privilege</strong>—giving a user exactly enough power to do their job and absolutely nothing more—is the hallmark of a true System Administrator.</p>
+            <p>A firewall prevents unauthorized external access to your infrastructure. But what governs the entities (or software processes) already operating within? If you authorize external users to interface with your workstation, or deploy public-facing services, you must actively restrict their read/write capabilities. Mastering the <strong>Principle of Least Privilege</strong>—granting an entity exactly enough authorization to execute their required workload and absolutely nothing further—is the foundational hallmark of system administration.</p>
 
-            <div class="toc-box">
-                <h3>Table of Contents</h3>
-                <ul>
-                    <li><a href="#architecture">1. The Brain: UIDs and /etc/passwd</a></li>
-                    <li><a href="#creation">2. Spawning Users: useradd vs. adduser</a></li>
-                    <li><a href="#modify">3. Changing Passwords & Usernames</a></li>
-                    <li><a href="#groups">4. The Group System & The usermod Trap</a></li>
-                    <li><a href="#deletion">5. Evicting Users (userdel)</a></li>
-                    <li><a href="#service-accounts">6. Pro-Tier: Service Accounts</a></li>
+            <div class="callout-info" style="border-left-color: #89b4fa; background-color: rgba(137, 180, 250, 0.1);">
+                <strong style="color: #89b4fa;">💡 Administrative Protocol: Sandbox Training.</strong> Do not test user deletion or group modification commands on your active workstation! Access the <a href="../../terminal/index.html" target="_blank" style="color: #79c0ff; text-decoration: underline;">JR Nation Terminal Sandbox</a> to practice deploying, modifying, and safely purging dummy profiles before executing these syntaxes in a production environment.
+            </div>
+
+            <div class="cheat-sheet-box">
+                <h3 style="margin-top: 0; color: var(--accent-green);">The Access Control Roadmap</h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li><a href="#architecture">1. Core Architecture: UIDs and /etc/passwd</a></li>
+                    <li><a href="#creation">2. Deploying User Profiles: useradd vs. adduser</a></li>
+                    <li><a href="#modify">3. Modifying Authentication & Identifiers</a></li>
+                    <li><a href="#groups">4. Group Architecture & The usermod Overwrite Risk</a></li>
+                    <li><a href="#deletion">5. Revoking Access & Profile Deletion (userdel)</a></li>
+                    <li><a href="#service-accounts">6. Advanced Deployment: Service Accounts</a></li>
                 </ul>
             </div>
 
-            <div class="callout-info">
-                <strong>💡 Sandbox Training:</strong> Do not test user deletion commands on your actual machine! Jump into the <a href="../../terminal/index.html" target="_blank" style="color: var(--accent-green); text-decoration: underline;">JR Nation Terminal Playground</a> and practice creating, modifying, and deleting dummy users safely before you touch your real production environment.
-            </div>
-
-            <h2 id="architecture">1. The Brain: UIDs and /etc/passwd</h2>
-            <p>Here is a secret that most beginners don't know: the Linux kernel doesn't actually care what your username is. It only understands math. When you create an account named "jaya", the system assigns you a <strong>User ID (UID)</strong>. Your computer sees you as UID 1000, not "jaya".</p>
+            <h2 id="architecture">1. Core Architecture: UIDs and /etc/passwd</h2>
+            <p>Fundamentally, the Linux kernel does not process string-based usernames. The architecture relies entirely on integers. When you deploy an account designated "jrnation", the system assigns a <strong>User ID (UID)</strong>. The kernel authenticates you strictly as UID 1000.</p>
             
-            <p>All of this mapping information is stored in a critical system file located at <code>/etc/passwd</code>. If you open this file, you will see a list of every single user on your machine. However, despite the name, it <strong>does not</strong> contain your actual passwords. (Passwords are encrypted and locked away in an even tighter vault called <code>/etc/shadow</code>, which only the root user can read).</p>
-
-            <div class="callout-warning">
-                <strong>⚠️ The Rule of Zero:</strong> In Linux, UID 0 is strictly reserved for <code>root</code>. Whoever holds UID 0 has God-mode access to the entire kernel. Never assign UID 0 to a standard user account.
-            </div>
-
-            <h2 id="creation">2. Spawning Users: useradd vs. adduser</h2>
-            <p>When it comes to creating users, you will see two different commands floating around the internet. They do the exact same thing, but in very different ways.</p>
-
-            <h3>The Hard Way: useradd</h3>
-            <p><code>useradd</code> is the raw, low-level binary available on every single Linux distribution. It is fast, silent, and requires you to manually define every single parameter using flags.</p>
-
-            <div class="code-block-container">
-                <p class="terminal-cmd">$ sudo useradd -m -s /bin/bash guest_user</p>
-                <p class="terminal-comment"># -m tells Linux to physically create a /home/guest_user directory for them.</p>
-                <p class="terminal-comment"># -s sets their default terminal shell to Bash. If you forget this, they might not be able to log in!</p>
-            </div>
-
-            <h3>The Easy Way: adduser (Debian/Ubuntu only)</h3>
-            <p>If you are on a Debian-based system (like Ubuntu or Mint), you have access to a friendly Perl script called <code>adduser</code>. Instead of memorizing flags, you just type the command and it walks you through an interactive, step-by-step wizard, asking you for the password, the room number, and automatically creating the home folder for you.</p>
-
-            <div class="code-block-container">
-                <p class="terminal-cmd">$ sudo adduser guest_user</p>
-            </div>
-
-            <h2 id="modify">3. Changing Passwords & Usernames</h2>
-            <p>If you used <code>useradd</code>, the new account is actually locked until you assign it a password. Or, if an existing user forgot theirs, you have the power to reset it.</p>
-
-            <div class="code-block-container">
-                <p class="terminal-cmd">$ passwd</p>
-                <p class="terminal-comment"># Changes YOUR current password. It will ask for your old one first.</p>
-                <br>
-                <p class="terminal-cmd">$ sudo passwd guest_user</p>
-                <p class="terminal-comment"># As the admin, you can forcefully overwrite anyone else's password without knowing their old one.</p>
-            </div>
-
-            <p>If a user wants to change their actual system username, you must use the <code>usermod</code> (User Modify) command. But be warned: you also have to manually rename their <code>/home</code> directory to match the new name, or their applications will break.</p>
-
-            <div class="code-block-container">
-                <p class="terminal-cmd">$ sudo usermod -l new_name -d /home/new_name -m old_name</p>
-                <p class="terminal-comment"># -l renames the account. -d and -m physically move all their old files to the newly named home folder.</p>
-            </div>
-
-            <h2 id="groups">4. The Group System & The usermod Trap</h2>
-            <p>Managing permissions for 50 individual users is exhausting. Instead, Linux uses <strong>Groups</strong> (which are tracked via Group IDs, or GIDs, in the <code>/etc/group</code> file). You apply permissions to a Group (like "developers" or "audio"), and then simply drop users into those groups.</p>
-            
-            <p>Some critically important default groups include:</p>
-            <ul>
-                <li><strong><code>wheel</code></strong> or <strong><code>sudo</code></strong>: The VIP list. Anyone in this group can execute commands as root.</li>
-                <li><strong><code>docker</code></strong>: Allows the user to run containerized applications without needing sudo.</li>
-                <li><strong><code>www-data</code></strong>: The standard group used by web servers like Nginx or Apache to read website files.</li>
-            </ul>
+            <p>This identifier mapping is stored within a critical system configuration file located at <code>/etc/passwd</code>. Querying this file outputs a comprehensive list of every active profile on the local machine. However, despite the nomenclature, it <strong>does not</strong> contain your cryptographic passwords. Authentication hashes are securely isolated in a heavily restricted vault (<code>/etc/shadow</code>), which only the root administrator possesses authorization to query.</p>
 
             <div class="callout-warning" style="border-left-color: #f38ba8; background-color: rgba(243, 139, 168, 0.1);">
-                <strong>⚠️ The Missing "a" Disaster:</strong>
-                <br>When adding a user to a group, you use the <code>usermod -G</code> command. But if you type <code>sudo usermod -G sudo jaya</code>, Linux will add you to the sudo group, <strong>and immediately delete you from every single other group you were previously in.</strong> This will instantly break your audio, your video drivers, and your network access.
-                <br><br>
-                You MUST include the <code>-a</code> (Append) flag to add to the list without erasing the old ones.
+                <strong style="color: #f38ba8;">⚠️ The Administrative Absolute: UID 0</strong>
+                <br><span style="color: #c9d1d9;">Within Linux architecture, UID 0 is strictly and permanently reserved for the <code>root</code> profile. Any entity holding UID 0 possesses absolute administrative control over the entire kernel. You must never assign UID 0 to a standard user profile.</span>
             </div>
 
-            <p>The correct, safe way to add a user to a group is:</p>
+            <h2 id="creation">2. Deploying User Profiles: useradd vs. adduser</h2>
+            <p>When provisioning new accounts, administrators utilize two primary utilities. They accomplish identical objectives through differing operational methodologies.</p>
+
+            <h3 style="color: #79c0ff; font-size: 1.3rem;">The Standard Utility: useradd</h3>
+            <p><code>useradd</code> is the low-level binary natively integrated into every Linux distribution. It executes rapidly, provides no interactive output, and requires the administrator to manually define every operational parameter via command flags.</p>
 
             <div class="code-block-container">
-                <p class="terminal-cmd">$ sudo usermod -aG sudo guest_user</p>
-                <p class="terminal-comment"># -a (Append) -G (Groups). Safely adds them to the sudo group.</p>
+                <p class="code-label">Deploying a Standard User</p>
+                <p><span class="terminal-cmd">sudo useradd -m -s /bin/bash guest_user</span></p>
+                <br>
+                <p><span class="terminal-comment"># The -m flag instructs the kernel to generate a localized /home/guest_user directory.</span></p>
+                <p><span class="terminal-comment"># The -s flag defines their default terminal shell environment (Bash). Omitting this may prevent successful login authentication.</span></p>
             </div>
 
-            <h2 id="deletion">5. Evicting Users (userdel)</h2>
-            <p>When someone's time in your fortress is up, you need to completely revoke their access. You can delete their account using the <code>userdel</code> command. However, if you simply run <code>sudo userdel guest_user</code>, the system deletes their login ability, but <strong>leaves all their heavy files sitting in your /home folder taking up hard drive space.</strong></p>
-
-            <p>To completely wipe their existence from the server, you need to use the recursive flag:</p>
+            <h3 style="color: #79c0ff; font-size: 1.3rem;">The Interactive Wrapper: adduser (Debian/Ubuntu)</h3>
+            <p>If operating a Debian-based infrastructure (e.g., Ubuntu or Mint), administrators have access to an interactive Perl script designated <code>adduser</code>. Rather than supplying complex manual flags, initializing the command triggers a step-by-step execution wizard, automatically prompting for the cryptographic password, generating the localized directory, and compiling standard profile parameters.</p>
 
             <div class="code-block-container">
-                <p class="terminal-cmd">$ sudo userdel -r guest_user</p>
-                <p class="terminal-comment"># The -r flag deletes the user AND recursively wipes their entire /home directory off the disk.</p>
+                <p class="code-label">Interactive Profile Deployment</p>
+                <p><span class="terminal-cmd">sudo adduser guest_user</span></p>
             </div>
 
-            <h2 id="service-accounts">6. Pro-Tier: Service Accounts</h2>
-            <p>Users aren't always humans. If you install a database like MySQL or a web server like Apache, Linux actually creates a new "user account" specifically for that software to run under.</p>
+            <h2 id="modify">3. Modifying Authentication & Identifiers</h2>
+            <p>If deployed via <code>useradd</code>, the profile remains locked until a cryptographic password is assigned. Furthermore, system administrators possess the authorization to overwrite authentication hashes for any local user.</p>
+
+            <div class="code-block-container">
+                <p class="code-label">Password Modification Syntax</p>
+                <p><span class="terminal-cmd">passwd</span></p>
+                <p><span class="terminal-comment"># Updates the password for the active user. Requires verification of the current password.</span></p>
+                <br>
+                <p><span class="terminal-cmd">sudo passwd guest_user</span></p>
+                <p><span class="terminal-comment"># Utilizing elevated privileges, the administrator can forcibly overwrite a target user's password without prior verification.</span></p>
+            </div>
+
+            <p style="margin-top: 20px;">To modify an active string username, administrators must deploy the <code>usermod</code> (User Modify) command. Crucially, the administrator must also explicitly command the kernel to migrate the existing <code>/home</code> directory to align with the new identifier, otherwise profile-specific applications will fail.</p>
+
+            <div class="code-block-container">
+                <p class="code-label">Identifier Migration</p>
+                <p><span class="terminal-cmd">sudo usermod -l new_name -d /home/new_name -m old_name</span></p>
+                <br>
+                <p><span class="terminal-comment"># -l designates the new profile string. -d and -m physically migrate the existing files to the updated home directory path.</span></p>
+            </div>
+
+            <h2 id="groups">4. Group Architecture & The usermod Overwrite Risk</h2>
+            <p>Manually assigning granular read/write permissions for dozens of individual users is administratively inefficient. Instead, Linux employs <strong>Groups</strong> (tracked via Group IDs, or GIDs, within the <code>/etc/group</code> registry). Administrators allocate permissions to a designated Group (e.g., "developers" or "audio"), and subsequently assign user profiles to that specific group.</p>
             
-            <p>Why? <strong>Security isolation.</strong> If a hacker finds a vulnerability in your web server code and breaks in, they don't break in as *you*. They break in as the <code>www-data</code> user account. Because the <code>www-data</code> user is completely isolated, has no login shell (meaning they can't type commands), and has absolutely zero <code>sudo</code> privileges, the hacker is trapped inside the web server folder. They physically cannot touch your personal files or the core system binaries.</p>
+            <p>Critical default system groups include:</p>
+            <ul style="color: #c9d1d9; padding-left: 20px;">
+                <li style="margin-bottom: 5px;"><strong><code>wheel</code></strong> or <strong><code>sudo</code></strong>: The administrative tier. Assigned users are authorized to execute operations utilizing root privileges.</li>
+                <li style="margin-bottom: 5px;"><strong><code>docker</code></strong>: Authorizes the profile to execute containerized services without requiring the <code>sudo</code> prefix.</li>
+                <li style="margin-bottom: 5px;"><strong><code>www-data</code></strong>: The standard group utilized by web daemon services (Nginx, Apache) to interface with localized web directories.</li>
+            </ul>
+
+            <div class="callout-warning" style="border-left-color: #f9e2af; background-color: rgba(249, 226, 175, 0.1);">
+                <strong style="color: #f9e2af;">⚠️ The Group Overwrite Vulnerability:</strong>
+                <br><span style="color: #c9d1d9;">When appending a user to a supplementary group, administrators utilize the <code>usermod -G</code> syntax. However, if you execute <code>sudo usermod -G sudo jrnation</code>, the kernel will assign the profile to the sudo group, <strong>while simultaneously removing the profile from all previously assigned groups.</strong> This will immediately revoke your audio drivers, visual rendering protocols, and network interfaces.
+                <br><br>
+                You MUST append the <code>-a</code> (Append) flag to add the group to the profile's existing roster without overwriting current data.</span>
+            </div>
+
+            <p style="margin-top: 15px;">The strict, safe syntax for group assignment is:</p>
+
+            <div class="code-block-container">
+                <p class="code-label">Safe Group Appending</p>
+                <p><span class="terminal-cmd">sudo usermod -aG sudo guest_user</span></p>
+                <br>
+                <p><span class="terminal-comment"># -a (Append) combined with -G (Groups) safely injects the profile into the target group while retaining existing allocations.</span></p>
+            </div>
+
+            <h2 id="deletion">5. Revoking Access & Profile Deletion (userdel)</h2>
+            <p>When an entity no longer requires infrastructure access, their profile must be thoroughly decommissioned utilizing the <code>userdel</code> command. However, executing a standard <code>sudo userdel guest_user</code> revokes login authentication, but <strong>orphans their localized files within your /home directory, permanently consuming physical storage capacity.</strong></p>
+
+            <p>To completely purge their profile and localized data from the server, utilize the recursive flag:</p>
+
+            <div class="code-block-container">
+                <p class="code-label">Recursive Profile Purge</p>
+                <p><span class="terminal-cmd">sudo userdel -r guest_user</span></p>
+                <br>
+                <p><span class="terminal-comment"># The -r flag revokes the profile AND recursively formats their entire /home directory from the physical disk.</span></p>
+            </div>
+
+            <h2 id="service-accounts">6. Advanced Deployment: Service Accounts</h2>
+            <p>User profiles are not exclusively assigned to human operators. When deploying a database (MySQL) or a web daemon (Apache), the Linux kernel generates an isolated "service account" specifically for that software binary.</p>
+            
+            <p>Why? <strong>Architectural isolation.</strong> If an unauthorized entity exploits a vulnerability in your web application and breaches the service, they do not gain access under your primary administrative profile. They are restricted to the <code>www-data</code> service account. Because the <code>www-data</code> profile is heavily compartmentalized, lacks a login shell (preventing manual terminal execution), and possesses zero <code>sudo</code> authorization, the malicious actor is contained within the web server directory. They are physically unable to manipulate core system binaries or personal user data.</p>
 
         </article>
 
         <hr class="section-divider">
-        <div class="opt" style="text-align: center; margin: 30px 0;">
-            <a href="usercus.html" class="btn-primary">Bonus: Read the User Customization Guide</a>
+        
+        <div style="text-align: center; margin: 30px 0;">
+            <a href="usercus.html" class="btn-primary" style="background-color: #89b4fa; color: #000; border-color: #89b4fa;">Bonus: Advanced User Customization Protocol</a>
         </div>
+        
         <div class="guide-nav" style="display: flex; gap: 20px; justify-content: space-between;">
-            <a href="bfs.html" class="btn-secondary">← Back: Basic Firewall</a>
+            <a href="bfs.html" class="btn-secondary">← Back: Basic Firewall (UFW)</a>
             <a href="sshra.html" class="btn-primary">Next: SSH Remote Access →</a>
         </div>
+
+        <footer class="site-footer" style="padding-top: 40px; border-top: 1px solid #30363d; margin-top: 60px; text-align: center;">
+            <div class="disclaimer" style="font-size: 0.85rem; color: #8b949e; margin-bottom: 20px; max-width: 800px; margin-left: auto; margin-right: auto; padding: 0 15px;">
+                <strong>Educational Disclaimer:</strong> All system architecture breakdowns, access control protocols, and terminal scripts provided on the JR Nation platform are designed strictly for educational and system administration training purposes.
+            </div>
+            <p style="color: #8b949e;">&copy; 2026 JR Nation. All Rights Reserved.</p>
+            <div class="legal-links" style="margin-top: 15px;">
+                <a href="../../privacy.html" style="color: #79c0ff; margin: 0 10px; text-decoration: none;">Privacy Policy</a>
+                <a href="../../terms.html" style="color: #79c0ff; margin: 0 10px; text-decoration: none;">Terms of Service</a>
+                <a href="../../lore.html" style="color: #79c0ff; margin: 0 10px; text-decoration: none;">Lore</a>
+                <a href="../../contact.html" style="color: #79c0ff; margin: 0 10px; text-decoration: none;">Contact Us</a>
+            </div>
+        </footer>
+
     </main>
 </div>
 
 <script>
     const menuBtn = document.getElementById('menu-btn');
     const sidebar = document.querySelector('.sidebar');
-    menuBtn.addEventListener('click', () => {
-        sidebar.classList.toggle('show');
-    });
+    if(menuBtn && sidebar) {
+        menuBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('show');
+        });
+    }
 </script>
+
 </body>
 </html>

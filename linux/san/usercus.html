@@ -3,154 +3,191 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Customization & Shells | The Linux Hub</title>
-    <meta name="description" content="Deep dive into Linux user customization. Learn how to change your lockscreen profile picture, modify the GECOS display name, configure aliases, and upgrade your default terminal shell to Zsh or Fish.">
+    
+    <title>User Customization & Shells | Access Control | The Linux Hub</title>
+    <meta name="description" content="Deep dive into Linux profile customization. Learn how to configure display managers, modify the GECOS display name, configure bash aliases, and upgrade your default terminal shell to Zsh or Fish.">
+    <meta name="keywords" content="linux user customization, change linux profile picture terminal, linux gecos field, usermod display name, bash aliases setup, zsh vs fish shell linux, chsh command">
+    
     <link rel="icon" type="image/png" href="../../favicon.png">
     <link rel="stylesheet" href="../style.css">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5103156070877653"
-     crossorigin="anonymous"></script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5103156070877653" crossorigin="anonymous"></script>
 </head>
 <body>
 
 <header class="navbar">
     <div class="logo">
         <a href="../../index.html">
-            <img src="../../logo.png" alt="Linux Hub Logo" class="logo-img" onerror="this.style.display='none'">
+            <img src="../../logo.png" alt="JR Nation Logo" class="logo-img" onerror="this.style.display='none'">
             The Linux Hub
         </a>
     </div>
     <nav>
         <a href="../index.html">Hub Home</a>
-        <a href="../../lore.html" target="_blank" rel="noopener noreferrer">About Us</a>
-        <a href="../../privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+        <a href="../../lore.html">Lore</a>
+        <a href="../../privacy.html">Privacy</a>
         <a href="https://discord.gg/qMCyTNcDsV" target="_blank" rel="noopener noreferrer">Join Us</a>
     </nav>
-    <button id="menu-btn" class="hamburger">☰ Categories</button>
+    <button id="menu-btn" class="hamburger">☰ Menu</button>
 </header>
 
 <div class="container">
+    
     <aside class="sidebar">
-        <h3>Security & Networks</h3>
+        <h3><a href="../getting-started/getting-started.html">Getting Started</a></h3>
         <ul>
-            <li><a href="bfs.html">Basic Firewall Setup</a></li>
-            <li><a href="ugm.html" style="color: var(--accent-green);">User Group Management</a></li>
-            <li><a href="sshra.html">SSH Remote Access</a></li>
-            <li><a href="practices.html">Best Practices</a></li>
+            <li><a href="../getting-started/wilx.html">What is Linux?</a></li>
+            <li><a href="../getting-started/distro.html">Choosing Your First Distro</a></li>
+            <li><a href="../getting-started/liveboot.html">Creating a Live USB</a></li>
+            <li><a href="../getting-started/installation.html">Installation & Dual Booting</a></li>
+            <li><a href="../getting-started/config.html">Post-Installation Setup</a></li>
+        </ul>
+
+        <h3><a href="../everyday/everyday.html">Everyday Use</a></h3>
+        <ul>
+            <li><a href="../everyday/de.html">Desktop Environments</a></li>
+            <li><a href="../everyday/essentials.html">System Essentials</a></li>
+            <li><a href="../everyday/gaming.html">Workstation Gaming</a></li>
+            <li><a href="../everyday/ricing.html">UI Customization (Ricing)</a></li>
+        </ul>
+
+        <h3><a href="../terminal/terminal.html">Terminal Basics</a></h3>
+        <ul>
+            <li><a href="../terminal/fs.html">Navigating the Filesystem</a></li>
+            <li><a href="../terminal/pacmans.html">Package Managers</a></li>
+            <li><a href="../terminal/sudo.html">Permissions & Ownership</a></li>
+            <li><a href="../terminal/texted.html">Terminal Text Editors</a></li>
+            <li><a href="../terminal/bash.html">Bash Scripting</a></li>
+        </ul>
+
+        <h3><a href="san.html">Security & Networks</a></h3>
+        <ul>
+            <li><a href="bfs.html">Basic Firewall Setup (UFW)</a></li>
+            <li><a href="ugm.html" style="color: var(--accent-green);">User & Group Management</a></li>
+            <li><a href="sshra.html">SSH & Remote Access</a></li>
+            <li><a href="practices.html">Privacy & Best Practices</a></li>
         </ul>
     </aside>
 
     <main class="content guide-page">
-        <div class="breadcrumbs">
-            <a href="../index.html">Hub Home</a> &gt; <a href="san.html">Security & Networks</a> &gt; <a href="ugm.html">User Group Management</a> &gt; <span>Customization</span>
+        <div class="breadcrumbs" style="color: #8b949e; font-size: 0.9rem; margin-bottom: 20px;">
+            <a href="../index.html">Hub Home</a> &gt; <a href="san.html" style="color: #8b949e;">Security & Networks</a> &gt; <a href="ugm.html" style="color: #8b949e;">User Management</a> &gt; <span style="color: #c9d1d9;">Profile Customization</span>
         </div>
 
         <article>
-            <h1>User Customization: Dressing the Avatar</h1>
-            <div class="meta-info">
-                <span>You gave them an account. Now give them an identity.</span> | <span>👤 By JR Nation</span>
+            <h1 style="font-size: 2.8rem; margin-bottom: 10px;">User Customization: Environment Personalization</h1>
+            <div class="meta-info" style="margin-bottom: 30px; border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;">
+                <span style="color: #8b949e;">The account is provisioned. Now configure the personalized administrative environment.</span> | <span style="color: var(--accent-green);">By JR Nation Infrastructure</span>
             </div>
 
-            <p>Creating a user account with the right permissions is just the mechanical part of the job. But logging into a blank grey silhouette on the lock screen every day is a miserable experience. Once a secure account exists, you can fundamentally alter how that user interacts with the system.</p>
+            <p>Deploying a user profile with strict permissions satisfies the mechanical requirement of system administration. However, presenting an unconfigured, generic interface results in a suboptimal user experience. Once a secure authentication framework is established, administrators can fundamentally alter how that profile interfaces with the core system.</p>
             
-            <p>Because Linux respects the boundary between the Root system and the User space, every single account on a machine can have a completely isolated experience. User A can have a heavily animated, futuristic terminal shell, while User B operates in a strict, minimalist environment. Customizing these profiles isn't just about aesthetics; it is about building a workflow that makes you faster and more lethal on the command line.</p>
+            <p>Because the Linux kernel strictly enforces the boundary between the Root architecture and the User space, individual profiles can maintain completely isolated configurations. User A may deploy a highly customized, syntax-highlighted terminal shell, while User B operates within a strict, minimalist CLI environment. Customizing these parameters extends beyond aesthetics; it optimizes operational efficiency and establishes a proficient command-line workflow.</p>
 
-            <div class="toc-box">
-                <h3>Table of Contents</h3>
-                <ul>
-                    <li><a href="#avatar">1. The Lock Screen Avatar (Display Managers)</a></li>
+            <div class="cheat-sheet-box">
+                <h3 style="margin-top: 0; color: var(--accent-green);">The Configuration Roadmap</h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li><a href="#avatar">1. Display Managers: Authentication Avatars</a></li>
                     <li><a href="#displayname">2. Modifying the GECOS Field (Display Name)</a></li>
-                    <li><a href="#aliases">3. Workflow Hacks: Creating Bash Aliases</a></li>
-                    <li><a href="#shell">4. Upgrading the Default Shell (Bash vs. Zsh vs. Fish)</a></li>
-                    <li><a href="#faq">5. Frequently Asked Questions</a></li>
+                    <li><a href="#aliases">3. Operational Efficiency: Bash Aliases</a></li>
+                    <li><a href="#shell">4. Upgrading the Shell Interpreter (Zsh & Fish)</a></li>
+                    <li><a href="#faq">5. Frequently Asked Configuration Questions</a></li>
                 </ul>
             </div>
 
-            <h2 id="avatar">1. The Lock Screen Avatar (Display Managers)</h2>
-            <p>When you boot up your PC, the graphical login screen you see is controlled by a piece of software called a <strong>Display Manager</strong> (common ones include GDM3 for GNOME, SDDM for KDE Plasma, and LightDM for XFCE). This software looks into your user folder to see if you have claimed an identity.</p>
+            <h2 id="avatar">1. Display Managers: Authentication Avatars</h2>
+            <p>During the initialization sequence, the graphical authentication interface is rendered by a daemon known as a <strong>Display Manager</strong> (standard deployments include GDM3 for GNOME, SDDM for KDE Plasma, and LightDM for XFCE). This software queries the local user directory to locate personalized interface assets.</p>
 
-            <h3>The Standard Way (GUI)</h3>
-            <p>If you are using a standard, heavy Desktop Environment, the developers have built graphical hooks for this process.</p>
-            <ul>
-                <li>Open your system <strong>Settings</strong> application.</li>
-                <li>Navigate to the <strong>Users</strong> or <strong>Accounts</strong> tab.</li>
-                <li>Unlock the settings using your <code>sudo</code> password, click on the blank avatar next to your name, and select a <code>.png</code> or <code>.jpg</code> file from your hard drive.</li>
+            <h3 style="color: #79c0ff; font-size: 1.3rem;">The Standard Deployment (GUI)</h3>
+            <p>If operating within a comprehensive Desktop Environment, developers provide graphical hooks to automate this configuration.</p>
+            <ul style="color: #c9d1d9; padding-left: 20px;">
+                <li style="margin-bottom: 5px;">Launch the system <strong>Settings</strong> control panel.</li>
+                <li style="margin-bottom: 5px;">Navigate to the <strong>Users</strong> or <strong>Accounts</strong> administrative tab.</li>
+                <li style="margin-bottom: 5px;">Authenticate via the <code>sudo</code> prompt, select the default avatar icon, and deploy a localized <code>.png</code> or <code>.jpg</code> asset from your storage partition.</li>
             </ul>
 
-            <h3>The Hacker Way (The .face trick)</h3>
-            <p>If you are running a hyper-minimalist Window Manager, or managing a server entirely through the command line, you won't have a graphical settings menu. Instead, you can exploit a classic Unix trick. Most Display Managers are hardcoded to look for a hidden image file named exactly <code>.face</code> or <code>.face.icon</code> sitting at the root of your home directory.</p>
+            <h3 style="color: #79c0ff; font-size: 1.3rem;">The Administrative Deployment (.face configuration)</h3>
+            <p>If utilizing a minimalist Window Manager or administering a headless server strictly via the command line, graphical menus are unavailable. Instead, administrators utilize native UNIX architecture. Most Display Managers are hardcoded to query the root of the user's home directory for a hidden image binary named exactly <code>.face</code> or <code>.face.icon</code>.</p>
             
             <div class="code-block-container">
-                <p class="terminal-cmd">$ cp /home/jaya/Pictures/my_cool_avatar.png ~/.face</p>
-                <p class="terminal-comment"># Copies your picture into your home folder and hides it under the name '.face'</p>
+                <p class="code-label">CLI Avatar Deployment</p>
+                <p><span class="terminal-cmd">cp /home/jrnation/Pictures/avatar.png ~/.face</span></p>
+                <p><span class="terminal-comment"># Copies the source image into the home directory, simultaneously renaming and hiding it as '.face'</span></p>
                 <br>
-                <p class="terminal-cmd">$ cp ~/.face ~/.face.icon</p>
-                <p class="terminal-comment"># Creates a duplicate to ensure compatibility with older Display Managers.</p>
+                <p><span class="terminal-cmd">cp ~/.face ~/.face.icon</span></p>
+                <p><span class="terminal-comment"># Generates a duplicate to ensure compatibility with legacy Display Manager rendering engines.</span></p>
             </div>
 
-            <p><em>Pro-Tip: Make sure the image is perfectly square (e.g., 256x256 pixels) to prevent the login screen from squishing or stretching your logo unrecognizably.</em></p>
+            <p style="font-size: 0.95rem; color: #8b949e;"><em>Administrative Note: Ensure the image maintains a 1:1 aspect ratio (e.g., 256x256 pixels) to prevent the Display Manager from executing disproportionate rendering calculations.</em></p>
 
             <h2 id="displayname">2. Modifying the GECOS Field (Display Name)</h2>
-            <p>Your actual system <em>username</em>—the one you type into the terminal to log in—must be strictly lowercase, with no spaces or special characters. But the <em>display name</em> (what shows up on the lock screen with a capital letter and spaces) can be whatever you want.</p>
+            <p>The operative system <em>username</em>—the string utilized for terminal authentication—must remain strictly lowercase, devoid of spaces or special characters to satisfy kernel parameters. Conversely, the <em>display name</em> (the stylized string rendered on the lock screen) supports extensive capitalization and formatting.</p>
             
-            <p>Historically, in the early days of Unix, this meta-information was stored in the <strong>GECOS field</strong> (General Electric Comprehensive Operating System), a text string inside the <code>/etc/passwd</code> file used to hold a user's full name, office room number, and phone number. Today, Linux still uses this exact same architecture.</p>
+            <p>Historically, this metadata was stored within the <strong>GECOS field</strong> (General Electric Comprehensive Operating System), a designated string inside the <code>/etc/passwd</code> registry utilized to document a user's full name and organizational contact data. Modern Linux architectures still natively support this framework.</p>
             
-            <p>To safely change a user's display name without risking corruption of the critical <code>/etc/passwd</code> file, you use the <code>usermod</code> command with the <code>-c</code> (Comment) flag.</p>
+            <p>To safely amend a user's display name without risking corruption of the critical <code>/etc/passwd</code> registry, utilize the <code>usermod</code> command supplemented by the <code>-c</code> (Comment) flag.</p>
 
             <div class="code-block-container">
-                <p class="terminal-cmd">$ sudo usermod -c "Jaya The Admin" jaya</p>
-                <p class="terminal-comment"># The login screen will now display "Jaya The Admin", but the underlying system username remains 'jaya'.</p>
-            </div>
-
-            <h2 id="aliases">3. Workflow Hacks: Creating Bash Aliases</h2>
-            <p>The most powerful user customization you can perform doesn't involve graphics at all; it involves creating shortcuts for your brain. If you find yourself typing the exact same long, annoying command ten times a day, you can create an <strong>Alias</strong>. An alias is a custom word that you define, which the terminal automatically expands into a full command.</p>
-
-            <p>These shortcuts are saved in a hidden configuration file in your home directory called <code>.bashrc</code>.</p>
-
-            <div class="code-block-container">
-                <p class="terminal-cmd">$ nano ~/.bashrc</p>
-                <p class="terminal-comment"># Scroll to the absolute bottom of the file and add your custom shortcuts:</p>
+                <p class="code-label">GECOS Modification</p>
+                <p><span class="terminal-cmd">sudo usermod -c "JR Nation Administrator" jrnation</span></p>
                 <br>
-                <p class="terminal-cmd" style="color: #f9e2af;">alias update="sudo apt update && sudo apt upgrade -y"</p>
-                <p class="terminal-cmd" style="color: #f9e2af;">alias yeet="sudo rm -rf"</p>
-                <p class="terminal-cmd" style="color: #f9e2af;">alias ports="sudo ufw status verbose"</p>
+                <p><span class="terminal-comment"># The Display Manager will now render "JR Nation Administrator", while the kernel identifier remains 'jrnation'.</span></p>
             </div>
 
-            <p>Save the file and restart your terminal. Now, instead of typing out the entire system update command, you literally just type <code>update</code> and press Enter. The system will handle the rest. This alone will save you hours of typing over a year.</p>
+            <h2 id="aliases">3. Operational Efficiency: Bash Aliases</h2>
+            <p>The most potent user customization operates independently of graphical rendering; it involves compiling operational shortcuts. If a complex command string is executed repeatedly throughout a session, administrators formulate an <strong>Alias</strong>. An alias is a customized, user-defined string that the terminal shell automatically expands into the full, complex command syntax prior to execution.</p>
 
-            <h2 id="shell">4. Upgrading the Default Shell (Bash vs. Zsh vs. Fish)</h2>
-            <p>By default, when any user opens the terminal on almost any Linux distribution, they are interacting with the <strong>Bash</strong> (Bourne Again SHell) interpreter. It is rock-solid, legendary, and heavily documented. But it is also old, and frankly, a bit ugly out of the box.</p>
+            <p>These definitions are permanently stored within a hidden configuration dotfile in the user's home directory designated <code>.bashrc</code>.</p>
 
-            <p>Modern power users often choose to swap their default shell to an upgraded alternative. The two main competitors are:</p>
+            <div class="code-block-container">
+                <p class="code-label">Configuring .bashrc Aliases</p>
+                <p><span class="terminal-cmd">nano ~/.bashrc</span></p>
+                <p><span class="terminal-comment"># Navigate to the absolute EOF (End of File) and append your custom syntax definitions:</span></p>
+                <br>
+                <p><span class="terminal-cmd" style="color: #f9e2af;">alias update="sudo apt update && sudo apt upgrade -y"</span></p>
+                <p><span class="terminal-cmd" style="color: #f9e2af;">alias purge="sudo rm -rf"</span></p>
+                <p><span class="terminal-cmd" style="color: #f9e2af;">alias ports="sudo ufw status verbose"</span></p>
+            </div>
+
+            <p style="margin-top: 20px;">Save the buffer and re-initialize the terminal emulator. When executing system maintenance, you may now input the string <code>update</code> and strike Enter. The shell parser expands the string and executes the full sequence. This protocol significantly optimizes workflow efficiency over extended periods.</p>
+
+            <h2 id="shell">4. Upgrading the Shell Interpreter (Zsh vs. Fish)</h2>
+            <p>By default, when a standard profile initializes a terminal session across the majority of Linux distributions, they interface with the <strong>Bash</strong> (Bourne Again SHell) interpreter. It is highly stable and extensively documented, but lacks modern quality-of-life enhancements and advanced parsing out-of-the-box.</p>
+
+            <p>Modern system administrators frequently migrate their default shell to an upgraded interpreter. The two primary industry alternatives include:</p>
             
-            <ul>
-                <li><strong>Zsh (Z Shell):</strong> The industry favorite for developers. When paired with a framework called <em>Oh-My-Zsh</em>, you get access to thousands of custom themes, git-branch tracking in your prompt, and powerful plugin ecosystems. Apple actually made Zsh the default shell for macOS because of its immense flexibility.</li>
-                <li><strong>Fish (Friendly Interactive Shell):</strong> The absolute best out-of-the-box experience. Fish comes pre-configured with brilliant auto-suggestions based on your history, and full syntax highlighting (commands turn red if you spell them wrong, and green if they are valid) before you even hit enter.</li>
+            <ul style="color: #c9d1d9; padding-left: 20px;">
+                <li style="margin-bottom: 10px;"><strong>Zsh (Z Shell):</strong> The enterprise standard for developers. When paired with the <em>Oh-My-Zsh</em> framework, administrators access thousands of community-engineered UI themes, native Git-branch tracking within the prompt, and a massive plugin ecosystem. (Apple explicitly transitioned macOS to utilize Zsh as the default interpreter due to its flexibility).</li>
+                <li style="margin-bottom: 10px;"><strong>Fish (Friendly Interactive Shell):</strong> Highly optimized for immediate usability. Fish features native, dynamic auto-suggestions derived from command history, and real-time syntax highlighting (rendering strings in red for syntax errors, and green for valid executables) prior to execution.</li>
             </ul>
 
-            <p>If you install a new shell (e.g., <code>sudo apt install zsh</code>), the system doesn't automatically switch you over. You have to tell Linux to modify your specific user account to use it as the default. You do this with the <code>chsh</code> (Change Shell) command.</p>
+            <p>Deploying a new shell binary (e.g., <code>sudo apt install zsh</code>) does not automatically migrate the active user profile. Administrators must explicitly instruct the kernel to alter the profile's default interpreter utilizing the <code>chsh</code> (Change Shell) command.</p>
 
             <div class="code-block-container">
-                <p class="terminal-cmd">$ chsh -s $(which zsh)</p>
-                <p class="terminal-comment"># -s sets the shell. $(which zsh) automatically locates the exact directory where the Zsh binary is installed.</p>
+                <p class="code-label">Migrating Default Shell Environments</p>
+                <p><span class="terminal-cmd">chsh -s $(which zsh)</span></p>
+                <p><span class="terminal-comment"># The -s flag defines the target shell. The $(which zsh) sub-command dynamically locates the exact path of the installed Zsh binary.</span></p>
                 <br>
-                <p class="terminal-cmd">$ chsh -s $(which fish)</p>
-                <p class="terminal-comment"># If you prefer Fish, this command will permanently set it as your default shell.</p>
+                <p><span class="terminal-cmd">chsh -s $(which fish)</span></p>
+                <p><span class="terminal-comment"># Execute this variant to permanently designate Fish as the default profile interpreter.</span></p>
             </div>
 
-            <div class="callout-warning">
-                <strong>⚠️ Final Step Required:</strong> 
-                <br>For the shell changes to take full effect across the system, you must completely log out of your user account and log back in (or simply reboot your computer). The next time you open the terminal window, you will be greeted by your brand new, high-performance environment.
+            <div class="callout-warning" style="border-left-color: #f9e2af; background-color: rgba(249, 226, 175, 0.1);">
+                <strong style="color: #f9e2af;">⚠️ Mandatory Initialization Protocol:</strong> 
+                <br><span style="color: #c9d1d9;">For shell interpreter modifications to propagate across the system architecture, you must completely terminate your active user session and re-authenticate (or execute a full system reboot). Upon the subsequent terminal initialization, the new high-performance environment will render.</span>
             </div>
 
             <div class="faq-section" id="faq">
-                <h2>5. Frequently Asked Questions</h2>
+                <h2 style="margin-top: 40px;">5. Frequently Asked Configuration Questions</h2>
+                
                 <div class="faq-item">
-                    <h3>Will changing my shell break my Bash scripts?</h3>
-                    <p>No. Even if you use Zsh or Fish as your interactive daily driver, your automated scripts will still execute perfectly as long as you include the <code>#!/bin/bash</code> Shebang at the top of the file. The system will temporarily summon Bash just to run the script, then return you to your preferred shell.</p>
+                    <h3 style="color: #79c0ff; font-size: 1.2rem;">Will migrating my shell interpreter break my automated Bash scripts?</h3>
+                    <p>No. If you operate Zsh or Fish as your primary interactive shell, your automated scripts will execute seamlessly, provided you included the <code>#!/bin/bash</code> Shebang declaration at the head of the file. The kernel temporarily invokes the Bash interpreter strictly to execute the script, subsequently returning you to your primary shell environment upon completion.</p>
                 </div>
+                
                 <div class="faq-item">
-                    <h3>Can I have different aliases for different users?</h3>
-                    <p>Absolutely. Because aliases are stored in the <code>~/.bashrc</code> file located inside a specific user's <code>/home</code> directory, your custom shortcuts will not affect any other users on the system, nor will they affect the root administrator account.</p>
+                    <h3 style="color: #79c0ff; font-size: 1.2rem;">Can multiple users maintain isolated alias configurations?</h3>
+                    <p>Absolutely. Because alias definitions are encoded within the <code>~/.bashrc</code> (or <code>~/.zshrc</code>) dotfile located securely inside a specific user's <code>/home</code> directory, your specialized shortcuts are completely isolated. They will not propagate to other localized users, nor will they pollute the root administrator profile.</p>
                 </div>
             </div>
 
@@ -159,18 +196,35 @@
         <hr class="section-divider">
 
         <div class="guide-nav" style="display: flex; gap: 20px; justify-content: space-between;">
-            <a href="ugm.html" class="btn-secondary">← Back: User Management</a>
+            <a href="ugm.html" class="btn-secondary">← Back: User Group Management</a>
             <a href="sshra.html" class="btn-primary">Next: SSH Remote Access →</a>
         </div>
+
+        <footer class="site-footer" style="padding-top: 40px; border-top: 1px solid #30363d; margin-top: 60px; text-align: center;">
+            <div class="disclaimer" style="font-size: 0.85rem; color: #8b949e; margin-bottom: 20px; max-width: 800px; margin-left: auto; margin-right: auto; padding: 0 15px;">
+                <strong>Educational Disclaimer:</strong> All system architecture breakdowns, alias configurations, and terminal scripts provided on the JR Nation platform are designed strictly for educational and system administration training purposes.
+            </div>
+            <p style="color: #8b949e;">&copy; 2026 JR Nation. All Rights Reserved.</p>
+            <div class="legal-links" style="margin-top: 15px;">
+                <a href="../../privacy.html" style="color: #79c0ff; margin: 0 10px; text-decoration: none;">Privacy Policy</a>
+                <a href="../../terms.html" style="color: #79c0ff; margin: 0 10px; text-decoration: none;">Terms of Service</a>
+                <a href="../../lore.html" style="color: #79c0ff; margin: 0 10px; text-decoration: none;">Lore</a>
+                <a href="../../contact.html" style="color: #79c0ff; margin: 0 10px; text-decoration: none;">Contact Us</a>
+            </div>
+        </footer>
+
     </main>
 </div>
 
 <script>
     const menuBtn = document.getElementById('menu-btn');
     const sidebar = document.querySelector('.sidebar');
-    menuBtn.addEventListener('click', () => {
-        sidebar.classList.toggle('show');
-    });
+    if(menuBtn && sidebar) {
+        menuBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('show');
+        });
+    }
 </script>
+
 </body>
 </html>

@@ -3,37 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Security & Networks | The Linux Hub</title>
-    <meta name="description" content="Master Linux security and networking. Learn firewall configuration, user group management, SSH remote access, and system hardening practices.">
+    
+    <title>Network Security & Administration | The Linux Hub</title>
+    <meta name="description" content="Master Linux security protocols and network administration. Learn UFW firewall configuration, user access control, SSH remote access, and system hardening.">
+    <meta name="keywords" content="linux security, configure ufw firewall, linux user group management, ssh remote access, linux system hardening, secure linux server">
+    
     <link rel="icon" type="image/png" href="../../favicon.png">
     <link rel="stylesheet" href="../style.css">
 
     <style>
-        /* --- Page-Specific Styles for the Hub --- */
+        /* --- Page-Specific Styles for the Roadmap --- */
         .roadmap-header {
-            text-align: center;
-            padding: 3rem 1rem;
+            text-align: left;
+            padding: 1rem 0 2rem 0;
         }
         .roadmap-header h1 {
-            font-size: 2.5rem;
-            color: var(--accent-green);
+            font-size: 2.8rem;
+            color: #f0f6fc;
             border-bottom: none;
-            margin-bottom: 0.5rem;
-        }
-        .roadmap-header p {
-            font-size: 1.2rem;
-            color: #8b949e;
-            max-width: 700px;
-            margin: 0 auto;
+            margin-bottom: 1rem;
         }
         .roadmap-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 1.5rem;
             margin-top: 2rem;
         }
         
-        /* The Magic Alignment Section */
+        /* The Alignment Matrix */
         .stage-card {
             background-color: var(--bg-sidebar);
             padding: 2rem;
@@ -61,98 +58,163 @@
         .stage-card h3 {
             margin: 0.5rem 0 1rem 0;
             font-size: 1.5rem;
+            color: #f0f6fc;
         }
         
         .stage-card p {
             margin-bottom: 1.5rem;
+            color: #8b949e;
             flex-grow: 1; 
         }
         
-        /* Pushes the button to the bottom */
+        /* Forces the button to the absolute bottom of the card */
         .stage-card .btn-primary, 
         .stage-card .btn-secondary {
             margin-top: auto; 
+            width: 100%;
+        }
+
+        .callout-emulator {
+            margin-top: 3rem;
+            padding: 2.5rem 2rem;
+            background-color: rgba(137, 180, 250, 0.05);
+            border: 1px solid #30363d;
+            border-top: 4px solid #89b4fa;
+            border-radius: 8px;
+            text-align: center;
         }
     </style>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5103156070877653"
-     crossorigin="anonymous"></script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5103156070877653" crossorigin="anonymous"></script>
 </head>
 <body>
 
 <header class="navbar">
     <div class="logo">
         <a href="../../index.html">
-            <img src="../../logo.png" alt="Linux Hub Logo" class="logo-img" onerror="this.style.display='none'">
+            <img src="../../logo.png" alt="JR Nation Logo" class="logo-img" onerror="this.style.display='none'">
             The Linux Hub
         </a>
     </div>
     <nav>
         <a href="../index.html">Hub Home</a>
-        <a href="../../lore.html" target="_blank" rel="noopener noreferrer">About Us</a>
-        <a href="../../privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+        <a href="../../lore.html">Lore</a>
+        <a href="../../privacy.html">Privacy</a>
         <a href="https://discord.gg/qMCyTNcDsV" target="_blank" rel="noopener noreferrer">Join Us</a>
     </nav>
-    <button id="menu-btn" class="hamburger">☰ Categories</button>
+    <button id="menu-btn" class="hamburger">☰ Menu</button>
 </header>
 
 <div class="container">
-    <main class="content">
-        <div class="breadcrumbs">
-            <a href="../index.html">Hub Home</a> &gt; <span>Security & Networks</span>
+    
+    <aside class="sidebar">
+        <h3><a href="../getting-started/getting-started.html">Getting Started</a></h3>
+        <ul>
+            <li><a href="../getting-started/wilx.html">What is Linux?</a></li>
+            <li><a href="../getting-started/distro.html">Choosing Your First Distro</a></li>
+            <li><a href="../getting-started/liveboot.html">Creating a Live USB</a></li>
+            <li><a href="../getting-started/installation.html">Installation & Dual Booting</a></li>
+            <li><a href="../getting-started/config.html">Post-Installation Setup</a></li>
+        </ul>
+
+        <h3><a href="../everyday/everyday.html">Everyday Use</a></h3>
+        <ul>
+            <li><a href="../everyday/de.html">Desktop Environments</a></li>
+            <li><a href="../everyday/essentials.html">System Essentials</a></li>
+            <li><a href="../everyday/gaming.html">Workstation Gaming</a></li>
+            <li><a href="../everyday/ricing.html">UI Customization (Ricing)</a></li>
+        </ul>
+
+        <h3><a href="../terminal/terminal.html">Terminal Basics</a></h3>
+        <ul>
+            <li><a href="../terminal/fs.html">Navigating the Filesystem</a></li>
+            <li><a href="../terminal/pacmans.html">Package Managers</a></li>
+            <li><a href="../terminal/sudo.html">Permissions & Ownership</a></li>
+            <li><a href="../terminal/texted.html">Terminal Text Editors</a></li>
+            <li><a href="../terminal/bash.html">Bash Scripting</a></li>
+        </ul>
+
+        <h3><a href="san.html" style="color: var(--accent-green);">Security & Networks</a></h3>
+        <ul>
+            <li><a href="bfs.html">Basic Firewall Setup (UFW)</a></li>
+            <li><a href="ugm.html">User & Group Management</a></li>
+            <li><a href="sshra.html">SSH & Remote Access</a></li>
+            <li><a href="practices.html">Privacy & Best Practices</a></li>
+        </ul>
+    </aside>
+
+    <main class="content guide-page">
+        <div class="breadcrumbs" style="color: #8b949e; font-size: 0.9rem; margin-bottom: 20px;">
+            <a href="../index.html">Hub Home</a> &gt; <span style="color: #c9d1d9;">Security & Networks</span>
         </div>
 
         <header class="roadmap-header">
-            <h1>Security & Networks</h1>
-            <p>You have the keys to the kingdom. Now you need to build the walls. Learn how to lock down your ports, manage user access, and remotely control your machine securely from anywhere in the world.</p>
+            <h1>Network Security & Administration</h1>
+            <p style="margin-bottom: 15px;">Administrative access has been established. Now you must deploy perimeter defenses. Learn how to configure firewall protocols, enforce strict user access controls, and establish encrypted remote connections to your infrastructure.</p>
         </header>
 
         <section class="roadmap-grid">
             
             <article class="stage-card">
                 <div class="stage-badge">MODULE 01</div>
-                <h3>Basic Firewall Setup</h3>
-                <p>Close the gates. Learn how to use UFW to block malicious traffic and open specific ports for the services you actually want running.</p>
-                <a href="bfs.html" class="btn-primary">Build the Wall</a>
+                <h3>Perimeter Defense (UFW)</h3>
+                <p>Configure network perimeters. Learn how to utilize UFW to filter unauthorized traffic and explicitly authorize essential network services.</p>
+                <a href="bfs.html" class="btn-primary">Configure Firewall</a>
             </article>
 
             <article class="stage-card">
                 <div class="stage-badge">MODULE 02</div>
-                <h3>User Group Management</h3>
-                <p>Don't give everyone the master key. Learn how to isolate users, restrict permissions, and securely manage groups.</p>
-                <a href="ugm.html" class="btn-secondary">Control Access</a>
+                <h3>Access Control & Permissions</h3>
+                <p>Implement the principle of least privilege. Learn how to isolate user profiles, restrict directory permissions, and securely manage administrative groups.</p>
+                <a href="ugm.html" class="btn-secondary">Manage Access</a>
             </article>
 
             <article class="stage-card">
                 <div class="stage-badge">MODULE 03</div>
-                <h3>SSH Remote Access</h3>
-                <p>Control your PC from your phone or a laptop 3,000 miles away. Master cryptographic keys and secure terminal connections.</p>
-                <a href="sshra.html" class="btn-secondary">Connect Remotely</a>
+                <h3>Encrypted Remote Access (SSH)</h3>
+                <p>Administer your workstation securely over external networks. Master cryptographic key pairs and secure terminal authentication protocols.</p>
+                <a href="sshra.html" class="btn-secondary">Establish SSH</a>
             </article>
 
             <article class="stage-card">
                 <div class="stage-badge">MODULE 04</div>
-                <h3>Best Practices</h3>
-                <p>Hardening the kernel, disabling root logins, and understanding why Linux doesn't need traditional antivirus software.</p>
-                <a href="practices.html" class="btn-secondary">Harden the System</a>
+                <h3>System Hardening</h3>
+                <p>Deploy enterprise security protocols. Harden the kernel, disable remote root authentication, and understand native Linux threat mitigation.</p>
+                <a href="practices.html" class="btn-secondary">Apply Protocols</a>
             </article>
 
         </section>
 
-        <div class="callout-info" style="text-align: center; margin-top: 3rem; padding: 2rem;">
-            <h3 style="margin-top: 0; color: var(--accent-green);">The Training Ground</h3>
-            <p style="font-size: 1.1rem;">Security commands are dangerous. One bad firewall rule can lock you out of your own computer. Practice these commands in our safe, isolated virtual sandbox before running them on your real machine.</p>
-            <a href="../../terminal/index.html" class="btn-primary" style="margin-top: 15px;" target="_blank">Launch Sandbox Terminal</a>
+        <div class="callout-emulator">
+            <h3 style="margin-top: 0; color: #89b4fa; font-size: 1.8rem;">The Interactive Sandbox</h3>
+            <p style="font-size: 1.1rem; color: #c9d1d9; max-width: 600px; margin: 0 auto 25px auto;">
+                Network administration commands are highly sensitive. An improper firewall configuration can permanently sever your remote access. Practice these deployment strings within our isolated virtual environment prior to modifying your live system.
+            </p>
+            <a href="../../terminal/index.html" class="btn-primary" style="background-color: #89b4fa; color: #000; border-color: #89b4fa;" target="_blank" rel="noopener noreferrer">Initialize Terminal Emulator</a>
         </div>
 
-        <div class="callout-warning" style="text-align: center;">
-            <strong>⚠️ A Word of Warning:</strong> The tools in this section are incredibly powerful. If you configure a firewall or SSH incorrectly on a remote server, you can permanently lock yourself out of your own machine. Read the commands carefully before hitting <kbd>Enter</kbd>.
+        <div class="callout-warning" style="border-left-color: #f9e2af; background-color: rgba(249, 226, 175, 0.1); text-align: left; margin-top: 30px;">
+            <strong style="color: #f9e2af;">⚠️ Administrative Caution:</strong> <span style="color: #c9d1d9;">The protocols detailed in this section actively modify your system's network interfaces. If you configure a firewall or SSH daemon incorrectly on a headless remote server, you may irreversibly revoke your own administrative access. Audit all syntax before executing.</span>
         </div>
 
         <hr class="section-divider">
 
         <div class="guide-nav" style="display: flex; justify-content: flex-start;">
-            <a href="../terminal/terminal.html" class="btn-secondary">← Back to The Terminal</a>
+            <a href="../terminal/terminal.html" class="btn-secondary">← Back to The Terminal Basics</a>
         </div>
+
+        <footer class="site-footer" style="padding-top: 40px; border-top: 1px solid #30363d; margin-top: 60px; text-align: center;">
+            <div class="disclaimer" style="font-size: 0.85rem; color: #8b949e; margin-bottom: 20px; max-width: 800px; margin-left: auto; margin-right: auto; padding: 0 15px;">
+                <strong>Educational Disclaimer:</strong> All system architecture breakdowns, firewall configurations, and terminal scripts provided on the JR Nation platform are designed strictly for educational and system administration training purposes.
+            </div>
+            <p style="color: #8b949e;">&copy; 2026 JR Nation. All Rights Reserved.</p>
+            <div class="legal-links" style="margin-top: 15px;">
+                <a href="../../privacy.html" style="color: #79c0ff; margin: 0 10px; text-decoration: none;">Privacy Policy</a>
+                <a href="../../terms.html" style="color: #79c0ff; margin: 0 10px; text-decoration: none;">Terms of Service</a>
+                <a href="../../lore.html" style="color: #79c0ff; margin: 0 10px; text-decoration: none;">Lore</a>
+                <a href="../../contact.html" style="color: #79c0ff; margin: 0 10px; text-decoration: none;">Contact Us</a>
+            </div>
+        </footer>
 
     </main>
 </div>
@@ -166,5 +228,6 @@
         });
     }
 </script>
+
 </body>
 </html>

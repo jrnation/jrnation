@@ -3,181 +3,238 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Linux Firewall Setup & Port Security | The Linux Hub</title>
-    <meta name="description" content="Master Linux network security. Learn how to configure a UFW firewall, understand iptables, lock down TCP/UDP ports, and rate-limit malicious traffic.">
+    
+    <title>Basic Firewall Setup (UFW) | Perimeter Defense | The Linux Hub</title>
+    <meta name="description" content="Master Linux network security. Learn how to configure a UFW firewall, understand iptables, lock down TCP/UDP ports, and rate-limit automated traffic.">
+    <meta name="keywords" content="linux ufw firewall setup, how to use ufw, iptables vs ufw, block ip address linux, rate limit ssh ufw, allow port 80 ubuntu">
+    
     <link rel="icon" type="image/png" href="../../favicon.png">
     <link rel="stylesheet" href="../style.css">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5103156070877653"
-     crossorigin="anonymous"></script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5103156070877653" crossorigin="anonymous"></script>
 </head>
 <body>
 
 <header class="navbar">
     <div class="logo">
         <a href="../../index.html">
-            <img src="../../logo.png" alt="Linux Hub Logo" class="logo-img" onerror="this.style.display='none'">
+            <img src="../../logo.png" alt="JR Nation Logo" class="logo-img" onerror="this.style.display='none'">
             The Linux Hub
         </a>
     </div>
     <nav>
         <a href="../index.html">Hub Home</a>
-        <a href="../../lore.html" target="_blank" rel="noopener noreferrer">About Us</a>
-        <a href="../../privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+        <a href="../../lore.html">Lore</a>
+        <a href="../../privacy.html">Privacy</a>
         <a href="https://discord.gg/qMCyTNcDsV" target="_blank" rel="noopener noreferrer">Join Us</a>
     </nav>
-    <button id="menu-btn" class="hamburger">☰ Categories</button>
+    <button id="menu-btn" class="hamburger">☰ Menu</button>
 </header>
 
 <div class="container">
+    
     <aside class="sidebar">
-        <h3>Security & Networks</h3>
+        <h3><a href="../getting-started/getting-started.html">Getting Started</a></h3>
         <ul>
-            <li><a href="bfs.html" style="color: var(--accent-green);">Basic Firewall Setup</a></li>
-            <li><a href="ugm.html">User Group Management</a></li>
-            <li><a href="sshra.html">SSH Remote Access</a></li>
-            <li><a href="practices.html">Best Practices</a></li>
+            <li><a href="../getting-started/wilx.html">What is Linux?</a></li>
+            <li><a href="../getting-started/distro.html">Choosing Your First Distro</a></li>
+            <li><a href="../getting-started/liveboot.html">Creating a Live USB</a></li>
+            <li><a href="../getting-started/installation.html">Installation & Dual Booting</a></li>
+            <li><a href="../getting-started/config.html">Post-Installation Setup</a></li>
+        </ul>
+
+        <h3><a href="../everyday/everyday.html">Everyday Use</a></h3>
+        <ul>
+            <li><a href="../everyday/de.html">Desktop Environments</a></li>
+            <li><a href="../everyday/essentials.html">System Essentials</a></li>
+            <li><a href="../everyday/gaming.html">Workstation Gaming</a></li>
+            <li><a href="../everyday/ricing.html">UI Customization (Ricing)</a></li>
+        </ul>
+
+        <h3><a href="../terminal/terminal.html">Terminal Basics</a></h3>
+        <ul>
+            <li><a href="../terminal/fs.html">Navigating the Filesystem</a></li>
+            <li><a href="../terminal/pacmans.html">Package Managers</a></li>
+            <li><a href="../terminal/sudo.html">Permissions & Ownership</a></li>
+            <li><a href="../terminal/texted.html">Terminal Text Editors</a></li>
+            <li><a href="../terminal/bash.html">Bash Scripting</a></li>
+        </ul>
+
+        <h3><a href="san.html">Security & Networks</a></h3>
+        <ul>
+            <li><a href="bfs.html" style="color: var(--accent-green);">Basic Firewall Setup (UFW)</a></li>
+            <li><a href="ugm.html">User & Group Management</a></li>
+            <li><a href="sshra.html">SSH & Remote Access</a></li>
+            <li><a href="practices.html">Privacy & Best Practices</a></li>
         </ul>
     </aside>
 
     <main class="content guide-page">
-        <div class="breadcrumbs">
-            <a href="../index.html">Hub Home</a> &gt; <a href="san.html">Security & Networks</a> &gt; <span>Basic Firewall Setup</span>
+        <div class="breadcrumbs" style="color: #8b949e; font-size: 0.9rem; margin-bottom: 20px;">
+            <a href="../index.html">Hub Home</a> &gt; <a href="san.html" style="color: #8b949e;">Security & Networks</a> &gt; <span style="color: #c9d1d9;">Basic Firewall Setup</span>
         </div>
 
         <article>
-            <h1>Basic Firewall: Closing the Gates</h1>
-            <div class="meta-info">
-                <span>Your system has 65,535 doors. Stop leaving them wide open.</span> | <span>👤 By JR Nation</span>
+            <h1 style="font-size: 2.8rem; margin-bottom: 10px;">Basic Firewall: Perimeter Defense</h1>
+            <div class="meta-info" style="margin-bottom: 30px; border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;">
+                <span style="color: #8b949e;">Your system features 65,535 network ports. Implement protocols to secure them.</span> | <span style="color: var(--accent-green);">By JR Nation Infrastructure</span>
             </div>
 
-            <p>Imagine your computer is a massive fortress. In the world of networking, this fortress has exactly 65,535 doors, officially known as <strong>Ports</strong>. Every time you connect to the internet, applications use these specific doors to send and receive packets of data. Your web browser exclusively uses Port 80 for HTTP and Port 443 for HTTPS. Your email client uses Port 25. Multiplayer games and background services dynamically claim thousands of other random doors.</p>
+            <p>Conceptualize your workstation as a massive, secure facility. Within network architecture, this facility features exactly 65,535 distinct entry points, officially designated as <strong>Ports</strong>. Whenever you interface with the internet, applications utilize specific ports to transmit and receive data packets. A standard web browser exclusively utilizes Port 80 for HTTP and Port 443 for HTTPS. Email clients route through Port 25. Background services and external servers dynamically claim thousands of remaining ports.</p>
             
-            <p>A <strong>Firewall</strong> is the digital bouncer standing outside your fortress. Its entire job is to inspect every single packet of data trying to enter or leave, check your established rulebook, and decide whether to let it through or violently drop it into the void. On a fresh Linux installation, the bouncer is usually asleep, meaning all doors are theoretically accessible if a service is listening behind them. It is time to wake him up and hand him the VIP list.</p>
+            <p>A <strong>Firewall</strong> functions as the perimeter access controller for this facility. Its sole directive is to inspect every incoming and outgoing data packet, cross-reference it against an established administrative rulebook, and determine whether to authorize transmission or silently discard the packet. On a newly deployed Linux environment, the firewall daemon is generally dormant, meaning all ports are theoretically accessible if a background service is actively listening. It is necessary to initialize the firewall and establish an explicit access control list.</p>
 
-            <div class="toc-box">
-                <h3>Table of Contents</h3>
-                <ul>
-                    <li><a href="#history">1. The Lore: Iptables vs. UFW</a></li>
-                    <li><a href="#ufw">2. Installing Uncomplicated Firewall</a></li>
-                    <li><a href="#defaults">3. The Golden Rule: Deny Incoming, Allow Outgoing</a></li>
-                    <li><a href="#rules">4. Opening Specific Doors (TCP vs. UDP)</a></li>
-                    <li><a href="#advanced">5. Advanced Rules: Rate Limiting & IP Blocking</a></li>
-                    <li><a href="#enable">6. Throwing the Switch & Logging</a></li>
+            <div class="callout-info" style="border-left-color: #89b4fa; background-color: rgba(137, 180, 250, 0.1);">
+                <strong style="color: #89b4fa;">💡 Administrative Protocol: Practice Safely.</strong> Configuring network firewalls carries significant administrative risk. A single erroneous rule can completely sever your network connection. Access the <a href="../../terminal/index.html" target="_blank" style="color: #79c0ff; text-decoration: underline;">JR Nation Terminal Sandbox</a> to practice initializing <code>ufw</code> commands in an isolated virtual environment prior to modifying your live infrastructure.
+            </div>
+
+            <div class="cheat-sheet-box">
+                <h3 style="margin-top: 0; color: var(--accent-green);">The Security Roadmap</h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li><a href="#history">1. Architectural History: Iptables vs. UFW</a></li>
+                    <li><a href="#ufw">2. Deploying Uncomplicated Firewall (UFW)</a></li>
+                    <li><a href="#defaults">3. The Standard Baseline: Deny Inbound, Allow Outbound</a></li>
+                    <li><a href="#rules">4. Authorizing Specific Ports (TCP vs. UDP)</a></li>
+                    <li><a href="#advanced">5. Advanced Protocols: Rate Limiting & IP Denial</a></li>
+                    <li><a href="#enable">6. Initialization & Auditing (Logging)</a></li>
                 </ul>
             </div>
 
-            <div class="callout-info">
-                <strong>💡 Practice Safely:</strong> Configuring a firewall can be nerve-wracking. One bad rule can sever your network connection. Jump into the <a href="../../terminal/index.html" target="_blank" style="color: var(--accent-green); text-decoration: underline;">JR Nation Terminal Playground</a> and practice running these <code>ufw</code> commands in an isolated sandbox before applying them to your real machine.
-            </div>
-
-            <h2 id="history">1. The Lore: Iptables vs. UFW</h2>
-            <p>To understand what we are doing, you need to understand how Linux actually handles network traffic. The Linux kernel itself has a built-in packet filtering framework called <strong>Netfilter</strong>. Historically, System Administrators interacted with Netfilter using a command-line tool called <code>iptables</code>.</p>
+            <h2 id="history">1. Architectural History: Iptables vs. UFW</h2>
+            <p>To properly configure access, you must understand the Linux network stack. The Linux kernel features a highly robust, integrated packet filtering framework named <strong>Netfilter</strong>. Historically, system administrators interacted with Netfilter utilizing a complex command-line utility known as <code>iptables</code>.</p>
             
-            <p>While incredibly powerful, <code>iptables</code> is notoriously complex. Writing a simple rule to block an IP address required memorizing a massive string of arcane syntax, chains, and target jumps. One misplaced character could instantly sever your connection to a remote server. Because of this steep learning curve, Canonical (the company behind Ubuntu) developed a frontend wrapper called <strong>UFW (Uncomplicated Firewall)</strong>.</p>
+            <p>While exceptionally powerful, <code>iptables</code> possesses a notoriously steep learning curve. Authoring a baseline rule to restrict an IP address required extensive knowledge of syntax, protocol chains, and target jumps. A typographical error could instantly sever a remote administrative connection. To resolve this, Canonical engineered a streamlined frontend wrapper designated as <strong>UFW (Uncomplicated Firewall)</strong>.</p>
             
-            <p>UFW is not a firewall itself; it is a translator. You type simple, plain-English commands into UFW, and UFW automatically writes the complex <code>iptables</code> (or modern <code>nftables</code>) rules under the hood. It brings enterprise-grade security down to a level anyone can understand.</p>
+            <p>UFW is not an independent firewall; it is a syntax translator. Administrators input standard, human-readable commands into UFW, and the utility automatically compiles and applies the complex <code>iptables</code> (or modern <code>nftables</code>) background rules. It provides enterprise-grade security configuration with significantly reduced syntax complexity.</p>
 
-            <h2 id="ufw">2. Installing Uncomplicated Firewall</h2>
-            <p>If you are running Ubuntu, Linux Mint, or Pop!_OS, UFW is likely already installed and waiting dormant on your system. If you are using Debian, Arch, or Fedora, you will need to pull it from your package manager.</p>
+            <h2 id="ufw">2. Deploying Uncomplicated Firewall (UFW)</h2>
+            <p>If you operate Ubuntu, Linux Mint, or Pop!_OS, UFW is likely pre-installed and dormant within your system architecture. If operating Debian, Arch, or Fedora environments, you must deploy the binary via your package manager.</p>
 
             <div class="code-block-container">
-                <p class="terminal-cmd">$ sudo apt install ufw</p>
-                <p class="terminal-comment"># For Arch Linux users: sudo pacman -S ufw</p>
-                <p class="terminal-comment"># For Fedora users: sudo dnf install ufw</p>
-            </div>
-
-            <h2 id="defaults">3. The Golden Rule: Deny Incoming, Allow Outgoing</h2>
-            <p>Before we officially turn the firewall on, we must establish the baseline policies. The absolute standard security posture for any personal computer or web server is this: <strong>Nobody is allowed to initiate a connection with me unless I explicitly invited them, but I am allowed to reach out to the internet whenever I want.</strong></p>
-            
-            <p>Run these two commands to permanently set your default behavior:</p>
-
-            <div class="code-block-container">
-                <p class="terminal-cmd">$ sudo ufw default deny incoming</p>
-                <p class="terminal-cmd">$ sudo ufw default allow outgoing</p>
-            </div>
-            
-            <p>By defaulting to "deny," your machine effectively becomes invisible. If a malicious bot runs an automated port scan across your entire IP block looking for vulnerabilities, your computer will not reply to say "I'm closed" or "Connection Refused." It will simply drop the packets. The bot will assume the IP address is empty and move on.</p>
-
-            <h2 id="rules">4. Opening Specific Doors (TCP vs. UDP)</h2>
-            <p>If your default policy is to deny everything, you will run into a problem if you actually <em>want</em> to host a service. For example, if you want to host a Minecraft server for your friends, or if you want to control your PC remotely using SSH, you need to manually poke holes in your new wall.</p>
-
-            <p>To open a door, you use the <code>allow</code> command. UFW is smart enough to recognize common application names, so you don't always have to memorize the port numbers.</p>
-
-            <div class="code-block-container">
-                <p class="terminal-cmd">$ sudo ufw allow ssh</p>
-                <p class="terminal-comment"># UFW automatically translates 'ssh' into Port 22.</p>
+                <p class="code-label">Deploying UFW Infrastructure</p>
+                <p><span class="terminal-cmd">sudo apt install ufw</span></p>
                 <br>
-                <p class="terminal-cmd">$ sudo ufw allow 80/tcp</p>
-                <p class="terminal-comment"># Opens Port 80 specifically for standard HTTP web traffic.</p>
-                <br>
-                <p class="terminal-cmd">$ sudo ufw allow 19132/udp</p>
-                <p class="terminal-comment"># Opens Port 19132 specifically for UDP traffic (often used for gaming servers).</p>
+                <p><span class="terminal-comment"># For Arch Linux environments: sudo pacman -S ufw</span></p>
+                <p><span class="terminal-comment"># For Fedora environments: sudo dnf install ufw</span></p>
             </div>
 
-            <p>Notice the <code>/tcp</code> and <code>/udp</code> tags? <strong>TCP</strong> ensures every packet arrives perfectly in order (essential for loading web pages and downloading files). <strong>UDP</strong> throws data as fast as possible without checking if it arrived (used for live video streaming and gaming where speed matters more than a dropped frame). By specifying the protocol, you tighten security by not opening both unnecessarily.</p>
+            <h2 id="defaults">3. The Standard Baseline: Deny Inbound, Allow Outbound</h2>
+            <p>Prior to enabling the firewall service, administrators must establish the baseline security posture. The absolute standard policy for workstations and enterprise servers is: <strong>Deny all unsolicited incoming connections, but authorize all outbound traffic initiated by the local host.</strong></p>
+            
+            <p>Execute the following syntax to permanently encode this default behavior:</p>
+
+            <div class="code-block-container">
+                <p class="code-label">Establishing Baseline Policies</p>
+                <p><span class="terminal-cmd">sudo ufw default deny incoming</span></p>
+                <p><span class="terminal-cmd">sudo ufw default allow outgoing</span></p>
+            </div>
+            
+            <p>By defaulting to "deny," the workstation effectively achieves network invisibility. If an automated scanning script initiates a sequential port scan across your subnet to identify vulnerabilities, your system will not return an "Access Denied" or "Connection Refused" status. It will simply drop the packets silently, leading the scanner to assume the IP address is unassigned.</p>
+
+            <h2 id="rules">4. Authorizing Specific Ports (TCP vs. UDP)</h2>
+            <p>With a strict "deny" baseline established, hosting network services requires establishing explicit access exceptions. For example, hosting a game server or managing a workstation remotely via SSH requires selectively authorizing traffic through the perimeter.</p>
+
+            <p>To authorize a port, utilize the <code>allow</code> directive. UFW contains an internal registry of standard application ports, often eliminating the need to memorize specific numerical designations.</p>
+
+            <div class="code-block-container">
+                <p class="code-label">Configuring Port Exceptions</p>
+                <p><span class="terminal-cmd">sudo ufw allow ssh</span></p>
+                <p><span class="terminal-comment"># UFW automatically resolves the 'ssh' string to Port 22.</span></p>
+                <br>
+                <p><span class="terminal-cmd">sudo ufw allow 80/tcp</span></p>
+                <p><span class="terminal-comment"># Explicitly authorizes Port 80 for standard HTTP web traffic.</span></p>
+                <br>
+                <p><span class="terminal-cmd">sudo ufw allow 19132/udp</span></p>
+                <p><span class="terminal-comment"># Explicitly authorizes Port 19132 for UDP traffic (frequently required by gaming services).</span></p>
+            </div>
+
+            <p>Note the explicit <code>/tcp</code> and <code>/udp</code> protocol tags. <strong>TCP (Transmission Control Protocol)</strong> guarantees ordered, error-checked packet delivery (vital for web loading and file transfers). <strong>UDP (User Datagram Protocol)</strong> transmits data continuously without verification (vital for live video streams and gaming, where latency takes precedence over packet loss). Specifying the exact protocol tightens security by preventing unauthorized traffic on the unused protocol layer.</p>
 
             <div class="callout-warning" style="border-left-color: #f38ba8; background-color: rgba(243, 139, 168, 0.1);">
-                <strong>⚠️ The Remote Server Death Trap:</strong>
-                <br>If you are configuring a remote VPS (like an AWS or DigitalOcean server) instead of the laptop sitting on your desk, <strong>you MUST run <code>sudo ufw allow ssh</code> BEFORE you turn the firewall on.</strong> If you throw the switch on a "deny all" firewall without explicitly opening the SSH port first, you will instantly sever your own connection and permanently lock yourself out of the remote server. 
+                <strong style="color: #f38ba8;">⚠️ Administrative Lockout Risk: Remote Servers</strong>
+                <br><span style="color: #c9d1d9;">If you are configuring a remote Virtual Private Server (VPS) via an SSH connection, <strong>you MUST execute <code>sudo ufw allow ssh</code> PRIOR to initializing the firewall.</strong> If you activate a "deny incoming" baseline without explicitly authorizing the SSH port, the firewall will instantly drop your active connection, resulting in a permanent administrative lockout from the remote infrastructure.</span>
             </div>
 
-            <h2 id="advanced">5. Advanced Rules: Rate Limiting & IP Blocking</h2>
-            <p>UFW is capable of much more than just simple open/close policies. If you have Port 22 open for SSH, bots will constantly try to brute-force your password. You can use UFW to actively fight back.</p>
+            <h2 id="advanced">5. Advanced Protocols: Rate Limiting & IP Denial</h2>
+            <p>UFW is capable of advanced traffic management beyond binary allow/deny states. If Port 22 is exposed for SSH, automated scripts will continuously attempt brute-force authentication against the server. UFW features native protocols to mitigate these threats.</p>
 
-            <h3>Rate Limiting</h3>
-            <p>Instead of using <code>allow</code>, you can use the <code>limit</code> command. This tells UFW: <em>"Allow traffic on this port, but if a single IP address tries to connect more than 6 times in 30 seconds, automatically block them."</em> This completely neutralizes brute-force dictionary attacks.</p>
+            <h3>Rate Limiting Implementation</h3>
+            <p>Rather than utilizing <code>allow</code>, administrators can deploy the <code>limit</code> command. This establishes a conditional threshold: <em>"Authorize traffic on this port, but if an external IP address initiates more than 6 connections within a 30-second window, automatically drop further traffic."</em> This effectively neutralizes brute-force dictionary attacks.</p>
 
             <div class="code-block-container">
-                <p class="terminal-cmd">$ sudo ufw limit ssh</p>
+                <p class="code-label">Executing Rate Limits</p>
+                <p><span class="terminal-cmd">sudo ufw limit ssh</span></p>
             </div>
 
-            <h3>Explicit Denies & IP Blocking</h3>
-            <p>If you check your server logs and see a specific IP address acting maliciously, you can permanently ban that exact IP address from communicating with your machine on any port.</p>
+            <h3>Explicit Denials & IP Blocking</h3>
+            <p>If server logs identify malicious traffic originating from a specific IP address, you can permanently restrict that address from communicating with your system across all ports.</p>
 
             <div class="code-block-container">
-                <p class="terminal-cmd">$ sudo ufw deny from 203.0.113.50</p>
-                <p class="terminal-comment"># That specific IP address will never be able to reach your machine again.</p>
+                <p class="code-label">IP Denial Command</p>
+                <p><span class="terminal-cmd">sudo ufw deny from 203.0.113.50</span></p>
+                <br>
+                <p><span class="terminal-comment"># Permanently drops all packets originating from the specified IP address.</span></p>
             </div>
 
-            <h2 id="enable">6. Throwing the Switch & Logging</h2>
-            <p>Your baseline rules are set. Your SSH port is explicitly allowed (and rate-limited). You are ready to bring the bouncer online.</p>
+            <h2 id="enable">6. Initialization & Auditing (Logging)</h2>
+            <p>Once baseline policies are established and critical ports (e.g., SSH) are explicitly authorized, you are prepared to initialize the firewall daemon.</p>
 
             <div class="code-block-container">
-                <p class="terminal-cmd">$ sudo ufw enable</p>
-                <p class="terminal-comment" style="color: #a6e3a1;">Firewall is active and enabled on system startup</p>
+                <p class="code-label">Activating UFW</p>
+                <p><span class="terminal-cmd">sudo ufw enable</span></p>
+                <p><span class="terminal-comment" style="color: #a6e3a1;">Firewall is active and enabled on system startup</span></p>
             </div>
 
-            <p>To verify everything is working, and to see exactly which rules are currently active, use the verbose status command. It is good practice to run this immediately after enabling the firewall.</p>
+            <p>To verify successful deployment and audit the currently active ruleset, utilize the verbose status command. Executing this immediately after initialization is an administrative best practice.</p>
 
             <div class="code-block-container">
-                <p class="terminal-cmd">$ sudo ufw status verbose</p>
+                <p class="code-label">Auditing Active Rules</p>
+                <p><span class="terminal-cmd">sudo ufw status verbose</span></p>
             </div>
 
-            <p>Finally, if you want to keep track of every packet that gets dropped, you can turn on UFW logging. The firewall will silently write all blocked connection attempts to <code>/var/log/ufw.log</code> so you can audit them later.</p>
+            <p>Finally, for comprehensive security auditing, administrators can activate UFW logging. The firewall will silently record all dropped connection attempts to <code>/var/log/ufw.log</code>, providing valuable telemetry for future threat analysis.</p>
 
             <div class="code-block-container">
-                <p class="terminal-cmd">$ sudo ufw logging on</p>
+                <p class="code-label">Enabling Security Logs</p>
+                <p><span class="terminal-cmd">sudo ufw logging on</span></p>
             </div>
 
-            <p>Your perimeter is now secure. The fortress is locked. Next, we need to manage who is actually allowed to walk around inside the walls.</p>
+            <p style="margin-top: 20px;">The network perimeter is now secure. In the subsequent module, we will establish user management protocols to govern internal access controls.</p>
 
         </article>
 
         <hr class="section-divider">
 
         <div class="guide-nav" style="display: flex; gap: 20px; justify-content: space-between;">
-            <a href="san.html" class="btn-secondary">← Back: Security Gateway</a>
+            <a href="san.html" class="btn-secondary">← Back: Security & Networks</a>
             <a href="ugm.html" class="btn-primary">Next: User Group Management →</a>
         </div>
+
+        <footer class="site-footer" style="padding-top: 40px; border-top: 1px solid #30363d; margin-top: 60px; text-align: center;">
+            <div class="disclaimer" style="font-size: 0.85rem; color: #8b949e; margin-bottom: 20px; max-width: 800px; margin-left: auto; margin-right: auto; padding: 0 15px;">
+                <strong>Educational Disclaimer:</strong> All system architecture breakdowns, firewall configurations, and terminal scripts provided on the JR Nation platform are designed strictly for educational and system administration training purposes.
+            </div>
+            <p style="color: #8b949e;">&copy; 2026 JR Nation. All Rights Reserved.</p>
+            <div class="legal-links" style="margin-top: 15px;">
+                <a href="../../privacy.html" style="color: #79c0ff; margin: 0 10px; text-decoration: none;">Privacy Policy</a>
+                <a href="../../terms.html" style="color: #79c0ff; margin: 0 10px; text-decoration: none;">Terms of Service</a>
+                <a href="../../lore.html" style="color: #79c0ff; margin: 0 10px; text-decoration: none;">Lore</a>
+                <a href="../../contact.html" style="color: #79c0ff; margin: 0 10px; text-decoration: none;">Contact Us</a>
+            </div>
+        </footer>
+
     </main>
 </div>
 
 <script>
     const menuBtn = document.getElementById('menu-btn');
     const sidebar = document.querySelector('.sidebar');
-    menuBtn.addEventListener('click', () => {
-        sidebar.classList.toggle('show');
-    });
+    if(menuBtn && sidebar) {
+        menuBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('show');
+        });
+    }
 </script>
+
 </body>
 </html>
