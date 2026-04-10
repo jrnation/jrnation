@@ -3,37 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Everyday Linux Use | The Linux Hub</title>
-    <meta name="description" content="Master your Linux daily driver. Learn about Desktop Environments, system essentials, Linux gaming with Proton, and UI customization (Ricing).">
+    
+    <title>Everyday Linux Use | The Daily Workstation | The Linux Hub</title>
+    <meta name="description" content="Master your Linux daily driver. Learn about Desktop Environments, system essentials, Linux gaming with Proton, and advanced UI customization.">
+    <meta name="keywords" content="linux daily driver, linux desktop environments, steam proton linux gaming, rice linux desktop, linux filesystem explained">
+    
     <link rel="icon" type="image/png" href="../../favicon.png">
     <link rel="stylesheet" href="../style.css">
 
     <style>
-        /* --- Page-Specific Styles for the Hub --- */
+        /* --- Page-Specific Styles for the Roadmap --- */
         .roadmap-header {
-            text-align: center;
-            padding: 3rem 1rem;
+            text-align: left;
+            padding: 1rem 0 2rem 0;
         }
         .roadmap-header h1 {
-            font-size: 2.5rem;
-            color: var(--accent-green);
+            font-size: 2.8rem;
+            color: #f0f6fc;
             border-bottom: none;
-            margin-bottom: 0.5rem;
-        }
-        .roadmap-header p {
-            font-size: 1.2rem;
-            color: #8b949e;
-            max-width: 700px;
-            margin: 0 auto;
+            margin-bottom: 1rem;
         }
         .roadmap-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 1.5rem;
             margin-top: 2rem;
         }
         
-        /* The Magic Alignment Section */
+        /* The Alignment Matrix */
         .stage-card {
             background-color: var(--bg-sidebar);
             padding: 2rem;
@@ -61,49 +58,89 @@
         .stage-card h3 {
             margin: 0.5rem 0 1rem 0;
             font-size: 1.5rem;
+            color: #f0f6fc;
         }
         
         .stage-card p {
             margin-bottom: 1.5rem;
+            color: #8b949e;
             flex-grow: 1; 
         }
         
-        /* Pushes the button to the bottom */
+        /* Forces the button to the absolute bottom of the card */
         .stage-card .btn-primary, 
         .stage-card .btn-secondary {
             margin-top: auto; 
+            width: 100%;
+        }
+
+        .callout-roadmap {
+            margin-top: 3rem;
+            padding: 1.5rem;
+            background-color: rgba(35, 134, 54, 0.05);
+            border-left: 4px solid var(--accent-green);
+            border-radius: 4px;
+            color: #c9d1d9;
         }
     </style>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5103156070877653"
-     crossorigin="anonymous"></script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5103156070877653" crossorigin="anonymous"></script>
 </head>
 <body>
 
 <header class="navbar">
     <div class="logo">
         <a href="../../index.html">
-            <img src="../../logo.png" alt="Linux Hub Logo" class="logo-img" onerror="this.style.display='none'">
+            <img src="../../logo.png" alt="JR Nation Logo" class="logo-img" onerror="this.style.display='none'">
             The Linux Hub
         </a>
     </div>
     <nav>
         <a href="../index.html">Hub Home</a>
-        <a href="../../lore.html" target="_blank" rel="noopener noreferrer">About Us</a>
-        <a href="../../privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+        <a href="../../lore.html">Lore</a>
+        <a href="../../privacy.html">Privacy</a>
         <a href="https://discord.gg/qMCyTNcDsV" target="_blank" rel="noopener noreferrer">Join Us</a>
     </nav>
-    <button id="menu-btn" class="hamburger">☰ Categories</button>
+    <button id="menu-btn" class="hamburger">☰ Menu</button>
 </header>
 
 <div class="container">
-    <main class="content">
-        <div class="breadcrumbs">
-            <a href="../index.html">Hub Home</a> &gt; <span>Everyday Use</span>
+    
+    <aside class="sidebar">
+        <h3><a href="../getting-started/getting-started.html">Getting Started</a></h3>
+        <ul>
+            <li><a href="../getting-started/wilx.html">What is Linux?</a></li>
+            <li><a href="../getting-started/distro.html">Choosing Your First Distro</a></li>
+            <li><a href="../getting-started/liveboot.html">Creating a Live USB</a></li>
+            <li><a href="../getting-started/installation.html">Installation & Dual Booting</a></li>
+            <li><a href="../getting-started/config.html">Post-Installation Setup</a></li>
+        </ul>
+
+        <h3><a href="everyday.html" style="color: var(--accent-green);">Everyday Use</a></h3>
+        <ul>
+            <li><a href="de.html">Desktop Environments</a></li>
+            <li><a href="essentials.html">System Essentials</a></li>
+            <li><a href="gaming.html">Gaming on Linux</a></li>
+            <li><a href="ricing.html">UI Customization (Ricing)</a></li>
+        </ul>
+
+        <h3><a href="../terminal/terminal.html">Terminal Basics</a></h3>
+        <ul>
+            <li><a href="../terminal/fs.html">Navigating the Filesystem</a></li>
+            <li><a href="../terminal/pacmans.html">Package Managers</a></li>
+            <li><a href="../terminal/sudo.html">Permissions & Ownership</a></li>
+        </ul>
+    </aside>
+
+    <main class="content guide-page">
+        <div class="breadcrumbs" style="color: #8b949e; font-size: 0.9rem; margin-bottom: 10px;">
+            <a href="../index.html">Hub Home</a> &gt; <span style="color: #c9d1d9;">Everyday Use</span>
         </div>
 
         <header class="roadmap-header">
-            <h1>The Daily Driver</h1>
-            <p>You survived the installation phase. Welcome to the other side. Now it's time to actually unpack and live here. We're going to teach you how to navigate your new filesystem, get your Steam library running flawlessly, and rice your desktop until it looks exactly how you want it.</p>
+            <h1>The Daily Workstation</h1>
+            <p style="margin-bottom: 15px;">You have successfully completed the system deployment phase. Welcome to the operational environment. It is time to transition your installation into a fully functional, highly productive daily workstation.</p>
+            <p>This module covers navigating your new file architecture, deploying compatibility layers for workstation gaming, and modifying your graphical user interface to maximize your operational efficiency.</p>
         </header>
 
         <section class="roadmap-grid">
@@ -111,35 +148,35 @@
             <article class="stage-card">
                 <div class="stage-badge">MODULE 01</div>
                 <h3>Desktop Environments</h3>
-                <p>GNOME vs. KDE Plasma vs. XFCE. The "face" of your OS is just a mask. Learn how to rip it off and swap it out when you get bored.</p>
-                <a href="de.html" class="btn-primary">Explore DEs</a>
+                <p>GNOME vs. KDE Plasma vs. XFCE. The graphical interface of your OS is completely modular. Learn how to swap environments dynamically to optimize your workflow.</p>
+                <a href="de.html" class="btn-primary">Explore Environments</a>
             </article>
 
             <article class="stage-card">
                 <div class="stage-badge">MODULE 02</div>
                 <h3>System Essentials</h3>
-                <p>Forget the C:\ Drive. Learn how the Linux filesystem actually works, how to manipulate files, and how to navigate the trenches.</p>
+                <p>Transition away from the C:\ Drive mentality. Learn how the Linux filesystem hierarchy operates, how to manage user permissions, and navigate the core infrastructure.</p>
                 <a href="essentials.html" class="btn-secondary">Learn the Basics</a>
             </article>
 
             <article class="stage-card">
                 <div class="stage-badge">MODULE 03</div>
-                <h3>Gaming on Linux</h3>
-                <p>Yes, it runs your games. Unlock the black magic of Steam Proton, Heroic Launcher, and Waydroid to bring your entire library over.</p>
-                <a href="gaming.html" class="btn-secondary">Start Playing</a>
+                <h3>Workstation Gaming</h3>
+                <p>Deploy high-performance compatibility layers. Learn how to utilize Steam Proton, Heroic Launcher, and Waydroid to execute Windows and Android applications natively.</p>
+                <a href="gaming.html" class="btn-secondary">Initialize Gaming</a>
             </article>
 
             <article class="stage-card">
                 <div class="stage-badge">MODULE 04</div>
-                <h3>Ricing & Customization</h3>
-                <p>Turn your boring default desktop into a masterpiece. Dive into custom themes, icon packs, window managers, and terminal visuals.</p>
-                <a href="ricing.html" class="btn-secondary">Make it Yours</a>
+                <h3>UI Customization (Ricing)</h3>
+                <p>Transform your default interface into a highly productive environment. Explore custom GTK themes, tiling window managers, and terminal visual modifications.</p>
+                <a href="ricing.html" class="btn-secondary">Customize UI</a>
             </article>
 
         </section>
 
-        <div class="callout-info" style="margin-top: 40px;">
-            <strong>💡 Be Fearless:</strong> We set up Timeshift for a reason. If you completely nuke your desktop while tweaking it, just hit the undo button and roll back to yesterday. Breaking things is literally how you level up here. Don't be afraid to experiment.
+        <div class="callout-roadmap">
+            <strong style="color: var(--accent-green);">💡 Administrative Freedom:</strong> We deployed Timeshift in the configuration module for a reason. If you inadvertently corrupt your graphical environment while experimenting with custom configurations, simply initiate a system rollback. Safe system experimentation is how you master administration.
         </div>
 
         <hr class="section-divider">
@@ -147,6 +184,19 @@
         <div class="guide-nav" style="display: flex; justify-content: flex-start;">
             <a href="../getting-started/config.html" class="btn-secondary">← Back to Configuration</a>
         </div>
+
+        <footer class="site-footer" style="padding-top: 40px; border-top: 1px solid #30363d; margin-top: 60px; text-align: center;">
+            <div class="disclaimer" style="font-size: 0.85rem; color: #8b949e; margin-bottom: 20px; max-width: 800px; margin-left: auto; margin-right: auto; padding: 0 15px;">
+                <strong>Educational Disclaimer:</strong> All tutorials, modifications, and system configurations provided on the JR Nation platform are designed strictly for educational and system administration training purposes.
+            </div>
+            <p style="color: #8b949e;">&copy; 2026 JR Nation. All Rights Reserved.</p>
+            <div class="legal-links" style="margin-top: 15px;">
+                <a href="../../privacy.html" style="color: #79c0ff; margin: 0 10px; text-decoration: none;">Privacy Policy</a>
+                <a href="../../terms.html" style="color: #79c0ff; margin: 0 10px; text-decoration: none;">Terms of Service</a>
+                <a href="../../lore.html" style="color: #79c0ff; margin: 0 10px; text-decoration: none;">Lore</a>
+                <a href="../../contact.html" style="color: #79c0ff; margin: 0 10px; text-decoration: none;">Contact Us</a>
+            </div>
+        </footer>
 
     </main>
 </div>
