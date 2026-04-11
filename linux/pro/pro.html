@@ -3,37 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Power User | The Linux Hub</title>
-    <meta name="description" content="Ascend to Linux power user status. Learn Window Managers, Systemd, the Linux Kernel, GRUB bootloaders, and Virtualization.">
+    
+    <title>Advanced Administration & Architecture | The Power User | The Linux Hub</title>
+    <meta name="description" content="Ascend to advanced Linux administration. Learn Tiling Window Managers, Systemd services, Kernel compilation, GRUB bootloaders, and KVM Virtualization.">
+    <meta name="keywords" content="linux power user, advanced linux administration, i3 vs hyprland, linux kernel modules, systemd daemon configuration, kvm qemu virtualization, linux grub bootloader">
+    
     <link rel="icon" type="image/png" href="../../favicon.png">
     <link rel="stylesheet" href="../style.css">
 
     <style>
-        /* --- Page-Specific Styles for the Hub --- */
+        /* --- Page-Specific Styles for the Roadmap --- */
         .roadmap-header {
-            text-align: center;
-            padding: 3rem 1rem;
+            text-align: left;
+            padding: 1rem 0 2rem 0;
         }
         .roadmap-header h1 {
-            font-size: 2.5rem;
-            color: var(--accent-green);
+            font-size: 2.8rem;
+            color: #f0f6fc;
             border-bottom: none;
-            margin-bottom: 0.5rem;
-        }
-        .roadmap-header p {
-            font-size: 1.2rem;
-            color: #8b949e;
-            max-width: 700px;
-            margin: 0 auto;
+            margin-bottom: 1rem;
         }
         .roadmap-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 1.5rem;
             margin-top: 2rem;
         }
         
-        /* The Magic Alignment Section */
+        /* The Alignment Matrix */
         .stage-card {
             background-color: var(--bg-sidebar);
             padding: 2rem;
@@ -61,49 +58,98 @@
         .stage-card h3 {
             margin: 0.5rem 0 1rem 0;
             font-size: 1.5rem;
+            color: #f0f6fc;
         }
         
         .stage-card p {
             margin-bottom: 1.5rem;
+            color: #8b949e;
             flex-grow: 1; 
         }
         
-        /* Pushes the button to the bottom */
+        /* Forces the button to the absolute bottom of the card */
         .stage-card .btn-primary, 
         .stage-card .btn-secondary {
             margin-top: auto; 
+            width: 100%;
         }
     </style>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5103156070877653"
-     crossorigin="anonymous"></script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5103156070877653" crossorigin="anonymous"></script>
 </head>
 <body>
 
 <header class="navbar">
     <div class="logo">
         <a href="../../index.html">
-            <img src="../../logo.png" alt="Linux Hub Logo" class="logo-img" onerror="this.style.display='none'">
+            <img src="../../logo.png" alt="JR Nation Logo" class="logo-img" onerror="this.style.display='none'">
             The Linux Hub
         </a>
     </div>
     <nav>
         <a href="../index.html">Hub Home</a>
-        <a href="../../lore.html" target="_blank" rel="noopener noreferrer">About Us</a>
-        <a href="../../privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+        <a href="../../lore.html">Lore</a>
+        <a href="../../privacy.html">Privacy</a>
         <a href="https://discord.gg/qMCyTNcDsV" target="_blank" rel="noopener noreferrer">Join Us</a>
     </nav>
-    <button id="menu-btn" class="hamburger">☰ Categories</button>
+    <button id="menu-btn" class="hamburger">☰ Menu</button>
 </header>
 
 <div class="container">
-    <main class="content">
-        <div class="breadcrumbs">
-            <a href="../index.html">Hub Home</a> &gt; <span>The Power User</span>
+    
+    <aside class="sidebar">
+        <h3><a href="../getting-started/getting-started.html">Getting Started</a></h3>
+        <ul>
+            <li><a href="../getting-started/wilx.html">What is Linux?</a></li>
+            <li><a href="../getting-started/distro.html">Choosing Your First Distro</a></li>
+            <li><a href="../getting-started/liveboot.html">Creating a Live USB</a></li>
+            <li><a href="../getting-started/installation.html">Installation & Dual Booting</a></li>
+            <li><a href="../getting-started/config.html">Post-Installation Setup</a></li>
+        </ul>
+
+        <h3><a href="../everyday/everyday.html">Everyday Use</a></h3>
+        <ul>
+            <li><a href="../everyday/de.html">Desktop Environments</a></li>
+            <li><a href="../everyday/essentials.html">System Essentials</a></li>
+            <li><a href="../everyday/gaming.html">Workstation Gaming</a></li>
+            <li><a href="../everyday/ricing.html">UI Customization (Ricing)</a></li>
+        </ul>
+
+        <h3><a href="../terminal/terminal.html">Terminal Basics</a></h3>
+        <ul>
+            <li><a href="../terminal/fs.html">Navigating the Filesystem</a></li>
+            <li><a href="../terminal/pacmans.html">Package Managers</a></li>
+            <li><a href="../terminal/sudo.html">Permissions & Ownership</a></li>
+            <li><a href="../terminal/texted.html">Terminal Text Editors</a></li>
+            <li><a href="../terminal/bash.html">Bash Scripting</a></li>
+        </ul>
+
+        <h3><a href="../san/san.html">Security & Networks</a></h3>
+        <ul>
+            <li><a href="../san/bfs.html">Basic Firewall Setup (UFW)</a></li>
+            <li><a href="../san/ugm.html">User & Group Management</a></li>
+            <li><a href="../san/sshra.html">SSH & Remote Access</a></li>
+            <li><a href="../san/practices.html">Privacy & Best Practices</a></li>
+        </ul>
+
+        <h3><a href="pro.html" style="color: var(--accent-green);">Advanced Architecture</a></h3>
+        <ul>
+            <li><a href="wm.html">Window Managers (WMs)</a></li>
+            <li><a href="kernel.html">The Linux Kernel</a></li>
+            <li><a href="systemd.html">Systemd & Daemons</a></li>
+            <li><a href="boot.html">GRUB Bootloader</a></li>
+            <li><a href="vbox.html">KVM Virtualization</a></li>
+        </ul>
+    </aside>
+
+    <main class="content guide-page">
+        <div class="breadcrumbs" style="color: #8b949e; font-size: 0.9rem; margin-bottom: 20px;">
+            <a href="../index.html">Hub Home</a> &gt; <span style="color: #c9d1d9;">Advanced Architecture</span>
         </div>
 
         <header class="roadmap-header">
-            <h1>The Power User</h1>
-            <p>You are no longer a guest. You are the architect. The graphical desktop environments and user-friendly package managers were just training wheels. It is time to strip away the bloat, compile custom kernels, write your own background services, and build a system that moves at the speed of thought. Welcome to the deep end of the Unix Philosophy.</p>
+            <h1>Advanced Administration & Architecture</h1>
+            <p style="margin-bottom: 15px;">You have mastered the operational baseline. The standard graphical interfaces and automated deployment tools were introductory abstractions. It is time to eliminate redundant overhead, compile custom kernels, author background daemons, and architect a system that operates with maximum computational efficiency. Welcome to the core UNIX philosophy.</p>
         </header>
 
         <section class="roadmap-grid">
@@ -111,49 +157,63 @@
             <article class="stage-card">
                 <div class="stage-badge">MODULE 01</div>
                 <h3>Window Managers (WMs)</h3>
-                <p>Delete the desktop environment. Learn Hyprland and i3 to build a keyboard-driven, lightning-fast tiling interface.</p>
-                <a href="wm.html" class="btn-primary">Ditch the Mouse</a>
+                <p>Bypass standard desktop environments. Deploy Hyprland and i3 to construct a keyboard-centric, highly optimized tiling interface.</p>
+                <a href="wm.html" class="btn-primary">Implement Tiling WMs</a>
             </article>
 
             <article class="stage-card">
                 <div class="stage-badge">MODULE 02</div>
                 <h3>The Linux Kernel</h3>
-                <p>The actual brain of the OS. Understand kernel modules, custom performance kernels (Zen/XanMod), and how hardware talks to software.</p>
-                <a href="kernel.html" class="btn-secondary">Explore the Core</a>
+                <p>The core engine of the OS. Understand kernel modules, deploy high-performance variants (Zen/XanMod), and interface directly with hardware.</p>
+                <a href="kernel.html" class="btn-secondary">Explore Kernel Architecture</a>
             </article>
 
             <article class="stage-card">
                 <div class="stage-badge">MODULE 03</div>
-                <h3>Systemd & Services</h3>
-                <p>Control the background matrix. Learn how to start, stop, enable, and write your own automated system daemons.</p>
-                <a href="systemd.html" class="btn-secondary">Master the Daemons</a>
+                <h3>Systemd & Daemons</h3>
+                <p>Control background processes. Learn how to initialize, terminate, enable, and author custom automated system daemons.</p>
+                <a href="systemd.html" class="btn-secondary">Manage System Daemons</a>
             </article>
 
             <article class="stage-card">
                 <div class="stage-badge">MODULE 04</div>
-                <h3>The Boot Process (GRUB)</h3>
-                <p>What happens before the OS loads? Master GRUB, systemd-boot, and learn how to rescue a system that refuses to turn on.</p>
-                <a href="boot.html" class="btn-secondary">Control the Boot</a>
+                <h3>Initialization & GRUB</h3>
+                <p>Understand the boot sequence. Master GRUB, systemd-boot, and execute recovery protocols for systems that fail to initialize.</p>
+                <a href="boot.html" class="btn-secondary">Configure Boot Sequences</a>
             </article>
 
             <article class="stage-card">
                 <div class="stage-badge">MODULE 05</div>
                 <h3>Virtualization (KVM)</h3>
-                <p>Why dual-boot when you can run operating systems inside your operating system? Master KVM, QEMU, and VirtualBox.</p>
-                <a href="vbox.html" class="btn-secondary">Spin Up VMs</a>
+                <p>Why dual-boot when you can deploy containerized operating systems natively? Master KVM, QEMU, and enterprise virtualization protocols.</p>
+                <a href="vbox.html" class="btn-secondary">Deploy Virtual Machines</a>
             </article>
 
         </section>
 
-        <div class="callout-warning" style="text-align: center; margin-top: 3rem;">
-            <strong>⚠️ The Deep End:</strong> The guides in this section involve modifying core system files. A single typo in a GRUB config or an fstab file can result in an unbootable system. Have your Live USB ready just in case.
+        <div class="callout-warning" style="border-left-color: #f9e2af; background-color: rgba(249, 226, 175, 0.1); text-align: left; margin-top: 30px;">
+            <strong style="color: #f9e2af;">⚠️ Administrative Caution: The Core Architecture</strong>
+            <br><span style="color: #c9d1d9;">The modules within this section involve modifying highly sensitive root-level files. A single syntax error within a GRUB configuration or an fstab registry will result in a critical boot failure. Always maintain a Live USB diagnostic drive prior to execution.</span>
         </div>
 
         <hr class="section-divider">
 
         <div class="guide-nav" style="display: flex; justify-content: flex-start;">
-            <a href="../san/san.html" class="btn-secondary">← Back to Security</a>
+            <a href="../san/san.html" class="btn-secondary">← Back to Security & Networks</a>
         </div>
+
+        <footer class="site-footer" style="padding-top: 40px; border-top: 1px solid #30363d; margin-top: 60px; text-align: center;">
+            <div class="disclaimer" style="font-size: 0.85rem; color: #8b949e; margin-bottom: 20px; max-width: 800px; margin-left: auto; margin-right: auto; padding: 0 15px;">
+                <strong>Educational Disclaimer:</strong> All system architecture breakdowns, kernel modifications, and terminal scripts provided on the JR Nation platform are designed strictly for educational and system administration training purposes.
+            </div>
+            <p style="color: #8b949e;">&copy; 2026 JR Nation. All Rights Reserved.</p>
+            <div class="legal-links" style="margin-top: 15px;">
+                <a href="../../privacy.html" style="color: #79c0ff; margin: 0 10px; text-decoration: none;">Privacy Policy</a>
+                <a href="../../terms.html" style="color: #79c0ff; margin: 0 10px; text-decoration: none;">Terms of Service</a>
+                <a href="../../lore.html" style="color: #79c0ff; margin: 0 10px; text-decoration: none;">Lore</a>
+                <a href="../../contact.html" style="color: #79c0ff; margin: 0 10px; text-decoration: none;">Contact Us</a>
+            </div>
+        </footer>
 
     </main>
 </div>
@@ -167,5 +227,6 @@
         });
     }
 </script>
+
 </body>
 </html>
