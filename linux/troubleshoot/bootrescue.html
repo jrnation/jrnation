@@ -3,142 +3,212 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rescuing a Broken Boot | The Linux Hub</title>
-    <meta name="description" content="Fix a Linux system that refuses to turn on. Learn how to navigate initramfs errors, fsck disk checks, GRUB rescue mode, and use Magic SysRq keys.">
-    <link rel="icon" type="image/png" href="../favicon.png">
+    
+    <title>Boot Rescue Triage | System Diagnostics | The Linux Hub</title>
+    <meta name="description" content="Execute recovery protocols for unbootable Linux systems. Learn how to navigate initramfs errors, perform fsck disk checks, resolve GRUB rescue mode, and utilize Magic SysRq keys.">
+    <meta name="keywords" content="linux boot rescue, initramfs prompt fix, fsck manual disk check, grub rescue mode, linux kernel panic fix, magic sysrq keys reisub, linux system freeze fix">
+    
+    <link rel="icon" type="image/png" href="../../favicon.png">
     <link rel="stylesheet" href="../style.css">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5103156070877653"
-     crossorigin="anonymous"></script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5103156070877653" crossorigin="anonymous"></script>
 </head>
 <body>
 
 <header class="navbar">
     <div class="logo">
-        <a href="../index.html">
-            <img src="../logo.png" alt="Linux Hub Logo" class="logo-img" onerror="this.style.display='none'">
+        <a href="../../index.html">
+            <img src="../../logo.png" alt="JR Nation Logo" class="logo-img" onerror="this.style.display='none'">
             The Linux Hub
         </a>
     </div>
     <nav>
         <a href="../index.html">Hub Home</a>
-        <a href="../lore.html" target="_blank" rel="noopener noreferrer">About Us</a>
-        <a href="../privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+        <a href="../../lore.html">Lore</a>
+        <a href="../../privacy.html">Privacy</a>
         <a href="https://discord.gg/qMCyTNcDsV" target="_blank" rel="noopener noreferrer">Join Us</a>
     </nav>
-    <button id="menu-btn" class="hamburger">☰ Categories</button>
+    <button id="menu-btn" class="hamburger">☰ Menu</button>
 </header>
 
 <div class="container">
+    
     <aside class="sidebar">
-        <h3>Troubleshooting</h3>
+        <h3><a href="../getting-started/getting-started.html">Getting Started</a></h3>
+        <ul>
+            <li><a href="../getting-started/wilx.html">What is Linux?</a></li>
+            <li><a href="../getting-started/distro.html">Choosing Your First Distro</a></li>
+            <li><a href="../getting-started/liveboot.html">Creating a Live USB</a></li>
+            <li><a href="../getting-started/installation.html">Installation & Dual Booting</a></li>
+            <li><a href="../getting-started/config.html">Post-Installation Setup</a></li>
+        </ul>
+
+        <h3><a href="../everyday/everyday.html">Everyday Use</a></h3>
+        <ul>
+            <li><a href="../everyday/de.html">Desktop Environments</a></li>
+            <li><a href="../everyday/essentials.html">System Essentials</a></li>
+            <li><a href="../everyday/gaming.html">Workstation Gaming</a></li>
+            <li><a href="../everyday/ricing.html">UI Customization (Ricing)</a></li>
+        </ul>
+
+        <h3><a href="../terminal/terminal.html">Terminal Basics</a></h3>
+        <ul>
+            <li><a href="../terminal/fs.html">Navigating the Filesystem</a></li>
+            <li><a href="../terminal/pacmans.html">Package Managers</a></li>
+            <li><a href="../terminal/sudo.html">Permissions & Ownership</a></li>
+            <li><a href="../terminal/texted.html">Terminal Text Editors</a></li>
+            <li><a href="../terminal/bash.html">Bash Scripting</a></li>
+        </ul>
+
+        <h3><a href="../san/san.html">Security & Networks</a></h3>
+        <ul>
+            <li><a href="../san/bfs.html">Basic Firewall Setup (UFW)</a></li>
+            <li><a href="../san/ugm.html">User & Group Management</a></li>
+            <li><a href="../san/sshra.html">SSH & Remote Access</a></li>
+            <li><a href="../san/practices.html">Privacy & Best Practices</a></li>
+        </ul>
+
+        <h3><a href="../pro/pro.html">Advanced Architecture</a></h3>
+        <ul>
+            <li><a href="../pro/wm.html">Window Managers (WMs)</a></li>
+            <li><a href="../pro/kernel.html">The Linux Kernel</a></li>
+            <li><a href="../pro/systemd.html">Systemd & Daemons</a></li>
+            <li><a href="../pro/boot.html">GRUB Bootloader</a></li>
+            <li><a href="../pro/vbox.html">KVM Virtualization</a></li>
+        </ul>
+
+        <h3><a href="troubleshoot.html">Troubleshooting</a></h3>
         <ul>
             <li><a href="logs.html">Reading System Logs</a></li>
-            <li><a href="broken-packages.html">Fixing Broken Packages</a></li>
-            <li><a href="bootrescue.html" style="color: var(--accent-green);">Rescuing a Broken Boot</a></li>
+            <li><a href="broken-packages.html">Broken Packages</a></li>
+            <li><a href="bootrescue.html" style="color: var(--accent-green);">Boot Rescue Triage</a></li>
         </ul>
     </aside>
 
     <main class="content guide-page">
-        <div class="breadcrumbs">
-            <a href="../index.html">Hub Home</a> &gt; <a href="troubleshoot.html">Troubleshooting</a> &gt; <span>Boot Rescue</span>
+        <div class="breadcrumbs" style="color: #8b949e; font-size: 0.9rem; margin-bottom: 20px;">
+            <a href="../index.html">Hub Home</a> &gt; <a href="troubleshoot.html" style="color: #8b949e;">Troubleshooting</a> &gt; <span style="color: #c9d1d9;">Boot Rescue</span>
         </div>
 
         <article>
-            <h1>Boot Rescue: Triage Center</h1>
-            <div class="meta-info">
-                <span>When your system dies, you don't bury it. You revive it from exactly where it failed.</span> | <span>👤 By JR Nation</span>
+            <h1 style="font-size: 2.8rem; margin-bottom: 10px;">Boot Rescue: Diagnostic Triage</h1>
+            <div class="meta-info" style="margin-bottom: 30px; border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;">
+                <span style="color: #8b949e;">When a system fails to initialize, administrators do not discard the deployment. They execute targeted recovery.</span> | <span style="color: var(--accent-green);">By JR Nation Infrastructure</span>
             </div>
 
-            <p>You turn on your computer, but instead of your beautiful graphical login screen, you get terrifying white text scrolling rapidly down a black monitor, ultimately ending in a blinking cursor. The system refuses to boot.</p>
+            <p>Upon initializing hardware power, the administrator expects the standard graphical display manager. Occasionally, this is superseded by verbose diagnostic text rendering rapidly across the display, culminating in a static command prompt or a halted state. The operating system has failed to boot.</p>
             
-            <p>Do not panic, and do not immediately reach for a USB stick to reinstall the OS. Depending on what exact screen you are stuck on, the fix might take less than 60 seconds. The boot process is a highly predictable chain of events. We just need to diagnose exactly which link in the chain snapped.</p>
+            <p>Inexperienced users frequently resort to deploying installation media to overwrite the storage array, resulting in catastrophic data loss. A proficient System Administrator recognizes that the boot sequence is a highly deterministic execution chain. Resolution requires strictly diagnosing which specific parameter within the chain failed to execute.</p>
 
-            <div class="toc-box">
-                <h3>Identify Your Screen:</h3>
-                <ul>
-                    <li><a href="#initramfs">1. Stuck on: (initramfs) prompt</a></li>
-                    <li><a href="#grub-rescue">2. Stuck on: grub rescue> prompt</a></li>
-                    <li><a href="#kernel-panic">3. Stuck on: "Kernel Panic - Not syncing"</a></li>
-                    <li><a href="#sysrq">4. Pro-Tier: The Magic SysRq Keys (REISUB)</a></li>
+            <div class="cheat-sheet-box">
+                <h3 style="margin-top: 0; color: var(--accent-green);">Diagnostic Identification Roadmap</h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li><a href="#initramfs">1. Initialization Halt: (initramfs) Prompt</a></li>
+                    <li><a href="#grub-rescue">2. Bootloader Disconnect: grub rescue> Prompt</a></li>
+                    <li><a href="#kernel-panic">3. Critical Software Halt: "Kernel Panic - Not syncing"</a></li>
+                    <li><a href="#sysrq">4. Advanced Recovery: Magic SysRq Sequence (REISUB)</a></li>
                 </ul>
             </div>
 
-            <h2 id="initramfs">1. Stuck on: (initramfs) prompt</h2>
-            <p>If you see a busy screen that ends with a tiny prompt that says <code>(initramfs)</code> or <code>BusyBox built-in shell</code>, you are actually in luck. This is the most common and easiest boot error to fix in Linux.</p>
+            <h2 id="initramfs">1. Initialization Halt: (initramfs) Prompt</h2>
+            <p>If the boot sequence terminates at a minimal terminal prompt displaying <code>(initramfs)</code> or <code>BusyBox built-in shell</code>, the resolution is typically straightforward. This represents the most frequent and easily rectified initialization error within Linux architectures.</p>
 
-            <p><strong>What Happened:</strong> Your hard drive was not shut down properly (usually due to a forced power-off, a dying battery, or a system crash). Modern Linux filesystems (like ext4) use journaling. If a power cut interrupts a write operation, the filesystem sets a "dirty bit." To protect your data from permanent corruption, the Linux kernel violently halts the boot process and drops you into a primitive diagnostic shell.</p>
+            <p><strong>Architectural Cause:</strong> The physical storage array was improperly unmounted (frequently due to unexpected power loss, battery failure, or a hard system crash). Modern Linux filesystems (such as ext4) utilize journaling protocols. If a power interruption severs an active write operation, the filesystem sets a "dirty bit." To prevent permanent data corruption, the Linux kernel proactively halts the boot process and restricts the user to a primitive diagnostic shell.</p>
             
-            <p><strong>The Fix:</strong> You need to run a manual filesystem check (<code>fsck</code>). Look at the text slightly above the prompt. It will usually complain about a specific drive path, like <code>/dev/sda2</code> or <code>/dev/nvme0n1p2</code> requiring a manual fsck.</p>
+            <p><strong>The Resolution:</strong> The administrator must execute a manual filesystem check (<code>fsck</code>). Analyze the terminal output directly above the active prompt; it will identify the specific corrupted block device path, such as <code>/dev/sda2</code> or <code>/dev/nvme0n1p2</code>.</p>
 
             <div class="code-block-container">
-                <p class="terminal-cmd">(initramfs) exit</p>
-                <p class="terminal-comment"># PRO-TIP: If you don't know which drive is broken, type 'exit' and hit Enter. The system will try to boot anyway, fail, and spit out the exact drive path you need to fix.</p>
+                <p class="code-label">Executing Manual Filesystem Check</p>
+                <p><span class="terminal-cmd">(initramfs) exit</span></p>
+                <p><span class="terminal-comment"># DIAGNOSTIC TIP: If the target block device is unknown, execute 'exit'. The system will attempt to proceed, subsequently fail, and explicitly output the target drive path requiring repair.</span></p>
                 <br>
-                <p class="terminal-cmd">(initramfs) fsck /dev/sda2 -y</p>
-                <p class="terminal-comment"># Replace /dev/sda2 with your specific drive. The -y flag automatically answers "yes" to fixing any orphaned inodes or corrupted data blocks it finds.</p>
+                <p><span class="terminal-cmd">(initramfs) fsck /dev/sda2 -y</span></p>
+                <p><span class="terminal-comment"># Replace /dev/sda2 with your specific drive identifier. The -y flag autonomously authorizes the utility to repair orphaned inodes or corrupted data blocks detected during the scan.</span></p>
             </div>
             
-            <p>Once the check finishes and repairs the corrupted blocks, type <code>reboot</code>. Your system will start normally with zero data loss.</p>
+            <p style="margin-top: 15px;">Upon completion of the sector repair sequence, execute <code>reboot</code>. The operating system will initialize normally, preserving all user data and configurations.</p>
 
-            <h2 id="grub-rescue">2. Stuck on: grub rescue> prompt</h2>
-            <p>This error means your motherboard's BIOS successfully found the GRUB bootloader, but the bootloader cannot find the rest of the operating system.</p>
+            <h2 id="grub-rescue">2. Bootloader Disconnect: grub rescue> Prompt</h2>
+            <p>This terminal state indicates that the motherboard firmware successfully initialized the GRUB bootloader, but the bootloader cannot locate the subsequent operating system files to continue the execution chain.</p>
             
-            <p><strong>What Happened:</strong> You usually see this if you dual-boot and a Windows update aggressively overwrote the Linux EFI partition. It also commonly happens if you cloned your hard drive to an SSD, which changes the drive's UUID (Universal Unique Identifier) that GRUB was expecting to see.</p>
+            <p><strong>Architectural Cause:</strong> This failure frequently occurs within multi-boot environments when a proprietary OS (e.g., Windows) aggressively overwrites the shared EFI partition during a major update. It is also common after cloning a storage array to a new drive, which alters the UUID (Universally Unique Identifier) that GRUB expects to locate.</p>
             
-            <p><strong>The Fix:</strong> The GRUB boot sector has been severed from its configuration files. While it is technically possible to manually chainload the kernel using the <code>ls</code> command from this primitive prompt to find your boot files, it is incredibly tedious. The absolute best way to fix this is to use a Live USB and reinstall the bootloader from the outside using a Chroot environment.</p>
+            <p><strong>The Resolution:</strong> The GRUB boot sector has been severed from its primary configuration registries. While an administrator can manually chainload the kernel utilizing the <code>ls</code> command from this primitive shell, the process is highly inefficient. The enterprise standard resolution is to initialize a Live USB diagnostic environment and recompile the bootloader utilizing a Chroot protocol.</p>
 
-            <div class="callout-info">
-                <strong>💡 Escaping the Void:</strong>
-                To fix this permanently, you need to perform open-heart surgery. Head over to our <a href="../pro/rescue.html" style="color: var(--accent-green); font-weight: bold; text-decoration: none;">Chroot Rescue Mission Guide</a> in the Power User section to learn how to mount your dead drive and magically regenerate GRUB from the inside out.
+            <div class="callout-info" style="border-left-color: #89b4fa; background-color: rgba(137, 180, 250, 0.1);">
+                <strong style="color: #89b4fa;">💡 Executing Root-Level Maintenance:</strong>
+                <br><span style="color: #c9d1d9;">To permanently rectify a severed bootloader, administrators must execute external system recovery. Refer to the <a href="../pro/rescue.html" style="color: #79c0ff; font-weight: bold; text-decoration: underline;">Chroot Recovery Protocol Guide</a> within the Advanced Architecture curriculum to learn how to mount the dormant drive and securely recompile GRUB.</span>
             </div>
 
-            <h2 id="kernel-panic">3. Stuck on: "Kernel Panic - Not syncing"</h2>
-            <p>A Kernel Panic is the Linux equivalent of the Windows Blue Screen of Death. The core brain of the OS ran into a mathematically impossible hardware or software instruction and completely froze the system to protect your CPU and RAM from physical or electrical damage.</p>
+            <h2 id="kernel-panic">3. Critical Software Halt: "Kernel Panic - Not syncing"</h2>
+            <p>A Kernel Panic is the Linux architectural equivalent of a fatal system error (e.g., a BSOD). The core execution layer of the operating system encountered a mathematically impossible hardware instruction or critical dependency failure. To protect the CPU, RAM, and storage arrays from physical or electrical corruption, the kernel intentionally halted all system operations.</p>
             
-            <p><strong>What Happened:</strong> This usually happens immediately after an update if a new kernel version fundamentally conflicts with your graphics drivers (especially proprietary NVIDIA drivers), or if your physical RAM sticks are dying.</p>
+            <p><strong>Architectural Cause:</strong> This state frequently manifests immediately following a system update if a newly deployed kernel version fundamentally conflicts with existing proprietary drivers (specifically NVIDIA graphics modules), or if physical RAM modules begin failing hardware checks.</p>
 
-            <div class="callout-warning" style="border-left-color: #f38ba8; background-color: rgba(243, 139, 168, 0.1);">
-                <strong>⚠️ Unhide the Panic:</strong> If your PC just freezes on your motherboard logo and you suspect a Kernel Panic, reboot, press <kbd>E</kbd> on the GRUB menu, and delete the words <code>quiet splash</code> from the linux line. Press <kbd>F10</kbd> to boot. This disables the graphical loading screen and shows you the raw matrix text, letting you actually read the panic stack trace.
+            <div class="callout-warning" style="border-left-color: #f9e2af; background-color: rgba(249, 226, 175, 0.1);">
+                <strong style="color: #f9e2af;">⚠️ Revealing Diagnostic Telemetry:</strong> 
+                <br><span style="color: #c9d1d9;">If the hardware freezes indefinitely on the motherboard splash screen and a Kernel Panic is suspected, perform a hardware reset. Upon reaching the GRUB menu, strike <kbd>E</kbd> to edit the boot parameters. Delete the strings <code>quiet splash</code> from the primary linux line, and strike <kbd>F10</kbd> to initialize. This suppresses the graphical overlay and outputs the raw diagnostic telemetry, allowing the administrator to read the specific panic stack trace causing the failure.</span>
             </div>
 
-            <p><strong>The Quick Fix:</strong> Hard power off the PC. Turn it back on, and when the GRUB menu appears, select <strong>"Advanced Options for Linux."</strong> Select an older, previous kernel version from the list.</p>
+            <p><strong>The Operational Fix:</strong> Execute a forced hardware power cycle. Upon initialization, when the GRUB menu renders, select <strong>"Advanced Options for Linux."</strong> Select a legacy, previously stable kernel version from the index.</p>
             
-            <p>If the system boots perfectly on the older kernel, you know the new update broke it. You can safely stay on the old kernel, uninstall the broken one using your package manager, and wait for the distro maintainers to release a patched version.</p>
+            <p>If the system initializes perfectly on the legacy kernel, the recent update is confirmed as the variable. Administrators can sustainably operate on the legacy kernel, utilize the package manager to purge the conflicting updated binary, and delay deployment until distribution maintainers release a stable patch.</p>
 
-            <h2 id="sysrq">4. Pro-Tier: The Magic SysRq Keys (REISUB)</h2>
-            <p>What if you get a frozen screen, but it's not during boot? You're just working, and the entire graphical interface locks up. You can't move your mouse, and <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>F3</kbd> won't drop you to a terminal. The instinct is to hold the physical power button on your PC until it dies.</p>
+            <h2 id="sysrq">4. Advanced Recovery: Magic SysRq Sequence (REISUB)</h2>
+            <p>Administrators occasionally experience a complete graphical interface lockup during active sessions. Mouse input ceases, and standard virtual terminal access (<kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>F3</kbd>) fails to respond. The standard consumer response is to hold the physical hardware power button to force a shutdown.</p>
             
-            <p><strong>Never do this.</strong> Hard power-offs cause the exact <code>initramfs</code> filesystem corruption we talked about in step 1. Instead, you use the Magic SysRq keys. These are low-level keyboard interrupts that bypass the frozen GUI and talk directly to the Linux kernel.</p>
+            <p><strong>This protocol is heavily discouraged.</strong> Forced hardware terminations cause the exact <code>initramfs</code> filesystem corruption detailed in Step 1. Instead, advanced administrators utilize the Magic SysRq sequence. These are absolute low-level keyboard interrupts that bypass the frozen User Space GUI and communicate directly with the Linux kernel operating in Ring 0.</p>
 
-            <p>Hold down <kbd>Alt</kbd> + <kbd>SysRq</kbd> (often the Print Screen key), and slowly type the letters <strong>R E I S U B</strong>, pausing for a second between each letter.</p>
+            <p>Depress and hold <kbd>Alt</kbd> + <kbd>SysRq</kbd> (frequently designated as the Print Screen key), and sequentially strike the following characters: <strong>R E I S U B</strong>, pausing for approximately one second between each keystroke.</p>
 
-            <ul style="color: var(--text-main); font-family: monospace; list-style-type: none; padding-left: 20px;">
-                <li><strong>R:</strong> <span style="color: #a6e3a1;">R</span>eturns control of the keyboard from the frozen GUI.</li>
-                <li><strong>E:</strong> <span style="color: #a6e3a1;">E</span>nds all processes safely.</li>
-                <li><strong>I:</strong> <span style="color: #a6e3a1;">I</span>nterrupts and forcefully kills any remaining stubborn processes.</li>
-                <li><strong>S:</strong> <span style="color: #a6e3a1;">S</span>yncs all data from your RAM to your hard drive (saving your files!).</li>
-                <li><strong>U:</strong> <span style="color: #a6e3a1;">U</span>nmounts the hard drives safely to prevent corruption.</li>
-                <li><strong>B:</strong> <span style="color: #a6e3a1;">B</span>oots the computer cleanly.</li>
-            </ul>
+            <div class="code-block-container">
+                <p class="code-label">The REISUB Execution Sequence</p>
+                <ul style="color: #c9d1d9; font-family: monospace; list-style-type: none; padding-left: 10px; margin-bottom: 0;">
+                    <li style="margin-bottom: 5px;"><strong>R:</strong> <span style="color: #a6e3a1;">R</span>eturns absolute control of the peripheral keyboard from the frozen GUI manager.</li>
+                    <li style="margin-bottom: 5px;"><strong>E:</strong> <span style="color: #a6e3a1;">E</span>nds all active processes safely via the SIGTERM signal.</li>
+                    <li style="margin-bottom: 5px;"><strong>I:</strong> <span style="color: #a6e3a1;">I</span>nterrupts and forcefully terminates (SIGKILL) any remaining unresponsive processes.</li>
+                    <li style="margin-bottom: 5px;"><strong>S:</strong> <span style="color: #a6e3a1;">S</span>ynchronizes all cached data from volatile RAM directly to the physical storage array (preventing catastrophic data loss).</li>
+                    <li style="margin-bottom: 5px;"><strong>U:</strong> <span style="color: #a6e3a1;">U</span>nmounts the active storage arrays, remounting them in read-only mode to guarantee filesystem integrity.</li>
+                    <li><strong>B:</strong> <span style="color: #a6e3a1;">B</span>oots (re-initializes) the physical hardware cleanly.</li>
+                </ul>
+            </div>
 
-            <p>The system will gracefully and safely reboot. You have just achieved the ultimate level of Linux mastery.</p>
+            <p style="margin-top: 20px; font-weight: bold; color: var(--accent-green);">The system will gracefully unmount and execute a secure hardware reboot. You have successfully bypassed a catastrophic crash without risking data corruption, representing the highest tier of system administration.</p>
 
         </article>
 
         <hr class="section-divider">
 
-        <div class="guide-nav" style="justify-content: center;">
+        <div class="guide-nav" style="display: flex; gap: 20px; justify-content: space-between;">
             <a href="broken-packages.html" class="btn-secondary">← Back: Broken Packages</a>
+            <a href="../../index.html" class="btn-primary">Return to Hub Home →</a>
         </div>
+
+        <footer class="site-footer" style="padding-top: 40px; border-top: 1px solid #30363d; margin-top: 60px; text-align: center;">
+            <div class="disclaimer" style="font-size: 0.85rem; color: #8b949e; margin-bottom: 20px; max-width: 800px; margin-left: auto; margin-right: auto; padding: 0 15px;">
+                <strong>Educational Disclaimer:</strong> All system architecture breakdowns, diagnostic recovery protocols, and terminal scripts provided on the JR Nation platform are designed strictly for educational and system administration training purposes.
+            </div>
+            <p style="color: #8b949e;">&copy; 2026 JR Nation. All Rights Reserved.</p>
+            <div class="legal-links" style="margin-top: 15px;">
+                <a href="../../privacy.html" style="color: #79c0ff; margin: 0 10px; text-decoration: none;">Privacy Policy</a>
+                <a href="../../terms.html" style="color: #79c0ff; margin: 0 10px; text-decoration: none;">Terms of Service</a>
+                <a href="../../lore.html" style="color: #79c0ff; margin: 0 10px; text-decoration: none;">Lore</a>
+                <a href="../../contact.html" style="color: #79c0ff; margin: 0 10px; text-decoration: none;">Contact Us</a>
+            </div>
+        </footer>
+
     </main>
 </div>
 
 <script>
     const menuBtn = document.getElementById('menu-btn');
     const sidebar = document.querySelector('.sidebar');
-    menuBtn.addEventListener('click', () => {
-        sidebar.classList.toggle('show');
-    });
+    if(menuBtn && sidebar) {
+        menuBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('show');
+        });
+    }
 </script>
+
 </body>
 </html>
