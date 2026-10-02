@@ -37,7 +37,7 @@ name: Jayachandra Reddy G
 handle: @jrnation
 location: Andhra Pradesh, India
 interests: [Web Development, Networking, Cybersecurity, Cloud, Linux]
-passions: [Tech Exploration, Building Cool Stuff, Motorcycling 🏍️]
+passions: [Tech Exploration, Building Cool Stuff, Motorcycling ]
 motto: "Curiosity is the key to unlocking the other side of the internet."
 ```
 
@@ -46,6 +46,7 @@ motto: "Curiosity is the key to unlocking the other side of the internet."
 -  **Learning Journey**: Diving deeper into full-stack development, server management, and system design.
 -  **Ask Me About**: Tech discussions, internet infrastructure, or great motorcycle routes.
 -  **Fun Fact**: When not debugging or exploring the web, you'll catch me on open highways on my motorcycle!
+-  **Skills**: Quite a player in Pubg Mobile, Live a Life in Minecraft, Manupulate a Squad in AmongUs, 1K+ levels of CandyCrush, run a kingdom of Dominations, templerun andrybirs and all kind of dump
 
 ---
 
