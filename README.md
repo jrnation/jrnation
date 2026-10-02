@@ -2,7 +2,7 @@
 <div align="center">
 
   <!-- Header Banner -->
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,16,36&height=220&section=header&text=Jayachandra%20Reddy%20G&fontSize=42&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=Just%20a%20guy%20exploring%20the%20other%20side%20of%20the%20internet%20 &descAlignY=62&descAlign=50" width="100%" alt="Header Banner" />
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,16,36&height=220&section=header&text=Jayachandra%20Reddy%20G&fontSize=42&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=Just%20a%20guy%20exploring%20the%20other%20side%20of%20the%20internet%20&descAlignY=62&descAlign=50" width="100%" alt="Header Banner" />
 
   <!-- Animated Typing Tagline -->
   <a href="https://git.io/typing-svg">
