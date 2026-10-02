@@ -2,7 +2,7 @@
 <div align="center">
 
   <!-- Header Banner -->
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,16,36&height=220&section=header&text=Jayachandra%20Reddy%20G&fontSize=42&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=Just%20a%20guy%20exploring%20the%20other%20side%20of%20the%20internet%20🌐&descAlignY=62&descAlign=50" width="100%" alt="Header Banner" />
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,16,36&height=220&section=header&text=Jayachandra%20Reddy%20G&fontSize=42&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=Just%20a%20guy%20exploring%20the%20other%20side%20of%20the%20internet%20 &descAlignY=62&descAlign=50" width="100%" alt="Header Banner" />
 
   <!-- Animated Typing Tagline -->
   <a href="https://git.io/typing-svg">
@@ -10,7 +10,7 @@
   </a>
 
   <p align="center">
-    <b>he/him</b> • 📍 Andhra Pradesh, India
+    <b>he/him</b> •  Andhra Pradesh, India
   </p>
 
   <!-- Social & Contact Badges -->
@@ -30,7 +30,7 @@
 
 ---
 
-### 👨‍💻 About Me
+###  About Me
 
 ```yaml
 name: Jayachandra Reddy G
@@ -41,15 +41,15 @@ passions: [Tech Exploration, Building Cool Stuff, Motorcycling 🏍️]
 motto: "Curiosity is the key to unlocking the other side of the internet."
 ```
 
-- 🌐 **Currently Exploring**: Computer networks, web architecture, and emerging internet technologies.
-- 🚀 **Currently Building**: Personal projects, tools, and leveling up my dev skills.
-- 📚 **Learning Journey**: Diving deeper into full-stack development, server management, and system design.
-- 💬 **Ask Me About**: Tech discussions, internet infrastructure, or great motorcycle routes.
-- ⚡ **Fun Fact**: When not debugging or exploring the web, you'll catch me on open highways on my motorcycle!
+-  **Currently Exploring**: Computer networks, web architecture, and emerging internet technologies.
+-  **Currently Building**: Personal projects, tools, and leveling up my dev skills.
+-  **Learning Journey**: Diving deeper into full-stack development, server management, and system design.
+-  **Ask Me About**: Tech discussions, internet infrastructure, or great motorcycle routes.
+-  **Fun Fact**: When not debugging or exploring the web, you'll catch me on open highways on my motorcycle!
 
 ---
 
-### 🛠️ Tech Stack & Tools
+###  Tech Stack & Tools
 
 <div align="center">
 
@@ -64,7 +64,7 @@ motto: "Curiosity is the key to unlocking the other side of the internet."
 
 ---
 
-### 📊 GitHub Activity & Stats
+###  GitHub Activity & Stats
 
 <div align="center">
   <img height="165em" src="https://github-readme-stats.vercel.app/api?username=jrnation&show_icons=true&theme=tokyonight&hide_border=true&count_private=true" alt="Jayachandra's GitHub Stats" />
